@@ -1,0 +1,4 @@
+## Materiais sobre Experiênica e Interfaces de Usuário:
+
+1) 10 Heurísticas de usabilidade para UI: https://www.nngroup.com/articles/ten-usability-heuristics/
+2) UI Patterns: https://ui-patterns.com/
