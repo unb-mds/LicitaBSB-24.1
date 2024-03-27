@@ -25,7 +25,7 @@
         <td align="center">
             <a href="https://github.com/nateejpg">
                 <img style="border-radius: 50%;" src="https://github.com/nateejpg.png" width="150px;"/>
-                <h5 class="text-center">Nathan Benigno</h5>
+                <h5 class="text-center">Nathan Abreu</h5>
             </a>
         </td>
         <td align="center">
