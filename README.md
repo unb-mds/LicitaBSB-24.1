@@ -13,7 +13,7 @@
         <td align="center">
             <a href="https://github.com/MariaCHelena">
                 <img style="border-radius: 50%;" src="https://github.com/MariaCHelena.png" width="150px;"/>
-                <h5 class="text-center">Maria\nHelena</h5>
+                <h5 class="text-center">Maria<br>Helena</h5>
             </a>
         </td>
         <td align="center">
