@@ -22,3 +22,9 @@
 2) https://blog.geekhunter.com.br/como-fazer-um-web-scraping-python
 3) https://brightdata.com.br/blog/procedimentos/web-scraping-with-python
 4) https://www.youtube.com/playlist?list=PLFeyfVYazTkIYEFvAKB6SB-uJ-CWW4BrZ
+
+## Materiais sobre a biblioteca Querido-Diario-ToolBox (python)
+
+1) https://github.com/okfn-brasil/querido-diario-toolbox?tab=readme-ov-file (biblioteca querido-diario-toolbox)
+2) https://www.youtube.com/watch?v=ZE8K2zmgVSQ
+3) https://youtu.be/I29iZ1UWjig 
