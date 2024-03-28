@@ -3,6 +3,12 @@
 1) 10 Heurísticas de usabilidade para UI: https://www.nngroup.com/articles/ten-usability-heuristics/
 2) UI Patterns: https://ui-patterns.com/
 
+## Materiais sobre a ferramenta React:
+
+1-https://pt-br.legacy.reactjs.org/community/ui-components.html
+2-https://learn.microsoft.com/pt-br/training/paths/react/
+3-https://www.youtube.com/watch?v=RVFAyFWO4go
+
 ## Materiais sobre Front-End
 
 1) https://www.youtube.com/watch?v=SajRjc9KKUE&list=PL0Zuz27SZ-6Oi6xNtL_fwCrwpuqylMsgT (JS-beginners)
