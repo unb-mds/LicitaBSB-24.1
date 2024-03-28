@@ -1,5 +1,0 @@
-Materiais sobre a ferramenta React:
-
-1-https://pt-br.legacy.reactjs.org/community/ui-components.html
-2-https://learn.microsoft.com/pt-br/training/paths/react/
-3-https://www.youtube.com/watch?v=RVFAyFWO4go
