@@ -15,3 +15,10 @@
 2) https://www.youtube.com/watch?v=1S8SBDhA7HA&list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd (JS-advancedConcepts)
 3) https://www.freecodecamp.org/news/create-a-simple-website-with-html-css-javascript/ (html, css, js)
 4) https://www.youtube.com/watch?v=HGTJBPNC-Gw (html, css)
+
+## Materiais sobre WebScraping e Raspagem em Python
+
+1) https://realpython.com/python-web-scraping-practical-introduction/#extract-text-from-html-with-regular-expressions
+2) https://blog.geekhunter.com.br/como-fazer-um-web-scraping-python
+3) https://brightdata.com.br/blog/procedimentos/web-scraping-with-python
+4) https://www.youtube.com/playlist?list=PLFeyfVYazTkIYEFvAKB6SB-uJ-CWW4BrZ
