@@ -2,3 +2,10 @@
 
 1) 10 Heurísticas de usabilidade para UI: https://www.nngroup.com/articles/ten-usability-heuristics/
 2) UI Patterns: https://ui-patterns.com/
+
+## Materiais sobre Front-End
+
+1) https://www.youtube.com/watch?v=SajRjc9KKUE&list=PL0Zuz27SZ-6Oi6xNtL_fwCrwpuqylMsgT (JS-beginners)
+2) https://www.youtube.com/watch?v=1S8SBDhA7HA&list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd (JS-advancedConcepts)
+3) https://www.freecodecamp.org/news/create-a-simple-website-with-html-css-javascript/ (html, css, js)
+4) https://www.youtube.com/watch?v=HGTJBPNC-Gw (html, css)
