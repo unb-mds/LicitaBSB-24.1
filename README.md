@@ -7,7 +7,7 @@
         <td align="center">
             <a href="https://github.com/Marcelo-Adrian">
                 <img style="border-radius: 50%;" src="https://github.com/Marcelo-Adrian.png" width="150px;"/>
-                <h5 class="text-center">Marcelo Adrian</h5>
+                <h5 class="text-center">Marcelo<br>Adrian</h5>
             </a>
         </td>
         <td align="center">
@@ -19,19 +19,19 @@
         <td align="center">
             <a href="https://github.com/m4rllon">
                 <img style="border-radius: 50%;" src="https://github.com/m4rllon.png" width="150px;"/>
-                <h5 class="text-center">Marllon Fausto</h5>
+                <h5 class="text-center">Marllon<br>Fausto</h5>
             </a>
         </td>
         <td align="center">
             <a href="https://github.com/nateejpg">
                 <img style="border-radius: 50%;" src="https://github.com/nateejpg.png" width="150px;"/>
-                <h5 class="text-center">Nathan Abreu</h5>
+                <h5 class="text-center">Nathan<br>Abreu</h5>
             </a>
         </td>
         <td align="center">
             <a href="https://github.com/Otavio4283">
                 <img style="border-radius: 50%;" src="https://github.com/Otavio4283.png" width="150px;"/>
-                <h5 class="text-center">Otávio Henrique</h5>
+                <h5 class="text-center">Otávio<br>Henrique</h5>
             </a>
         </td>
          <td align="center">
