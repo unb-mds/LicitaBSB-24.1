@@ -37,13 +37,13 @@
          <td align="center">
             <a href="https://github.com/thaleseuflauzino">
                 <img style="border-radius: 50%;" src="https://github.com/thaleseuflauzino.png" width="150px;"/>
-                <h5 class="text-center">Thales Henrique</h5>
+                <h5 class="text-center">Thales<br>Henrique</h5>
             </a>
         </td>
 	<td align="center">
             <a href="https://github.com/moonshinerd">
                 <img style="border-radius: 50%;" src="https://github.com/moonshinerd.png" width="150px;"/>
-                <h5 class="text-center">Víctor Schmidt</h5>
+                <h5 class="text-center">Víctor<br>Schmidt</h5>
             </a>
         </td>
 </table>
