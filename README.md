@@ -35,8 +35,8 @@
             </a>
         </td>
          <td align="center">
-            <a href="https://github.com/thaleshsantos">
-                <img style="border-radius: 50%;" src="https://github.com/thaleshsantos.png" width="150px;"/>
+            <a href="https://github.com/thaleseuflauzino">
+                <img style="border-radius: 50%;" src="https://github.com/thaleseuflauzino.png" width="150px;"/>
                 <h5 class="text-center">Thales Henrique</h5>
             </a>
         </td>
