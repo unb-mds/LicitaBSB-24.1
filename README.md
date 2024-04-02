@@ -1,4 +1,4 @@
-# Lícita BSB - 2024-1-Squad-03
+# Licita BSB - 2024-1-Squad-03
 
 ## 🧑‍💻👩‍💻 Desenvolvedores
 
