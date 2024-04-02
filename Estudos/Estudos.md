@@ -46,3 +46,11 @@
    - Vídeo explicando o que é e como usar a biblioteca Querido-Diario-Toolbox.
 3. [Tutorial de Uso da Querido-Diario-ToolBox - Vídeo no YouTube](https://youtu.be/I29iZ1UWjig)
    - Tutorial prático demonstrando como utilizar os recursos da biblioteca Querido-Diario-Toolbox.
+
+
+# Possível Feature: Bot no Twitter
+
+1. [Tutorial Oficial do Twitter para Criar um Bot com a API do Twitter v2](https://developer.twitter.com/en/docs/tutorials/how-to-create-a-twitter-bot-with-twitter-api-v2)
+   - Tutorial oficial fornecido pelo Twitter para criar um bot no Twitter usando a API do Twitter v2.
+2. [Vídeo Explicativo sobre Criação de Bots no Twitter - YouTube](https://www.youtube.com/watch?v=ITmZWIky4g8)
+   - Um vídeo informativo que pode ajudar a entender os conceitos básicos e a implementação de bots no Twitter com python.
