@@ -1,0 +1,44 @@
+name: Auto Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    name: mkdocs deploy
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: ["3.11"]
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
+
+    - name: Using cache to MkDocs
+      uses: actions/cache@v3
+      with:
+        key: mkdocs-material-${{ env.cache_id }}
+        path: .cache
+        restore-keys: |
+          mkdocs-material-
+
+    - run: pip install mkdocs-material 
+
+    - name: Deploy Docs
+      run: mkdocs gh-deploy --force
