@@ -1,6 +1,3 @@
-# Guia de funções
-
-## Scrum Master
 
 Pelo Scrum Guide (Guia do Scrum), o Scrum Master é o responsável por promover e apoiar as boas práticas  do Scrum durante o desenvolvimento de um projeto planejado por essa metodologia ágil.
 
@@ -27,7 +24,6 @@ Entre as atividades do Scrum Master, também cabe ser uma espécie de coach da e
 ## Product Owner
 
 > Maximizar o valor do produto resultante do trabalho do Time de Desenvolvimento.
-
 O membro cuja função é a de Product Owner deve, principalmente, definir todas as características do produto e de priorizar as entregas que mais vão contribuir com o cliente e com o negócio, organizando-as na ordem do que mais gera valor ao produto para o que menos agrega. Nesse sentido, seu papel envolve o cuidado com o que será produzido, analisando desde a estratégia de negócios ao design do produto. Entre suas responsabilidades, está a definição do escopo do produto que será criado, escrito em uma linguagem que chamamos de 'histórias de usuário' e a priorização do que deve ser feito primeiro. O escopo do produto é chamado de BACKLOG DO PRODUTO.
 
 ### O que o PO Realiza:
