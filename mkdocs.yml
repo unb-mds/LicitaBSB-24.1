@@ -1,6 +1,5 @@
 site_name: Documentação - Licita BsB
 repo_url: https://github.com/unb-mds/2024-1-Squad-03
-docs_dir: docs
 
 nav: 
   - Home: index.md
