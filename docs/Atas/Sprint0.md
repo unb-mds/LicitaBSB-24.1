@@ -5,3 +5,6 @@ https://docs.google.com/document/d/1zbXIZH9cTjQZYHsMCCh-WvcXmF1yhWRKJCSpjxutl5g/
 
 ### Ata de reunião - 01/04:
 https://docs.google.com/document/d/1OnvH6gjw9I79cTZjoHXa_PNAQXMUkzmBxhpHUEmuKfk/edit?usp=sharing
+
+## Ata da reunião - 03/04:
+https://docs.google.com/document/d/134xI9UhBLAtKU9Z9lLlZbXlXCuu5nn30WJF1pbOksp0/edit?usp=sharing
