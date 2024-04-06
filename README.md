@@ -16,6 +16,7 @@ Visando ampliar a divulgação desse material, Licita BSB também possui um bot 
 
 ## Documentação do projeto
 
+- Documentação: https://unb-mds.github.io/2024-1-Squad-03/
 - Nosso quadro do Miro: https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307
 
 ## 🧑‍💻👩‍💻 Desenvolvedores
