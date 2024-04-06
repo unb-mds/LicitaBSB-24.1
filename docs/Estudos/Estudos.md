@@ -18,6 +18,9 @@
 3. [Crie um Site Simples com HTML, CSS e JavaScript](https://www.freecodecamp.org/news/create-a-simple-website-with-html-css-javascript/) - Tutorial passo a passo para criar um site simples usando HTML, CSS e JavaScript.
 4. [Curso de HTML e CSS - Vídeo no YouTube](https://www.youtube.com/watch?v=HGTJBPNC-Gw) - Curso em vídeo para aprender HTML e CSS do zero.
 
+## Back-end
+1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python
+
 ## Web Scraping e Raspagem de dados em Python
 
 1. [Introdução Prática ao Web Scraping com Python](https://realpython.com/python-web-scraping-practical-introduction/#extract-text-from-html-with-regular-expressions) - Tutorial prático para começar com web scraping usando Python.
