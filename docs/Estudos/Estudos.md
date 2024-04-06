@@ -27,6 +27,9 @@
 2. [Como Fazer Web Scraping em Python - Blog GeekHunter](https://blog.geekhunter.com.br/como-fazer-um-web-scraping-python) - Guia passo a passo sobre como realizar web scraping em Python.
 3. [Web Scraping com Python - Blog BrightData](https://brightdata.com.br/blog/procedimentos/web-scraping-with-python) - Recursos e tutoriais para ajudar você a entender e praticar web scraping com Python.
 4. [Playlist de Web Scraping em Python - Vídeos no YouTube](https://www.youtube.com/playlist?list=PLFeyfVYazTkIYEFvAKB6SB-uJ-CWW4BrZ) - Série de vídeos abrangendo diferentes aspectos do web scraping usando Python.
+5. [Scrapy](https://www.youtube.com/watch?v=QdLgNr1mKQU) - Vídeo-aula introdutória ao Scrapy
+5. [BeatifulSoup](https://youtu.be/WzUPnQwSQyk?si=wrZi5TuhH8aMwk_v) - Vídeo-aula introdutória ao BeatifulSoup
+5. [Selenium](https://www.youtube.com/watch?v=CdoBcv1QmSg) - Vídeo-aula introdutória ao Selenium
 
 ## Querido-Diario-ToolBox (Python)
 
