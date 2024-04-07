@@ -37,6 +37,11 @@
 2. [Vídeo Introdutório sobre Querido-Diario-ToolBox](https://www.youtube.com/watch?v=ZE8K2zmgVSQ) - Vídeo explicando o que é e como usar a biblioteca Querido-Diario-Toolbox.
 3. [Tutorial de Uso da Querido-Diario-ToolBox - Vídeo no YouTube](https://youtu.be/I29iZ1UWjig) - Tutorial prático demonstrando como utilizar os recursos da biblioteca Querido-Diario-Toolbox.
 
+## Apache Tika (Python)
+
+1. [Extracting Text from Documents in Python using Apache Tika](https://medium.com/@seffa.b/extracting-text-from-documents-in-python-using-apache-tika-d536c8feee50) - Passo a passo simples para começar.
+2. [Parsing PDFs in Python with Tika](https://www.geeksforgeeks.org/parsing-pdfs-in-python-with-tika/) - Exemplo extraindo vários tipos de dados
+3. [ApacheTika - Python](https://github.com/chrismattmann/tika-python/tree/master) - Repositório onde encontramos várias aplicações práticas
 
 ## Possível Feature: Bot no Twitter
 
