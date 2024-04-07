@@ -1,4 +1,4 @@
-### A seguir estão listados os links referêntes às atas das reuniões feitas entre a equipe na Sprint0.
+### A seguir estão listados os links referêntes às atas das reuniões feitas entre a equipe nas Sprints.
 
 ### Ata de reunião - 27/03:
 https://docs.google.com/document/d/1zbXIZH9cTjQZYHsMCCh-WvcXmF1yhWRKJCSpjxutl5g/edit?usp=sharing
