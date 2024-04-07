@@ -1,4 +1,4 @@
-[Clique aqui para ver a apresentação sobre os cargos em PDF](https://github.com/unb-mds/2024-1-Squad-03/blob/main/docs/OrganizacaoEquipe/Apresenta%C3%A7%C3%A3o%20Fun%C3%A7%C3%B5es%20dos%20Cargos.pdf)
+[Clique aqui e veja a apresentação sobre os cargos em PDF](https://github.com/unb-mds/2024-1-Squad-03/blob/main/docs/OrganizacaoEquipe/Apresenta%C3%A7%C3%A3o%20Fun%C3%A7%C3%B5es%20dos%20Cargos.pdf)
 
 Pelo Scrum Guide (Guia do Scrum), o Scrum Master é o responsável por promover e apoiar as boas práticas  do Scrum durante o desenvolvimento de um projeto planejado por essa metodologia ágil.
 
@@ -21,6 +21,8 @@ Para isso,  o papel do Scrum Master é ajudar todos os envolvidos no projeto a e
 - Capacitar a equipe nos métodos e metodologias ágeis (SCRUM, Kanban e XP)
 
 Entre as atividades do Scrum Master, também cabe ser uma espécie de coach da equipe de desenvolvimento auto-organizada, remover impedimentos ao progresso do desenvolvimento do produto, ajudar a manter a produtividade, além de auxiliar a equipe a criar produtos de alto valor.
+
+[Clique aqui e tenha acesso ao ScrumGuide em PDF](https://github.com/unb-mds/2024-1-Squad-03/blob/main/docs/Estudos/2020-Scrum-Guide-US.pdf)
 
 ## Product Owner
 
