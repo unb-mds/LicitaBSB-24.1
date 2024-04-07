@@ -1,3 +1,4 @@
+[Clique aqui para ver a apresentação sobre os cargos em PDF](https://github.com/unb-mds/2024-1-Squad-03/blob/main/docs/OrganizacaoEquipe/Apresenta%C3%A7%C3%A3o%20Fun%C3%A7%C3%B5es%20dos%20Cargos.pdf)
 
 Pelo Scrum Guide (Guia do Scrum), o Scrum Master é o responsável por promover e apoiar as boas práticas  do Scrum durante o desenvolvimento de um projeto planejado por essa metodologia ágil.
 
