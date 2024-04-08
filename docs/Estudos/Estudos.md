@@ -4,6 +4,7 @@
 
 1. [10 Heurísticas de Usabilidade para UI](https://www.nngroup.com/articles/ten-usability-heuristics/) - Artigo explicando 10 heurísticas de usabilidade essenciais para design de interfaces de usuário.
 2. [UI Patterns](https://ui-patterns.com/) - Uma coleção de padrões de interface de usuário para inspirar e informar seu design.
+3. [Mapping User Stories in Agile](https://www.nngroup.com/articles/user-story-mapping/) - Artigo explicando sobre o que é e qual a importância do User Stories Mapping. 
 
 ## React
 
