@@ -7,7 +7,7 @@ Posteriormente, a Maria Helena comentou sobre a capacitação em SCRUM.
 
 O Victor seguiu comentando sobre o framework web que foi escolhido, o Django, já sobre o de raspagem de dados, foi comentado que poderá ser utilizado o Beautiful Soup, Scrapy e o Selenium no projeto.
 
-Já o Thiago comentou sobre a impossibilidade de usar a biblioteca do Querido Diário por problemas em ler arquivos pdf, para isso, foi recomendado utilizar a Apache Tika para essa tarefa. Ele também comentou sobre a GitPage do projeto, explicando como ela funciona e como os outros membros da equipe podem realizar modificações nela.
+Já o Thales comentou sobre a impossibilidade de usar a biblioteca do Querido Diário por problemas em ler arquivos pdf, para isso, foi recomendado utilizar a Apache Tika para essa tarefa. Ele também comentou sobre a GitPage do projeto, explicando como ela funciona e como os outros membros da equipe podem realizar modificações nela.
 
 O Nathan comentou sobre as ferramentas de deploy e database. Nesse contexto, ele elaborou um documento descrevendo diversas opções que podem ser utilizadas. Ele ressaltou o MongoDB, Firestone e MySQL para o database e o Heroku e PythonAnywhere para o deploy. Foi acordado que, ainda para essa sprint, devemos decidir qual banco de dados a equipe irá usar para esse projeto.
 
