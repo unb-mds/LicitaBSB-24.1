@@ -1,4 +1,4 @@
-## Reunião - 27/03
+## Reunião - 11/04
 ## Discussões:
 
 A membra Maria Helena destacou as entregas relacionadas aos membros Marcelo, Adrian e Otávio, dada a ausência dos mesmos na reunião anterior. O membro Marcelo informou que o progresso estava em andamento, exceto pelo documento de escolhas tecnológicas, enquanto o membro Otávio assegurou que tudo estava dentro dos padrões ou seria resolvido durante a semana.
