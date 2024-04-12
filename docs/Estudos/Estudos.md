@@ -32,17 +32,11 @@
 5. [BeatifulSoup](https://youtu.be/WzUPnQwSQyk?si=wrZi5TuhH8aMwk_v) - Vídeo-aula introdutória ao BeatifulSoup
 5. [Selenium](https://www.youtube.com/watch?v=CdoBcv1QmSg) - Vídeo-aula introdutória ao Selenium
 
-## Querido-Diario-ToolBox (Python)
+## Biblioteca PyPDF2 (Python)
 
-1. [Repositório GitHub da biblioteca Querido-Diario-Toolbox](https://github.com/okfn-brasil/querido-diario-toolbox?tab=readme-ov-file) - Documentação e informações sobre a biblioteca Querido-Diario-Toolbox.
-2. [Vídeo Introdutório sobre Querido-Diario-ToolBox](https://www.youtube.com/watch?v=ZE8K2zmgVSQ) - Vídeo explicando o que é e como usar a biblioteca Querido-Diario-Toolbox.
-3. [Tutorial de Uso da Querido-Diario-ToolBox - Vídeo no YouTube](https://youtu.be/I29iZ1UWjig) - Tutorial prático demonstrando como utilizar os recursos da biblioteca Querido-Diario-Toolbox.
-
-## Apache Tika (Python)
-
-1. [Extracting Text from Documents in Python using Apache Tika](https://medium.com/@seffa.b/extracting-text-from-documents-in-python-using-apache-tika-d536c8feee50) - Passo a passo simples para começar.
-2. [Parsing PDFs in Python with Tika](https://www.geeksforgeeks.org/parsing-pdfs-in-python-with-tika/) - Exemplo extraindo vários tipos de dados
-3. [ApacheTika - Python](https://github.com/chrismattmann/tika-python/tree/master) - Repositório onde encontramos várias aplicações práticas
+1. [Ler texto, imagem, colocar senha e dar merge em PDF](https://www.youtube.com/watch?v=ZofwGhnY55Y&list=PLcArXHK8v0lY1JokkXgPAtWCO2YUoMZDe&ab_channel=BiswajitBasak) - Playlist de tutorial (inglês).
+2. [Como Ler Arquivo PDF, Como Mesclar (merge) arquivos PDF, PDF para Texto com Python , PyPDF2](https://www.youtube.com/watch?v=MRmqMRLleK4&ab_channel=RonanVico) - Vídeo de tutorial (português).
+3. [Obtendo metadados, texto, colocando e removendo senha](https://www.youtube.com/watch?v=4FI_fzWoagM&list=PLptqHZ6pdXKp0k173p-mMUUnkICKoGNEV&ab_channel=IlovePython) - Playlist mais completa (metadados, senha, merge e texto).
 
 ## Possível Feature: Bot no Twitter
 
