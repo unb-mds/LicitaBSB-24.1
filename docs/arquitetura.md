@@ -6,7 +6,7 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido 
 
 ### Diagrama de Arquitetura
 
-![Diagrama de Arquitetura](diagrama.png)
+![Diagrama de Arquitetura](Diagrama.png)
 
 ## Camadas
 
