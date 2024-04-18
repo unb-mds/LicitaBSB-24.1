@@ -19,4 +19,4 @@ Descreva aqui a feature que está sendo desenvolvida
 - Também utilize listas de marcar para melhor controle
 
 **Contexto adicional:**
-Adicione qualquer conteúdo adicional relevante.
+- Adicione qualquer conteúdo adicional relevante.
