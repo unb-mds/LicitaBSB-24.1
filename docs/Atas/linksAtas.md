@@ -14,3 +14,6 @@ https://docs.google.com/document/d/1A3KhSRzfA4lt9lg9CROKK7Ck1VeQqYRGvbDV0P9YVvc/
 
 ### Ata de reunião - 10/04
 https://docs.google.com/document/d/1XvbIby2J_i7G9wv73kABNwdLT0FShgTg54fuusqNyFc/edit?usp=sharing
+
+### Ata de reunião - 18/04
+https://docs.google.com/document/d/1XwP1JJ-4JxRhUBc7z8aRzWUUGzOnBh91zBHN8A62Gf0/edit?usp=sharing
