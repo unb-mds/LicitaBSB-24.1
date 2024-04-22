@@ -1,53 +1,57 @@
-## Como executar o ambiente virtual backend
+## Como executar o ambiente virtual Backend 
 
-# Inicialização do Ambiente Virtual e Projeto Django para o Backend
+### Inicialização do Ambiente Virtual e Projeto Django para o Backend 
 
-Para começar a desenvolver no backend do projeto, siga estas etapas para configurar e iniciar o ambiente virtual e o projeto Django.
+Se prepare para desvendar os segredos do backend do nosso projeto!  Siga estas etapas para configurar e dar vida ao ambiente virtual e ao projeto Django:
 
-## Pré-requisitos
+### ️ Pré-requisitos ️
 
-Certifique-se de ter o Python e o pip instalados na sua máquina. Você pode baixar e instalar o Python em [python.org](https://www.python.org/downloads/).
-Verifique também se você tem instalado na sua máquina o pacote `python3.10-venv`. Caso não possua, instale através do comando:
+Antes de embarcarmos nessa jornada, certifique-se de ter os seguintes itens em sua bagagem:
+
+* **Python e pip:** Baixe e instale o Python em [https://www.python.org/](https://www.python.org/).
+* **Pacote `python3.10-venv`:** Instale-o através do comando:
 
 ```
 sudo apt install python3.10-venv
-``` 
+```
 
-## Instalação do Ambiente Virtual
+###  Instalação do Ambiente Virtual 
 
 1. Abra o terminal e navegue até a pasta `backend` do projeto.
-2. Execute o seguinte comando para inicializar o ambiente virtual:
-   No Windows:
+2. Ative o ambiente virtual com o comando mágico:
+
+   * **Windows:**
      ```
      backend\Scripts\activate
      ```
-   No macOS e Linux:
+   * **macOS e Linux:**
      ```
      source backend/bin/activate
      ```
 
-Pronto, agora você está dentro do ambiente virtual de desenvolvimento `backend`.
+**Parabéns!** Você está agora dentro do ambiente virtual de desenvolvimento `backend`. 
 
-## Acesso do projeto Django
+###  Acesso ao Projeto Django 
 
-1. Com o ambiente virtual ativado, navegue até a pasta `licita_bsb` para poder executar o projeto Django. Dentro dela, execute o comando:
+1. Com o ambiente virtual ativado, navegue até a pasta `licita_bsb`.
+2. Execute o seguinte comando para dar vida ao projeto Django:
 
    ```
    python3 manage.py runserver
    ```
 
-2. Seu projeto será inicializado por padrão na porta 8000 em [http://127.0.0.1:8000/](http://127.0.0.1:8000/) (ou [http://localhost:8000/](http://localhost:8000/)).
+3. Seu projeto será aberto em http://127.0.0.1:8000/ ou http://localhost:8000/.
 
-Caso tudo tenha dado certo, você já pode começar a codar.
+Mãos à obra! ‍ Hora de escrever o código que fará a magia acontecer!
 
-## Desativação do Ambiente Virtual
+###  Desativação do Ambiente Virtual 
 
-Quando terminar de trabalhar no projeto, você pode desativar o ambiente virtual usando o seguinte comando:
+Quando terminar sua missão, desative o ambiente virtual com o comando:
 
 ```
 deactivate
 ```
 
-Isso encerrará o ambiente virtual e retornará ao ambiente Python global da sua máquina.
+Isso o levará de volta ao ambiente Python global da sua máquina.
 
-Com estas etapas, você estará pronto para começar a trabalhar no backend do projeto Django!
+Com esses passos, você estará pronto para desbravar o mundo do backend Django!  Boa sorte! 
