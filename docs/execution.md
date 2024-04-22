@@ -17,11 +17,11 @@ sudo apt install python3.10-venv
 
 1. Abra o terminal e navegue até a pasta `backend` do projeto.
 2. Execute o seguinte comando para inicializar o ambiente virtual:
-   - No Windows:
+   No Windows:
      ```
      backend\Scripts\activate
      ```
-   - No macOS e Linux:
+   No macOS e Linux:
      ```
      source backend/bin/activate
      ```
