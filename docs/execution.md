@@ -34,13 +34,10 @@ sudo apt install python3.10-venv
 ###  Acesso ao Projeto Django 
 
 1. Com o ambiente virtual ativado, navegue até a pasta `licita_bsb`.
-2. Execute o seguinte comando para dar vida ao projeto Django:
 
-   ```
-   python3 manage.py runserver
-   ```
-
-3. Seu projeto será aberto em http://127.0.0.1:8000/ ou http://localhost:8000/.
+2. Execute o seguinte comando para dar vida ao projeto Django:  
+   ```python3 manage.py runserver```  
+3. Seu projeto será aberto em [http://127.0.0.1:8000/](http://127.0.0.1:8000/) ou [http://localhost:8000/](http://localhost:8000/).
 
 Mãos à obra! ‍ Hora de escrever o código que fará a magia acontecer!
 
