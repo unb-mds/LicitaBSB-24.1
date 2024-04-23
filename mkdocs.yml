@@ -5,7 +5,7 @@ extra_css:
   - stylesheets/extra.css
 nav: 
   - Home: index.md
-  - Como executar o ambiente virtual backend: execution.md
+  - Tutorial - Como Inicializar o Ambiente Virtual: execution.md
   - Sprints:
     - Sprint 0:
       - Reunião 1: Atas/Sprint0_reunião1.md
