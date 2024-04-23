@@ -1,6 +1,6 @@
 :root {
     --md-primary-fg-color:        #3D5E73;
-    --md-text-link-color: hsla(231, 48%, 48%, 1);
+/*     --md-text-link-color: hsla(231, 48%, 48%, 1); */
   }
 [data-md-color-scheme="slate"] {
     --md-hue: 210; 
