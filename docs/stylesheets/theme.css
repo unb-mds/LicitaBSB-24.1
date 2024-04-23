@@ -6,7 +6,6 @@
   [data-md-color-scheme="slate"] {
     --md-hue: 210; 
     --md-primary-fg-color:        #FC3A51;
-
     .md-content {--md-typeset-a-color: #FC3A51;} 
   }
   [data-md-color-scheme="light"]{
