@@ -30,7 +30,7 @@ theme:
     - navigation.tabs.sticky
     - content.code.copy
   palette: 
-    - scheme: default
+    - scheme: light
       primary: custom
       toggle:
         icon: material/weather-night
