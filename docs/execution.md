@@ -1,12 +1,9 @@
-<<<<<<< HEAD
 ---
 hide:
   - navigation
   - toc
 ---
 ## Como executar o ambiente virtual Backend 
-=======
->>>>>>> f19b10aecb147401de2ff69e4c54203c1b10cd08
 
 
 ## Tutorial: Como Inicializar o Ambiente Virtual
