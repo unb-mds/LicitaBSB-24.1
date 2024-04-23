@@ -1,7 +1,24 @@
 :root {
-    --md-primary-fg-color:        #970303;
+    --md-primary-fg-color:        #3D5E73;
+    --md-text-link-color: hsla(231, 48%, 48%, 1);
   }
 [data-md-color-scheme="slate"] {
     --md-hue: 210; 
-    --md-primary-fg-color:        #375467;
+    --md-primary-fg-color:        #E9E4DF;
   }
+  /* logo */
+  .md-header__button.md-logo img,
+  .md-header__button.md-logo svg {
+    height: 2rem;
+    width: 3.5rem;
+  }
+  .md-header__button.md-logo {
+    margin-top: 1;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+.md-tabs__list {color: black;}
+.md-tabs__link {color: black;}
+.md-header__title {color: black;}

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+  - toc
+---
 ## Como executar o ambiente virtual Backend 
 
 ### Inicialização do Ambiente Virtual e Projeto Django para o Backend 

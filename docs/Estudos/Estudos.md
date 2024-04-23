@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+  - toc
+---
 # Recursos de Aprendizado para Tecnologias Variadas
 
 ## Experiência e Interfaces de Usuário (UI/UX)

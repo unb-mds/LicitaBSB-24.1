@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 ## Reunião - 08/04
 ## Discussões:
 
