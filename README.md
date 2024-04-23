@@ -13,6 +13,27 @@ Visando ampliar a divulgação desse material, Licita BSB também possui um bot 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 ## Como executar o projeto
+### Backend:
+
+**1. Instalando dependências**
+
+Certifique-se de ter a [versão mais recente do Python](https://www.python.org/downloads/) instalada.
+
+Navegue até o diretório `backend` e encontre o arquivo `requirements.txt`. Instale as dependências com o seguinte comando:
+```
+pip install -r backend/requirements.txt
+```
+
+**2. Executando o Django**
+
+Para rodar o projeto, acesse o diretório `backend/licita_bsb` e execute o comando:
+```
+python3 manage.py runserver
+```
+
+O site estará disponível por padrão na porta 8000 em http://localhost:8000/ (ou http://127.0.0.1:8000/)
+
+### Frontend:
 
 ## Documentação do projeto
 
