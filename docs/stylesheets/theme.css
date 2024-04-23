@@ -1,11 +1,6 @@
 :root {
-<<<<<<< HEAD:docs/stylesheets/extra.css
     --md-primary-fg-color:        #FC3A51;
     --md-text-link-color: hsla(231, 48%, 48%, 1);
-=======
-    --md-primary-fg-color:        #3D5E73;
-/*     --md-text-link-color: hsla(231, 48%, 48%, 1); */
->>>>>>> 1c08f2abe0cfaf502c9a5b83fbd7a14e094031ac:docs/stylesheets/theme.css
   }
 
   [data-md-color-scheme="slate"] {
