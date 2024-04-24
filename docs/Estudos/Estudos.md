@@ -14,18 +14,20 @@ hide:
 
 1. [Curso de Figma Grátis - Tutorial Completo](https://www.youtube.com/playlist?list=PLwgL9IEA0PxXzmOu0crRl9l6PT46nqtI9) - Curso explicativo de figma gratuito
 
-## React
-
-1. [Componentes de UI no React](https://pt-br.legacy.reactjs.org/community/ui-components.html) - Recursos e diretrizes para criação de componentes de interface de usuário no React.
-2. [Treinamento da Microsoft sobre React](https://learn.microsoft.com/pt-br/training/paths/react/) - Cursos e materiais de treinamento para aprender React, fornecidos pela Microsoft.
-3. [Introdução ao React - Vídeo no YouTube](https://www.youtube.com/watch?v=RVFAyFWO4go) - Vídeo introdutório explicando os conceitos básicos do React.
-
 ## Front-End
 
 1. [Curso para Iniciantes em JavaScript](https://www.youtube.com/watch?v=SajRjc9KKUE&list=PL0Zuz27SZ-6Oi6xNtL_fwCrwpuqylMsgT) - Série de vídeos para iniciantes cobrindo os fundamentos do JavaScript.
 2. [JavaScript - Conceitos Avançados](https://www.youtube.com/watch?v=1S8SBDhA7HA&list=PL0Zuz27SZ-6N3bG4YZhkrCL3ZmDcLTuGd) - Vídeos explorando conceitos avançados do JavaScript para aprimorar suas habilidades.
 3. [Crie um Site Simples com HTML, CSS e JavaScript](https://www.freecodecamp.org/news/create-a-simple-website-with-html-css-javascript/) - Tutorial passo a passo para criar um site simples usando HTML, CSS e JavaScript.
 4. [Curso de HTML e CSS - Vídeo no YouTube](https://www.youtube.com/watch?v=HGTJBPNC-Gw) - Curso em vídeo para aprender HTML e CSS do zero.
+
+### React
+
+1. [Componentes de UI no React](https://pt-br.legacy.reactjs.org/community/ui-components.html) - Recursos e diretrizes para criação de componentes de interface de usuário no React.
+2. [Treinamento da Microsoft sobre React](https://learn.microsoft.com/pt-br/training/paths/react/) - Cursos e materiais de treinamento para aprender React, fornecidos pela Microsoft.
+3. [Introdução ao React - Vídeo no YouTube](https://www.youtube.com/watch?v=RVFAyFWO4go) - Vídeo introdutório explicando os conceitos básicos do React.
+4. [REACT.JS E AXIOS - CONSUMIR DADOS DE API COM REACT E AXIOS](https://www.youtube.com/watch?v=NbhoeLj6lBs&t=2263s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre consumir APIs no React.
+5. [React Router: O guia completo para navegação em aplicativos React](https://www.youtube.com/watch?v=7b42lVMdEjE&t=422s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre a biblioteca React Router.
 
 ## Back-end
 1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python
