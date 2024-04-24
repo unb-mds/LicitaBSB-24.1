@@ -24,7 +24,7 @@ theme:
   logo: stylesheets/logo-teste.png
   name: material
   font:
-    text: Basic
+    text: IBM Plex Serif
   features:
     - navigation.tabs
     - navigation.tabs.sticky
