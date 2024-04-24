@@ -35,8 +35,6 @@ O servidor estará disponível por padrão na porta 8000 em http://localhost:800
 
 ### Frontend:
 
-## Documentação do projeto
-
 **1. Instalando dependências**
 
 Certifique-se de ter a [versão mais recente do NodeJS](https://nodejs.org/en/download) instalada.
@@ -54,6 +52,10 @@ npm run dev
 ```
 
 O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (ou http://127.0.0.1:5432/)
+
+
+## Documentação do projeto
+
 
 - Documentação: https://unb-mds.github.io/2024-1-Squad-03/
 - Nosso quadro do Miro: https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307
