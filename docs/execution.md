@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+## Como executar o ambiente virtual Backend 
 
 
 ## Tutorial: Como Inicializar o Ambiente Virtual

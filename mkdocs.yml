@@ -2,8 +2,7 @@ site_name: DOCUMENTAÇÃO - LICITA BSB
 repo_url: https://github.com/unb-mds/2024-1-Squad-03
 
 extra_css:
-  - stylesheets/extra.css
-  
+  - stylesheets/style.css
 nav: 
   - Home: index.md
   - Tutorial - Como Inicializar o Ambiente Virtual: execution.md
@@ -21,15 +20,17 @@ nav:
       
   - Materiais de Estudos: Estudos/Estudos.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md
-
 theme: 
+  logo: stylesheets/logo-teste.png
   name: material
+  font:
+    text: IBM Plex Serif
   features:
     - navigation.tabs
     - navigation.tabs.sticky
     - content.code.copy
   palette: 
-    - scheme: default
+    - scheme: light
       primary: custom
       toggle:
         icon: material/weather-night
@@ -41,5 +42,4 @@ theme:
         icon: material/weather-sunny
         name: Trocar para modo claro
   icon:
-    repo: fontawesome/brands/github
-
+    repo: fontawesome/brands/git-alt
