@@ -1,3 +1,7 @@
+---
+hide:
+  - toc
+---
 ## Reunião - 01/04
 ## Discussões:
 Marllon Fausto relatou sua atividade de contatar pessoas para compreender a biblioteca do Querido Diário, mas não obteve respostas. Continuará tentando contatar.

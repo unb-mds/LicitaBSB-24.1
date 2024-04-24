@@ -1,4 +1,7 @@
+site/
+myenv/
 backend/venv/
+
 # Logs
 logs
 *.log
