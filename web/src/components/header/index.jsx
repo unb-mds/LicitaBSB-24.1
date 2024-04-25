@@ -1,8 +1,10 @@
-import React from 'react'
-import logo from '../../../assets/logo.png'
-import unb from '../../../assets/unb.png'
-import styles from './style.module.css'
-import search from '../../../assets/Search.svg'
+import React from 'react';
+
+import logo from '../../../assets/logo.png';
+import unb from '../../../assets/unb.png';
+import search from '../../../assets/Search.svg';
+
+import styles from './style.module.css';
 
 const Header = () => {
   return (
@@ -28,7 +30,7 @@ const Header = () => {
         </ul>
         <div>
           <div className={styles.campoPesquisa}>
-            <img src={search} style={{color: 'white'}} alt="" />
+            <img src={search} alt="" />
             <input type="text" placeholder='Pesquise aqui' className={styles.textInput}/>
           </div>
         </div>

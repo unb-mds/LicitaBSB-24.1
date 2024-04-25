@@ -1,0 +1,52 @@
+.campoPesquisaWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 80px;
+  margin-top: 40px;
+}
+
+.campoPesquisa {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid var(--texto);
+  padding-bottom: 12px;
+  flex: 1;
+  gap: 24px;
+}
+
+.searchIcon {
+  width: 30px;
+}
+
+.inputStyle {
+  background-color: var(--background);
+  color: (--texto);
+  font-style: 'IBM Plex Sans';
+  font-weight: 400;
+  font-size: 23px;
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.inputStyle:focus {
+  border: none;
+  outline: none;
+}
+
+.botaoBuscar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--texto);
+  text-decoration: none;
+  color: var(--brancoTexto);
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 222px;
+  height: 32px;
+}
