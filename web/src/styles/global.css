@@ -8,6 +8,12 @@
   --azulEscuro: #0E2430;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--background);
   font-family: 'IBM Plex Serif', serif;
@@ -16,4 +22,8 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'IBM Plex Sans', sans-serif;
+}
+
+main {
+  padding-top: 75px;
 }

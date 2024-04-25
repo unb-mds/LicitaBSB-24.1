@@ -5,9 +5,11 @@ export default function Landing(){
   return (
     <>
       <Header />
-      <div>
-        <h1>Licita bsb</h1>
-      </div>
+      <main>
+        <div>
+          
+        </div>
+      </main>
     </>
   )
 }

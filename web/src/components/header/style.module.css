@@ -2,7 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 128px;
+  position: fixed;
+  width: 100vw;
+  background-color: var(--branco);
+}
+
+.headerUnb {
+  display: flex;
+  align-items: center;
+  height: 25px;
 }
 
 .subHeader {
@@ -10,6 +18,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  background-color: var(--azulMedio);
+  padding: 0 128px;
 }
 
 .headerLinksWrapper {
@@ -21,8 +31,37 @@
 .headerLink {
   color: black;
   text-decoration: none;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  color: var(--brancoTexto);
 }
 
 .headerListItem {
   list-style-type: none;
+}
+
+.campoPesquisa {
+  display: flex;
+  align-items: center;
+  width: 240px;
+  background-color: var(--azulEscuro);
+  height: 29px;
+  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+.textInput {
+  background-color: var(--azulEscuro);
+  border: none;
+  outline: none;
+  color: var(--brancoTexto);
+  font-size: 16px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.textInput:focus{
+  border: none;
+  outline: none;
 }

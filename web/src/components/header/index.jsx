@@ -2,11 +2,12 @@ import React from 'react'
 import logo from '../../../assets/logo.png'
 import unb from '../../../assets/unb.png'
 import styles from './style.module.css'
+import search from '../../../assets/Search.svg'
 
 const Header = () => {
   return (
     <div className={styles.headerWrapper}>
-      <div>
+      <div className={styles.headerUnb}>
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
       <div className={styles.subHeader}>
@@ -26,7 +27,10 @@ const Header = () => {
           </li>
         </ul>
         <div>
-          <input type="text" />
+          <div className={styles.campoPesquisa}>
+            <img src={search} style={{color: 'white'}} alt="" />
+            <input type="text" placeholder='Pesquise aqui' className={styles.textInput}/>
+          </div>
         </div>
       </div>
     </div>
