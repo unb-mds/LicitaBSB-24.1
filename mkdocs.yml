@@ -21,7 +21,7 @@ nav:
   - Materiais de Estudos: Estudos/Estudos.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md
 theme: 
-  logo: stylesheets/logo-teste.png
+  logo: stylesheets/logo.png
   name: material
   font:
     text: IBM Plex Serif
