@@ -21,7 +21,7 @@ Certifique-se de ter a [versão mais recente do Python](https://www.python.org/d
 
 Navegue até o diretório `backend` e encontre o arquivo `requirements.txt`. Instale as dependências com o seguinte comando:
 ```
-pip install -r backend/requirements.txt
+pip install -r requirements.txt
 ```
 
 **2. Executando o Django**
