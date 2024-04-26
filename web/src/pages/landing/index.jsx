@@ -4,6 +4,7 @@ import Header from '../../components/header';
 import search from '../../../assets/SearchDark.svg';
 
 import styles from './style.module.css';
+import UltimasLicitacoes from './ultimas-licitacoes';
 
 export default function Landing(){
   return (
@@ -22,6 +23,7 @@ export default function Landing(){
               </div>
             </div>
           </div>
+          <UltimasLicitacoes />
         </div>
       </main>
     </>

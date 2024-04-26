@@ -1,0 +1,7 @@
+.cardWrapper {
+  background-color: var(--texto);
+  width: 450px;
+  color: var(--brancoTexto);
+  padding: 32px;
+  text-align: center;
+}
