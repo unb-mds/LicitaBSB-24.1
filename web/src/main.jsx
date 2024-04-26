@@ -1,15 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './app.jsx'
+import Landing from './pages/landing';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import './styles/global.css'
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />
+    element: <Landing />
   }
 ])
 

@@ -1,4 +1,30 @@
 :root {
   /*Acrescentar cores e fontes padrão*/
-  --branco: #fff
+  --branco: #fff;
+  --background: #f9f9f9;
+  --texto: #363636;
+  --brancoTexto: #EFEFEF;
+  --azulMedio: #3d5e73;
+  --azulEscuro: #0E2430;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--background);
+  font-family: 'IBM Plex Serif', serif;
+  color: var(--texto);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+main {
+  padding-top: 75px;
+  margin: 0 128px;
 }
