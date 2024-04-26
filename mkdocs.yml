@@ -6,6 +6,7 @@ extra_css:
 nav: 
   - Home: index.md
   - Tutorial - Como Inicializar o Ambiente Virtual: execution.md
+  - Arquitetura: arquitetura.md
   - Sprints:
     - Sprint 0:
       - Reunião 1: Atas/Sprint0_reunião1.md
