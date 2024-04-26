@@ -27,12 +27,11 @@ A camada de apresentação é responsável por interagir diretamente com o usuá
 
 ### Camada de Dados
 
-A camada de dados é responsável pelo armazenamento e gerenciamento dos dados do sistema. Faremos uso dos bancos de dados MongoDB e MySQL. O MongoDB será utilizado para armazenar licitações coletadas do "Meu Querido Diário", devido à sua flexibilidade de esquema. O MySQL será adotado para casos em que a estruturação dos dados for mais adequada ou necessária, especialmente devido à sua fácil integração com o framework Django.
+A camada de dados é responsável pelo armazenamento e gerenciamento dos dados do sistema. No contexto deste projeto, optaremos por armazenar os dados em formato JSON diretamente no próprio repositório do GitHub. Isso proporcionará uma abordagem simples e acessível para gravar e compartilhar os dados coletados do "Meu Querido Diário".
 
-| Tecnologia | Versão  |
-|------------|---------|
-| MongoDB    | 4.4.4   |
-| MySQL      | 8.0.25  |
+Essa abordagem elimina a necessidade de utilizar bancos de dados tradicionais como MongoDB ou MySQL, pois os dados serão armazenados como arquivos JSON no repositório do GitHub, aproveitando a infraestrutura existente e facilitando a colaboração entre os membros da equipe.
+
+Dessa forma, não há necessidade de especificar versões de tecnologias relacionadas a bancos de dados, pois estaremos utilizando a infraestrutura nativa do GitHub para armazenamento de dados.
 
 ### Camada de Aplicação
 
