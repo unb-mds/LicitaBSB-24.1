@@ -30,8 +30,8 @@ hide:
 5. [React Router: O guia completo para navegação em aplicativos React](https://www.youtube.com/watch?v=7b42lVMdEjE&t=422s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre a biblioteca React Router.
 
 ## Back-end
-1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python
-
+1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python.
+2. [Txt2Json](https://www.youtube.com/watch?v=jnt3QXwfFVw) - Vídeo explicativo ensinando a fazer a conversão TXT para Json em Python.
 ## Web Scraping e Raspagem de dados em Python
 
 1. [Introdução Prática ao Web Scraping com Python](https://realpython.com/python-web-scraping-practical-introduction/#extract-text-from-html-with-regular-expressions) - Tutorial prático para começar com web scraping usando Python.
