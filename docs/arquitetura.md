@@ -54,6 +54,7 @@ Para o web scraping e resgate de documentos, utilizaremos Python juntamente com 
 | Biblioteca | Descrição                                                   |
 |------------|--------------------------------------------------------------|
 | PyPDF2     | Biblioteca em Python para manipulação de arquivos PDF.       |
+| Scrapy    | Biblioteca em Python para realizar webscraping.       |
 
 ## Histórico de Versões
 
