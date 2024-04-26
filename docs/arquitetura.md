@@ -1,3 +1,9 @@
+---
+hide:
+  - navigation
+  - toc
+---
+
 # Documentação de Arquitetura - LicitaBSB
 
 ## Introdução
