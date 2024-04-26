@@ -43,7 +43,7 @@ Para tarefas agendadas, consideraremos o uso de Python e escolheremos entre Goog
 
 ### Web Scraping e Resgate de Documentos
 
-Para web scraping e resgate de documentos, utilizaremos Python juntamente com bibliotecas específicas para essa finalidade. A biblioteca PyPDF2 será empregada para o processamento de arquivos PDF, permitindo a extração e manipulação de texto desses documentos.
+Para o web scraping e resgate de documentos, utilizaremos Python juntamente com bibliotecas específicas para essa finalidade. A biblioteca PyPDF2 será empregada para o processamento de arquivos PDF, permitindo a extração e manipulação de texto desses documentos.
 
 | Biblioteca | Descrição                                                   |
 |------------|--------------------------------------------------------------|
