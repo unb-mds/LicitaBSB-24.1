@@ -34,6 +34,6 @@ def converter_pdfs_para_txts(directory):
                     salvar_em_txt(texto, txt_path)
                     print(f"Arquivo TXT salvo: {txt_path}")
 
-root_directory = "/home/thales/Área de Trabalho/unb/2024-1-Squad-03/backend/data_collection/data/5300108/"
+root_directory = "data_collection/data/arquivos_raspados/"
 
 converter_pdfs_para_txts(root_directory)

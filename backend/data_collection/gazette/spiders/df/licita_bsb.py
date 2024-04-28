@@ -120,4 +120,18 @@ class DfBrasiliaSpider(BaseGazetteSpider):
         with open(text_path, "w") as text_file:
             text_file.write(text)
 
+        # Exclui o PDF após salvar o texto
+        self.excluir_pdf(pdf_path)
+
         yield Gazette(date=date, file_urls=[pdf_path, text_path], is_extra_edition=is_extra_edition, power="executive_legislative")
+        
+    @staticmethod
+    def excluir_pdf(pdf_path):
+        """Exclui um arquivo PDF."""
+        try:
+            os.remove(pdf_path)
+            print(f"Arquivo {pdf_path} excluído com sucesso.")
+        except FileNotFoundError:
+            print(f"Arquivo {pdf_path} não encontrado.")
+        except PermissionError:
+            print(f"Permissão negada para excluir o arquivo {pdf_path}.")
