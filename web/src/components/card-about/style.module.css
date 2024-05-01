@@ -1,0 +1,19 @@
+.cardAboutContext {
+    background-color: #fff;
+    margin-left: 20%;
+    justify-content: center;
+    width: 60%;
+    padding-top: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 32px;
+    box-shadow: 0 0 5px rgb(177, 175, 175);
+}
+
+.cardAboutText {
+    /* font-style: 'IBM Plex Sans'; */
+    font-size: 40px;
+    font-weight: normal;
+    text-align: center;
+}
+
