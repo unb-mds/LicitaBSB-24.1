@@ -13,13 +13,15 @@ const Header = () => {
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
       <div className={styles.subHeader}>
-        <img src={logo} alt="Logo do Projeto 'licita bsb'" />
+        <a href='/'>
+          <img src={logo} alt="Logo do Projeto 'licita bsb'" />
+        </a>
         <ul className={styles.headerLinksWrapper}>
           <li className={styles.headerListItem}>
             <a href="" className={styles.headerLink}>Licitações</a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="" className={styles.headerLink}>Sobre as Licitações</a>
+            <a href="/SobreLicitacao" className={styles.headerLink}>Sobre as Licitações</a>
           </li>
           <li className={styles.headerListItem}>
             <a href="" className={styles.headerLink}>Sobre o Projeto</a>
