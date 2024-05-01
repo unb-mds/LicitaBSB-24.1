@@ -11,7 +11,7 @@ import './styles/global.css'
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <AboutBidding />
+    element: <Landing />
   }
 ])
 
