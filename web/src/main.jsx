@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Landing from './pages/landing';
+import AboutBidding from './pages/about-bidding';
 import {
   createBrowserRouter,
   RouterProvider,
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Landing />
+  },
+  {
+    path: "/SobreLicitacao",
+    element: <AboutBidding/>
   }
 ])
 
