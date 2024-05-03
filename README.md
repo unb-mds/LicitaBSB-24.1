@@ -43,7 +43,7 @@ source <nome_do_ambiente_virtual>/bin/activate
 
 Instale as bibliotecas necessárias:
 ```console
-pip install --no-deps -r data_collection/requirements-dev.txt
+pip install --no-deps -r data_collection/requirements-dev.in
 ```
 #### Pronto. 
 ### Agora, com o ambiente pronto para rodar o Scrapy, podemos seguir:
