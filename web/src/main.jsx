@@ -7,6 +7,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import './styles/global.css'
+import AboutUs from './pages/about-us';
 
 const router = createBrowserRouter([
   {
@@ -14,8 +15,12 @@ const router = createBrowserRouter([
     element: <Landing />
   },
   {
-    path: "/SobreLicitacao",
+    path: "/sobrelicitacao",
     element: <AboutBidding/>
+  },
+  {
+    path: "/sobrenos",
+    element: <AboutUs/>
   }
 ])
 
