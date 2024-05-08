@@ -91,4 +91,4 @@ Para rodar o projeto, dentro do diretório /web, execute o comando:
 npm run dev
 ```
 
-O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (ou http://127.0.0.1:5432/)
+O site estará disponível por padrão na porta 5432 em [http://localhost:5432/](http://localhost:5432/) ou [http://127.0.0.1:5432/](http://127.0.0.1:5432/)
