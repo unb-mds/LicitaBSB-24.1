@@ -27,7 +27,7 @@ const Header = () => {
             <a href="" className={styles.headerLink}>Sobre o Projeto</a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="" className={styles.headerLink}>Sobre Nós</a>
+            <a href="/sobrenos" className={styles.headerLink}>Sobre Nós</a>
           </li>
         </ul>
         <div>

@@ -1,0 +1,22 @@
+.aboutUsContext{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 32px;
+}
+
+.aboutUsP {
+    text-align: justify;
+    font-size: 20px;
+}
+
+.aboutUsTitle {
+    font-size: 32px;
+}
+
+.aboutUsImg {
+    width: 80%;
+}
