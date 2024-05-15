@@ -1,195 +1,553 @@
-[[
+[
     {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato nº 051378/2024. SIGGO Nº 051378. Partes: DISTRITO FEDERAL, por\nintermédio de sua SECRETARIA DE ESTADO DE SAÚDE DO DISTRITO FEDERAL e\na empresa HEXAGON DISTRIBUIÇÃO E LOGÍSTICA DE PRODUTOS MÉDICOS\nEIRELI, inscrita no CNPJ nº 36.257.530/0001-67. Objeto: o Fornecimento contínuo de\nmaterial de ÓRTESES, PRÓTESES E MATERIAIS ESPECIAIS (OPME) – PARAFUSO\nCORTICAL e outros, com materiais contemplados na Tabela SUS DE OPME do\nMinistério da Saúde,por meio de CONSIGNAÇÃO, para abastecer o serviços de Cirurgias\nOrtopédicas, das unidades de Traumatologia e Ortopedia, da Secretaria de Saúde – DF,\nconsoante especifica o Edital de Pregão Eletrônico n° 170/2023 – SES/DF. Vigência: de 12\n(DOZE) meses podendo ser prorrogado por igual e sucessivos períodos conforme Lei\n"
+        "Número Licitação": "000022023",
+        "Código UG": "160086",
+        "Nome UG": "GABINETE DO COMANDANTE DO EXERCITO",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "64536026417202331",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de material permanente para o Gabinete do Comandante do Exército (Gab Cmt Ex).",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "24/01/2024",
+        "Valor Licitação": "0,00"
     },
     {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 9732. ASSINATURA: 17/04/2024. PROCESSO Nº 00092-\n00020506/2023-12. PE nº 157/2023 - CAESB. OBJETO: Aquisição e instalação de\ncondicionadores de ar do tipo split inverter. DOTAÇÃO ORÇAMENTÁRIA: UO: 22.202;\nPROGRAMA DE TRABALHO: 17.512.8209.3995.0002/44.90.52, CÓDIGO\n22.201.014.061-1, FONTE DE RECURSO: RECURSOS PRÓPRIOS DE\nINVESTIMENTOS - REPI, CÓDIGO 21.101.100.000-6; UG: 190.206; GESTÃO: 19.206;\nEMPENHO 1346/2024, DATADO DE: 16/04/2024, VALOR DO EMPENHO: R$\n131.121,66 (cento e trinta e um mil e cento e vinte e um reais e sessenta e seis centavos).\nVALOR DO CONTRATO: R$ 131.121,66 (cento e trinta e um mil e cento e vinte e um\nreais e sessenta e seis centavos) VIGÊNCIA/ENTREGA: 365 (trezentos e sessenta ePÁGINA 63 Diário Oficial do Distrito Federal                Nº 77, TERÇA-FEIRA, 23 DE ABRIL DE 2024\n"
+        "Número Licitação": "000062023",
+        "Código UG": "200338",
+        "Nome UG": "SUPERINTENDENCIA REGIONAL NO DISTRITO FEDERAL",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "08280.015486/2023",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de materiais visando atender as atividades meio e fim da Superintendência da Polícia Federal no Distrito Federal, com materiais permanentes e de consumo. A aquisição está constante no Plano Anual de Contratação 2022/2023.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "30000",
+        "Nome Órgão Superior": "Ministério da Justiça e Segurança Pública",
+        "Código Órgão": "30108",
+        "Nome Órgão": "Polícia Federal",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "08/12/2023",
+        "Valor Licitação": "0,00"
     },
     {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "Pregão Eletrônico nº 005/2024 – DECOMP/DA – do tipo menor preço - modo de disputa\naberto – para Registro de Preços para eventual contratação de empresa(s) especializada(s)\npara fornecimento de até 60.000 m2 grama batatais (Paspalum notatum), LOTE 1 em\nformato tapete (0,60 x 0,40 x 0,03 m) até 6.000 m² e LOTE 2 em formato de placas (0,20 x\n0,20x 0,05 m) até 54.000 m², com plantio por meio de obra direta e previsão de entrega em\ndiversos locais do Distrito Federal, à conveniência, necessidade e interesse da NOVACAP,\nde acordo com as especificações técnicas do Termo de Referência e Edital e seus anexos -\nValor estimado da contratação R$ 765.738,00 - Processo nº 00112-00006047/2023-41. Data\ne horário da licitação: 08 de maio de 2024 - às 9h.\nBrasília/DF, 22 de abril de 2024\n"
+        "Número Licitação": "000112023",
+        "Código UG": "160062",
+        "Nome UG": "CENTRO DE INTELIGENCIA DO EXERCITO",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "64503000684202366",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Painel Luminária de Embutir LED.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "21/03/2024",
+        "Valor Licitação": "0,00"
     },
     {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "Pregão Eletrônico nº 008/2024 – DECOMP/DA – do tipo menor preço - modo de disputa\naberto – para Registro de Preços para futura e eventual aquisição de material betuminoso,\npara atendimento às demandas da Companhia Urbanizadora da Nova Capital do Brasil -\nNovacap, de acordo com as especificações técnicas do Termo de Referência e Edital e seus\nanexos - Valor estimado da contratação R$ 22.877.798,50 - Processo nº 00112-\n00007495/2024-43. Data e horário da licitação: 08 de maio de 2024 - às 14h. ODepartamento de Compras da NOVACAP torna público que realizará as licitações acima e\nque os Editais e seus anexos poderão ser retirados exclusivamente nos sites www.licitacoes-\ne.com.br e www.novacap.df.gov.br. Contatos e informações: telefones nº (061) 3403-2321\nou (061) 3403-2322 e e-mail dilic@novacap.df.gov.br.\nBrasília/DF, 22 de abril de 2024\n"
+        "Número Licitação": "000112023",
+        "Código UG": "160186",
+        "Nome UG": "BASE ADMINISTRATIVA DO QGEX",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "65304007248202327",
+        "Objeto": "Objeto: Pregão Eletrônico - Contratação de serviços de buffet com arranjos florais e itens correlatos aos cerimoniais militares e eventos protocolares de caráter Institucional, conforme condições, quantidades e exigências estabelecidas neste Edital e no termo de referência.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "03/04/2024",
+        "Data Abertura": "01/04/2024",
+        "Valor Licitação": "0,00"
     },
     {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato 03/2024 (id 136741928). Partes: CEASA/DF e RIALMA Companhia\nEnergética V S/A, CNPJ 11.040.403/0001-80. Objeto: fornecimento de energia elétrica,\nproveniente de fontes de energias renováveis, incentivada, em no mínimo 50%, no\nAmbiente de Contratação Livre – ACL, na Modalidade Varejista e Gestão junto a Câmara\nde Comercialização de Energia Elétrica - CCEE para suprimento de energia elétrica desta\nCEASA/DF. Vigência: 60 meses, contados a partir da assinatura. Valor: R$ 9.350.000,00\n(proposta id 133050565). Executores (id 138523263): Diego Lopes Costa, matr. 1247\n(titular) e Paulo Ricardo da Silva dos Santos, matr. 1223 (substituto). Data: 26 de março de\n2024. Assinaturas: pela CEASA/DF Bruno Sena Rodrigues, matr. 121-5 (presidente); pela\ncontratada: Giovana de Ramos Caiado Montechi (representante legal). Processo SEI 00071-\n"
+        "Número Licitação": "000122023",
+        "Código UG": "160072",
+        "Nome UG": "11. DEPOSITO DE SUPRIMENTO",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "64456004665202311",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de gênero alimentícios (hortifrutigranjeiros). SERÃO ACEITAS APENAS OMS DO ARCCO.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "03/04/2024",
+        "Data Abertura": "13/03/2024",
+        "Valor Licitação": "0,00"
     },
     {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato 04/2024. Partes: CEASA/DF e Luciano Goncalves Borba Assuncao, CPF\n036.***.***-74. Objeto: prestação de serviços especializados de Leiloeiro Oficial.\nVigência: 12 meses, contados a partir da assinatura. Valor da Comissão: 0% (zero por\ncento, mapa id 135699631, proposta id 135696776). Fundamentação Jurídica: dispensa de\nlicitação nos termos do comando do art. 29, inciso II, da Lei nº. 13.303/2016 e art. 26,\ninciso II, da RILC CEASA/DF. Executores (id 138519906): Melina Maria Rocha de\nMacêdo, matr. 1122-3 (titular) e Jeferson Cardoso dos Santos, matr. 1113-4 (substituto).\nData: 15 de abril de 2024. Assinaturas: pela CEASA/DF Bruno Sena Rodrigues, matr. 121-\n5 (presidente) e Augusto Pedro Silva - matr. 121-6 (diretor administrativo); pela contratada:\nLuciano Gonçalves Borba Assunção (representante legal). Processo SEI 00071-\n"
+        "Número Licitação": "000122023",
+        "Código UG": "160186",
+        "Nome UG": "BASE ADMINISTRATIVA DO QGEX",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "65304007629202314",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de gêneros alimentícios (hortifruti), em proveito dos militares do QGEx que compõem as diversas diretorias.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "03/04/2024",
+        "Data Abertura": "28/02/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "000422023",
+        "Código UG": "195006",
+        "Nome UG": "CIA DE DES.DOS VALES DO S.FRANC.E DO PARNAIBA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "59500002308202304",
+        "Objeto": "Objeto: Pregão Eletrônico - Contratação de serviços de Execução de Capa Asfáltica com Concreto Betuminoso Usinado a Quente (CBUQ), de Pavimentação Asfáltica com CBUQ, de Pavimentação Asfáltica em Tratamento Superficial Duplo (TSD) e de Pavimentação em Bloco Intertravado de concreto (bloquete), na área de atuação da Codevasf, no Distrito Federal.",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "53000",
+        "Nome Órgão Superior": "Ministério da Integração e do Desenvolvime",
+        "Código Órgão": "22203",
+        "Nome Órgão": "Companhia de Desenvolvimento dos Vales do Sã",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "16/11/2023",
+        "Valor Licitação": "28978180,0000"
+    },
+    {
+        "Número Licitação": "000902023",
+        "Código UG": "155009",
+        "Nome UG": "HOSPITAL UNIVERSITARIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23522025132202355",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Insumos Gerais e EPIS para abastecer o Almoxarifado do Hospital Universitário de Brasília - HUB, referente ao Pregão 090/2023.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "29/11/2023",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "001012023",
+        "Código UG": "155009",
+        "Nome UG": "HOSPITAL UNIVERSITARIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23522011494202369",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Equipamentos Médicos Hospitalares para Unidade da Criança e Adolescente - UCA e demais setores do Hospital Universitário de Brasília - HUB, referente ao Pregão 101/2023.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "21/11/2023",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "001082023",
+        "Código UG": "155009",
+        "Nome UG": "HOSPITAL UNIVERSITARIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23522025568202344",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Insumos Gerais para a Unidade de Anatomia Patológica do Hospital Universitário de Brasília - HUB, Conforme Pregão 108/2023.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "02/02/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "001242023",
+        "Código UG": "120625",
+        "Nome UG": "GRUPAMENTO DE APOIO DO DISTRITO FED",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "67289000640202314",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de preços para aquisição de material de equipamentos de cozinha para atender o GAP-DF.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52111",
+        "Nome Órgão": "Comando da Aeronáutica",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "11/01/2024",
+        "Valor Licitação": "7600,0000"
+    },
+    {
+        "Número Licitação": "001272023",
+        "Código UG": "120625",
+        "Nome UG": "GRUPAMENTO DE APOIO DO DISTRITO FED",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "67289002316202322",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de materiais para manutenção dos sistemas automotivos e similares nº 03 (três) da Seção de Transportes de Superfície  STS  do Grupamento de Apoio do Distrito Federal (GAP-DF) e das OM Apoiadas.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52111",
+        "Nome Órgão": "Comando da Aeronáutica",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "02/04/2024",
+        "Data Abertura": "26/12/2023",
+        "Valor Licitação": "287,4000"
+    },
+    {
+        "Número Licitação": "001282023",
+        "Código UG": "120625",
+        "Nome UG": "GRUPAMENTO DE APOIO DO DISTRITO FED",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "67289002316202322",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisic a o de materiais para manutenc a o dos sistemas automotivos e similares n¿ 4(quatro) da STS",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52111",
+        "Nome Órgão": "Comando da Aeronáutica",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "27/12/2023",
+        "Valor Licitação": "620,0000"
+    },
+    {
+        "Número Licitação": "001762023",
+        "Código UG": "250005",
+        "Nome UG": "DEPARTAMENTO DE LOGISTICA EM SAUDE - DLOG",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "25000093567202347",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de Preços para aquisição de Hemina Forma Farmacêutica: Concentrado P/ Solução Para Perfusão, Concentração: 25 MG/ML; Estiripentol Forma Farmacêutica: Pó Para Suspensão Oral, Concentração: 250 MG; Estiripentol Concentração: 250 MG; Estiripentol Concentração: 500 MG e Anacinra Forma Farmacêutica: Injetável, Adicional: Seringa Preenchida, Concentração: 150 MG/ML, conforme demais descrições contidas no Edital e seus Anexos.",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "36000",
+        "Nome Órgão Superior": "Ministério da Saúde",
+        "Código Órgão": "36000",
+        "Nome Órgão": "Ministério da Saúde - Unidades com vínculo",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "01/04/2024",
+        "Data Abertura": "09/01/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900012024",
+        "Código UG": "160072",
+        "Nome UG": "11. DEPOSITO DE SUPRIMENTO",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "64456.007001/2023",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Materiais farmacológicos, Hospitalares e Odontológicos para o 11º Depósito de Suprimento.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52121",
+        "Nome Órgão": "Comando do Exército",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "05/04/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900012024",
+        "Código UG": "168003",
+        "Nome UG": "INDUSTRIA DE MATERIAL BELICO DO BRASIL - UA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "386/2023",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de preço para Aquisição de Materiais de Consumo, de itens de Gêneros de Alimentação, Homenagens, Expediente, Material de TIC, Acondicionamento e Embalagens, Copa e Cozinha, Limpeza e Produtos de Higienização, Manutenção de Bens Imóveis e Instalações, Manutenção de Bens Móveis, Elétrico e Eletrônico, Proteção e Segurança, Áudio Vídeo e Foto, Manutenção de Veículos, Bandeiras e Flâmulas, conforme Documento de Formalização da Demanda (DFD).",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52221",
+        "Nome Órgão": "Indústria de Material Bélico do Brasil",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "25/01/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900022024",
+        "Código UG": "112408",
+        "Nome UG": "HOSPITAL DAS FORCAS ARMADAS",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "60550025186202318",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Material para a Seção Central de Abastecimento de Material Médico-Hospitalar - SCAMMH. visa atender às necessidades do Hospital das Forças Armadas - HFA. Processo SUPER.GOV.BR (60550.025186/2023-18)",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52000",
+        "Nome Órgão": "Ministério da Defesa - Unidades com vínculo",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "05/02/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900022024",
+        "Código UG": "170010",
+        "Nome UG": "SECRET. ESPECIAL DA RECEITA FEDERAL DO BRASIL",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "18220101182202319",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de Preços para Subscrição de licenças complementares à solução Microsoft MS-365 na modalidade de licenciamento Microsoft Enterprise Agreement Subscription (EAS), composto por 3 itens, incluindo serviços de suporte técnico, manutenção e atualização.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "25000",
+        "Nome Órgão Superior": "Ministério da Fazenda",
+        "Código Órgão": "25000",
+        "Nome Órgão": "Ministério da Fazenda - Unidades com víncul",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "26/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900032024",
+        "Código UG": "110792",
+        "Nome UG": "DIRETORIA DE LOGISTICA E GESTAO DOCUMENTAL",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "00404002160202345",
+        "Objeto": "Objeto: Pregão Eletrônico - Serviços de assessoria técnica, organização e coordenação de eventos, realizados em terr. nacional, sob demanda, c/ fornecimento de insumos a fim de oferecer suporte às solenidades, congressos, conferências, seminários, palestras, exposições, wokshops, cursos e treinamentos em geral a serem realizados p/ AGU, nos diversos Estados da Federação, bem como p/ fornecimento de alimentação e bebidas p/ eventos institucionais, cfe condições, quant. e exigências do Termo de Referência.",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "63000",
+        "Nome Órgão Superior": "Advocacia-Geral da União",
+        "Código Órgão": "63000",
+        "Nome Órgão": "Advocacia-Geral da União - Unidades com vín",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "02/04/2024",
+        "Data Abertura": "15/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900032024",
+        "Código UG": "135100",
+        "Nome UG": "COMPANHIA NACIONAL DE ABASTECIMENTO",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "21200007228202349",
+        "Objeto": "Objeto: Pregão Eletrônico - A contratação em apreço tem por objetivo a aquisição de inseticidas líquido e sólido para o exercício 2024, sob o Sistema de Registro de Preços, visando tratamento fitossanitário de produtos agrícolas armazenados nas Unidades Armazenadoras (UAs) da Conab, conforme especificações, quantidades, exigências e condições, estabelecidas no Termo de Referência.",
+        "Situação Licitação": "Evento de Resultado de Julgame",
+        "Código Órgão Superior": "49000",
+        "Nome Órgão Superior": "Ministério do Desenvolvimento Agrário e Agr",
+        "Código Órgão": "22211",
+        "Nome Órgão": "Companhia Nacional de Abastecimento",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "07/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900032024",
+        "Código UG": "168003",
+        "Nome UG": "INDUSTRIA DE MATERIAL BELICO DO BRASIL - UA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "00039/2024-IMBEL",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Material de Divulgação, Equipamento de Proteção Individual (EPI) e Materiais Diversos, do órgão Gerenciador, nos termos da tabela abaixo, conforme condições e exigências, estabelecidas no Termo de Referência.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52221",
+        "Nome Órgão": "Indústria de Material Bélico do Brasil",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "05/02/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900032024",
+        "Código UG": "550005",
+        "Nome UG": "COORDENACAO GERAL DE LICITACOES E CONTRATOS.",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "71000046924202303",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de preço para contratação de serviços continuados de apoio administrativo de nível superior, a serem executados com regime de dedicação exclusiva de mão de obra, nos termos da tabela abaixo, conforme condições e exigências estabelecidas neste instrumento.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "55000",
+        "Nome Órgão Superior": "Ministério do Desenvolvimento e Assistência",
+        "Código Órgão": "55000",
+        "Nome Órgão": "Ministério do Desenvolvimento e Assistência",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "03/04/2024",
+        "Data Abertura": "29/02/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900042024",
+        "Código UG": "155007",
+        "Nome UG": "EMPRESA BRASILEIRA DE SERVICOS HOSPITALARES",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23477022824202334",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de medicamentos antineoplásicos e citostáticos, pelo Sistema de Registro de Preços - SRP, para os Hospitais Universitários Federais (HUF) das regiões Norte, Nordeste, Centro-Oeste, Sudeste e Sul do Brasil, sob gestão da Empresa Brasileira de Serviços Hospitalares  Ebserh.",
+        "Situação Licitação": "Evento de Adiamento Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "01/04/2024",
+        "Data Abertura": "20/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900052024",
+        "Código UG": "110001",
+        "Nome UG": "SECRETARIA DE ADMINISTRACAO/PR",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "00059000165202491",
+        "Objeto": "Objeto: Pregão Eletrônico - Contratação de serviços de engenharia , constantes no Sistema Nacional de Pesquisa de Custos e Índices da Construção Civil SINAPI - DF , sob demanda , com fornecimento de materiais e mão de obra por meio do Sistema de Registros de Preços",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "20000",
+        "Nome Órgão Superior": "Presidência da República",
+        "Código Órgão": "20101",
+        "Nome Órgão": "Presidência da República",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "02/04/2024",
+        "Data Abertura": "14/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900052024",
+        "Código UG": "155009",
+        "Nome UG": "HOSPITAL UNIVERSITARIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23522033052202373",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de medicamentos Antineoplásicos, Oftalmologia, Grandes Volumes, Antimicrobianos e gerais para abastecimento da Unidade de Planejamento e Dimensionamento de Estoques, para atender às necessidades do Hospital Universitário de Brasília - HUB, referente ao Pregão 90.005/2024.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "05/04/2024",
+        "Data Abertura": "05/04/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900062024",
+        "Código UG": "120006",
+        "Nome UG": "GRUPAMENTO DE APOIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "67284005338202394",
+        "Objeto": "Objeto: Pregão Eletrônico - Gêneros alimentícios Hortifruti",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52111",
+        "Nome Órgão": "Comando da Aeronáutica",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "02/04/2024",
+        "Data Abertura": "14/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900062024",
+        "Código UG": "155009",
+        "Nome UG": "HOSPITAL UNIVERSITARIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "23522029969202373",
+        "Objeto": "Objeto: Pregão Eletrônico - Aquisição de Material Médico Hospitalar e insumos para Hemodiálise para a Unidade de Almoxarifado e Controle de Estoques, com Comodato de Equipamento, para o Hospital Universitário de Brasília - HUB, Referente ao Pregão 90.006/2024.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "26000",
+        "Nome Órgão Superior": "Ministério da Educação",
+        "Código Órgão": "26443",
+        "Nome Órgão": "Empresa Brasileira de Serviços Hospitalares",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "03/04/2024",
+        "Data Abertura": "03/04/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900072024",
+        "Código UG": "120006",
+        "Nome UG": "GRUPAMENTO DE APOIO DE BRASILIA",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "67284005770202385",
+        "Objeto": "Objeto: Pregão Eletrônico - Serviços de manutenção preventiva e corretiva nos aparelhos de Ar Condicionados split,",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "52000",
+        "Nome Órgão Superior": "Ministério da Defesa",
+        "Código Órgão": "52111",
+        "Nome Órgão": "Comando da Aeronáutica",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "02/04/2024",
+        "Data Abertura": "15/03/2024",
+        "Valor Licitação": "0,00"
+    },
+    {
+        "Número Licitação": "900152024",
+        "Código UG": "250005",
+        "Nome UG": "DEPARTAMENTO DE LOGISTICA EM SAUDE - DLOG",
+        "Código Modalidade Compra": "-99",
+        "Modalidade Compra": "Pregão - Registro de Preço",
+        "Número Processo": "25000020620202471",
+        "Objeto": "Objeto: Pregão Eletrônico - Registro de Preços que visa à aquisição de Medicamentos para o combate à Dengue, para atender à solicitação do Departamento de Doenças Transmissíveis - DEDT, conforme as especificações constantes no Edital e seus Anexos.",
+        "Situação Licitação": "Publicado",
+        "Código Órgão Superior": "36000",
+        "Nome Órgão Superior": "Ministério da Saúde",
+        "Código Órgão": "36000",
+        "Nome Órgão": "Ministério da Saúde - Unidades com vínculo",
+        "UF": "DF",
+        "Município": "BRASILIA",
+        "Data Resultado Compra": "04/04/2024",
+        "Data Abertura": "15/03/2024",
+        "Valor Licitação": "0,00"
     }
-],[
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90002/2024 - UASG 974002\nA Pregoeira comunica aos interessados que a fim de atender às necessidades do\nPlanetário de Brasília Luiz Cruls, unidade da Secretaria de Estado de Ciência,\nTecnologia e Inovação do Distrito Federal - SECTI/DF, a Subsecretaria de Compras\nGovernamentais – SCG/SECONT/SEEC, operacionalizará licitação no sistema\nCompras.gov, cujo objeto é a Contratação de empresa especializada na prestação de\nserviços operacionais e de apoio administrativo, a serem executados com regime de\ndedicação exclusiva de mão de obra conforme especificações e condições\nestabelecidas no Termo de Referência constante do Anexo I do Edital. Valor total\nestimado: R$ 17.312.898,60. Tipo de Licitação: menor preço. Natureza de despesa:\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato nº 051198/2024. SIGGO Nº 051198. Partes: DISTRITO FEDERAL, por\nintermédio de sua SECRETARIA DE ESTADO DE SAÚDE DO DISTRITO FEDERAL e\na empresa NORTE FLOW ENGENHARIA CLÍNICA LTDA EPP, inscrita no CNPJ nº\n14.915.804/0001-25. Objeto: a Contratação de empresa especializada em prestação de\nserviço de manutenção preventiva e corretiva com reposição de peças em equipamentos de\ntratamento de água por osmose reversa, pertencentes à SES/DF, consoante especifica o\nEdital de Pregão Eletrônico n° 321/2023 – SES/DF. Vigência: de 12 meses, a contar da data\nde sua assinatura, permitida a prorrogação, limitada a 60 (sessenta) meses, na forma da lei\nvigente. Valor do Contrato: R$879.400,00 (oitocentos e setenta e nove mil e quatrocentos\nreais). Unidade Orçamentária: 23901-23901. Dotação Orçamentária. Programa de Trabalho:\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato nº 051218/2024. SIGGO Nº 051218. Partes: DISTRITO FEDERAL, por\nintermédio de sua SECRETARIA DE ESTADO DE SAÚDE DO DISTRITO FEDERAL e\na empresa CENTRO OESTE COMÉRCIO E SERVIÇOS LTDA, CNPJ nº\n02.683.235/0001-50. Objeto: fornecimento contínuo de material de ÓRTESES,PRÓTESES E MATERIAIS ESPECIAIS (OPME) – PARAFUSO TIPO HERBERT, com\nmateriais contemplados na Tabela SUS DE OPME do Ministério da Saúde, por meio de\nCONSIGNAÇÃO, para abastecer o serviços de Cirurgias Ortopédicas da unidade de\nTraumatologia e Ortopedia, da Secretaria de Saúde – DF, nos termos do Edital de Pregão\nEletrônico nº nº 301/2023 – Secretaria de Estado de Saúde do Distrito Federal. Vigência: de\n12 (doze) meses, podendo ser prorrogado por igual e sucessivos períodos conforme Lei\n8.666/1993, art. 57, inciso II, sendo seu extrato publicado no DODF a expensas do\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 61/2023\nPROCESSO SEI Nº 00053-00157327/2023-96- CBMDF. TIPO: Menor preço. OBJETO:\nContratação de empresa especializada para prestação de serviços contínuos de manutenção\npredial preventiva, preditiva, reparativa e corretiva, bem como a realização de serviços\neventuais sob demanda nas edificações do CBMDF, conforme Edital e anexos. VALOR\nMÁXIMO DA CONTRATAÇÃO: R$ 17.707.779,60; PROGRAMA DE TRABALHO:\n28.845.0903.00NR.0053; ELEMENTO DE DESPESA: 33.90.30; FONTE DO RECURSO:\n100 FCDF. O Pregoeiro informa a ABERTURA da licitação para o dia 15/05/2024, às\n13:30h. LOCAL: site: www.gov.br/compras/pt-br. RETIRADA DO EDITAL pela internet,\nnos sites www.cbm.df.gov.br e www.gov.br/compras/pt-br. UASG: 170394. Inf.: (61)\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 09/2024 – UASG 925046\nO METRÔ-DF, por meio de sua Pregoeira, torna pública a realização de licitação do tipo\nmenor preço para a contratação de empresa para o fornecimento de 181 (cento e oitenta e\num) organizadores de filas para as estações do Metrô/DF, conforme condições contidas no\nedital e especificações do Anexo I — Termo de Referência e processo n.º 00097-\n00008251/2023–14. O valor estimado da contratação é sigiloso conforme os arts. 34 da Lei\nnº 13.303/2016 e 42 do Regulamento Interno de Licitações e Contratos do METRÔ-DF.\nData e horário para recebimento das propostas: até as 10:00 do dia 07/05/2024. O\nrespectivo Edital poderá ser retirado gratuitamente nos endereços eletrônicos\nwww.metro.df.gov.br e https://www.gov.br/compras/pt-br, mediante pré-cadastro realizado\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90086/2024\nProcesso nº 00092-00008870/2024-13. Objeto: Fornecimento de Centros de Controle de\nMotores - CCM e serviços de adequação de CCM existentes para integração de processos\nao sistema de automação industrial da Estação de Tratamento de Esgoto Sul\n(ETE.BSB.001). Valor estimado: R$ 2.470.284,91. Critério de julgamento: Maior Desconto\n(com aplicação do coeficiente multiplicador “k”). Fonte de recurso: Próprios da Caesb.\nPrazo de entrega: 18 meses consecutivos. Prazo de vigência: 24 meses consecutivos. Data\nde abertura: 16/05/2024, às 09 horas no sistema gov.br/compras, em\n(https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus anexos\nencontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90087/2024\nProcesso nº 00092-00007833/2024-57. Objeto: Aquisição de conjuntos motobomba do tipo\nsubmersível para captação de água bruta, a serem instalados na Elevatória de Água Bruta do\nBananal 001 (EAB.RBN.001) da Companhia de Saneamento Ambiental do Distrito Federal\n– Caesb. Valor estimado: Sigiloso. Critério de julgamento: Menor Preço. Fonte de recurso:\nPróprios da Caesb. Prazo de entrega: 180 dias. Prazo de vigência do contrato: 270 dias.\nData de abertura: 13/05/2024, às 09 horas no sistema gov.br/compras, em\n(https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus anexos\nencontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\nhttps://www.gov.br/compras/pt-br, a partir do dia 24/04/2024. Fone: (61) 3213-7340, E-\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90088/2024\nProcesso nº 00092-00010088/2024-34. Objeto: Aquisição de bombas centrífugas de eixo\nlivre e conjuntos moto bombas à combustão, tipo draga, para aplicação nos serviços\ndrenagem e transferência de água e/ou esgoto, tratado ou bruto. Valor estimado: Sigiloso.\nCritério de julgamento: Menor Preço. Fonte de recurso: Próprios da Caesb. Prazo de\naprovação e entrega dos projetos: 30 dias. Prazo de entrega dos equipamentos: 180 dias.\nPrazo de vigência do contrato: 240 dias. Data de abertura: 09/05/2024, às 09 horas no\nsistema gov.br/compras, em (https://www.gov.br/compras/pt-br - UASG: 974200).\nInformações: O edital e seus anexos encontram-se disponíveis nos sites:\nwww.caesb.df.gov.br – menu Licitações e https://www.gov.br/compras/pt-br, a partir do dia\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90089/2024\nProcesso nº 00092-00013922/2024-70. Objeto: Serviço de publicação de matéria legal, em\njornal de grande circulação regional, na formatação de cm x col. Valor estimado: Sigiloso.\nCritério de julgamento: Menor Preço. Fonte de recurso: Menor preço. Prazo de vigência do\ncontrato: 365 dias. Data de abertura: 16/05/2024, às 09 horas no sistema gov.br/compras,\nem (https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus\nanexos encontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\nhttps://www.gov.br/compras/pt-br, a partir do dia 24/04/2024. Fone: (61) 3213-7233, E-\nmail: licitacao@caesb.df.gov.br.\nMAXWELL DAVID BASSO\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90090/2024\nProcesso nº 00092-00010319/2024-43. Objeto: Serviços contínuos de manutenção\npreventiva e corretiva para os equipamentos da PGOQ Analisador de Mercúrio (ANM001)\ne Analisador de Carbono e Nitrogênio Total (ACN001) e seus acessórios, todos da marca\nAnalytik Jena, com a inclusão, durante a vigência do contrato, de peças, visitas técnicas e\ntoda a mão de obra necessária para a execução dos serviços. Valor estimado: Sigiloso.\nCritério de julgamento: Menor Preço. Fonte de recurso: Próprios da Caesb. Prazo de\nvigência do contrato: 12 meses. Data de abertura: 16/05/2024, às 09 horas no sistema\ngov.br/compras, em (https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O\nedital e seus anexos encontram-se disponíveis nos sites: www.caesb.df.gov.br – menu\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90091/2024\nProcesso nº 00092-00005431/2024-39. Objeto: Aquisição de peças de ferro fundido,\nválvulas e equipamentos para implantação do tanque de equalização de vazão na ETE\nRiacho Fundo I – exclusivo para produtos qualificados (exige-se CCT). Valor estimado:\nSigiloso. Critério de julgamento: Menor Preço. Fonte de recurso: Próprios da Caesb. Prazo\nde entrega: 60 dias. Data de abertura: 13/05/2024, às 09 horas no sistema gov.br/compras,\nem (https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus\nanexos encontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\nhttps://www.gov.br/compras/pt-br, a partir do dia 24/04/2024. Fone: (61) 3213-7164, E-\nmail: licitacao@caesb.df.gov.br.\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90092/2024\nProcesso nº 00092-00012151/2024-98. Objeto: Serviços de elaboração, formatação,\naquisição e execução de ações de Treinamento, Desenvolvimento e Educação – TD&E, na\nmodalidade presencial e a distância. Áreas do Conhecimento: Auditoria, Governança e\nLegislações. Valor estimado: Sigiloso. Fonte de recurso: Próprios da Caesb. Prazo de\nexecução dos serviços: 730 dias. Prazo de vigência do contrato: 760 dias. Data deabertura: 16/05/2024, às 09 horas no sistema gov.br/compras, em\n(https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus anexos\nencontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\nhttps://www.gov.br/compras/pt-br, a partir do dia 24/04/2024. Fone: (61) 3213-7340, E-\nmail: licitacao@caesb.df.gov.br.\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO - PE 90093/2024\nProcesso nº 00092-00008181/2024-63. Objeto: Aquisição de materiais de ferro fundido\npara adutoras de água (tubos e conexões com diâmetros de 1000 mm para melhorias das\ncondições operacionais da SAT.TAG.011) – exclusivo para produtos qualificados (exige-se\nCCT). Valor estimado: Sigiloso. Fonte de recurso: Próprios da Caesb. Prazo de entrega: 60\ndias. Data de abertura: 09/05/2024, às 09 horas no sistema gov.br/compras, em\n(https://www.gov.br/compras/pt-br - UASG: 974200). Informações: O edital e seus anexos\nencontram-se disponíveis nos sites: www.caesb.df.gov.br – menu Licitações e\nhttps://www.gov.br/compras/pt-br, a partir do dia 24/04/2024. Fone: (61) 3213-7479, E-\nmail: licitacao@caesb.df.gov.br.\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "A Presidente da Comissão de Licitação para Compra de Bens, Serviços e Obras –\nCPLIC/TERRACAP, no uso das atribuições que lhe confere a Portaria 271/2023 - DIRAF,\ncomunica a anulação do seguinte certame:\nProcesso: 00111-00004781/2023-02\nModalidade/número: Pregão Eletrônico nº 14/2023\nTipo: Menor Preço\nObjeto:Contração de Sociedade Empresária especializada na prestação de\nserviços, em regime de dedicação exclusiva de mão de obra, para\nfornecimento dos serviços de limpeza e conservação, higienização\ne controle de pragas e vetores, desinsetização e desratização, com\n"
-    }
-],[
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 9733. ASSINATURA: 18/04/2024. PROCESSO Nº 00092-\n00041062/2022-31. PE nº 261/2023 - CAESB. OBJETO: Prestação de Serviço Móvel\nPessoal (SMP – voz e dados móveis) incluindo Gestão de dispositivos móveis (MDM –\nMobile Device Management) com dispositivos em COMODATO, DOTAÇÃO\nORÇAMENTÁRIA: UO: 22.202; PROGRAMA DE TRABALHO:\n17.126.8209.2557.2634/33.90.39, CÓDIGO 12.108.105.300-2, FONTE DE RECURSO:\nRECURSOS PRÓPRIOS, CÓDIGO 11.101.000.000-3; UG: 190.206; GESTÃO: 19.206;\nEMPENHO 1376/2024, DATADO DE: 18/04/2024, VALOR DO EMPENHO: R$\n1.388.606,40 (um milhão e trezentos e oitenta e oito mil e seiscentos e seis reais e quarenta\ncentavos). VALOR DO CONTRATO: R$ 4.998.984,00 (quatro milhões e novecentos e\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato de Prestação de Serviços de transporte . Partes: CEB Participações S.A. e\nSHALON TAXI SERVIÇOS DE AGENCIAMENTO E INTERMEDIAÇÃO DE\nPAGAMENTO DE CORRIDAS DE TAXI LTDA-ME- Processo SEI nº 00312-\n00000012/2024-97,. Data de Assinatura: 23/04/2024. Objeto: Prestação de serviços de\npublicações oficiais legais . Vigência : 12 (doze) meses. Valor: R$ 18.000,00(dezoito mil\nreais). Assinaturas: pela CEB Participações S.A: Edison Antônio Costa Britto Garcia -\nDiretor Geral e Ana Paula Gehm Hoff- Diretora Administrativo e Financeira e pela\nContratada: Lincoln Galvão Lemos.\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato de Prestação de Serviços de transporte . Partes: CEB Participações S.A. e\nJDR SERVICES LTDA ME- Processo SEI nº00312-00000081/2021-58,. Data de\nAssinatura: 23/04/2024. Objeto: Prestação de serviços de publicações oficiais legais .\nVigência : 12 (doze) meses. Valor: R$ 810.485,16 (dezoito mil reais). Assinaturas: pela\nCEB Participações S.A: Edison Antônio Costa Britto Garcia -Diretor Geral e Ana Paula\nGehm Hoff- Diretora Administrativo e Financeira e pela Contratada: Danielle Ferreira\nGonçalves Raio .\nCOMPANHIA URBANIZADORA DA NOVA CAPITAL DO BRASIL\n\nEXTRATO CONTRATUAL\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO (SRP) Nº 02/2024\nA SECRETARIA DE ESTADO DA AGRICULTURA, ABASTECIMENTO E\nDESENVOLVIMENTO RURAL DO DISTRITO FEDERAL – SEAGRI/DF, torna\npúblico a ABERTURA da licitação do tipo (SRP), Menor Preço Unitário por item, na\nmodalidade de PREGÃO na forma ELETRÔNICA, com previsão de abertura do certame\npara 08/05/2024, 09h30min, horário de Brasília, PROCESSO SEI-GDF nº 00070-\n00006717/2023-17, realizado nos termos da Lei nº 14.133, de 2021, e demais legislações\naplicáveis e, ainda, de acordo com as condições estabelecidas no Edital. OBJETO:\nRegistro de Preços para aquisição de Equipamentos de Proteção Individual – EPIS e\nuniformes a serem utilizadas pela Secretaria de Estado da Agricultura, Abastecimento e\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO (SRP) Nº 03/2024\nA SECRETARIA DE ESTADO DA AGRICULTURA, ABASTECIMENTO E\nDESENVOLVIMENTO RURAL DO DISTRITO FEDERAL – SEAGRI/DF, torna\npúblico a ABERTURA da licitação do tipo (SRP), Menor Preço Unitário por item, na\nmodalidade de PREGÃO na forma ELETRÔNICA, com previsão de abertura do certame\npara 10/05/2024, 09h30min, horário de Brasília, PROCESSO SEI-GDF nº 00070-\n00000081/2024-72, realizado nos termos da Lei nº 14.133, de 2021, e demais legislações\naplicáveis e, ainda, de acordo com as condições estabelecidas no Edital. OBJETO:\nRegistro de Preços para aquisição de café e açúcar a serem utilizados pela Secretaria de\nEstado da Agricultura, Abastecimento e Desenvolvimento Rural do Distrito Federal -\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "CONCORRÊNCIA ELETRÔNICO Nº 90001/2024\nObjeto: Contratação de empresa especializada para realização de reforço da estrutura metálica e recuperação da cobertura do edifício Garagem do Tribunal de Contas do Distrito Federal\n(TCDF). Processo: 00600-00002395/2024-92-TCDF. Valor estimado: R$ 614.658,77; enquadramento: natureza 4.4.90.51.01 - Obras e Instalações (Item 1); e natureza 4.4.90.51.02 - Obras\ne Instalações (Demais itens); classificação funcional e programática: 01.032.8231.3903.9702 - Reforma de Prédios e Próprios - TCDF; fonte de Recursos 1501.1001. Data limite de\nrecebimento das propostas 14.05.2024, às 14h30min. Cópia do Edital encontra-se à disposição no Serviço de Licitação, localizado no 2º Andar do Ed. Anexo do TCDF, telefone (61) 3314-\n2202 ou pelos sítios: www.tc.df.gov.br e www.gov.br/compras (UASG: 974003). A Sessão Pública será processada no sítio do Compras.gov.br, nos termos do Edital. Em atendimento à Lei\nDistrital nº 5.453/2015, as informações referentes ao certame também estão disponíveis no sítio www.tc.df.gov.br, link: Consulta Processo do TCDF.\nBrasília/DF, 24 de abril de 2024\nWILDSON PRADO OLIVEIRA\nAgente de Contratação\n"
-    }
-],[
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Processo nº 00001-00013713/2020-67. Contrato-PG Nº 22/2020-NPLC, firmado entre a\nCâmara Legislativa do Distrito Federal e a empresa TECNISYS INFORMÁTICA E\nASSESSORIA EMPRESARIAL LTDA., CNPJ nº 26.990.812/0001-15. Objeto do\nContrato: Contratação de serviços de qualidade de produtos de software e de processos de\nengenharia de software para a CLDF. Objeto do Termo Aditivo: Prorrogação da vigência\ncontratual referente à cláusula décima do contrato pelo período de 12 meses, passando a\nvigorar de 09/07/2024 a 08/07/2025. Valor do Contrato: R$ 292.723,20. Programa de\nTrabalho: 01.126.8204.1471; Subtítulo: 0006; Elemento de Despesa: 4490-40. Nota de\nEmpenho 2024NE00157, no valor de R$ 170.755,20, emitida em 23/02/2024. Legislação:\nLei nº 8.666/93 e suas alterações. Partes: Pelo Contratante, JOÃO MONTEIRO NETO -\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 033/2024\nObjeto: Fornecimento de kits ergonômicos para o BRB, conforme edital e anexos. Valor\nestimado de acordo com o Art. 34 da Lei nº 13.303/16. Abertura: 07/05/2024, às 8h (horário\nde Brasília). Obtenção do edital e fase de lances: www.portaldecompraspublicas.com.br.\nProc. nº 1406/2023.\nCARLOS FAGUNDES\nPregoeiro\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 035/2024\nObjeto: SRP para fornecimentos de lacres para o BRB, conforme edital e anexos. Valor\nestimado de acordo com o Art. 34 da Lei nº 13.303/16. Abertura: 06/05/2024, às 8h (horário\nde Brasília). Obtenção do edital e fase de lances: www.portaldecompraspublicas.com.br.\nProc. nº 128/24.\nCARLOS FAGUNDES\nPregoeiro\nSECRETARIA DE ESTADO DE SAÚDE\nSUBSECRETARIA DE ADMINISTRAÇÃO GERAL\n\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 50/2023\nProcesso SEI-GDF nº 00054-00074379/2023-08. O Departamento de Logística e Finanças\nda Polícia Militar do Distrito Federal torna público aos interessados a ABERTURA do\ncertame em epígrafe, cujo objeto é Contratação de empresa para realização do serviço de\ndigitalização e indexação dos Boletins Administrativos, que englobam os Boletins do\nComando-Geral (BCG) e os Boletins Internos (BI), e dos Alardes (documentos\nmanuscritos) da Polícia Militar do Distrito Federal, conforme especificações e condições\nestabelecidas no termo de referência constante do Anexo I do Edital. Valor estimado: R$\n880.000,00 (oitocentos e oitenta mil reais). Tipo: Menor Preço. Data limite para\nrecebimento das propostas: Dia 10/05/2024 às 08h00min (horário de Brasília/DF).\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO DE PARTICIPAÇÃO FINANCEIRA Nº 063.2024. ASSINATURA:\n23/04/2024. PROCESSO Nº 0092-006467/2016. OBJETO: Constitui objeto deste\ninstrumento a disciplina das responsabilidades, obrigações, direitos, deveres e participações\nfinanceiras entre as partes contratantes para a realização de interesse comum no\ndesenvolvimento da rede de distribuição de energia elétrica, nos moldes dos arts. 87 e 88 ou\nart. 89 da Resolução Normativa Aneel nº 1000/2021, em relação às adequações das\ninstalações elétricas do sistema de distribuição necessárias ao deslocamento ou remoção de\nposte e/ou rede e ao fornecimento de energia elétrica em caráter definitivo, provisório,\nrelocação ou antecipação, à unidade consumidora que será implantada no endereço indicado\nneste contrato. VALOR DO CONTRATO: sem custos; Prazo Execução/Vigência: 120\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90003/2024\nA pregoeira comunica aos interessados que o pregão acima, que encontrava-se suspenso,\nterá sua abertura às 10h00min do dia 14 de maio de 2024, horário de Brasília. Objeto:\nContratação de empresa especializada para o fornecimento e instalação de persianas/cortina\n(tipo rolô) de proteção solar, com acionamento manual, de acordo com as especificações e\ncondições descritas no Termo de Referência que integra o anexo I do edital. Tipo de\nLicitação: Menor preço. Valor estimado: R$ 62.203,00. Dotação orçamentária: UG –\n120901/12901 - Fundo da Procuradoria-Geral do Distrito Federal; PT-\n03.122.8203.4220.0007; ND-44.90.52; Fonte: 320. O respectivo edital poderá ser retirado\nno endereço eletrônico: www.gov.br/compras ou no sítio oficial da PGDF:\n"
-    }
-],[
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90021/2024 - UASG 974002\nA Pregoeira comunica aos interessados que a Subsecretaria de Compras\nGovernamentais–SCG/Secont/Seec operacionalizará a licitação do pregão em epígrafe, no\nsistema Compras, cujo objeto é o registro de preços para a aquisição de material educativo e\nesportivo (raquete, aro de ginástica, cone para treino, bola de basquetebol, bola de futebol,\nbola para voleibol, e outros), conforme especificações e condições estabelecidas no Termo\nde Referência - Anexo I do Edital. Valor estimado: R$ 1.051.847,65. Tipo de Licitação:\nMenor Preço. Elemento de Despesa: 3.3.90.30. Abertura das propostas: 13/05/2024, às 9h.\nProcesso nº 04033-00018066/2023-42. O edital poderá ser retirado no endereço eletrônico\nwww.gov.br/compras. Informações pelo e-mail: pregoeirosulog07@economia.df.gov.br.\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90024/2024 - UASG 974002\nA Pregoeira comunica aos interessados que a fim de atender as demandas dos Órgãos que\ncompõem a estrutura administrativa do Distrito Federal, a Subsecretaria de Compras\nGovernamentais – SCG/Secont/Seec operacionalizará licitação do PE 90024/2024 no\nsistema Compras, cujo objeto é o Registro de Preços para aquisição de materiais para\nmanutenção de bens imóveis/instalações (abraçadeira, adaptador, areia e outros), de acordo\ncom as condições e características constantes no Edital e seus anexos. Valor estimado: R$\n3.985.587,20. Tipo de Licitação: Menor preço. Abertura das propostas dia 13/05/2024, às\n9h30. Processo nº 04033-00017935/2023-11. O edital poderá ser retirado no endereço\neletrônico www.gov.br/compras. Informações pelo e-mail:\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90017/2024\nPROCESSO SEI Nº 00053-00054340/2024-75 - CBMDF. TIPO: Menor preço. OBJETO:\nAquisição de conjuntos de medalha, pastas para acomodação de diplomas, sacolas e\nmaterial gráfico (envelopes, convites, históricos e diplomas) necessários ao agraciamento\ndas personalidades condecoradas com a Comenda da Ordem do Mérito Bombeiro Militar\ndo Distrito Federal “Imperador Dom Pedro II”, conforme Edital e anexos. VALOR\nMÁXIMO DA CONTRATAÇÃO: R$ 255.727,00; PROGRAMA DE TRABALHO:\n28.845.0903.00NR.0053; ELEMENTO DE DESPESA: 33.90.30; FONTE DO\nRECURSO: 100 FCDF. A Pregoeira informa a ABERTURA da licitação para o dia\n13/05/2024, às 13:30h. LOCAL: site: www.gov.br/compras/pt-br. RETIRADA DO\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90012/2024 – UASG: 926120\nO objeto da presente licitação é a aquisição de microesfera de vidro (Material de Sinalização\nHorizontal Viária), conforme condições, quantidades e exigências estabelecidas neste Edital e\nseus anexos. Processo SEI nº 00113-00000826/2024-96. Data e horário para recebimento das\npropostas: até às 09h00min do dia 14 de maio de 2024, com valor estimado de R$ 214.615,00. O\nrespectivo Edital poderá ser retirado exclusivamente nos endereços eletrônicos\nwww.der.df.gov.br e www.gov.br/compras. Demais informações no próprio Edital.\nBrasília/DF, 26 de abril de 2024\nANA HILDA DO CARMO SILVA\nDiretoraPÁGINA 81 Diário Oficial do Distrito Federal                Nº 81, SEGUNDA-FEIRA, 29 DE ABRIL DE 2024\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90013/2024 – UASG: 926120\nO objeto da presente licitação é a aquisição de solvente para tinta de demarcação viária,\nconforme condições, quantidades e exigências estabelecidas neste Edital e seus anexos.\nProcesso SEI nº 00113-00000788/2024-71. Data e horário para recebimento das propostas:\naté às 09h00min do dia 15 de maio de 2024, com valor estimado de R$ 110.297,50. O\nrespectivo Edital poderá ser retirado exclusivamente nos endereços eletrônicos\nwww.der.df.gov.br e www.gov.br/compras. Demais informações no próprio Edital.\nBrasília/DF, 26 de abril de 2024.\nANA HILDA DO CARMO SILVA\nDiretora\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 9734. ASSINATURA: 24/04/2024. PROCESSO Nº 00092-\n00013239/2024-90. PE nº 90001/2024 - CAESB. OBJETO: Aquisição de cal hidratada\nem pó e em suspensão DOTAÇÃO ORÇAMENTÁRIA: UO: 22.202; PROGRAMA DE\nTRABALHO: 17.122.8209.8517.6977/33.90.30, CÓDIGO 12.403.402.200-0, FONTE\nDE RECURSO: RECURSOS PRÓPRIOS, CÓDIGO 11.101.000.000-3; UG: 190.206;\nGESTÃO: 19.206; EMPENHO 1432/2024, DATADO DE: 23/04/2024, VALOR DO\nEMPENHO: R$ 352.000,00 (trezentos e cinquenta e dois mil reais). VALOR DO\nCONTRATO: R$ 352.000,00 (trezentos e cinquenta e dois mil reais)\nVIGÊNCIA/ENTREGA: 365 (trezentos e sessenta e cinco) dia(s) e 5 (cinco) dia(s),\nrespectivamente FISCALIZAÇÃO: Aleandro Soares Fernandes De Sousa Reis,\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 9735. ASSINATURA: 24/04/2024. PROCESSO Nº 00092-\n00028661/2023-74. PE nº 90056/2024 - CAESB. OBJETO: Fornecimento de balanceadores\nde carga, suporte técnico, treinamento e garantia por 36 meses DOTAÇÃO\nORÇAMENTÁRIA: UO: 22.202; PROGRAMA DE TRABALHO:\n17.126.8209.1471.5874/44.90.52, CÓDIGO 22.103.011.011-3, FONTE DE RECURSO:\nRECURSOS PRÓPRIOS DE INVESTIMENTOS - REPI, CÓDIGO 21.101.100.000-6;\nUG: 190.206; GESTÃO: 19.206; EMPENHO 1330/2024, DATADO DE: 12/04/2024,\nVALOR DO EMPENHO: R$ 3.295.000,00 (três milhões e duzentos e noventa e cinco mil\nde reais). VALOR DO CONTRATO: R$ 3.295.000,00 (três milhões e duzentos e noventa e\ncinco mil de reais) VIGÊNCIA/ENTREGA: 1095 (hum mil e noventa e cinco) dia(s) e 90\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 03/2024-CJU/CEB-H\nEspécie: Contrato nº 03/2024 - CJU/CEB-H. Processo nº: SEI/GDF: 00093-00000160/2024-\n24. Contratada: A INPETORIA SÃO JOÃO BOSCO - CENTRO SALESIANO DO MENOR\n- CESAM. Inscrita sob o CNPJ nº 33.583.592/0048-34. Do Objeto: Contratação de instituição\nsem fins lucrativos com o objetivo de dar assistência e promover educação profissional ao\njovem aprendiz pela Companhia Energética de Brasília - CEB, por dispensa de licitação. Do\nValor: R$ 94.924,20 (noventa e quatro mil, novecentos e vinte e quatro reais e vinte centavos).\nDo Prazo De Vigência: é de 30 (trinta) meses. Da assinatura do contrato: 24 de abril de 2024.\nPela CEB: Edison Antonio Costa Britto Garcia, Diretor-Presidente, Brás Kleyber Borges\nTeodoro, Diretor Administrativo-Financeiro e de Relações com Investidores e Murilo\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "A CEB LAJEADO S/A torna pública a assinatura do Contrato nº 002/2024, em\n25/04/2024, por meio da Licitação nº 001-S01617. OBJETO: Contratação de empresa\nespecializada na recuperação e no acompanhamento de créditos tributários federais\ncom ênfase em pedido de compensação da Receita Federal (PERD/COMP) e na\nelaboração da Escrituração Contábil Fiscal (ECF) dos exercícios fiscais da CEB\nLAJEADO. VIGÊNCIA: 30 (trinta) meses. VALOR: R$ 236.001,00 (duzentos e trinta\ne seis mil um reais). Programa de Trabalho: 25.122.8209.8517.7251 - 510 - Recursos\nPróprios da CEB-L. Processo SEI nº 00117-00000004/2024-01. CONTRATADO: AFG\nAUDITORES INDEPENDENTES S/S, inscrito no CNPJ: 20.781.542/0001-56.\nSIGNATÁRIOS: pela CONTRATANTE: JOÃO WELLISCH e JAIRO FERNANDO\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90003/2024\nA SECRETARIA DE ESTADO DA AGRICULTURA, ABASTECIMENTO E\nDESENVOLVIMENTO RURAL DO DISTRITO FEDERAL – SEAGRI/DF, torna\npúblico a ABERTURA da licitação do tipo, Menor Preço Global, na modalidade de\nPREGÃO na forma ELETRÔNICA, com previsão de abertura do certame para\n14/05/2024, 09h30min, horário de Brasília, PROCESSO SEI-GDF nº 00070-\n00000665/2024-48, realizado nos termos da Lei nº 14.133, de 2021, e demais\nlegislações aplicáveis e, ainda, de acordo com as condições estabelecidas no Edital.\nOBJETO: Contratação de empresa para prover suporte técnico ao Sistema de\nInformações em Defesa Agropecuária (SIAGRO), plataforma já em produção na\n"
-    }
-],[
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "PREGÃO ELETRÔNICO Nº 90029/2024 - UASG 974002\nA Pregoeira comunica aos interessados que a Subsecretaria de Compras Governamentais –\nSCG, operacionalizará a licitação do em epígrafe, no sistema Compras, cujo objeto é o\nregistro de preço para eventual contratação de empresa especializada para prestação de\nserviço de gerenciamento e administração da manutenção preventiva e corretiva da frota de\nveículos e máquinas dos órgãos do Distrito Federal, de acordo com as condições e\ncaracterísticas constante no edital e seus anexos. Valor estimado: R$ 60.294.932,30. Tipo\nde Licitação: Menor Preço. Abertura das propostas: 20/05/2024, às 10h. Processo nº 04033-\n00032081/2023-01. O edital poderá ser retirado no endereço eletrônico\nwww.gov.br/compras.\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato nº 155/2024, celebrado entre a Financeira BRB e a empresa BRB\nSERVIÇOS S.A. Assinatura do contrato: 10/04/2024. Modalidade: Inexigibilidade de\nlicitação. Objeto: Cessão do direito de uso do licenciamento de software para reserva de\nmargem e controle de consignações com desconto em folha de pagamento dos servidores do\nGoverno do Distrito Federal – GDF. Valor: R$ 152,50. As despesas decorrentes do presente\ncontrato correrão com base no Orçamento de Investimentos e Dispêndios, Natureza 4 -\nDispêndio das estatais, e fonte 1 - Geração própria. Signatários: Pela contratante: Dario\nOswaldo Garcia Junior. Pela contratada: Nagiane Novais de Oliveira. Processo: 397/2024.\nKeven F. B. de Castro - Superintendente Sumec.\nINSTITUTO DE ASSISTÊNCIA\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "Espécie: Contrato nº 51373/2024. SIGGO Nº 51373. Partes: DISTRITO FEDERAL, por intermédio\nde sua SECRETARIA DE ESTADO DE SAÚDE DO DISTRITO FEDERAL e a empresa CTO -\nCENTRO DE TECNOLOGIA ORTOPÉDICA LTDA, CNPJ nº 07.177.507/0001-64. Objeto: a\naquisição de material de ÓRTESES, PRÓTESES E MATERIAIS ESPECIAIS (OPME) – ÓRTESE\nDE DENNIS BROWN RÍGIDA e outros, contemplados na Tabela SUS DE OPME do Ministério da\nSaúde, para atender a demanda da unidade de Medicina Física, da Secretaria de Saúde – DF, nos\ntermos do Edital de Pregão Eletrônico nº 141/2023– Secretaria de Estado de Saúde do Distrito Federal.\nVigência: de 12 (DOZE) meses, contados a partir da assinatura do instrumento, persistindo as\nobrigações decorrentes da garantia, sendo seu extrato publicado no DODF a expensas do Contratante;.\nValor do Contrato: R$ 4.415,00 (quatro mil quatrocentos e quinze reais). Unidade Orçamentária:\n"
-    },
-    {
-        "Tipo": "EXTRATO DE CONTRATO",
-        "Texto": "CONTRATO Nº 9736. ASSINATURA: 26/04/2024. PROCESSO Nº 00092-\n00044738/2022-81. PE nº 215/2022 - CAESB. OBJETO: Aquisição de sulfato de alumínio\nlíquido e sólido DOTAÇÃO ORÇAMENTÁRIA: UO: 22.202; PROGRAMA DE\nTRABALHO: 17.122.8209.8517.6977/33.90.30, CÓDIGO 12.403.402.200-0, FONTE DE\nRECURSO: RECURSOS PRÓPRIOS, CÓDIGO 11.101.000.000-3; UG: 190.206;\nGESTÃO: 19.206; EMPENHO 1433/2024, DATADO DE: 23/04/2024, VALOR DO\nEMPENHO: R$ 1.711.500,00 (um milhão e setecentos e onze mil e quinhentos reais).\nVALOR DO CONTRATO: R$ 1.711.500,00 (um milhão e setecentos e onze mil e\nquinhentos reais) VIGÊNCIA/ENTREGA: 365 (trezentos e sessenta e cinco) dia(s) e 5\n(cinco) dia(s), respectivamente FISCALIZAÇÃO: Aleandro Soares Fernandes De Sousa\n"
-    },
-    {
-        "Tipo": "AVISO DE LICITAÇÃO",
-        "Texto": "Procedimento Licitatório Eletrônico nº 004/2024 – DECOMP/DA – do tipo menor preço –\nmodo de disputa aberto, para contratação de empresa para fornecimento de gás liquefeito de\npetróleo (GLP), e equipamentos em comodato consistindo de central de GLP, rede de\ndistribuição, válvulas e todos os componentes necessários para o funcionamento da usina de\nprodução asfalto BNA-USM120, marca BONAFER, ano 2012, de propriedade da\nCompanhia Urbanizadora da Nova Capital do Brasil – Novacap, além de manutenção dos\nequipamentos em comodato, de acordo com as especificações técnicas do Termo de\nReferência e no Edital e seus anexos - Valor estimado da contratação R$ 3.164.000,00 -\nProcesso nº 00112.00013715/2023-97. Data e horário da licitação: 24 de maio de 2024 - às\n9h. O Departamento de Compras da NOVACAP torna público que realizará a licitação\n"
-    }
-]]
+]
