@@ -29,6 +29,7 @@ nav:
       - Reunião 1: Atas/Sprint7_reunião1.md
       
   - Materiais de Estudos: Estudos/Estudos.md
+  - Ferramentas para o projeto: Ferramentas/ferramentas.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md
 theme: 
   logo: stylesheets/logo.png
