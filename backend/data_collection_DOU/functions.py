@@ -3,7 +3,9 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 import zipfile
-
+from tqdm import tqdm
+import xml.etree.ElementTree as ET
+import urllib.parse
 # Definindo o ano e o mês
 ano = 2024
 mes = 4
@@ -40,41 +42,102 @@ def captura_link_banco_de_dados_DOU_mes(ano, mes):
         else:
             return f"Falha ao acessar a página. Status code: {response.status_code}"
 
-def faz_download_do_zip(link_html):
+
+def faz_download_do_zip(link_html, anor, mesr):
     # Obtém o diretório atual
-    diretorio_atual = os.getcwd()
-    
-    # Cria a pasta "content" no diretório atual, se não existir
-    diretorio_content = os.path.join(diretorio_atual, "content")
+    direct = os.getcwd() + "/backend/data_collection_DOU"
+    diretorio_content = os.path.join(direct, "content")
+
     if not os.path.exists(diretorio_content):
         os.makedirs(diretorio_content)
-    
+        
+    # Verifica se os parâmetros ano e mes estão presentes na URL    
+    salva = os.path.join(diretorio_content, f"{anor} - {mesr}")
+    if not os.path.exists(salva):
+        os.makedirs(salva)
+
     # Obtém o nome do arquivo ZIP a partir do link
     nome_arquivo_zip = link_html.split('/')[-1]
     
-    # Faz o download do arquivo ZIP
-    r = requests.get(link_html)
+    # Faz o download do arquivo ZIP com barra de progresso
+    r = requests.get(link_html, stream=True)
+    total_size = int(r.headers.get('content-length', 0))
+    block_size = 1024  # 1 Kibibyte
+    t = tqdm(total=total_size, unit='iB', unit_scale=True)
     with open(os.path.join(diretorio_content, nome_arquivo_zip), "wb") as f:
-        f.write(r.content)
+        for data in r.iter_content(block_size):
+            t.update(len(data))
+            f.write(data)
+    t.close()
     
-    # Extrai o arquivo ZIP para uma pasta com o ano e o mês
-    pasta_extracao = os.path.join(diretorio_content, f"{ano}-{mes:02d}")
+    # Extrai o arquivo ZIP para uma pasta com o ano e o mês com barra de progresso
     with zipfile.ZipFile(os.path.join(diretorio_content, nome_arquivo_zip), 'r') as zip_ref:
-        zip_ref.extractall(pasta_extracao)
+        zip_size = sum((file.file_size for file in zip_ref.infolist()))
+        t = tqdm(total=zip_size, unit='iB', unit_scale=True)
+        for file in zip_ref.infolist():
+            t.update(file.file_size)
+            zip_ref.extract(file, salva)
+        t.close()
     
-    print("Download e extração do ZIP concluídos com sucesso!")
+    # Remove o arquivo ZIP após a extração
+    os.remove(os.path.join(diretorio_content, nome_arquivo_zip))
+    
+    # Apaga todos os arquivos que não terminem com .xml com barra de progresso
+    for root, dirs, files in os.walk(diretorio_content):
+        for file in tqdm(files, desc="Removendo arquivos que não são .xml"):
+            if not file.endswith(".xml"):
+                os.remove(os.path.join(root, file))
+    
+    # Retorna o diretório onde os arquivos foram extraídos
+    return salva
 
-# Exemplo de uso:
-#link_html = captura_link_banco_de_dados_DOU_mes(ano, mes)
-#if link_html:
-#    faz_download_do_zip(link_html)
-#else:
- #   print("Nenhum link encontrado para o período especificado.")
+def processa_xml_obtem_brasilia(diretorio_dos_xml):
+    # Lista de palavras específicas
+    palavras_especificas = ["Brasilia", "Brasília", " DF "]
     
-    # Cria a pasta "content" no diretório atual, se não existir
-direct = os.getcwd()
-print(direct)
-diretorio_content = os.path.join(os.getcwd(), "content")
-print(diretorio_content)
-if not os.path.exists('content'):
-    os.makedirs(diretorio_content)
+    # Iterar sobre todos os arquivos no diretório
+    for root, dirs, files in os.walk(diretorio_dos_xml):
+        for file in tqdm(files, desc="Processando arquivos XML"):
+            caminho_arquivo = os.path.join(root, file)
+            if file.endswith(".xml"):
+                # Verifica o conteúdo dos arquivos XML
+                tree = ET.parse(caminho_arquivo)
+                root_element = tree.getroot()
+                conteudo = ET.tostring(root_element, encoding='utf-8').decode('utf-8')
+
+                # Verifica se alguma das palavras específicas está no conteúdo do XML
+                if sum(conteudo.count(palavra) for palavra in palavras_especificas) != len(palavras_especificas):
+                    os.remove(caminho_arquivo)
+                else:
+                    # Verifica se as palavras "horarios" ou "horário" estão próximas das palavras-chave
+                    for palavra_chave in palavras_especificas:
+                        if palavra_chave in conteudo:
+                            indice_palavra_chave = conteudo.index(palavra_chave)
+                            trecho_analisado = conteudo[max(0, indice_palavra_chave - 30):indice_palavra_chave + len(palavra_chave) + 30]
+                            if "horarios" in trecho_analisado or "horário" in trecho_analisado:
+                                os.remove(caminho_arquivo)
+                                break  # Se encontrar, não precisa mais verificar o resto das palavras-chave
+
+    print("Processamento de arquivos XML concluído!")
+    return diretorio_dos_xml
+def processa_xml_licitacoes(diretorio_dos_xml):
+    # Lista de palavras relacionadas a licitações
+    palavras_licitacao = ["licitação", "licitacao", "licitacoes"]
+    
+    # Iterar sobre todos os arquivos no diretório
+    for root, dirs, files in os.walk(diretorio_dos_xml):
+        for file in tqdm(files, desc="Processando arquivos XML para verificar licitações"):
+            caminho_arquivo = os.path.join(root, file)
+            if file.endswith(".xml"):
+                # Verifica o conteúdo dos arquivos XML
+                tree = ET.parse(caminho_arquivo)
+                root_element = tree.getroot()
+                conteudo = ET.tostring(root_element, encoding='utf-8').decode('utf-8')
+
+                # Verifica se o vetor de palavras relacionadas a licitações está presente
+                if not any(palavra_licitacao in conteudo for palavra_licitacao in palavras_licitacao):
+                    os.remove(caminho_arquivo)
+
+    print("Verificação de licitações nos arquivos XML concluída!")  
+# Exemplo de uso:
+processa_xml_licitacoes(processa_xml_obtem_brasilia(faz_download_do_zip(captura_link_banco_de_dados_DOU_mes(2024,4),2024,4)))
