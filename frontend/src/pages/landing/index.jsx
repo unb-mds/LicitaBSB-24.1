@@ -1,8 +1,6 @@
 import React from 'react';
 import Header from '../../components/header';
-
 import search from '../../../assets/SearchDark.svg';
-
 import styles from './style.module.css';
 import UltimasLicitacoes from './ultimas-licitacoes';
 
@@ -29,4 +27,3 @@ export default function Landing(){
     </>
   )
 }
-

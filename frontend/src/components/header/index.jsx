@@ -1,9 +1,7 @@
 import React from 'react';
-
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
-
 import styles from './style.module.css';
 
 const Header = () => {
@@ -28,6 +26,9 @@ const Header = () => {
           </li>
           <li className={styles.headerListItem}>
             <a href="/sobrenos" className={styles.headerLink}>Sobre Nós</a>
+          </li>
+          <li className={styles.headerListItem}>
+            <a href="/dashboard" className={styles.headerLink}>Dashboard</a>
           </li>
         </ul>
         <div>
