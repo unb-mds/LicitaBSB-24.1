@@ -6,3 +6,4 @@ isort
 pre-commit
 pip-tools
 PyPDF2
+setuptools
