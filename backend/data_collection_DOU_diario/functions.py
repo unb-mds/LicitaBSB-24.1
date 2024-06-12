@@ -103,14 +103,12 @@ def extrair_info_aviso(url):
     if detalhes_dou:
         data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou.find('span', class_='publicado-dou-data') else "N/A"
         edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou.find('span', class_='edicao-dou-data') else "N/A"
-        secao = detalhes_dou.find_all('span', class_='secao-dou')[1].text.strip() if len(detalhes_dou.find_all('span', class_='secao-dou')) > 1 else "N/A"
-        pagina = detalhes_dou.find_all('span', class_='secao-dou-data')[1].text.strip() if len(detalhes_dou.find_all('span', class_='secao-dou-data')) > 1 else "N/A"
+        secao_pagina = detalhes_dou.find('span', class_='secao-dou').text.strip() if detalhes_dou.find('span', class_='secao-dou') else "N/A"
         orgao = detalhes_dou.find('span', class_='orgao-dou-data').text.strip() if detalhes_dou.find('span', class_='orgao-dou-data') else "N/A"
     else:
         data_publicacao = "N/A"
         edicao = "N/A"
-        secao = "N/A"
-        pagina = "N/A"
+        secao_pagina = "N/A"
         orgao = "N/A"
 
     # Construir o dicionário com as informações
@@ -122,9 +120,9 @@ def extrair_info_aviso(url):
         "cargo": cargo,
         "data_publicacao": data_publicacao,
         "edicao": edicao,
-        "secao": secao,
-        "pagina": pagina,
-        "orgao": orgao
+        "secao/pagina": secao_pagina,
+        "orgao": orgao,
+        "link": url
     }
 
     return aviso_info
@@ -151,4 +149,4 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     return avisos_detalhados
 
 links_dos_avisos = extraindo_avisos_licitacao(extrair_url_titles(link_jornal_diario(31,8,2023)))
-print(criandojsoncomavisos(links_dos_avisos,31,8,2023))
+criandojsoncomavisos(links_dos_avisos,31,8,2023)
