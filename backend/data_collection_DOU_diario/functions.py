@@ -3,7 +3,6 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 import json
-from tqdm import tqdm  
 
 # Função para capturar o link do banco de dados do DOU
 def link_jornal_diario(dia, mes, ano):
@@ -60,6 +59,20 @@ def extraindo_avisos_licitacao(lista_de_urls):
 
     return links_avisos_licitacao
 
+def filtrando_os_avisos_de_brasilia(descricao):
+    # Palavras específicas que estamos procurando
+    palavras_especificas = ["Brasilia", "Brasília", " DF "]
+    descricao = descricao.lower()  # Usar .lower() para fazer a verificação case-insensitive
+
+    if any(palavra.lower() in descricao for palavra in palavras_especificas):
+        for palavra_chave in palavras_especificas:
+            if palavra_chave.lower() in descricao:
+                indice_palavra_chave = descricao.index(palavra_chave.lower())
+                trecho_analisado = descricao[max(0, indice_palavra_chave - 30):indice_palavra_chave + len(palavra_chave) + 30]
+                if "horarios" not in trecho_analisado and "horário" not in trecho_analisado:
+                    return True  # Se encontrar, retorna o aviso_info
+    return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
+
 def extrair_info_aviso(url):
     # Obter o HTML da página
     response = requests.get(url)
@@ -68,49 +81,34 @@ def extrair_info_aviso(url):
     # Parse the HTML
     soup = BeautifulSoup(response.text, 'html.parser')
 
-    # Extrair informações principais
-    tipo_elem = soup.find('p', class_='identifica')
-    if tipo_elem:
-        tipo = tipo_elem.text.strip()
-    else:
-        tipo = "N/A"
-
-    identifica_elems = soup.find_all('p', class_='identifica')
-    if len(identifica_elems) > 1:
-        subtitulo = identifica_elems[1].text.strip()
-    else:
-        subtitulo = "N/A"
-
     descricao_elem = soup.find('p', class_='dou-paragraph')
     if descricao_elem:
         descricao = descricao_elem.text.strip()
     else:
         descricao = "N/A"
 
+    if not filtrando_os_avisos_de_brasilia(descricao):
+        return None
+
+    # Extrair informações principais
+    tipo_elem = soup.find('p', class_='identifica')
+    tipo = tipo_elem.text.strip() if tipo_elem else "N/A"
+
+    identifica_elems = soup.find_all('p', class_='identifica')
+    subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else "N/A"
+
     assinante_elem = soup.find('p', class_='assina')
-    if assinante_elem:
-        assinante = assinante_elem.text.strip()
-    else:
-        assinante = "N/A"
+    assinante = assinante_elem.text.strip() if assinante_elem else "N/A"
 
     cargo_elem = soup.find('p', class_='cargo')
-    if cargo_elem:
-        cargo = cargo_elem.text.strip()
-    else:
-        cargo = "N/A"
+    cargo = cargo_elem.text.strip() if cargo_elem else "N/A"
 
     # Extrair informações adicionais
     detalhes_dou = soup.find('div', class_='detalhes-dou')
-    if detalhes_dou:
-        data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou.find('span', class_='publicado-dou-data') else "N/A"
-        edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou.find('span', class_='edicao-dou-data') else "N/A"
-        secao_pagina = detalhes_dou.find('span', class_='secao-dou').text.strip() if detalhes_dou.find('span', class_='secao-dou') else "N/A"
-        orgao = detalhes_dou.find('span', class_='orgao-dou-data').text.strip() if detalhes_dou.find('span', class_='orgao-dou-data') else "N/A"
-    else:
-        data_publicacao = "N/A"
-        edicao = "N/A"
-        secao_pagina = "N/A"
-        orgao = "N/A"
+    data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='publicado-dou-data') else "N/A"
+    edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='edicao-dou-data') else "N/A"
+    secao_pagina = detalhes_dou.find('span', class_='secao-dou').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='secao-dou') else "N/A"
+    orgao = detalhes_dou.find('span', class_='orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='orgao-dou-data') else "N/A"
 
     # Construir o dicionário com as informações
     aviso_info = {
@@ -128,38 +126,16 @@ def extrair_info_aviso(url):
 
     return aviso_info
 
-def filtrando_os_avisos_de_brasilia(aviso_info):
-    # Palavras específicas que estamos procurando
-    palavras_especificas = ["Brasilia", "Brasília", " DF "]
-    counter = 0
-    # Verificar se alguma das palavras específicas está na descrição
-    descricao = aviso_info.get('descricao', '').lower()  # Usar .lower() para fazer a verificação case-insensitive
-    if any(palavra.lower() in descricao for palavra in palavras_especificas):
-        # Verifica se as palavras "horarios" ou "horário" estão próximas das palavras-chave
-        for palavra_chave in palavras_especificas:
-            if palavra_chave.lower() in descricao:
-                indice_palavra_chave = descricao.index(palavra_chave.lower())
-                trecho_analisado = descricao[max(0, indice_palavra_chave - 30):indice_palavra_chave + len(palavra_chave) + 30]
-                if "horarios" not in trecho_analisado and "horário" not in trecho_analisado:
-                    counter += 1
-                    print(counter)
-                    return aviso_info  # Se encontrar, retorna o aviso_info
-
-    return None  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
-
-
 def criandojsoncomavisos(links_avisos, dia, mes, ano):
     avisos_detalhados = []
     maxil = len(links_avisos)
     cont = 1
     for link in links_avisos:
-        info_aviso = filtrando_os_avisos_de_brasilia(extrair_info_aviso(link))
+        info_aviso = extrair_info_aviso(link)
         if info_aviso:  # Verifica se o dicionário não está vazio
             avisos_detalhados.append(info_aviso)
             print("Processando licitação " + str(cont) + " de " + str(maxil))
             cont += 1
-
-
 
     # Converter a lista de dicionários em JSON e salvar em um arquivo
     data_str = f"{ano}-{str(mes).zfill(2)}-{str(dia).zfill(2)}"
@@ -169,6 +145,6 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
 
     return avisos_detalhados
 
-
-links_dos_avisos = extraindo_avisos_licitacao(extrair_url_titles(link_jornal_diario(31,8,2023)))
-criandojsoncomavisos(links_dos_avisos,31,8,2023)
+# Exemplo de uso
+links_dos_avisos = extraindo_avisos_licitacao(extrair_url_titles(link_jornal_diario(31, 8, 2023)))
+criandojsoncomavisos(links_dos_avisos, 31, 8, 2023)
