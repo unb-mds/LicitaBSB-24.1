@@ -1,0 +1,6 @@
+.filterSection {
+  width: 346px;
+  background-color: var(--brancoTexto);
+  border-radius: 16px;
+  flex: 1;
+}
