@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../../components/header'
 import Filter from './filter'
-import licitacoes from '../../../../backend/data_analysis/output.json';
 import CardLicitacoes from '../../components/card-licitacoes';
 import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css'
+import { getLicitacoes, pagLicitacoes } from '../../services/licitacoes.service';
 
 
 export default function BiddingList() {
 
+  const licitacoes = getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
 
   useEffect(() => {
-    setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
+    setListaLicitacoes(pagLicitacoes(licitacoes, 10, 0));
   }, [])
   return (
     <>
