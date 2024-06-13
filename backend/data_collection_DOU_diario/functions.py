@@ -113,14 +113,14 @@ def extrair_info_aviso(url):
     # Construir o dicionário com as informações
     aviso_info = {
         "tipo": tipo,
-        "subtitulo": subtitulo,
-        "descricao": descricao,
+        "numero_licitacao": subtitulo,
+        "nomeOrgao": orgao,
+        "objeto": descricao,
         "assinante": assinante,
+        "data_abertura": data_publicacao,
         "cargo": cargo,
-        "data_publicacao": data_publicacao,
         "edicao": edicao,
         "secao/pagina": secao_pagina,
-        "orgao": orgao,
         "link": url
     }
 
@@ -132,10 +132,11 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     cont = 1
     for link in links_avisos:
         info_aviso = extrair_info_aviso(link)
+        print("Processando licitação " + str(cont) + " de " + str(maxil))
+        cont += 1
         if info_aviso:  # Verifica se o dicionário não está vazio
             avisos_detalhados.append(info_aviso)
-            print("Processando licitação " + str(cont) + " de " + str(maxil))
-            cont += 1
+            print("A licitação " + str(cont-1) + " era de Brasilia.")
 
     # Converter a lista de dicionários em JSON e salvar em um arquivo
     data_str = f"{ano}-{str(mes).zfill(2)}-{str(dia).zfill(2)}"
