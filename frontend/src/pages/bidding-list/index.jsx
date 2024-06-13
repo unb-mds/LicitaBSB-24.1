@@ -47,7 +47,7 @@ export default function BiddingList() {
             })}
 
             {lengthBids >= licitacoes.length ? <></> :
-              <button type='button' onClick={loadMoreBids}>Carregar Mais</button>
+              <button className={styles.botaoCarregarMais} type='button' onClick={loadMoreBids}>Carregar Mais</button>
             }
           </div>
         </div>
