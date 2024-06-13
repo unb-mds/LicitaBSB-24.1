@@ -1,6 +1,5 @@
 .cardWrapper {
   background-color: var(--cinza);
-  width: 30%;
   gap: 16px;
   color: var(--branco);
   padding: 32px;
@@ -8,6 +7,7 @@
   transition: 100ms ease-in-out;
   box-shadow: -4px 4px 4px rgba(0, 0, 0, .25);
 
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,10 @@
   padding-bottom: 16px;
   margin-bottom: 16px;
   border-bottom: 1px solid var(--branco);
+}
+
+.licitacoesInfo {
+  width: 100%;
 }
 
 .cardDescricao {

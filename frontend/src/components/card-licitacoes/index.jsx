@@ -7,7 +7,7 @@ export default function CardLicitacoes({ data }) {
   return (
     <div className={styles.cardWrapper}>
       <h5 className={styles.cardTitle}>{data["Modalidade Compra"]}</h5>
-      <div>
+      <div className={styles.licitacoesInfo}>
         <div className={styles.cardSection}>
           <p>{data["Data Abertura"]}</p>
           <p>{data["Valor Licita��o"]}</p>
