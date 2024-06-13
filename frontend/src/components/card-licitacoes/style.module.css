@@ -1,7 +1,48 @@
 .cardWrapper {
-  background-color: var(--texto);
-  width: 450px;
-  color: var(--brancoTexto);
+  background-color: var(--cinza);
+  width: 30%;
+  gap: 16px;
+  color: var(--branco);
   padding: 32px;
   text-align: center;
+  transition: 100ms ease-in-out;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, .25);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardTitle {
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.cardSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--branco);
+}
+
+.cardDescricao {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.4em;
+  max-height: 7em;
+  height: 7em;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+}
+
+.cardButton {
+  color: var(--texto);
+  background-color: var(--branco);
+  padding: 4px 72px;
+  text-decoration: none;
 }

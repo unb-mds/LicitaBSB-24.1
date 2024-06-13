@@ -9,6 +9,7 @@ import {
 import './styles/global.css'
 import AboutUs from './pages/about-us';
 import Dashboard from './pages/dashboard';
+import BiddingList from './pages/bidding-list';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />
+  },
+  {
+    path: "/licitacoes",
+    element: <BiddingList />
   }
 ])
 
