@@ -3,6 +3,23 @@ import requests
 from datetime import datetime
 from bs4 import BeautifulSoup
 import json
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+# Função para criar uma sessão com retries
+def criar_sessao_com_retries(retries=5, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
+    session = requests.Session()
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+    return session
 
 # Função para capturar o link do banco de dados do DOU
 def link_jornal_diario(dia, mes, ano):
@@ -17,7 +34,10 @@ def link_jornal_diario(dia, mes, ano):
         dia_str = str(dia).zfill(2)
         mes_str = meses[mes - 1]
         url_consulta = f"{url_bd_dou}{dia_str}-{mes_str}-{ano}&secao=do3"
-        response = requests.get(url_consulta)
+        
+        # Criar sessão com retries
+        sessao = criar_sessao_com_retries()
+        response = sessao.get(url_consulta)
 
         # Verifica se a requisição foi bem sucedida
         if response.status_code == 200:
@@ -26,8 +46,11 @@ def link_jornal_diario(dia, mes, ano):
             return f"Falha ao acessar a página. Status code: {response.status_code}"
 
 def extrair_url_titles(url):
+    # Criar sessão com retries
+    sessao = criar_sessao_com_retries()
+    
     # Obter o HTML da página
-    response = requests.get(url)
+    response = sessao.get(url)
     response.raise_for_status()  # Verifica se a requisição foi bem-sucedida
 
     # Parse the HTML
@@ -74,8 +97,11 @@ def filtrando_os_avisos_de_brasilia(descricao):
     return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
 
 def extrair_info_aviso(url):
+    # Criar sessão com retries
+    sessao = criar_sessao_com_retries()
+    
     # Obter o HTML da página
-    response = requests.get(url)
+    response = sessao.get(url)
     response.raise_for_status()
 
     # Parse the HTML
@@ -127,25 +153,40 @@ def extrair_info_aviso(url):
     return aviso_info
 
 def criandojsoncomavisos(links_avisos, dia, mes, ano):
+    print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
     avisos_detalhados = []
     maxil = len(links_avisos)
     cont = 1
+    licita = 0
     for link in links_avisos:
         info_aviso = extrair_info_aviso(link)
         print("Processando licitação " + str(cont) + " de " + str(maxil))
         cont += 1
         if info_aviso:  # Verifica se o dicionário não está vazio
             avisos_detalhados.append(info_aviso)
+            licita += 1
             print("A licitação " + str(cont-1) + " era de Brasilia.")
-
-    # Converter a lista de dicionários em JSON e salvar em um arquivo
-    data_str = f"{ano}-{str(mes).zfill(2)}-{str(dia).zfill(2)}"
-    output_file = f"{data_str}_avisos_licitacao.json"
+    print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
+    
+    # Nome do arquivo JSON
+    output_file = "data.json"
+    
+    # Carregar dados existentes, se houver
+    if os.path.exists(output_file):
+        with open(output_file, 'r', encoding='utf-8') as f:
+            try:
+                dados_existentes = json.load(f)
+            except json.JSONDecodeError:
+                dados_existentes = []
+    else:
+        dados_existentes = []
+    
+    # Adicionar novos dados
+    dados_existentes.extend(avisos_detalhados)
+    
+    # Salvar dados de volta no arquivo
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(avisos_detalhados, f, ensure_ascii=False, indent=4)
+        json.dump(dados_existentes, f, ensure_ascii=False, indent=4)
 
     return avisos_detalhados
 
-# Exemplo de uso
-links_dos_avisos = extraindo_avisos_licitacao(extrair_url_titles(link_jornal_diario(31, 8, 2023)))
-criandojsoncomavisos(links_dos_avisos, 31, 8, 2023)
