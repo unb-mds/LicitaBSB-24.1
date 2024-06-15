@@ -33,9 +33,9 @@ def main():
             print("Formato de data inválido. Use dd/mm/aaaa.")
             return
 
-    # Verificar se a data inicial é antes de 02/01/2013
-    if data_inicial < datetime(2013, 1, 2):
-        print("A data inicial não pode ser antes de 02/01/2013.")
+    # Verificar se a data inicial é antes de 05/02/2018
+    if data_inicial < datetime(2018, 2, 5):
+        print("A data inicial não pode ser antes de 05/02/2018.")
         return
 
     # Verificar se a data final é depois da data de hoje
