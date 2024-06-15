@@ -85,7 +85,7 @@ def extraindo_avisos_licitacao(lista_de_urls):
 
 def filtrando_os_avisos_de_brasilia(descricao):
     # Palavras específicas que estamos procurando
-    palavras_especificas = ["Brasilia", "Brasília", " DF "]
+    palavras_especificas = ["Brasilia", "Brasília", " DF ", " Ceilândia ", " Plano Piloto " ]
     descricao = descricao.lower()  # Usar .lower() para fazer a verificação case-insensitive
 
     if any(palavra.lower() in descricao for palavra in palavras_especificas):
@@ -93,7 +93,15 @@ def filtrando_os_avisos_de_brasilia(descricao):
             if palavra_chave.lower() in descricao:
                 indice_palavra_chave = descricao.index(palavra_chave.lower())
                 trecho_analisado = descricao[max(0, indice_palavra_chave - 30):indice_palavra_chave + len(palavra_chave) + 30]
-                if "horarios" not in trecho_analisado and "horário" not in trecho_analisado:
+                palavras_chave = [ "horarios", "horário", "Hora", "hora","00h", "01h", "02h", "03h", 
+                                  "04h", "05h", "06h", "07h", "08h", "09h", "10h", "11h", "12h", 
+                                  "13h", "14h", "15h", "16h", "17h", "18h", "19h", "20h", "21h", 
+                                  "22h", "23h", "00hs", "01hs", "02hs", "03hs", "04hs", "05hs", 
+                                  "06hs", "07hs", "08hs", "09hs", "10hs", "11hs", "12hs", 
+                                  "13hs", "14hs", "15hs", "16hs", "17hs", "18hs", "19hs", "20hs", 
+                                  "21hs", "22hs", "23hs"
+                                ]
+                if not any(palavra in trecho_analisado for palavra in palavras_chave):
                     return True  # Se encontrar, retorna o aviso_info
     return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
 
