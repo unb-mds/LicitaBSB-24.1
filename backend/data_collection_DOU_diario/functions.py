@@ -1,5 +1,6 @@
 import os
 import requests
+import re
 from datetime import datetime
 from bs4 import BeautifulSoup
 import json
@@ -111,30 +112,36 @@ def extrair_info_aviso(url):
     if descricao_elem:
         descricao = descricao_elem.text.strip()
     else:
-        descricao = "N/A"
+        descricao = None
 
     if not filtrando_os_avisos_de_brasilia(descricao):
         return None
 
+    # Extrair e remover número de processo
+    numero_processo_regex = re.compile(r'Nº Processo:\s*(\d+[-\d/]*\d+)', re.IGNORECASE)
+    match = numero_processo_regex.search(descricao)
+    numero_processo = match.group(1) if match else None
+    descricao = numero_processo_regex.sub('', descricao).strip()
+
     # Extrair informações principais
     tipo_elem = soup.find('p', class_='identifica')
-    tipo = tipo_elem.text.strip() if tipo_elem else "N/A"
+    tipo = tipo_elem.text.strip() if tipo_elem else None
 
     identifica_elems = soup.find_all('p', class_='identifica')
-    subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else "N/A"
+    subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
 
     assinante_elem = soup.find('p', class_='assina')
-    assinante = assinante_elem.text.strip() if assinante_elem else "N/A"
+    assinante = assinante_elem.text.strip() if assinante_elem else None
 
     cargo_elem = soup.find('p', class_='cargo')
-    cargo = cargo_elem.text.strip() if cargo_elem else "N/A"
+    cargo = cargo_elem.text.strip() if cargo_elem else None
 
     # Extrair informações adicionais
     detalhes_dou = soup.find('div', class_='detalhes-dou')
-    data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='publicado-dou-data') else "N/A"
-    edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='edicao-dou-data') else "N/A"
-    secao_pagina = detalhes_dou.find('span', class_='secao-dou').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='secao-dou') else "N/A"
-    orgao = detalhes_dou.find('span', class_='orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='orgao-dou-data') else "N/A"
+    data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='publicado-dou-data') else None
+    edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'edicao-dou-data') else None
+    secao_pagina = detalhes_dou.find('span', 'secao-dou').text.strip() if detalhes_dou and detalhes_dou.find('span', 'secao-dou') else None
+    orgao = detalhes_dou.find('span', 'orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'orgao-dou-data') else None
 
     # Construir o dicionário com as informações
     aviso_info = {
@@ -142,11 +149,12 @@ def extrair_info_aviso(url):
         "numero_licitacao": subtitulo,
         "nomeOrgao": orgao,
         "objeto": descricao,
+        "numero_processo": numero_processo,
         "assinante": assinante,
         "data_abertura": data_publicacao,
         "cargo": cargo,
         "edicao": edicao,
-        "secao/pagina": secao_pagina,
+        "secao_pagina": secao_pagina,
         "link": url
     }
 
