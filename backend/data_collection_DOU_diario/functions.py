@@ -8,7 +8,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 # Função para criar uma sessão com retries
-def criar_sessao_com_retries(retries=5, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
+def criar_sessao_com_retries(retries=3, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
     session = requests.Session()
     retry = Retry(
         total=retries,
@@ -131,10 +131,6 @@ def extrair_info_aviso(url):
     numero_processo = match.group(1) if match else None
     descricao = numero_processo_regex.sub('', descricao).strip()
 
-    # Extrair informações principais
-    tipo_elem = soup.find('p', class_='identifica')
-    tipo = tipo_elem.text.strip() if tipo_elem else None
-
     identifica_elems = soup.find_all('p', class_='identifica')
     subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
 
@@ -153,7 +149,7 @@ def extrair_info_aviso(url):
 
     # Construir o dicionário com as informações
     aviso_info = {
-        "tipo": tipo,
+        "tipo": "Aviso de Licitação",
         "numero_licitacao": subtitulo,
         "nomeOrgao": orgao,
         "objeto": descricao,
@@ -175,13 +171,17 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     cont = 1
     licita = 0
     for link in links_avisos:
-        info_aviso = extrair_info_aviso(link)
-        print("Processando licitação " + str(cont) + " de " + str(maxil))
+        try:
+            info_aviso = extrair_info_aviso(link)
+            print("Processando licitação " + str(cont) + " de " + str(maxil))
+            if info_aviso:  # Verifica se o dicionário não está vazio
+                avisos_detalhados.append(info_aviso)
+                licita += 1
+                print("\033[92mA licitação " + str(cont) + " era de Brasilia.\033[92m")
+        except Exception as e:
+            print(f"Não foi possível processar a licitação {cont}: {e}")
         cont += 1
-        if info_aviso:  # Verifica se o dicionário não está vazio
-            avisos_detalhados.append(info_aviso)
-            licita += 1
-            print("A licitação " + str(cont-1) + " era de Brasilia.")
+    
     print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
     
     # Nome do arquivo JSON
