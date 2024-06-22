@@ -3,7 +3,7 @@ name: Script de automação da extração das Licitações de Brasília
 on:
   workflow_dispatch:
   schedule:
-    - cron: '11 20 * * *'  
+    - cron: '16 23 * * *'  
 jobs:
   run-python:
     runs-on: ubuntu-latest
