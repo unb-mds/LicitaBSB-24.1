@@ -2,7 +2,7 @@ name: Script de automação da extração das Licitações de Brasília
 
 on:
   schedule:
-    - cron: '56 19 * * *'  # Executa todos os dias às 19:50 UTC
+    - cron: '59 19 * * *'  # Executa todos os dias às 19:50 UTC
 
 jobs:
   run-python:
@@ -11,8 +11,6 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-      with:
-        fetch-depth: 0  # Garante que você tenha todo o histórico do Git
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -27,11 +25,9 @@ jobs:
         pip install urllib3
         
     - name: Run Python script
-      run: python backend/data_collection_DOU_diario/teste.py
+      run: python backend/data_collection_DOU_diario/main.py
 
     - name: Commit and push updated last date
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "Github Actions"
         git config --global user.email "actions@users.noreply.github.com"
