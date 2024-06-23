@@ -2,7 +2,7 @@ name: Script de automação da extração das Licitações de Brasília
 
 on:
   schedule:
-    - cron: '00 20 * * SUN'  
+    - cron: '00 17 * * SUN'  
     
 jobs:
   run-python:
