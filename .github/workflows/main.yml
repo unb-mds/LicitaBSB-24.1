@@ -2,7 +2,7 @@ name: Script de automação da extração das Licitações de Brasília
 
 on:
   schedule:
-    - cron: '00 11 * * SUN'  
+    - cron: '00 20 * * SUN'  
     
 jobs:
   run-python:
@@ -20,9 +20,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install requests
+        pip install beatifulsoup4
+        pip install urllib3
         
     - name: Run Python script
-      run: python backend/data_collection_DOU_diario/teste.py
+      run: python backend/data_collection_DOU_diario/main.py
 
     - name: Commit and push updated last date
       run: |
@@ -30,5 +33,5 @@ jobs:
         git config --global user.email "actions@users.noreply.github.com"
         git pull origin main
         git add --all
-        git commit -m "teste de workflow!"
+        git commit -m "[WF] Licitações extraídas com sucesso!"
         git push
