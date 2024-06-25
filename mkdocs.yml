@@ -5,8 +5,8 @@ extra_css:
   - stylesheets/style.css
 nav: 
   - Home: index.md
-  - Tutorial - Como Inicializar o Ambiente Virtual: execution.md
-  - Arquitetura: arquitetura.md
+  - Tutorial - Como Inicializar o Ambiente Virtual: StepByStep/execution.md
+  - Arquitetura: Arquitetura/arquitetura.md
   - Sprints:
     - Sprint 0:
       - Reunião 1: Atas/Sprint0_reunião1.md
@@ -27,7 +27,10 @@ nav:
       - Reunião 1: Atas/Sprint6_reunião1.md
     - Sprint 7:
       - Reunião 1: Atas/Sprint7_reunião1.md
-      
+      - Reunião 2: Atas/Sprint7_reunião2.md
+    - Sprint 8:
+      - Reunião 1: Atas/Sprint8_reunião1.md
+
   - Materiais de Estudos: Estudos/Estudos.md
   - Ferramentas para o projeto: Ferramentas/ferramentas.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md
