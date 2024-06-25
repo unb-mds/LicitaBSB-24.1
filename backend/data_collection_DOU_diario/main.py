@@ -14,8 +14,9 @@ def main():
     # Definindo data inicial e final
     if len(sys.argv) == 1:
         # Caso nenhuma data seja fornecida, usaremos 05/02/2018 até hoje quue onde começa a ter dados de avisos
-        data_inicial = datetime(2022, 6, 1)
+        #data_inicial = datetime(2018, 2, 5)
         data_final = datetime.now()
+        data_inicial = data_final - timedelta(days=7)
     elif len(sys.argv) == 2:
         # Caso apenas a data inicial seja fornecida
         try:
