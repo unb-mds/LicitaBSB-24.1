@@ -26,7 +26,7 @@ jobs:
         pip install urllib3
         
     - name: Run Python script
-      run: python backend/data_collection/main.py
+      run: python backend/data_collection/main.py 31/12/2020 31/12/2020
 
     - name: Commit and push updated last date
       run: |
