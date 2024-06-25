@@ -185,7 +185,7 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
     
     # Nome do arquivo JSON
-    output_file = "data.json"
+    output_file = "data_collection/teste.json"
     
     # Carregar dados existentes, se houver
     if os.path.exists(output_file):
