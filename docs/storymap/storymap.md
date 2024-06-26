@@ -5,13 +5,6 @@ hide:
 ---
 # Documentos importantes - LICITABSB
 
-![ideia](image-1.png)
-![pesquisa de mercado](image-6.png)
-![story map - user](image-7.png)
-![Jornadas do usuario](image-5.png)
-![Brainstorm](image-2.png)
-![Epicos](image.png)
-######
-![Epicos](image1.png)
-######
-![Epicos](image2.png)
+### fazer textinho sobre como a gente fez o quadro do miro e as coisas que fizemos dentro dele
+# Quadro miro
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="1000" height="600" src="https://miro.com/app/board/uXjVKcAWUlc=/" allowfullscreen></iframe>
