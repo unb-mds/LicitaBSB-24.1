@@ -7,7 +7,7 @@ nav:
   - Home: index.md
   - Tutorial - Como Inicializar o Ambiente Virtual: StepByStep/execution.md
   - Arquitetura: Arquitetura/arquitetura.md
-  - Story Map: storymap/storymap.md
+  - Jornada de produção: storymap/storymap.md
 
   - Sprints:
     - Sprint 0:
