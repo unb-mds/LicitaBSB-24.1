@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Ata de Reunião - 02/05
 
 ## Discussões:
@@ -25,3 +30,5 @@ Ao final da reunião, houve uma discussão detalhada sobre a atribuição das ta
 - Hora de início: 21:00h
 - Hora de término: 22:20h
 - Duração: 80 minutos
+
+<a href="https://docs.google.com/document/d/1XJRVH7Fknoky9KmiBh5YCz4QB3faY0Z-iji5D5LxOCU/edit?usp=drive_link">Link para o Documento da ATA do Google Docs</a>

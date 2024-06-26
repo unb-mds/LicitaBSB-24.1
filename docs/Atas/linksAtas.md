@@ -20,3 +20,6 @@ https://docs.google.com/document/d/1XwP1JJ-4JxRhUBc7z8aRzWUUGzOnBh91zBHN8A62Gf0/
 
 ### Ata de reunião - 24/04
 https://docs.google.com/document/d/18Dx8JvBTkDPH0d5h2FJZrZmeqZW3WFDXwnMdxndStHk/edit?usp=sharing
+
+### Ata de reunião - 31/05
+https://docs.google.com/document/d/10D2mbbK9NRo5WtMAP-V62PTBPteCiDXKQj6hAp_tvDM/edit?usp=sharing
