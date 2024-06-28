@@ -24,5 +24,8 @@ https://docs.google.com/document/d/18Dx8JvBTkDPH0d5h2FJZrZmeqZW3WFDXwnMdxndStHk/
 ### Ata de reunião - 31/05
 https://docs.google.com/document/d/10D2mbbK9NRo5WtMAP-V62PTBPteCiDXKQj6hAp_tvDM/edit?usp=sharing
 
+### Ata de reunião - 17/06
+https://docs.google.com/document/d/1UdYTlA7NrNsLdsX-zuxKYdt7JWSmAfA1JK9Z72IrGf4/edit?usp=sharing
+
 ### Ata de reunião - 26/06
 https://docs.google.com/document/d/1rc6C_01yYmb9X4UXKJYjL1c7oi9JTs7CeqhPB9jj7Go/edit
