@@ -3,6 +3,9 @@ import pytest
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from datetime import datetime, timedelta
+import json
+from bs4 import BeautifulSoup
+from requests.exceptions import HTTPError
 
 def test_criar_sessao_com_retries_defaults():
     session = func.criar_sessao_com_retries()
@@ -60,3 +63,51 @@ def test_link_jornal_diario_data_passada():
 
     # Verificação
     assert "leiturajornal?data=" in resultado
+from requests.exceptions import HTTPError
+
+def criar_sessao_com_retries_mock_json():
+    class MockSession:
+        def get(self, url):
+            if url == 'https://www.in.gov.br/leiturajornal?data=27-06-2024':
+                return MockResponse(200, '<html><body><script id="params" type="application/json">{"jsonArray": [{"urlTitle": "exemplo1"}, {"urlTitle": "exemplo2"}]}</script></body></html>')
+            elif url == 'https://www.in.gov.br/leiturajornal312312312':
+                raise HTTPError("404 Not Found")
+            else:
+                return MockResponse(200, '<html><body><p>Conteúdo da página</p></body></html>')
+
+    class MockResponse:
+        def __init__(self, status_code, text):
+            self.status_code = status_code
+            self.text = text
+
+        def raise_for_status(self):
+            if self.status_code != 200:
+                raise HTTPError(f"{self.status_code} Error")
+
+    return MockSession()
+
+def test_extrair_url_titles_sucesso():
+    # Preparação
+    url_valida = 'https://www.in.gov.br/leiturajornal?data=27-06-2024'
+
+    # Mock da função criar_sessao_com_retries
+    func.criar_sessao_com_retries = criar_sessao_com_retries_mock_json
+
+    # Execução
+    resultado = func.extrair_url_titles(url_valida)
+
+    # Verificação
+    assert isinstance(resultado, list)
+    assert len(resultado) == 2
+    assert all(url.startswith("http://www.in.gov.br/web/dou/-/") for url in resultado)
+
+def test_extrair_url_titles_not_found():
+    # Preparação
+    url_not_found = 'https://www.in.gov.br/leiturajornal312312312'
+
+    # Mock da função criar_sessao_com_retries
+    func.criar_sessao_com_retries = criar_sessao_com_retries_mock_json
+
+    # Execução e Verificação
+    with pytest.raises(HTTPError):
+        func.extrair_url_titles(url_not_found)
