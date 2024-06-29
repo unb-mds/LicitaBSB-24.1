@@ -185,11 +185,11 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     for link in links_avisos:
         try:
             info_aviso = extrair_info_aviso(link)
-            print("Processando licitação " + str(cont) + " de " + str(maxil))
+            print("\033[0mProcessando licitação " + str(cont) + " de " + str(maxil))
             if info_aviso:  # Verifica se o dicionário não está vazio
                 avisos_detalhados.append(info_aviso)
                 licita += 1
-                print("\033[92mA licitação " + str(cont) + " era de Brasilia.\033[92m")
+                print("\033[92mA licitação " + str(cont) + " era de Brasilia.\033[0m")
         except Exception as e:
             print(f"Não foi possível processar a licitação {cont}: {e}")
         cont += 1
