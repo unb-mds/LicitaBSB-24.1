@@ -1,11 +1,15 @@
 import functions as func
 import pytest
+import functions
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from datetime import datetime, timedelta
 import json
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
+from unittest.mock import patch
+import requests
+from unittest.mock import patch, Mock
 
 def test_criar_sessao_com_retries_defaults():
     session = func.criar_sessao_com_retries()
@@ -173,3 +177,9 @@ test_cases = [
 @pytest.mark.parametrize("descricao, expected", test_cases)
 def test_filtrando_os_avisos_de_brasilia(descricao, expected):
     assert func.filtrando_os_avisos_de_brasilia(descricao) == expected
+
+import functions as func
+def test_extrair_info_aviso():
+    result = func.extrair_info_aviso(url="http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885")
+    assert isinstance(result, dict)
+

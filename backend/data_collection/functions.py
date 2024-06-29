@@ -106,9 +106,21 @@ def filtrando_os_avisos_de_brasilia(descricao):
     return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
 
 def extrair_info_aviso(url):
-    # Criar sessão com retries
-    sessao = criar_sessao_com_retries()
-    
+    session = requests.Session()
+    retries=3
+    backoff_factor=0.3
+    status_forcelist=(500, 502, 504)
+    retry = Retry(
+        total=retries,
+        read=retries,
+        connect=retries,
+        backoff_factor=backoff_factor,
+        status_forcelist=status_forcelist,
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("http://", adapter)
+    session.mount("https://", adapter)
+    sessao = session
     # Obter o HTML da página
     response = sessao.get(url)
     response.raise_for_status()
@@ -122,7 +134,9 @@ def extrair_info_aviso(url):
     else:
         descricao = None
 
-    if not filtrando_os_avisos_de_brasilia(descricao):
+    if descricao == None:
+        return None
+    elif not filtrando_os_avisos_de_brasilia(descricao):
         return None
 
     # Extrair e remover número de processo
