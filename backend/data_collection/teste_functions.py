@@ -10,6 +10,7 @@ from requests.exceptions import HTTPError
 from unittest.mock import patch
 import requests
 from unittest.mock import patch, Mock
+import os
 
 def test_criar_sessao_com_retries_defaults():
     session = func.criar_sessao_com_retries()
@@ -182,4 +183,48 @@ def test_filtrando_os_avisos_de_brasilia(descricao, expected):
 def test_extrair_info_aviso():
     result = func.extrair_info_aviso(url="http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885")
     assert isinstance(result, dict)
+
+
+
+# Teste básico de funcionamento
+def test_criandojsoncomavisos_funcionamento():
+    links_avisos = [
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
+        "http://www.exemplo.com/aviso2",
+        # Adicione mais links conforme necessário
+    ]
+    dia, mes, ano = 1, 1, 2023  # Data de exemplo
+    avisos_detalhados = func.criandojsoncomavisos(links_avisos, dia, mes, ano)
+    
+    # Verificações
+    assert isinstance(avisos_detalhados, list)
+    assert len(avisos_detalhados) > 0
+
+# Teste de tratamento de exceções
+def test_criandojsoncomavisos_excecoes():
+    links_avisos = [
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
+        "http://www.exemplo.com/aviso_inexistente",  # Link que provavelmente causará uma exceção
+    ]
+    dia, mes, ano = 1, 1, 2023  # Data de exemplo
+    avisos_detalhados = func.criandojsoncomavisos(links_avisos, dia, mes, ano)
+    
+    # Verificações
+    assert isinstance(avisos_detalhados, list)
+
+# Teste de criação de arquivo JSON
+def test_criandojsoncomavisos_criacao_json():
+    links_avisos = [
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
+        # Adicione mais links conforme necessário
+    ]
+    dia, mes, ano = 1, 1, 2023  # Data de exemplo
+    func.criandojsoncomavisos(links_avisos, dia, mes, ano)
+    
+    # Verifica se o arquivo JSON foi criado
+    output_directory = 'backend/data_collection/database'
+    output_file = os.path.join(output_directory, 'data.json')
+    assert os.path.exists(output_file)
+
 
