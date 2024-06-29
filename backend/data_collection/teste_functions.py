@@ -153,3 +153,23 @@ def test_extraindo_avisos_licitacao_com_lista_vazia():
     
     # Verificação
     assert len(resultado) == 0
+
+
+# Definindo os casos de teste como uma lista para a função filtrando_os_avisos_de_brasilia
+test_cases = [
+    ("Aviso de Brasília sem mencionar específicos", True),
+    ("Aviso sem referência a city que temos o objetivo de pegar", False),
+    ("Aviso de Brasília às 10h da manhã", False),
+    ("Aviso de Brasília, DF", True),
+    ("Aviso de Brasília em Ceilândia", True),
+    ("Aviso de Brasília no Plano Piloto", True),
+    ("Aviso de BRASÍLIA", True),
+    ("Aviso de BrAsÍlIa no PLaNo PILOTO", True),
+    ("Aviso de Brasília às 15h", False),
+    ("Aviso de Brasília para as 11h00", False),
+]
+
+# Iterando sobre os casos de teste
+@pytest.mark.parametrize("descricao, expected", test_cases)
+def test_filtrando_os_avisos_de_brasilia(descricao, expected):
+    assert func.filtrando_os_avisos_de_brasilia(descricao) == expected
