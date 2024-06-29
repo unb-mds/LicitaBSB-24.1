@@ -178,7 +178,7 @@ test_cases = [
 def test_filtrando_os_avisos_de_brasilia(descricao, expected):
     assert func.filtrando_os_avisos_de_brasilia(descricao) == expected
 
-import functions as func
+
 def test_extrair_info_aviso():
     result = func.extrair_info_aviso(url="http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885")
     assert isinstance(result, dict)

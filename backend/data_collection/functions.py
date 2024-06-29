@@ -134,9 +134,7 @@ def extrair_info_aviso(url):
     else:
         descricao = None
 
-    if descricao == None:
-        return None
-    elif not filtrando_os_avisos_de_brasilia(descricao):
+    if not filtrando_os_avisos_de_brasilia(descricao):
         return None
 
     # Extrair e remover número de processo
