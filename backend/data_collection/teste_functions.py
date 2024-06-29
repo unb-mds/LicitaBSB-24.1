@@ -63,7 +63,6 @@ def test_link_jornal_diario_data_passada():
 
     # Verificação
     assert "leiturajornal?data=" in resultado
-from requests.exceptions import HTTPError
 
 def criar_sessao_com_retries_mock_json():
     class MockSession:
@@ -111,3 +110,46 @@ def test_extrair_url_titles_not_found():
     # Execução e Verificação
     with pytest.raises(HTTPError):
         func.extrair_url_titles(url_not_found)
+
+def test_extraindo_avisos_licitacao_com_aviso_de_licitacao():
+    # Preparação
+    lista_urls = [
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885",
+        "https://www.in.gov.br/web/dou/-/decisoes-568649220",
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-370987947",
+    ]
+    
+    # Execução
+    resultado = func.extraindo_avisos_licitacao(lista_urls)
+    
+    # Verificação
+    expected_urls = [
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885",
+        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-370987947",
+    ]
+    
+    assert len(resultado) == 2
+    assert all(url in resultado for url in expected_urls)
+
+def test_extraindo_avisos_licitacao_sem_aviso_de_licitacao():
+    # Preparação
+    lista_urls = [
+        "https://www.in.gov.br/web/dou/-/decisoes-568649220",
+        "https://www.in.gov.br/web/dou/-/lei-n-14.903-de-27-de-junho-de-2024-568649644",
+    ]
+    
+    # Execução
+    resultado = func.extraindo_avisos_licitacao(lista_urls)
+    
+    # Verificação
+    assert len(resultado) == 0
+
+def test_extraindo_avisos_licitacao_com_lista_vazia():
+    # Preparação
+    lista_urls = []
+    
+    # Execução
+    resultado = func.extraindo_avisos_licitacao(lista_urls)
+    
+    # Verificação
+    assert len(resultado) == 0
