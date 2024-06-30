@@ -102,6 +102,17 @@ python3 main.py 01/01/2020 31/12/2020
 
 Isso processará todos os avisos de licitação do DOU para o intervalo de 01/01/2020 a 31/12/2020 e armazenará as informações em `data.json`.
 
+## Instruções de Teste
+Para executar os testes, utilize o comando:
+```bash
+python3 -m pytest teste_functions.py
+```
+Isso irá executar todos os testes definidos no arquivo `teste_functions.py` e fornecer um relatório detalhado dos resultados.
+
+#### Considerações Finais
+Esses testes visam aumentar a cobertura de testes e garantir que as funções no módulo `functions.py` funcionem corretamente sob diferentes condições. Por favor, revise os testes adicionados e informe caso haja alguma sugestão ou modificação necessária.
+
+Obrigado!
 
 ### Tutorial: Como executar o Front-End
 
