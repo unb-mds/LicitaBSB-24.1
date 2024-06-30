@@ -1,3 +1,8 @@
+---
+hide:
+  - toc
+---
+
 # Ata de Reunião - 16/05
 
 ## Discussões:
@@ -34,5 +39,7 @@
 
 ## Tempo de Reunião:
 - Hora de início: 21:00h.
-- Hora de término: 22:20
+- Hora de término: 22:20h
 - Duração: 80 minutos
+
+<a href="https://docs.google.com/document/d/1-C-SljTkaLTpZt-H8LSCCgt6ETWmD0NlDV0Po8Nq7vk/edit?usp=drive_link">Link para o Documento da ATA do Google Docs</a>

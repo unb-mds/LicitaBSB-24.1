@@ -1,0 +1,38 @@
+name: Script de automação da extração das Licitações de Brasília
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '00 01 * * SAT'   
+    
+jobs:
+  run-python:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.10.12
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+        pip install beautifulsoup4
+        pip install urllib3
+        
+    - name: Run Python script
+      run: python backend/data_collection/main.py 
+
+    - name: Commit and push updated last date
+      run: |
+        git config --global user.name "Github Actions"
+        git config --global user.email "actions@users.noreply.github.com"
+        git pull origin main
+        git add --all
+        git commit -m "[WF] Licitações extraídas com sucesso!"
+        git push

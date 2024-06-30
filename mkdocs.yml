@@ -1,12 +1,14 @@
 site_name: DOCUMENTAÇÃO - LICITA BSB
-repo_url: https://github.com/unb-mds/2024-1-Squad-03
+repo_url: https://github.com/unb-mds/LicitaBSB-24.1
 
 extra_css:
   - stylesheets/style.css
 nav: 
   - Home: index.md
-  - Tutorial - Como Inicializar o Ambiente Virtual: execution.md
-  - Arquitetura: arquitetura.md
+  - Tutorial - Como Inicializar o Ambiente Virtual: StepByStep/execution.md
+  - Arquitetura: Arquitetura/arquitetura.md
+  - Jornada de produção: storymap/storymap.md
+
   - Sprints:
     - Sprint 0:
       - Reunião 1: Atas/Sprint0_reunião1.md
@@ -27,7 +29,11 @@ nav:
       - Reunião 1: Atas/Sprint6_reunião1.md
     - Sprint 7:
       - Reunião 1: Atas/Sprint7_reunião1.md
-      
+      - Reunião 2: Atas/Sprint7_reunião2.md
+    - Sprint 8:
+      - Reunião 1: Atas/Sprint8_reunião1.md
+    - Sprint 9:
+          - Reunião 1: Atas/Sprint9_reunião1.md
   - Materiais de Estudos: Estudos/Estudos.md
   - Ferramentas para o projeto: Ferramentas/ferramentas.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md
