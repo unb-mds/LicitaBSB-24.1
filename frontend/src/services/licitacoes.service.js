@@ -4,18 +4,13 @@ import { transformDate } from '../utils/transform-date.utils';
 const licitacoesTipe1 = licitacoes.filter((licitacao) => {
   return !('Municipio' in licitacao);
 });
-// console.log(licitacoesTipe1)
 
 const licitacoesTipe2 = licitacoes.filter((licitacao) => {
   return ('Municipio' in licitacao);
 });
-// console.log(licitacoesTipe2)
 
 export function getLicitacoes() {
   let licit = licitacoesTipe2;
-  // licitacoesTipe1.forEach((lista) => {
-  //   licit = [...licit, ...lista];
-  // })
 
   licit.sort((a, b) => {
     const dateA = Date.parse(transformDate(a["data_abertura"]))

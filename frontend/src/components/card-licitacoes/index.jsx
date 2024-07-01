@@ -2,10 +2,10 @@ import React from 'react'
 import { setStatusBidding } from '../../utils/status-bidding'
 
 import styles from './style.module.css'
+import formatCurrency from '../../utils/format-currency'
 
 export default function CardLicitacoes({ data }) {
 
-  const formatValue = parseFloat(data["Valor_Licitacao"]).toFixed(2)
   const statusBidding = setStatusBidding(data)
 
   return (
@@ -18,7 +18,7 @@ export default function CardLicitacoes({ data }) {
       <div className={styles.licitacoesInfo}>
         <div className={styles.cardSection}>
           <p>Dara de publicação: {data["data_abertura"]}</p>
-          <p>Valor da licitação: {`R$${formatValue}`}</p>
+          <p>Valor da licitação: {`R$ ${formatCurrency(data["Valor_Licitacao"])}`}</p>
         </div>
         <div>
           <p className={styles.cardDescricao}>{data["Objeto"]}</p>
