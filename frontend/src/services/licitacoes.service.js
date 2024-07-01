@@ -1,15 +1,25 @@
-import licitacoes from '../../../backend/data_analysis/output.json';
+import licitacoes from '../../../backend/data_collection/database/data_copy.json';
 import { transformDate } from '../utils/transform-date.utils';
 
-export function getLicitacoes(){
-  let licit = [];
-  licitacoes.forEach((lista) => {
-    licit = [...licit, ...lista];
-  })
+const licitacoesTipe1 = licitacoes.filter((licitacao) => {
+  return !('Municipio' in licitacao);
+});
+// console.log(licitacoesTipe1)
+
+const licitacoesTipe2 = licitacoes.filter((licitacao) => {
+  return ('Municipio' in licitacao);
+});
+// console.log(licitacoesTipe2)
+
+export function getLicitacoes() {
+  let licit = licitacoesTipe2;
+  // licitacoesTipe1.forEach((lista) => {
+  //   licit = [...licit, ...lista];
+  // })
 
   licit.sort((a, b) => {
-    const dateA = Date.parse(transformDate(a["Data Abertura"]))
-    const dateB = Date.parse(transformDate(b["Data Abertura"]))
+    const dateA = Date.parse(transformDate(a["data_abertura"]))
+    const dateB = Date.parse(transformDate(b["data_abertura"]))
     if (dateA > dateB) {
       return -1;
     }
@@ -23,6 +33,6 @@ export function getLicitacoes(){
   return licit;
 }
 
-export function pagLicitacoes(array, size, pos){
+export function pagLicitacoes(array, size, pos) {
   return array.length > size ? array.slice((size * pos), (size * (pos + 1))) : array
 }

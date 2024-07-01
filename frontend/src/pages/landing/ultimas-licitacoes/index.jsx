@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-import licitacoes from '../../../../../backend/data_analysis/output.json';
+import { getLicitacoes, pagLicitacoes } from '../../../services/licitacoes.service';
+// import licitacoes from '../../../../../backend/data_collection/database/data_copy.json';
 import CardLicitacoes from '../../../components/card-licitacoes';
 
 import styles from './style.module.css'
@@ -8,11 +9,15 @@ import { Link } from 'react-router-dom';
 
 export default function UltimasLicitacoes (){
 
+  const licitacoes = getLicitacoes()
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
 
   useEffect(() => {
-    setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
+    // setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
+    setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0))
   }, [])
+  
+  console.log(listaLicitacoes)
 
   return (
     <>
@@ -23,6 +28,7 @@ export default function UltimasLicitacoes (){
         </div>
         <div className={styles.licitacoesWrapper}>
           {listaLicitacoes.map(item => {
+            console.log(item)
             return (
               <CardLicitacoes data={item}/>
             );
