@@ -50,3 +50,13 @@
   padding: 4px 72px;
   text-decoration: none;
 }
+
+.cardStatus{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.cardStatusText{
+  font-weight: bold;
+}
