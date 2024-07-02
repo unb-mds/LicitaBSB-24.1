@@ -30,6 +30,7 @@ hide:
 4. [REACT.JS E AXIOS - CONSUMIR DADOS DE API COM REACT E AXIOS](https://www.youtube.com/watch?v=NbhoeLj6lBs&t=2263s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre consumir APIs no React.
 5. [React Router: O guia completo para navegação em aplicativos React](https://www.youtube.com/watch?v=7b42lVMdEjE&t=422s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre a biblioteca React Router.
 6. [Curso de React](https://www.youtube.com/playlist?list=PLnDvRpP8BneyVA0SZ2okm-QBojomniQVO) - Curso em vídeo completo sobre react
+7. [Curso de React Para Iniciantes](https://www.youtube.com/watch?v=hd2B7XQAFls) - Curso em vídeo de react para iniciantes
 
 ## Back-end
 1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python.
