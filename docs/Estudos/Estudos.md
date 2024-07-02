@@ -13,7 +13,8 @@ hide:
 ## Figma e Prototipagem
 
 1. [Curso de Figma Grátis - Tutorial Completo](https://www.youtube.com/playlist?list=PLwgL9IEA0PxXzmOu0crRl9l6PT46nqtI9) - Curso explicativo de figma gratuito
-
+2. [Curso de Figma - Tutorial](https://www.youtube.com/playlist?list=PLwgL9IEA0PxWytUVrfWcU0QbCjQwKPulj) - Outro curso sobre figma que aprofunda um pouco mais
+   
 ## Front-End
 
 1. [Curso para Iniciantes em JavaScript](https://www.youtube.com/watch?v=SajRjc9KKUE&list=PL0Zuz27SZ-6Oi6xNtL_fwCrwpuqylMsgT) - Série de vídeos para iniciantes cobrindo os fundamentos do JavaScript.
