@@ -13,7 +13,8 @@ hide:
 ## Figma e Prototipagem
 
 1. [Curso de Figma Grátis - Tutorial Completo](https://www.youtube.com/playlist?list=PLwgL9IEA0PxXzmOu0crRl9l6PT46nqtI9) - Curso explicativo de figma gratuito
-
+2. [Curso de Figma - Tutorial](https://www.youtube.com/playlist?list=PLwgL9IEA0PxWytUVrfWcU0QbCjQwKPulj) - Outro curso sobre figma que aprofunda um pouco mais
+   
 ## Front-End
 
 1. [Curso para Iniciantes em JavaScript](https://www.youtube.com/watch?v=SajRjc9KKUE&list=PL0Zuz27SZ-6Oi6xNtL_fwCrwpuqylMsgT) - Série de vídeos para iniciantes cobrindo os fundamentos do JavaScript.
@@ -28,6 +29,8 @@ hide:
 3. [Introdução ao React - Vídeo no YouTube](https://www.youtube.com/watch?v=RVFAyFWO4go) - Vídeo introdutório explicando os conceitos básicos do React.
 4. [REACT.JS E AXIOS - CONSUMIR DADOS DE API COM REACT E AXIOS](https://www.youtube.com/watch?v=NbhoeLj6lBs&t=2263s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre consumir APIs no React.
 5. [React Router: O guia completo para navegação em aplicativos React](https://www.youtube.com/watch?v=7b42lVMdEjE&t=422s&ab_channel=MatheusBattisti-HoradeCodar) - Curso em vídeo sobre a biblioteca React Router.
+6. [Curso de React](https://www.youtube.com/playlist?list=PLnDvRpP8BneyVA0SZ2okm-QBojomniQVO) - Curso em vídeo completo sobre react
+7. [Curso de React Para Iniciantes](https://www.youtube.com/watch?v=hd2B7XQAFls) - Curso em vídeo de react para iniciantes
 
 ## Back-end
 1. [Documentação Django](https://docs.djangoproject.com/en/5.0/) - Documentação do framework que utilizaremos no backend em Python.
