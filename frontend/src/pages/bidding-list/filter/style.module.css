@@ -3,4 +3,28 @@
   background-color: var(--brancoTexto);
   border-radius: 16px;
   flex: 1;
+  padding: 32px 16px;
+}
+
+.title{
+  font-weight: bold;
+  font-size: 32px;
+}
+
+.subtitle{
+  font-size: 28px;
+  font-weight: normal;
+}
+
+.description{
+  font-size: 18px;
+}
+
+.sectionTitle{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.listItemStyle {
+  list-style-type: none;
 }
