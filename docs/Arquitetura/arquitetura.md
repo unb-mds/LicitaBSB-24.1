@@ -1,8 +1,8 @@
-# DocumentaÃ§Ã£o de Arquitetura - LicitaBSB
+# Documentação de Arquitetura - LicitaBSB
 
-## IntroduÃ§Ã£o
+## Introdução
 
-O projeto LicitaBSB tem como objetivo coletar licitaÃ§Ãµes do site "Meu Querido DiÃ¡rio" relacionadas a BrasÃ­lia e organizÃ¡-las em um feed de rede social. Os usuÃ¡rios poderÃ£o realizar buscas avanÃ§adas para encontrar licitaÃ§Ãµes especÃ­ficas de seu interesse.
+O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido Diário" relacionadas a Brasília e organizá-las em um feed de rede social. Os usuários poderão realizar buscas avançadas para encontrar licitações específicas de seu interesse.
 
 ### Diagrama de Arquitetura
 
@@ -10,7 +10,7 @@ O projeto LicitaBSB tem como objetivo coletar licitaÃ§Ãµes do site "Meu Quer
 
 ## Camadas
 
-### Camada de ApresentaÃ§Ã£o
+### Camada de Apresentação
 
 1. **Model**: Esta parte será responsável pela lógica do projeto e pelo gerenciamento dos dados da aplicação. Ela atua como um intermediário para manipular dados entre o banco de dados e a Visualização. Em sua interação com o banco de dados, permite a criação, leitura, atualização e exclusão de informações, garantindo a integridade e consistência dos dados.
 
@@ -29,9 +29,9 @@ O projeto LicitaBSB tem como objetivo coletar licitaÃ§Ãµes do site "Meu Quer
     | JavaScript    |  2019   |
     | Python        |  3.12.4 |
 
-## HistÃ³rico de VersÃµes
+## Histórico de Versões
 
-| Data       | VersÃ£o | DescriÃ§Ã£o                               | Autores      |
+| Data       | Versão | Descrição                               | Autores      |
 |------------|--------|-----------------------------------------|--------------|
-| 2024-04-12 | 1.0    | VersÃ£o inicial da documentaÃ§Ã£o           | Marcelo Adrian |
+| 2024-04-12 | 1.0    | Versão inicial da documentação           | Marcelo Adrian |
 | 2024-07-01 | 1.1    | Modificações segundo requisições           | Marcelo Adrian |
