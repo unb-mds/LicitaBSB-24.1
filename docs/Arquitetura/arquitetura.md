@@ -1,14 +1,8 @@
----
-hide:
-  - navigation
-  - toc
----
+# DocumentaÃ§Ã£o de Arquitetura - LicitaBSB
 
-# Documentação de Arquitetura - LicitaBSB
+## IntroduÃ§Ã£o
 
-## Introdução
-
-O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido Diário" relacionadas a Brasília e organizá-las em um feed de rede social. Os usuários poderão realizar buscas avançadas para encontrar licitações específicas de seu interesse.
+O projeto LicitaBSB tem como objetivo coletar licitaÃ§Ãµes do site "Meu Querido DiÃ¡rio" relacionadas a BrasÃ­lia e organizÃ¡-las em um feed de rede social. Os usuÃ¡rios poderÃ£o realizar buscas avanÃ§adas para encontrar licitaÃ§Ãµes especÃ­ficas de seu interesse.
 
 ### Diagrama de Arquitetura
 
@@ -16,48 +10,28 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido 
 
 ## Camadas
 
-### Camada de Apresentação
+### Camada de ApresentaÃ§Ã£o
 
-A camada de apresentação é responsável por interagir diretamente com o usuário e exibir as informações de forma adequada. Utilizaremos o framework React para desenvolver a interface do usuário, garantindo interatividade, responsividade e uma estilização eficiente.
+1. **Model**: Esta parte será responsável pela lógica do projeto e pelo gerenciamento dos dados da aplicação. Ela atua como um intermediário para manipular dados entre o banco de dados e a Visualização. Em sua interação com o banco de dados, permite a criação, leitura, atualização e exclusão de informações, garantindo a integridade e consistência dos dados.
 
-| Tecnologia    | Versão  |
-|---------------|---------|
-| React         | 17.0.2  |
-| JavaScript    | ES2022  |
+2. **View**: Será responsável por lidar com a lógica de apresentação e a resposta aos usuários. Seu papel é formatar os dados recebidos do banco de dados por meio do Modelo para exibição e selecionar os templates apropriados para renderizar a resposta. Ela funcionará como a intermediária da arquitetura, controlando o fluxo entre a lógica do projeto e a interface do usuário.
 
-### Camada de Dados
+3. **Template**: Responsável pela apresentação final dos dados ao usuário. Ela armazena os arquivos HTML, CSS e Bootstrap estendidos, e define a estrutura e o layout da interface do usuário. Assim, os templates serão usados para renderizar o conteúdo visual de maneira consistente e estilizada.
 
-A camada de dados é responsável pelo armazenamento e gerenciamento dos dados do sistema. No contexto deste projeto, optaremos por armazenar os dados em formato JSON diretamente no próprio repositório do GitHub. Isso proporcionará uma abordagem simples e acessível para gravar e compartilhar os dados coletados do "Meu Querido Diário".
+## **Tecnologias**: 
 
-Essa abordagem elimina a necessidade de utilizar bancos de dados tradicionais como MongoDB ou MySQL, pois os dados serão armazenados como arquivos JSON no repositório do GitHub, aproveitando a infraestrutura existente e facilitando a colaboração entre os membros da equipe.
-
-Dessa forma, não há necessidade de especificar versões de tecnologias relacionadas a bancos de dados, pois estaremos utilizando a infraestrutura nativa do GitHub para armazenamento de dados.
-
-### Camada de Aplicação
-
-A camada de aplicação é responsável pela lógica de negócios e processamento das requisições do cliente. Utilizaremos o framework Django em Python para desenvolver o back-end da aplicação, devido à sua simplicidade e versatilidade. O JavaScript também será utilizado em certas partes da aplicação devido à sua eficiência no tratamento de requisições assíncronas.
-
-| Tecnologia | Versão   |
-|------------|----------|
-| Django     | 4.1.0    |
-| Python     | 3.12.0   |
+- A nossa aplicação utiliza HTML, CSS e JavaScript para o front-end, Python no back-end e o banco de dados é utilizado apenas arquivos salvos em JSON.
 
 
-### Tarefas Agendadas (Chron Job)
+    | **Tecnologia**    | **Versão**  |
+    |---------------|---------|
+    | React         |  18.0.0 |
+    | JavaScript    |  2019   |
+    | Python        |  3.12.4 |
 
-Para tarefas agendadas, consideraremos o uso de Python e escolheremos entre Google Cloud ou AWS para hospedagem e execução dessas tarefas, levando em consideração escalabilidade, facilidade de uso e custo.
+## HistÃ³rico de VersÃµes
 
-### Web Scraping e Resgate de Documentos
-
-Para o web scraping e resgate de documentos, utilizaremos Python juntamente com bibliotecas específicas para essa finalidade. A biblioteca PyPDF2 será empregada para o processamento de arquivos PDF, permitindo a extração e manipulação de texto desses documentos.
-
-| Biblioteca | Descrição                                                   |
-|------------|--------------------------------------------------------------|
-| PyPDF2     | Biblioteca em Python para manipulação de arquivos PDF.       |
-| Scrapy    | Biblioteca em Python para realizar webscraping.       |
-
-## Histórico de Versões
-
-| Data       | Versão | Descrição                               | Autores      |
+| Data       | VersÃ£o | DescriÃ§Ã£o                               | Autores      |
 |------------|--------|-----------------------------------------|--------------|
-| 2024-04-12 | 1.0    | Versão inicial da documentação           | Marcelo Adrian |
+| 2024-04-12 | 1.0    | VersÃ£o inicial da documentaÃ§Ã£o           | Marcelo Adrian |
+| 2024-07-01 | 1.1    | Modificações segundo requisições           | Marcelo Adrian |
