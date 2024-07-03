@@ -16,6 +16,11 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido 
 
 3. **Template**: Responsável pela apresentação final dos dados ao usuário. Ela armazena os arquivos HTML, CSS e Bootstrap estendidos, e define a estrutura e o layout da interface do usuário. Assim, os templates serão usados para renderizar o conteúdo visual de maneira consistente e estilizada.
 
+#### Fluxo de Trabalho:
+- **Entrada de dados:** Os dados são obtidos de fontes especificadas, como arquivos ou APIs.
+- **Processamento e Análise:** Os dados são processados e analisados em tempo real, utilizando bibliotecas para manipulação de dados.
+- **Visualização:** Os resultados são apresentados de maneira intuitiva por meio de gráficos, tabelas e outras visualizações interativas.
+
 ## Tecnologias Escolhidas
 
 - A nossa aplicação utiliza HTML, CSS e JavaScript para o front-end, Python no back-end e o banco de dados é utilizado apenas arquivos salvos em JSON.
