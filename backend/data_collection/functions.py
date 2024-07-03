@@ -211,8 +211,16 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     else:
         dados_existentes = []
     
-    # Adicionar novos dados
-    dados_existentes.extend(avisos_detalhados)
+    # Determinar o próximo ID
+    if dados_existentes:
+        ultimo_id = max(item['id'] for item in dados_existentes) if dados_existentes else 0
+    else:
+        ultimo_id = 0
+
+    # Adicionar novos dados com IDs incrementais
+    for index, aviso in enumerate(avisos_detalhados, start=ultimo_id + 1):
+        aviso['id'] = index
+        dados_existentes.append(aviso)
     
     # Salvar dados de volta no arquivo
     with open(output_file, 'w', encoding='utf-8') as f:
