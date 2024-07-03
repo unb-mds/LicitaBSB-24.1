@@ -1,0 +1,113 @@
+.aboutUsContext{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 32px;
+}
+
+.aboutUsP {
+    text-align: justify;
+    font-size: 20px;
+    text-align: center;
+}
+
+.aboutUsTitle {
+    font-size: 32px;
+}
+
+.aboutUsImg {
+    width: 80%;
+}
+
+.holderButton{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.dashButton{
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.dashButton:hover{
+    cursor: pointer;
+}
+
+.dashboardWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid black;
+
+}
+
+.dashboardDataWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+
+.dashboardData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 300px;
+}
+.dashboardData h1{
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.dashboardData p{
+    font-size: 18px;
+}
+
+
+.dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    width: 10px;
+    height: 10%;
+}
+
+.dashboardContainer{
+    display: flex;
+    max-width: 100vw;
+    height: 100vh;
+}
+
+.dashboardText{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid black;
+    font-size: 22px;
+    font-weight: 400;
+    height: 100%;
+    padding: 10px;
+}
+
+.selector{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-size: 20px;
+}
