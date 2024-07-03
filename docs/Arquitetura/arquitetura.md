@@ -28,7 +28,7 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Meu Querido 
 - **Linguagem de Programação:** [Python](https://docs.python.org/3/) e [Javascript](https://www.javascript.com/)
 - **Framework Web:** [React](https://react.dev/).
 - **Banco de Dados:** Json no proprio Github.
-- **Ferramenta de Coleta de Dados:** Framework [Scrapy](https://scrapy.org/) e [Selenium](https://www.selenium.dev/).
+- **Ferramenta de Coleta de Dados:** Framework [BeatifulSoup4](https://beautiful-soup-4.readthedocs.io/en/latest/) e [Request](https://pypi.org/project/requests/).
 
 ## Histórico de Versões
 
