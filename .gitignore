@@ -1,6 +1,7 @@
 site/
 myenv/
 backend/venv/
+venv/
 
 # Logs
 logs
