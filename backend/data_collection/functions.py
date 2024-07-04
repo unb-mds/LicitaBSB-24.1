@@ -142,13 +142,10 @@ def extrair_info_aviso(url):
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
     descricao = numero_processo_regex.sub('', descricao).strip()
-
     identifica_elems = soup.find_all('p', class_='identifica')
     subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
-
     assinante_elem = soup.find('p', class_='assina')
     assinante = assinante_elem.text.strip() if assinante_elem else None
-
     cargo_elem = soup.find('p', class_='cargo')
     cargo = cargo_elem.text.strip() if cargo_elem else None
 
@@ -211,12 +208,19 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     else:
         dados_existentes = []
     
-    # Adicionar novos dados
-    dados_existentes.extend(avisos_detalhados)
+    # Determinar o próximo ID
+    if dados_existentes:
+        ultimo_id = max(item['id'] for item in dados_existentes) if dados_existentes else 0
+    else:
+        ultimo_id = 0
+
+    # Adicionar novos dados com IDs incrementais
+    for index, aviso in enumerate(avisos_detalhados, start=ultimo_id + 1):
+        aviso['id'] = index
+        dados_existentes.append(aviso)
     
     # Salvar dados de volta no arquivo
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(dados_existentes, f, ensure_ascii=False, indent=4)
 
     return avisos_detalhados
-
