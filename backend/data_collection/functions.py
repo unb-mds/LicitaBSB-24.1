@@ -106,57 +106,57 @@ def filtrando_os_avisos_de_brasilia(descricao):
     return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
 
 def extrair_info_aviso(url):
-    session = requests.Session()
-    retries=3
-    backoff_factor=0.3
-    status_forcelist=(500, 502, 504)
-    retry = Retry(
-        total=retries,
-        read=retries,
-        connect=retries,
-        backoff_factor=backoff_factor,
-        status_forcelist=status_forcelist,
-    )
-    adapter = HTTPAdapter(max_retries=retry)
-    session.mount("http://", adapter)
-    session.mount("https://", adapter)
-    sessao = session
-    # Obter o HTML da página
+    # Cria uma sessão HTTP com retries
+    sessao = criar_sessao_com_retries()
     response = sessao.get(url)
     response.raise_for_status()
 
-    # Parse the HTML
+    # Faz o parsing do HTML da página usando BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
 
+    # Encontra o elemento que contém a descrição do aviso
     descricao_elem = soup.find('p', class_='dou-paragraph')
     if descricao_elem:
         descricao = descricao_elem.text.strip()
     else:
         descricao = None
 
+    # Filtra os avisos que não são de Brasília
     if not filtrando_os_avisos_de_brasilia(descricao):
         return None
 
-    # Extrair e remover número de processo
+    # Extrai o número do processo usando regex
     numero_processo_regex = re.compile(r'Nº Processo:\s*(\d+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
-    descricao = numero_processo_regex.sub('', descricao).strip()
+    descricao = numero_processo_regex.sub('', descricao).strip()  # Remove o número do processo da descrição
+
+    # Encontra os elementos de identificação e subtítulo
     identifica_elems = soup.find_all('p', class_='identifica')
     subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
+
+    # Encontra o elemento que contém o assinante
     assinante_elem = soup.find('p', class_='assina')
     assinante = assinante_elem.text.strip() if assinante_elem else None
+
+    # Encontra o elemento que contém o cargo do assinante
     cargo_elem = soup.find('p', class_='cargo')
     cargo = cargo_elem.text.strip() if cargo_elem else None
 
-    # Extrair informações adicionais
+    # Encontra o elemento que contém os detalhes do DOU (data de publicação, edição, seção/página, órgão)
     detalhes_dou = soup.find('div', class_='detalhes-dou')
-    data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', class_='publicado-dou-data') else None
+    data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'publicado-dou-data') else None
     edicao = detalhes_dou.find('span', class_='edicao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'edicao-dou-data') else None
     secao_pagina = detalhes_dou.find('span', 'secao-dou').text.strip() if detalhes_dou and detalhes_dou.find('span', 'secao-dou') else None
     orgao = detalhes_dou.find('span', 'orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'orgao-dou-data') else None
 
-    # Construir o dicionário com as informações
+    # Extrai os valores de licitação usando regex
+    regex_valor = r'R\$ ?([\d.,]+)'
+    valores_licitacao = re.findall(regex_valor, descricao)
+    # Converte os valores para o formato numérico
+    valores_licitacao = [valor.replace('.', '').replace(',', '.') for valor in valores_licitacao]
+
+    # Monta o dicionário com as informações do aviso
     aviso_info = {
         "tipo": "Aviso de Licitação",
         "numero_licitacao": subtitulo,
@@ -168,10 +168,12 @@ def extrair_info_aviso(url):
         "cargo": cargo,
         "edicao": edicao,
         "secao_pagina": secao_pagina,
-        "link": url
+        "link": url,
+        "valores_licitacao": valores_licitacao if valores_licitacao else None
     }
 
     return aviso_info
+
 
 def criandojsoncomavisos(links_avisos, dia, mes, ano):
     print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
