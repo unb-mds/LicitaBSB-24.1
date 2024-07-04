@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-# Ata de Reunião - 03/07
+# Ata de Reunião - 02/07
 
 ## Discussões:
 
