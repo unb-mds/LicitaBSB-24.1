@@ -29,3 +29,6 @@ https://docs.google.com/document/d/1UdYTlA7NrNsLdsX-zuxKYdt7JWSmAfA1JK9Z72IrGf4/
 
 ### Ata de reunião - 26/06
 https://docs.google.com/document/d/1rc6C_01yYmb9X4UXKJYjL1c7oi9JTs7CeqhPB9jj7Go/edit
+
+### Ata de reunião - 03/07
+https://docs.google.com/document/d/16CZn3ik5QdogbZs3FczOiXlNTLz90LVy37GDGiOGxi0/edit?usp=sharing
