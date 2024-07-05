@@ -130,7 +130,6 @@ def extrair_info_extratos(url):
     numero_processo_regex = re.compile(r'Processo: \s*(\d+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
-    descricao = numero_processo_regex.sub('', descricao).strip()  # Remove o número do processo da descrição
 
     # Encontra os elementos de identificação e subtítulo
     identifica_elems = soup.find('p', class_='identifica')
