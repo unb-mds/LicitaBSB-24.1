@@ -75,7 +75,7 @@ def extrair_url_titles(url):
 
 def extraindo_avisos_licitacao(lista_de_urls):
     links_avisos_licitacao = []
-    termos = ["aviso-de-licitacao", "aviso-de-licitação"]
+    termos = ["aviso-de-licitacao", "aviso-de-licitação", "aviso-de-dispensa-de-licitacao"]
 
     for url in lista_de_urls:
         if any(term in url for term in termos):
@@ -196,7 +196,7 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
     
     # Nome do arquivo JSON
-    output_directory = 'backend/data_collection/database'
+    output_directory = 'backend/data_collection_avisos/database'
     os.makedirs(output_directory, exist_ok=True)  # Garante que o diretório de saída exista
     output_file = os.path.join(output_directory, 'data.json')
     

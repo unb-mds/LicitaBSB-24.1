@@ -43,7 +43,7 @@ pip install requests beautifulsoup4 urllib3
 
 Você pode executar o script `main.py` de três maneiras diferentes:
 
-1. **Processar desde 02/01/2013 até a data atual:**
+1. **Processar os dados dos últimos 7 dias:**
     ```sh
     python3 main.py
     ```
