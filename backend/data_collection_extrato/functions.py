@@ -135,7 +135,9 @@ def extrair_info_extratos(url):
     # Encontra os elementos de identificação e subtítulo
     identifica_elems = soup.find('p', class_='identifica')
     titulo = identifica_elems.text.strip() if identifica_elems else None
-
+    if titulo == None:
+        identifica_elems = soup.find('h3', class_='titulo-dou')
+        titulo = identifica_elems.text.strip() if identifica_elems else None
 
 
     # Encontra o elemento que contém os detalhes do DOU (data de publicação, edição, seção/página, órgão)
