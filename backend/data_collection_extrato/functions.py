@@ -127,7 +127,7 @@ def extrair_info_extratos(url):
         return None
 
     # Extrai o número do processo usando regex
-    numero_processo_regex = re.compile(r'Processo(?: nº)?: \s*([\d./-]+(?:-[A-Z]+)?)', re.IGNORECASE)
+    numero_processo_regex = re.compile(r'Processo(?: nº)?: \s*([\d.]+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
 
