@@ -127,7 +127,7 @@ def extrair_info_extratos(url):
         return None
 
     # Extrai o número do processo usando regex
-    numero_processo_regex = re.compile(r'Processo(?: nº)?: \s*([\d.]+[-\d/]*\d+)', re.IGNORECASE)
+    numero_processo_regex = re.compile(r'Processo(?:\s*n[ºo])?:?\s*([\d.]+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
 
@@ -149,8 +149,9 @@ def extrair_info_extratos(url):
     # Extrai os valores de licitação usando regex
     regex_valor = r'R\$ ?([\d.,]+)|RS ?([\d.,]+)'
     valores_licitacao = re.findall(regex_valor, descricao)
-    # Converte os valores para o formato numérico
-    valores_licitacao = [valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]
+
+    # Converte os valores para o formato numérico e remove duplicatas
+    valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
 
 
     # Monta o dicionário com as informações do aviso
