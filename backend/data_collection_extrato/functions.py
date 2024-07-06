@@ -100,7 +100,7 @@ def filtrando_os_extratos_de_brasilia(descricao):
                                   "22h", "23h", "00hs", "01hs", "02hs", "03hs", "04hs", "05hs", 
                                   "06hs", "07hs", "08hs", "09hs", "10hs", "11hs", "12hs", 
                                   "13hs", "14hs", "15hs", "16hs", "17hs", "18hs", "19hs", "20hs", 
-                                  "21hs", "22hs", "23hs"
+                                  "21hs", "22hs", "23hs", "Belem", "Belém", "belem"
                                 ]
                 if not any(palavra in trecho_analisado for palavra in palavras_chave):
                     return True  # Se encontrar, retorna o aviso_info
@@ -147,7 +147,7 @@ def extrair_info_extratos(url):
     orgao = detalhes_dou.find('span', 'orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'orgao-dou-data') else None
 
     # Extrai os valores de licitação usando regex
-    regex_valor = r'R\$ ?([\d,.]+)(?!\d)|RS ?([\d,.]+)(?!\d)'
+    regex_valor = r'R\$ ?([\d.]+,\d{2})(?!\d)|RS ?([\d.]+,\d{2})(?!\d)'
     valores_licitacao = re.findall(regex_valor, descricao)
 
     # Converte os valores para o formato numérico e remove duplicatas
