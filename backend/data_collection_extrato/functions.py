@@ -152,8 +152,7 @@ def extrair_info_extratos(url):
 
     # Converte os valores para o formato numérico e remove duplicatas
     valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
-    valores_licitacao.remove("") #removendo possiveis valores vazios
-
+    if "" in valores_licitacao: valores_licitacao.remove("")
     # Monta o dicionário com as informações do aviso
     aviso_info = {
         "tipo": titulo,
