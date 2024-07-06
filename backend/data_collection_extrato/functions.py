@@ -147,7 +147,7 @@ def extrair_info_extratos(url):
     orgao = detalhes_dou.find('span', 'orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'orgao-dou-data') else None
 
     # Extrai os valores de licitação usando regex
-    regex_valor = r'R\$ ?([\d.,]+)|RS ?([\d.,]+)'
+    regex_valor = r'R\$ ?([\d,.]+)(?!\d)|RS ?([\d,.]+)(?!\d)'
     valores_licitacao = re.findall(regex_valor, descricao)
 
     # Converte os valores para o formato numérico e remove duplicatas
