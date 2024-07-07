@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '00 01 * * SAT'   
-    
+
 jobs:
   run-python:
     runs-on: ubuntu-latest
@@ -20,13 +20,23 @@ jobs:
 
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install requests
-        pip install beautifulsoup4
-        pip install urllib3
+        python3 -m pip install --upgrade pip
+        pip install beautifulsoup4==4.12.3
+        pip install certifi==2024.6.2
+        pip install charset-normalizer==3.3.2
+        pip install idna==3.7
+        pip install iniconfig==2.0.0
+        pip install packaging==24.1
+        pip install pluggy==1.5.0
+        pip install requests==2.32.3
+        pip install soupsieve==2.5
+        pip install urllib3==2.2.2
+
         
-    - name: Run Python script
-      run: python backend/data_collection_avisos/main.py 
+    - name: Run Python scripts
+      run: |
+        python3 backend/data_collection_avisos/main.py 
+        python3 backend/data_collection_extrato/main.py 
 
     - name: Commit and push updated last date
       run: |

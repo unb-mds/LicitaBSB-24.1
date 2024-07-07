@@ -99,7 +99,7 @@ def filtrando_os_avisos_de_brasilia(descricao):
                                   "22h", "23h", "00hs", "01hs", "02hs", "03hs", "04hs", "05hs", 
                                   "06hs", "07hs", "08hs", "09hs", "10hs", "11hs", "12hs", 
                                   "13hs", "14hs", "15hs", "16hs", "17hs", "18hs", "19hs", "20hs", 
-                                  "21hs", "22hs", "23hs"
+                                  "21hs", "22hs", "23hs", "Belem", "Belém", "belem"
                                 ]
                 if not any(palavra in trecho_analisado for palavra in palavras_chave):
                     return True  # Se encontrar, retorna o aviso_info
@@ -121,15 +121,21 @@ def extrair_info_aviso(url):
     else:
         descricao = None
 
+    # Encontra os elementos de identificação e subtítulo
+    identifica_elems = soup.find('p', class_='identifica')
+    titulo = identifica_elems.text.strip() if identifica_elems else None
+    if titulo == None:
+        identifica_elems = soup.find('h3', class_='titulo-dou')
+        titulo = identifica_elems.text.strip() if identifica_elems else "Aviso de Licitação"
+
     # Filtra os avisos que não são de Brasília
     if not filtrando_os_avisos_de_brasilia(descricao):
         return None
 
-    # Extrai o número do processo usando regex
-    numero_processo_regex = re.compile(r'Nº Processo:\s*(\d+[-\d/]*\d+)', re.IGNORECASE)
+    #Extrai o número do processo usando regex
+    numero_processo_regex = re.compile(r'Processo(?:\s*n[ºo])?:?\s*([\d.]+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
-    descricao = numero_processo_regex.sub('', descricao).strip()  # Remove o número do processo da descrição
 
     # Encontra os elementos de identificação e subtítulo
     identifica_elems = soup.find_all('p', class_='identifica')
@@ -151,14 +157,16 @@ def extrair_info_aviso(url):
     orgao = detalhes_dou.find('span', 'orgao-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'orgao-dou-data') else None
 
     # Extrai os valores de licitação usando regex
-    regex_valor = r'R\$ ?([\d.,]+)'
+    regex_valor = r'R\$ ?([\d.]+,\d{2})(?!\d)|RS ?([\d.]+,\d{2})(?!\d)'
     valores_licitacao = re.findall(regex_valor, descricao)
-    # Converte os valores para o formato numérico
-    valores_licitacao = [valor.replace('.', '').replace(',', '.') for valor in valores_licitacao]
+
+    # Converte os valores para o formato numérico e remove duplicatas
+    valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
+    if "" in valores_licitacao: valores_licitacao.remove("")
 
     # Monta o dicionário com as informações do aviso
     aviso_info = {
-        "tipo": "Aviso de Licitação",
+        "tipo": titulo,
         "numero_licitacao": subtitulo,
         "nomeOrgao": orgao,
         "objeto": descricao,
