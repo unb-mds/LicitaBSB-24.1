@@ -3,7 +3,7 @@ name: Script de automação da extração das Licitações de Brasília
 on:
   workflow_dispatch:
   schedule:
-    - cron: '00 01 * * SAT'   
+    - cron: '00 01 * * SAT'
 
 jobs:
   run-python:
@@ -21,22 +21,20 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install beautifulsoup4==4.12.3
-        pip install certifi==2024.6.2
-        pip install charset-normalizer==3.3.2
-        pip install idna==3.7
-        pip install iniconfig==2.0.0
-        pip install packaging==24.1
-        pip install pluggy==1.5.0
-        pip install requests==2.32.3
-        pip install soupsieve==2.5
-        pip install urllib3==2.2.2
+        pip install -r backend/requirements.txt
 
-        
-    - name: Run Python scripts
+    - name: Run data_collection_avisos script
       run: |
-        python3 backend/data_collection_avisos/main.py 
-        python3 backend/data_collection_extrato/main.py 
+        echo "Running data_collection_avisos script..."
+        python3 backend/data_collection_avisos/main.py
+        echo "Finished data_collection_avisos script."
+
+    - name: Run data_collection_extrato script
+      run: |
+        echo "Running data_collection_extrato script..."
+        python3 backend/data_collection_extrato/main.py
+        echo "Finished data_collection_extrato script."
+
 
     - name: Commit and push updated last date
       run: |
@@ -44,5 +42,5 @@ jobs:
         git config --global user.email "actions@users.noreply.github.com"
         git pull origin main
         git add --all
-        git commit -m "[WF] Licitações extraídas com sucesso!"
+        git commit -m "[CI] Licitações extraídas com sucesso!"
         git push
