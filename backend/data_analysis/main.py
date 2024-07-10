@@ -1,8 +1,6 @@
 # -*- coding: latin1 -*-
 import csv
-import csv
 import json
-import os
 import os
 
 def analyse_licitacoes(file_path):
