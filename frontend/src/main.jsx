@@ -24,10 +24,10 @@ const router = createBrowserRouter([
     path: "/sobrenos",
     element: <AboutUs/>
   },
-  {
-    path: "/dashboard",
-    element: <Dashboard />
-  },
+  // {
+  //   path: "/dashboard",
+  //   element: <Dashboard />
+  // },
   {
     path: "/licitacoes",
     element: <BiddingList />
