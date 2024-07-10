@@ -3,7 +3,7 @@ name: Script de automação da extração das Licitações de Brasília
 on:
   workflow_dispatch:
   schedule:
-    - cron: '00 01 * * SAT'
+    - cron: '01 03 * * *'
 
 jobs:
   run-python:
