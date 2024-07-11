@@ -7,8 +7,10 @@ def analyse_licitacoes(file_path):
     data=[]
     try:
         with open(file_path, 'r', encoding='latin1') as file:
+            #Lê o arquivo com o delimitador sendo ';'
             csv_reader = csv.DictReader(file, delimiter=';')
             for line in csv_reader:
+                #Apenas armazena as licitações que apresentam as seguintes condições
                 if line['Munic�pio'] == "BRASILIA" and line['Modalidade Compra'] == "Preg�o - Registro de Pre�o" and line['Valor Licita��o'] != "0,00":
                     data.append(line)
     except FileNotFoundError:
@@ -26,6 +28,7 @@ def save_json(data):
 
 def main():
     folder_path = "licitacoes_csv"  
+    #Itera sobre todos os aquivos dentro de folder_path
     for filename in os.listdir(folder_path):
         if filename.endswith(".csv"):
             file_path = os.path.join(folder_path, filename)
