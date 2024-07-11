@@ -1,8 +1,8 @@
-# Documentação de Arquitetura - LicitaBSB
+# DocumentaÃ§Ã£o de Arquitetura - LicitaBSB
 
-## Introdução
+## IntroduÃ§Ã£o
 
-O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Oficial da União" relacionadas a Brasília e organizá-las em um feed de rede social. Os usuários poderão realizar buscas avançadas para encontrar licitações específicas de seu interesse.
+O projeto LicitaBSB tem como objetivo coletar licitaÃ§Ãµes do site "DiÃ¡rio Oficial da UniÃ£o" relacionadas a BrasÃ­lia e organizÃ¡-las em um feed de rede social. Os usuÃ¡rios poderÃ£o realizar buscas avanÃ§adas para encontrar licitaÃ§Ãµes especÃ­ficas de seu interesse.
 
 ### Diagrama de Arquitetura
 
@@ -10,85 +10,85 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Oficial
 
 ## Camadas
 
-1. **Model**: Responsável pela lógica do projeto e pelo gerenciamento dos dados da aplicação. Atua como um intermediário para manipular dados entre o banco de dados e a Visualização. Em sua interação com o banco de dados, permite a criação, leitura, atualização e exclusão de informações, garantindo a integridade e consistência dos dados.
+1. **Model**: ResponsÃ¡vel pela lÃ³gica do projeto e pelo gerenciamento dos dados da aplicaÃ§Ã£o. Atua como um intermediÃ¡rio para manipular dados entre o banco de dados e a VisualizaÃ§Ã£o. Em sua interaÃ§Ã£o com o banco de dados, permite a criaÃ§Ã£o, leitura, atualizaÃ§Ã£o e exclusÃ£o de informaÃ§Ãµes, garantindo a integridade e consistÃªncia dos dados.
 
-2. **View**: Responsável por lidar com a lógica de apresentação e a resposta aos usuários. Formata os dados recebidos do banco de dados por meio do Modelo para exibição e seleciona os templates apropriados para renderizar a resposta. Funciona como a intermediária da arquitetura, controlando o fluxo entre a lógica do projeto e a interface do usuário.
+2. **View**: ResponsÃ¡vel por lidar com a lÃ³gica de apresentaÃ§Ã£o e a resposta aos usuÃ¡rios. Formata os dados recebidos do banco de dados por meio do Modelo para exibiÃ§Ã£o e seleciona os templates apropriados para renderizar a resposta. Funciona como a intermediÃ¡ria da arquitetura, controlando o fluxo entre a lÃ³gica do projeto e a interface do usuÃ¡rio.
 
-3. **Template**: Responsável pela apresentação final dos dados ao usuário. Armazena os arquivos HTML, CSS e Bootstrap estendidos, e define a estrutura e o layout da interface do usuário. Assim, os templates são usados para renderizar o conteúdo visual de maneira consistente e estilizada.
+3. **Template**: ResponsÃ¡vel pela apresentaÃ§Ã£o final dos dados ao usuÃ¡rio. Armazena os arquivos HTML, CSS e Bootstrap estendidos, e define a estrutura e o layout da interface do usuÃ¡rio. Assim, os templates sÃ£o usados para renderizar o conteÃºdo visual de maneira consistente e estilizada.
 
 #### Fluxo de Trabalho
-- **Entrada de dados:** Os dados são obtidos de fontes especificadas, como arquivos ou APIs.
-- **Processamento e Análise:** Os dados são processados e analisados em tempo real, utilizando bibliotecas para manipulação de dados.
-- **Visualização:** Os resultados são apresentados de maneira intuitiva por meio de gráficos, tabelas e outras visualizações interativas.
+- **Entrada de dados:** Os dados sÃ£o obtidos de fontes especificadas, como arquivos ou APIs.
+- **Processamento e AnÃ¡lise:** Os dados sÃ£o processados e analisados em tempo real, utilizando bibliotecas para manipulaÃ§Ã£o de dados.
+- **VisualizaÃ§Ã£o:** Os resultados sÃ£o apresentados de maneira intuitiva por meio de grÃ¡ficos, tabelas e outras visualizaÃ§Ãµes interativas.
 
 ## Tecnologias Escolhidas
 
 - **Front-end:** HTML, CSS e JavaScript.
 - **Back-end:** Python.
-- **Banco de Dados:** JSON no próprio GitHub.
+- **Banco de Dados:** JSON no prÃ³prio GitHub.
 - **Framework Web:** [React](https://react.dev/)
 - **Ferramenta de Coleta de Dados:** Framework [BeautifulSoup4](https://beautiful-soup-4.readthedocs.io/en/latest/) e [Requests](https://pypi.org/project/requests/).
 
 ## Estrutura do Backend
 
-O backend está dividido em três pastas: **Data_analysis**, **data_collection_avisos** e **data_collection_extrato**.
+O backend estÃ¡ dividido em trÃªs pastas: **Data_analysis**, **data_collection_avisos** e **data_collection_extrato**.
 
 - **Data_analysis:**
-  - `licitacoes`: Pasta contendo as licitações do site [Portal da Transparência](https://portaldatransparencia.gov.br/download-de-dados/licitacoes).
-  - `main.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [csv](https://docs.python.org/3/library/csv.html) e [json](https://docs.python.org/3/library/json.html) para iterar sobre os arquivos contidos na pasta `licitacoes`, extraindo os dados de licitações de Brasília e armazenando-os no arquivo `output.json`.
-  - `output.json`: Base de dados das licitações do projeto, gerada pela função `main.py`.
+  - `licitacoes`: Pasta contendo as licitaÃ§Ãµes do site [Portal da TransparÃªncia](https://portaldatransparencia.gov.br/download-de-dados/licitacoes).
+  - `main.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [csv](https://docs.python.org/3/library/csv.html) e [json](https://docs.python.org/3/library/json.html) para iterar sobre os arquivos contidos na pasta `licitacoes`, extraindo os dados de licitaÃ§Ãµes de BrasÃ­lia e armazenando-os no arquivo `output.json`.
+  - `output.json`: Base de dados das licitaÃ§Ãµes do projeto, gerada pela funÃ§Ã£o `main.py`.
 
 - **Data_collection_avisos:** 
-  - `database/data.json`: Base de dados completa pela junção da base de dados gerada pelo `Data_analysis` e a `main.py`.
-  - `function.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [requests](https://pypi.org/project/requests/), [re](https://docs.python.org/3/library/re.html), [datetime](https://docs.python.org/3/library/datetime.html), [bs4](https://pypi.org/project/beautifulsoup4/), [json](https://docs.python.org/3/library/json.html) e [urllib3](https://pypi.org/project/urllib3/) para auxiliar nas operações feitas em `main.py`.
-  - `main.py`: Utiliza as bibliotecas [sys](https://docs.python.org/3/library/sys.html) e [datetime](https://docs.python.org/3/library/datetime.html) para realizar a extração de avisos de licitações a partir de um intervalo de datas fornecido pelo usuário ou do dia anterior à execução.
+  - `database/data.json`: Base de dados completa pela junÃ§Ã£o da base de dados gerada pelo `Data_analysis` e a `main.py`.
+  - `function.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [requests](https://pypi.org/project/requests/), [re](https://docs.python.org/3/library/re.html), [datetime](https://docs.python.org/3/library/datetime.html), [bs4](https://pypi.org/project/beautifulsoup4/), [json](https://docs.python.org/3/library/json.html) e [urllib3](https://pypi.org/project/urllib3/) para auxiliar nas operaÃ§Ãµes feitas em `main.py`.
+  - `main.py`: Utiliza as bibliotecas [sys](https://docs.python.org/3/library/sys.html) e [datetime](https://docs.python.org/3/library/datetime.html) para realizar a extraÃ§Ã£o de avisos de licitaÃ§Ãµes a partir de um intervalo de datas fornecido pelo usuÃ¡rio ou do dia anterior Ã  execuÃ§Ã£o.
 
-- **Data_collection_extrato:** Possui a mesma função da `main.py` da pasta `data_collection_avisos`, porém direcionada à extração apenas de extratos.
+- **Data_collection_extrato:** Possui a mesma funÃ§Ã£o da `main.py` da pasta `data_collection_avisos`, porÃ©m direcionada Ã  extraÃ§Ã£o apenas de extratos.
 
-A pasta `Data_analysis` foi utilizada para fazer a extração inicial dos dados para nosso banco de dados, enquanto as pastas `data_collection_avisos` e `data_collection_extrato` servem para tirar semanalmente as licitações novas. O método usado em `Data_analysis`, embora completo, só consegue pegar os dados fornecidos pelo Portal da Transparência, que demoram um mês ou mais para estarem prontos.
+A pasta `Data_analysis` foi utilizada para fazer a extraÃ§Ã£o inicial dos dados para nosso banco de dados, enquanto as pastas `data_collection_avisos` e `data_collection_extrato` servem para tirar semanalmente as licitaÃ§Ãµes novas. O mÃ©todo usado em `Data_analysis`, embora completo, sÃ³ consegue pegar os dados fornecidos pelo Portal da TransparÃªncia, que demoram um mÃªs ou mais para estarem prontos.
 
 ## Fluxo de Raspagem 
 
 1. **Obter Data de Raspagem:**
 
-   *Opções:*
+   *OpÃ§Ãµes:*
    - Data atual (se nenhum argumento for fornecido no script `main.py`).
-   - Intervalo de datas específico (informado através de argumentos no script).
+   - Intervalo de datas especÃ­fico (informado atravÃ©s de argumentos no script).
 
-   *Validação:*
-   - A data inicial não pode ser anterior a 05/02/2018.
-   - A data final não pode ser posterior à data atual.
+   *ValidaÃ§Ã£o:*
+   - A data inicial nÃ£o pode ser anterior a 05/02/2018.
+   - A data final nÃ£o pode ser posterior Ã  data atual.
 
 2. **Iterar por Dias:**
 
    Para cada dia no intervalo:
 
    - **Capturar Link do DOU:**
-     - Utilizar a função `link_jornal_diario` para obter o link da página do DOU para o dia específico.
+     - Utilizar a funÃ§Ã£o `link_jornal_diario` para obter o link da pÃ¡gina do DOU para o dia especÃ­fico.
 
-   - **Extrair URLs de Títulos:**
-     - Utilizar a função `extrair_url_titles` para extrair as URLs dos títulos dos avisos de licitação a partir da página do DOU.
+   - **Extrair URLs de TÃ­tulos:**
+     - Utilizar a funÃ§Ã£o `extrair_url_titles` para extrair as URLs dos tÃ­tulos dos avisos de licitaÃ§Ã£o a partir da pÃ¡gina do DOU.
 
-   - **Extrair Avisos de Licitação:**
-     - Utilizar a função `extraindo_avisos_licitacao` para filtrar as URLs dos títulos e identificar apenas os avisos de licitação.
+   - **Extrair Avisos de LicitaÃ§Ã£o:**
+     - Utilizar a funÃ§Ã£o `extraindo_avisos_licitacao` para filtrar as URLs dos tÃ­tulos e identificar apenas os avisos de licitaÃ§Ã£o.
 
    - **Criar JSON com Avisos:**
-     - Processar cada aviso de licitação:
-       - Extrair informações como tipo, número, órgão, objeto, data de abertura, valores e outras.
-       - Salvar as informações em um arquivo JSON.
-     - Utilizar a função `criandojsoncomavisos` para realizar o processo completo.
+     - Processar cada aviso de licitaÃ§Ã£o:
+       - Extrair informaÃ§Ãµes como tipo, nÃºmero, Ã³rgÃ£o, objeto, data de abertura, valores e outras.
+       - Salvar as informaÃ§Ãµes em um arquivo JSON.
+     - Utilizar a funÃ§Ã£o `criandojsoncomavisos` para realizar o processo completo.
 
-   - **Filtrar por Brasília:**
-     - Utilizar a função `filtrando_os_avisos_de_brasilia` para garantir que apenas os avisos relacionados a Brasília sejam incluídos no arquivo JSON final.
+   - **Filtrar por BrasÃ­lia:**
+     - Utilizar a funÃ§Ã£o `filtrando_os_avisos_de_brasilia` para garantir que apenas os avisos relacionados a BrasÃ­lia sejam incluÃ­dos no arquivo JSON final.
 
 3. **Armazenar em JSON:**
 
-   - Salvar o arquivo JSON com as informações dos avisos de licitação no diretorio `database`.
+   - Salvar o arquivo JSON com as informaÃ§Ãµes dos avisos de licitaÃ§Ã£o no diretorio `database`.
 
-## Histórico de Versões
+## HistÃ³rico de VersÃµes
 
-| Data       | Versão | Descrição                               | Autores         |
+| Data       | VersÃ£o | DescriÃ§Ã£o                               | Autores         |
 |------------|--------|-----------------------------------------|-----------------|
-| 2024-04-12 | 1.0    | Versão inicial da documentação          | Marcelo Adrian  |
-| 2024-07-01 | 1.1    | Modificações segundo requisições        | Marcelo Adrian  |
-| 2024-07-08 | 1.2    | Explicações estruturais                 | Marcelo Adrian  |
+| 2024-04-12 | 1.0    | VersÃ£o inicial da documentaÃ§Ã£o          | Marcelo Adrian  |
+| 2024-07-01 | 1.1    | ModificaÃ§Ãµes segundo requisiÃ§Ãµes        | Marcelo Adrian  |
+| 2024-07-08 | 1.2    | ExplicaÃ§Ãµes estruturais                 | Marcelo Adrian  |
