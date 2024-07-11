@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 export default function CardLicitacoes({ data }) {
 
   const statusBidding = setStatusBidding(data)
-  
+
   const dataLicitacao = data['data_abertura']
   const tipoLicitacao = data['tipo']
   const objetoLicitacao = data['objeto']
@@ -21,12 +21,10 @@ export default function CardLicitacoes({ data }) {
     var valorLicitacao = data['Valor_Licitacao']
   }
 
-  // {`R$ ${formatCurrency(data["Valor_Licitacao"])}`}
-
   return (
     <div className={styles.cardWrapper}>
       <h5 className={styles.cardTitle}>{tituloLicitacao}</h5>
-      
+
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
@@ -36,8 +34,10 @@ export default function CardLicitacoes({ data }) {
         </div>
 
         <div className={styles.licitacoesInfo}>
-            <p>Dara de publicação: {dataLicitacao}</p>
-            <p className={styles.statusContainer}>Valor da licitação: R$ 0.000.000,00</p>
+            <p>Data de publicação: {dataLicitacao}</p>
+            {
+              valorLicitacao && <p className={styles.statusContainer}>Valor da licitação: R$ {formatCurrency(valorLicitacao)}</p>
+            }
         </div>
 
         <div className={styles.cardSection}>
@@ -46,7 +46,7 @@ export default function CardLicitacoes({ data }) {
         <div>
           <p className={styles.cardDescricao}>{objetoLicitacao}</p>
         </div>
-        
+
       </div>
       <div>
         <Link to={`/licitacoes/${data.id}`}>

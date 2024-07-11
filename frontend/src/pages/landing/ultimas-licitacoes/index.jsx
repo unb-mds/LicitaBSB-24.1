@@ -16,7 +16,7 @@ export default function UltimasLicitacoes (){
     // setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
     setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0))
   }, [])
-  
+
   // console.log(listaLicitacoes)
 
   return (
@@ -30,7 +30,7 @@ export default function UltimasLicitacoes (){
           {listaLicitacoes.map(item => {
             // console.log(item)
             return (
-              <CardLicitacoes data={item}/>
+              <CardLicitacoes key={item.id} data={item}/>
             );
           })}
         </div>

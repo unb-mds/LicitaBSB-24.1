@@ -13,11 +13,11 @@ export default function BiddingList() {
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10)
 
-  
+
   const loadMoreBids = () => {
     (licitacoes.length - lengthBids < 10) ? setLengthBids(prevLength => prevLength += licitacoes.length - lengthBids) : setLengthBids(prevLength => prevLength += 10)
   }
-  
+
   useEffect(() => {
     setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
   }, [lengthBids])
@@ -42,7 +42,7 @@ export default function BiddingList() {
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map(item => {
               return (
-                <CardLicitacoes key={item["N�mero Processo"]} data={item}/>
+                <CardLicitacoes key={item["numero_processo"]} data={item}/>
               );
             })}
 
