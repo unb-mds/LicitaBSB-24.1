@@ -3,6 +3,7 @@ import { setStatusBidding } from '../../utils/status-bidding'
 
 import styles from './style.module.css'
 import formatCurrency from '../../utils/format-currency'
+import { Link } from 'react-router-dom'
 
 export default function CardLicitacoes({ data }) {
 
@@ -15,7 +16,6 @@ export default function CardLicitacoes({ data }) {
   if('nomeOrgao' in data){
     var tituloLicitacao = data['nomeOrgao']
     var valorLicitacao = data['valores_licitacao']
-    console.log(data)
   } else {
     var tituloLicitacao = data['Nome_UG']
     var valorLicitacao = data['Valor_Licitacao']
@@ -49,7 +49,10 @@ export default function CardLicitacoes({ data }) {
         
       </div>
       <div>
-        <a href="" className={styles.cardButton}>Ver Mais</a>
+        <Link to={`/licitacoes/${data.id}`}>
+          <p className={styles.cardButton}>Ver Mais</p>
+        </Link>
+        {/* <a href={`/licitacao`} className={styles.cardButton}>Ver Mais</a> */}
       </div>
     </div>
   )
