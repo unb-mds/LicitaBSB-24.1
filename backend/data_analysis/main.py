@@ -16,7 +16,9 @@ def analyse_licitacoes(file_path):
     return data
 
 def save_json(data):
-    json_file = "dados_csv.json"
+    json_file = "output.json"
+def save_json(data):
+    json_file = "output.json"
     if data:
         mode = 'a' if os.path.exists(json_file) else 'w'
         with open(json_file, mode, encoding='latin1') as file:
@@ -25,7 +27,7 @@ def save_json(data):
             json.dump(data, file, ensure_ascii=False, indent=4)
 
 def main():
-    folder_path = "licitacoes_csv"  
+    folder_path = "licitacoes"  
     for filename in os.listdir(folder_path):
         if filename.endswith(".csv"):
             file_path = os.path.join(folder_path, filename)
