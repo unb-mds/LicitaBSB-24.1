@@ -31,21 +31,21 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Ofic
 
 ## Estrutura do Backend
 
-O backend está dividido em três pastas: **Data_analysis**, **data_collection_avisos** e **data_collection_extrato**.
+O backend está dividido em três pastas: **extrair_dados_csv**, **data_collection_avisos** e **data_collection_extrato**.
 
-- **Data_analysis:**
-  - `licitacoes`: Pasta contendo as licitações do site [Portal da Transparência](https://portaldatransparencia.gov.br/download-de-dados/licitacoes).
-  - `main.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [csv](https://docs.python.org/3/library/csv.html) e [json](https://docs.python.org/3/library/json.html) para iterar sobre os arquivos contidos na pasta `licitacoes`, extraindo os dados de licitações de Brasília e armazenando-os no arquivo `output.json`.
-  - `output.json`: Base de dados das licitações do projeto, gerada pela função `main.py`.
+- **extrair_dados_csv:**
+  - `licitacoes_csv`: Pasta contendo as licitações do site [Portal da Transparência](https://portaldatransparencia.gov.br/download-de-dados/licitacoes_csv).
+  - `extrair_dados_csv.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [csv](https://docs.python.org/3/library/csv.html) e [json](https://docs.python.org/3/library/json.html) para iterar sobre os arquivos contidos na pasta `licitacoes_csv`, extraindo os dados de licitações de Brasília e armazenando-os no arquivo `dados_csv.json`.
+  - `dados_csv.json`: Base de dados das licitações do projeto, gerada pela função `extrair_dados_csv.py`.
 
 - **Data_collection_avisos:** 
-  - `database/data.json`: Base de dados completa pela junção da base de dados gerada pelo `Data_analysis` e a `main.py`.
+  - `database/data.json`: Base de dados completa pela junção da base de dados gerada pelo `extrair_dados_csv` e a `main.py`.
   - `function.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [requests](https://pypi.org/project/requests/), [re](https://docs.python.org/3/library/re.html), [datetime](https://docs.python.org/3/library/datetime.html), [bs4](https://pypi.org/project/beautifulsoup4/), [json](https://docs.python.org/3/library/json.html) e [urllib3](https://pypi.org/project/urllib3/) para auxiliar nas operações feitas em `main.py`.
   - `main.py`: Utiliza as bibliotecas [sys](https://docs.python.org/3/library/sys.html) e [datetime](https://docs.python.org/3/library/datetime.html) para realizar a extração de avisos de licitações a partir de um intervalo de datas fornecido pelo usuário ou do dia anterior à execução.
 
 - **Data_collection_extrato:** Possui a mesma função da `main.py` da pasta `data_collection_avisos`, porém direcionada à extração apenas de extratos.
 
-A pasta `Data_analysis` foi utilizada para fazer a extração inicial dos dados para nosso banco de dados, enquanto as pastas `data_collection_avisos` e `data_collection_extrato` servem para tirar semanalmente as licitações novas. O método usado em `Data_analysis`, embora completo, só consegue pegar os dados fornecidos pelo Portal da Transparência, que demoram um mês ou mais para estarem prontos.
+A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos dados para nosso banco de dados, enquanto as pastas `data_collection_avisos` e `data_collection_extrato` servem para tirar semanalmente as licitações novas. O método usado em `extrair_dados_csv`, embora completo, só consegue pegar os dados fornecidos pelo Portal da Transparência, que demoram um mês ou mais para estarem prontos.
 
 ## Fluxo de Raspagem 
 
