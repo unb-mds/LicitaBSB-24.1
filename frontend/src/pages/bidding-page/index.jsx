@@ -1,5 +1,7 @@
 import React from "react";
 
+import styles from './style.module.css'
+
 import Header from "../../components/header";
 import { useParams } from "react-router-dom";
 import { getLicitacoes } from "../../services/licitacoes.service";
@@ -22,7 +24,7 @@ export default function BiddingPage(){
 
 
     return(
-    <div>
+    <div className={styles.biddingContainer}>
         <div>
             <div>
                 <h3>{tituloLicitacao}</h3>
@@ -37,7 +39,7 @@ export default function BiddingPage(){
             <p>{valorLicitacao}</p>
         </div>
         
-        <div></div>
+        <div className={styles.horizontalLine}></div>
 
         <p>{objetoLicitacao}</p>
     </div>

@@ -1,0 +1,18 @@
+.biddingContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 80%;
+    padding: 5rem;
+    margin-left: 15%;
+
+    
+
+}
+
+.horizontalLine {
+    border-bottom: 1px solid black; /* Espessura e cor da linha */
+    width: 100%; /* Largura da linha */
+    margin: 20px 0; /* Espaçamento em torno da linha */
+  }
