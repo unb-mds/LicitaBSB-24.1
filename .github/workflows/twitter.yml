@@ -1,4 +1,4 @@
-name: Script de automação das postagens no X.
+name: Script de automação das postagens no X
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v2
       with:
-        python-version: 3.10.12
+        python-version: '3.10.12'
 
     - name: Install dependencies
       run: |
