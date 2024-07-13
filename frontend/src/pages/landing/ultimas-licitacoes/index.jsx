@@ -17,7 +17,7 @@ export default function UltimasLicitacoes (){
     setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0))
   }, [])
   
-  console.log(listaLicitacoes)
+  // console.log(listaLicitacoes)
 
   return (
     <>
@@ -28,7 +28,7 @@ export default function UltimasLicitacoes (){
         </div>
         <div className={styles.licitacoesWrapper}>
           {listaLicitacoes.map(item => {
-            console.log(item)
+            // console.log(item)
             return (
               <CardLicitacoes data={item}/>
             );

@@ -1,11 +1,11 @@
 .cardWrapper {
   background-color: var(--cinza);
-  gap: 16px;
+  gap: 1rem;
   color: var(--branco);
-  padding: 32px;
+  padding: 2rem;
   text-align: center;
   transition: 100ms ease-in-out;
-  box-shadow: -4px 4px 4px rgba(0, 0, 0, .25);
+  box-shadow: -0.2rem 0.2rem 0.2rem rgba(0, 0, 0, .25);
 
   flex: 1;
   display: flex;
@@ -16,20 +16,23 @@
 
 .cardTitle {
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 1.5rem;
 }
 
 .cardSection {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 16px;
-  margin-bottom: 16px;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid var(--branco);
 }
 
+
 .licitacoesInfo {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cardDescricao {
@@ -59,4 +62,39 @@
 }
 .cardStatusText{
   font-weight: bold;
+}
+
+@media (max-width: 1500px){
+  .cardWrapper{
+    padding: 1rem;
+  }
+  .cardWrapper h5{
+    font-size: 1.2rem;
+  }
+  .cardWrapper p{
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 1250px){
+  .cardWrapper h5{
+    font-size: 1rem;
+  }
+  .cardStatus{
+    flex-direction: column;
+    text-align: left;
+  }
+  .licitacoesInfo{
+    flex-direction: column;
+    text-align: left;
+  }
+}
+
+@media (max-width: 1000px){
+  .statusContainer{
+    display: none;
+  }
+  .cardDescricao{
+    height: 8vh;
+  }
 }
