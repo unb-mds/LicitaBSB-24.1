@@ -1,7 +1,8 @@
 site/
 myenv/
 backend/venv/
-
+.env
+backend/.env
 # Logs
 logs
 *.log
