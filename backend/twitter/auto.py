@@ -93,11 +93,7 @@ api_key_secret = os.getenv('TWITTER_API_KEY_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 bearer_token= os.getenv('TWITTER_BEARER_TOKEN')
-print(api_key)
-print(api_key_secret)
-print(access_token)
-print(access_token_secret)
-print(bearer_token)
+
 api = tweepy.Client(
     consumer_key= api_key ,  #API KEY
     consumer_secret=api_key_secret, #API KEY SECRET
@@ -116,7 +112,7 @@ for i in mensagens:
     try:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
-        time.sleep(time_de_espera_tweet) #faz o sistema dormir pelo tempo proporcional a quantidade de tempo  que é necessária para que todos caibam num intervalo de 5 horas e 50 minutos
+        #time.sleep(time_de_espera_tweet) #faz o sistema dormir pelo tempo proporcional a quantidade de tempo  que é necessária para que todos caibam num intervalo de 5 horas e 50 minutos
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
