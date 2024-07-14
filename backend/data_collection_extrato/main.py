@@ -13,10 +13,10 @@ def main():
 
     # Definindo data inicial e final
     if len(sys.argv) == 1:
-        # Caso nenhuma data seja fornecida, a leitura será realizada nos últimos 7 dias a partir da data atual
-        data_final = datetime.now()
+        # Caso nenhuma data seja fornecida, a leitura será realizada do dia anterior
+        data_final = datetime.now() - timedelta(days=1)
         #data_inicial = datetime(2018, 2, 5)
-        data_inicial = data_final - timedelta(days=7)
+        data_inicial = data_final
     elif len(sys.argv) == 2:
         # Caso apenas a data inicial seja fornecida
         try:

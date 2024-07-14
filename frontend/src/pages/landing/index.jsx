@@ -7,7 +7,7 @@ import UltimasLicitacoes from './ultimas-licitacoes';
 export default function Landing(){
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>
         <div>
           <div className={styles.campoPesquisaWrapper} >

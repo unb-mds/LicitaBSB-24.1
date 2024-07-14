@@ -1,16 +1,11 @@
-import licitacoes from '../../../backend/data_collection/database/data_copy.json';
+import licitacoes1 from '../../../backend/data_collection_avisos/database/data.json';
+import licitacoes2 from '../../../backend/data_collection_extrato/database/data.json';
 import { transformDate } from '../utils/transform-date.utils';
 
-const licitacoesTipe1 = licitacoes.filter((licitacao) => {
-  return !('Municipio' in licitacao);
-});
-
-const licitacoesTipe2 = licitacoes.filter((licitacao) => {
-  return ('Municipio' in licitacao);
-});
+const data_licitacoes = [...licitacoes1, ...licitacoes2]
 
 export function getLicitacoes() {
-  let licit = licitacoesTipe2;
+  let licit = data_licitacoes;
 
   licit.sort((a, b) => {
     const dateA = Date.parse(transformDate(a["data_abertura"]))

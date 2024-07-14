@@ -23,7 +23,7 @@ export default function BiddingList() {
   }, [lengthBids])
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <section className={styles.mainSection}>
         <div className={styles.campoPesquisaWrapper} >
           <div className={styles.campoPesquisa}>

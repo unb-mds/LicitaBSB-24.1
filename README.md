@@ -148,7 +148,7 @@ O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (
 ## Documentação do projeto
 
 
-- Documentação: https://unb-mds.github.io/2024-1-Squad-03/
+- Documentação: https://unb-mds.github.io/LicitaBSB-24.1/
 - Nosso quadro do Miro: https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307
 - Figma da equipe: https://www.figma.com/file/vdfnVL6qkyUAPGeYfCCqol/Licita?type=design&node-id=0-1&mode=design&t=ZOaqmrSccc577Pog-0
 
