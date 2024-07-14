@@ -45,7 +45,7 @@ def editar_mensagem(mensagem):
 licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
-data_hoje = datetime.now().strftime('%d/%m/%Y')  # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
+data_hoje = '10/07/2024'#datetime.now().strftime('%d/%m/%Y')  # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
 
 print(f"Buscando licitações para a data: {data_hoje}")
 
@@ -106,7 +106,7 @@ api = tweepy.Client(
     bearer_token= bearer_token
 )
 
-
+mensagens = [mensagens[0]]
 
 if len(mensagens) > 50: mensagens = mensagens[:50] #só podemos publicar 50 tweets por dia isso limitara a postar somente os 50 tweets
 
