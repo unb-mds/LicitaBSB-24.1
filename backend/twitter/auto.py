@@ -81,7 +81,7 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao['titulo']}\nMais detalhes: {link_encurtado}\n\n{licitacao['descricao']}'
+        tweet_message = f'{licitacao["titulo"]}\nMais detalhes: {link_encurtado}\n\n{licitacao["descricao"]}'
         tweet_message = tweet_message.replace("Objeto:", "\nObjeto:")
         # Garante que a mensagem não ultrapasse 280 caracteres
         tweet_message = editar_mensagem(tweet_message)
