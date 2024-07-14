@@ -93,11 +93,6 @@ api_key_secret = os.getenv('TWITTER_API_KEY_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 bearer_token= os.getenv('TWITTER_BEARER_TOKEN')
-print(api_key)
-print(api_key_secret)
-print(access_token)
-print(access_token_secret)
-print(bearer_token)
 api = tweepy.Client(
     consumer_key= api_key ,  #API KEY
     consumer_secret=api_key_secret, #API KEY SECRET
