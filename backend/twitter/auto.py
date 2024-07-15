@@ -45,14 +45,14 @@ def editar_mensagem(mensagem):
 licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
-data_hoje = datetime.now().strftime('%d/%m/%Y')  # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
+data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
 
 print(f"Buscando licitações para a data: {data_hoje}")
 
 with open(caminho_avisos, 'r', encoding='utf-8') as file:
     licitacoes_data = json.load(file)
     for licitacao in licitacoes_data:
-        if licitacao['data_abertura'] == data_hoje:
+        if licitacao['data_abertura'] == data_ontem:
             a = encurtar_url(licitacao['link'])
             time.sleep(1)
             licitacoes.append({
@@ -65,7 +65,7 @@ with open(caminho_avisos, 'r', encoding='utf-8') as file:
 with open(caminho_extrato, 'r', encoding='utf-8') as file:
     licitacoes_data = json.load(file)
     for licitacao in licitacoes_data:
-        if licitacao['data_abertura'] == data_hoje:
+        if licitacao['data_abertura'] == data_ontem:
             a = encurtar_url(licitacao['link'])
             time.sleep(1)
             licitacoes.append({
