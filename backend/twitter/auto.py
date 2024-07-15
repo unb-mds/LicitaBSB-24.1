@@ -49,7 +49,7 @@ licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
 
-data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
+data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 
 print(f"Buscando licitações para a data: {data_ontem}")
@@ -113,7 +113,7 @@ for i in mensagens:
     try:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
-        time.sleep(300) #vai postando os tweets a cada 1 minuto
+        time.sleep(300) #vai postando os tweets a cada 5 minutos
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
