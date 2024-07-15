@@ -111,7 +111,7 @@ for i in mensagens:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
 
-        time.sleep(60) #vai postando os tweets a cada 1 minuto
+        time.sleep(62) #vai postando os tweets a cada 1 minuto
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
