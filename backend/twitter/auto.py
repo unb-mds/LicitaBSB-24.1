@@ -1,6 +1,7 @@
 import tweepy
 import json
 from datetime import datetime
+from datetime import timedelta
 import time
 import traceback
 import os
@@ -30,6 +31,8 @@ def encurtar_url(url):
         print(f"Exceção ao encurtar URL: {e}")
         return url
 
+site = encurtar_url("https://licitabsb-repo.vercel.app")
+
 def editar_mensagem(mensagem):
     result = parse_tweet(mensagem).asdict()
     if result['valid']:
@@ -49,7 +52,7 @@ caminho_avisos = 'backend/data_collection_avisos/database/data.json'
 data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
 
 
-print(f"Buscando licitações para a data: {data_hoje}")
+print(f"Buscando licitações para a data: {data_ontem}")
 
 with open(caminho_avisos, 'r', encoding='utf-8') as file:
     licitacoes_data = json.load(file)
@@ -78,12 +81,12 @@ with open(caminho_extrato, 'r', encoding='utf-8') as file:
             })
 
 if not licitacoes:
-    mensagens = []
+    mensagens = [f'Hoje não tivemos nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
 else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nMais detalhes: {link_encurtado}\n\n{licitacao["descricao"]}'
+        tweet_message = f'{licitacao["titulo"]}\nMais detalhes: {link_encurtado}\n\nVisite nosso site: {site}\n\n{licitacao["descricao"]}'
         tweet_message = tweet_message.replace("Objeto:", "\n\nObjeto:")
         # Garante que a mensagem não ultrapasse 280 caracteres
         tweet_message = editar_mensagem(tweet_message)
@@ -110,8 +113,7 @@ for i in mensagens:
     try:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
-
-        time.sleep(62) #vai postando os tweets a cada 1 minuto
+        time.sleep(300) #vai postando os tweets a cada 1 minuto
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
