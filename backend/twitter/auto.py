@@ -78,7 +78,7 @@ with open(caminho_extrato, 'r', encoding='utf-8') as file:
             })
 
 if not licitacoes:
-    mensagens = ['Hoje não tivemos nenhum tipo de licitação liberada no Diário Oficial da União']
+    mensagens = []
 else:
     mensagens = []
     for licitacao in licitacoes:
