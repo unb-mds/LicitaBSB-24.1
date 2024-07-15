@@ -45,7 +45,9 @@ def editar_mensagem(mensagem):
 licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
+
 data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de hoje, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de hoje
+
 
 print(f"Buscando licitações para a data: {data_hoje}")
 
@@ -93,6 +95,7 @@ api_key_secret = os.getenv('TWITTER_API_KEY_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
 bearer_token= os.getenv('TWITTER_BEARER_TOKEN')
+
 api = tweepy.Client(
     consumer_key= api_key ,  #API KEY
     consumer_secret=api_key_secret, #API KEY SECRET
@@ -101,14 +104,13 @@ api = tweepy.Client(
     bearer_token= bearer_token
 )
 
-
-
 if len(mensagens) > 50: mensagens = mensagens[:50] #só podemos publicar 50 tweets por dia isso limitara a postar somente os 50 tweets
 
 for i in mensagens:
     try:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
+
         time.sleep(60) #vai postando os tweets a cada 1 minuto
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
