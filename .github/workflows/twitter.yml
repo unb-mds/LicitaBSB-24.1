@@ -2,6 +2,8 @@ name: Script de automação das postagens no X
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '00 15 * * *' # todos os dias 12h00
 
 jobs:
   run-python:
