@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "chart.js": "^4.4.3",
+    "install": "^0.13.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "npm": "^10.8.2",
     "plotly.js": "^2.33.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -20,7 +22,8 @@
     "react-icons": "^5.2.0",
     "react-plotly.js": "^2.6.0",
     "react-router-dom": "^6.23.0",
-    "sort-by": "^1.2.0"
+    "sort-by": "^1.2.0",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

@@ -11,7 +11,6 @@ export default function AboutBidding() {
 
     return(
         <div className={style.aboutBidding}>
-            <Header/>
             <CardAbout 
                 primeiroTitulo={propsCardAbout.primeiroTitulo}
                 segundoTitulo={propsCardAbout.segundoTitulo}
