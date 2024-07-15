@@ -105,13 +105,11 @@ api = tweepy.Client(
 
 if len(mensagens) > 50: mensagens = mensagens[:50] #só podemos publicar 50 tweets por dia isso limitara a postar somente os 50 tweets
 
-time_de_espera_tweet = int(21000/len(mensagens)) #21000 segundos equivalem a cerca de 5 horas e 50 minutos
-
 for i in mensagens:
     try:
         tweet = api.create_tweet(text=i) #publica o tweet
         print(tweet)
-        time.sleep(time_de_espera_tweet) #faz o sistema dormir pelo tempo proporcional a quantidade de tempo  que é necessária para que todos caibam num intervalo de 5 horas e 50 minutos
+        time.sleep(60) #vai postando os tweets a cada 1 minuto
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
