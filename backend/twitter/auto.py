@@ -21,7 +21,7 @@ def encurtar_url(url):
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
 
-        if response.status_code in [200, 201]:
+        if response.status_code in [200, 201] or response.text.startswith('200 / 201'):
             return response.json().get('urlEncurtada', url)
         else:
             return url
@@ -76,7 +76,7 @@ licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
 
-data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y')
+data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
 
