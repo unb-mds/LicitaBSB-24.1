@@ -1,15 +1,15 @@
 import tweepy
 import json
-from datetime import datetime
-from datetime import timedelta
+from datetime import datetime, timedelta
 import time
 import traceback
 import os
 import requests
 from dotenv import load_dotenv
 from twitter_text import parse_tweet
+from PIL import Image, ImageDraw, ImageFont
 
-load_dotenv() #carrega os segredos da API do twitter
+load_dotenv()  # Carrega os segredos da API do Twitter
 
 def encurtar_url(url):
     try:
@@ -18,12 +18,10 @@ def encurtar_url(url):
             headers={'Content-Type': 'application/json'},
             json={"url": url}
         )
-        # Adicionando logs detalhados para depuração
         print(f"Status Code: {response.status_code}")
         print(f"Response Text: {response.text}")
 
-        # Verificação do status code como string
-        if response.status_code in [200, 201] or response.text.startswith('200 / 201'):
+        if response.status_code in [200, 201]:
             return response.json().get('urlEncurtada', url)
         else:
             return url
@@ -33,24 +31,52 @@ def encurtar_url(url):
 
 site = encurtar_url("https://licitabsb-repo.vercel.app")
 
-def editar_mensagem(mensagem):
-    result = parse_tweet(mensagem).asdict()
-    if result['valid']:
-        return mensagem
-    else:
-        # Mensagem não é válida, vamos ajustá-la
-        mensagem_editada = mensagem[:result['validRangeEnd']]
-        mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
-        if len(mensagem_editada) > 3:
-            mensagem_editada = mensagem_editada[:-3] + "..."
-        return mensagem_editada
+# def editar_mensagem(mensagem):
+#     result = parse_tweet(mensagem).asdict()
+#     if result['valid']:
+#         return mensagem
+#     else:
+#         mensagem_editada = mensagem[:result['validRangeEnd']]
+#         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
+#         if len(mensagem_editada) > 3:
+#             mensagem_editada = mensagem_editada[:-3] + "..."
+#         return mensagem_editada
+
+def texto_para_imagem(texto, caminho_imagem):
+    largura = 800
+    altura = 600
+    imagem = Image.new('RGB', (largura, altura), color=(255, 255, 255))
+    desenho = ImageDraw.Draw(imagem)
+    try:
+        fonte = ImageFont.truetype("arial.ttf", 20)
+    except IOError:
+        fonte = ImageFont.load_default()
+
+    margem = 10
+    espaco_linhas = 5
+    palavras = texto.split(' ')
+    linha = ''
+    y_text = margem
+
+    for palavra in palavras:
+        largura_linha = desenho.textbbox((0, 0), linha + palavra, font=fonte)[2]  # Posição 2 retorna a largura da caixa delimitadora
+        if largura_linha <= (largura - 2 * margem):
+            linha += palavra + ' '
+        else:
+            desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
+            linha = palavra + ' '
+            altura_linha = desenho.textbbox((0, 0), linha, font=fonte)[3]  # Posição 3 retorna a altura da caixa delimitadora
+            y_text += altura_linha + espaco_linhas
+    desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
+
+    imagem.save(caminho_imagem)
+    print(f"Imagem salva como {caminho_imagem}")
 
 licitacoes = []
 caminho_extrato = 'backend/data_collection_extrato/database/data.json'
 caminho_avisos = 'backend/data_collection_avisos/database/data.json'
 
-data_ontem =  (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
-
+data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y')
 
 print(f"Buscando licitações para a data: {data_ontem}")
 
@@ -66,7 +92,7 @@ with open(caminho_avisos, 'r', encoding='utf-8') as file:
                 'data': licitacao['data_abertura'],
                 'link': a
             })
-            
+
 with open(caminho_extrato, 'r', encoding='utf-8') as file:
     licitacoes_data = json.load(file)
     for licitacao in licitacoes_data:
@@ -86,34 +112,46 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nMais detalhes: {link_encurtado}\n\nVisite nosso site: {site}\n\n{licitacao["descricao"]}'
-        tweet_message = tweet_message.replace("Objeto:", "\n\nObjeto:")
-        # Garante que a mensagem não ultrapasse 280 caracteres
+        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
-        mensagens.append(tweet_message)
+        mensagens.append((tweet_message, licitacao["descricao"]))
 
-# Recuperar variáveis de ambiente
-api_key = os.getenv('TWITTER_API_KEY')
-api_key_secret = os.getenv('TWITTER_API_KEY_SECRET')
+consumer_key = os.getenv('TWITTER_API_KEY')
+consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
 access_token = os.getenv('TWITTER_ACCESS_TOKEN')
 access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
-bearer_token= os.getenv('TWITTER_BEARER_TOKEN')
+bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
 
-api = tweepy.Client(
-    consumer_key= api_key ,  #API KEY
-    consumer_secret=api_key_secret, #API KEY SECRET
-    access_token= access_token ,#ACCESS TOKEN
-    access_token_secret= access_token_secret ,#ACCESS TOKEN SECRET
-    bearer_token= bearer_token
+client = tweepy.Client(
+    consumer_key=consumer_key,
+    consumer_secret=consumer_secret,
+    access_token=access_token,
+    access_token_secret=access_token_secret,
+    bearer_token=bearer_token
 )
+auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
+api = tweepy.API(auth)
+if len(mensagens) > 50:
+    mensagens = mensagens[:50]
 
-if len(mensagens) > 50: mensagens = mensagens[:50] #só podemos publicar 50 tweets por dia isso limitara a postar somente os 50 tweets
-
-for i in mensagens:
+for i, (mensagem, descricao) in enumerate(mensagens):
     try:
-        tweet = api.create_tweet(text=i) #publica o tweet
+        caminho_imagem = f"tweet_image_{i}.png"
+        texto_para_imagem(descricao, caminho_imagem)
+
+        # upload na imagem
+        response = api.media_upload(filename=caminho_imagem)
+        media_id = response.media_id
+
+        # cria o tweet já com a imagem
+        tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
         print(tweet)
-        time.sleep(300) #vai postando os tweets a cada 5 minutos
+
+        # remove a imagem para liberar espaço em disco
+        os.remove(caminho_imagem)
+
+        # posta a cada 5 minutos
+        time.sleep(300)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
