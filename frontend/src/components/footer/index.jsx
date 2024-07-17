@@ -93,18 +93,18 @@ const Footer = () => {
         <div>
           <img src={logoLicitaBSB} />
           <ul>
-            <Link to={'/licitacoes'}>
+            <a to={'/licitacoes'}>
               <p>Licitações</p>
-            </Link>
-            <Link to={'/sobrelicitacao'}>
+            </a>
+            <a to={'/sobrelicitacao'}>
               <p>Sobre as Licitações</p>
-            </Link>
-            <Link to={'/sobrenos'}>
+            </a>
+            <a to={'/sobrenos'}>
               <p>Sobre a Equipe</p>
-            </Link>
-            <Link to={'/dashboard'}>
+            </a>
+            <a to={'/dashboard'}>
               <p>Dashboard</p>
-            </Link>
+            </a>
           </ul>
         </div>
         <img src={logoUnb} />
