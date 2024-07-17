@@ -5,20 +5,26 @@ import styles from './style.module.css';
 import UltimasLicitacoes from './ultimas-licitacoes';
 import Footer from '../../components/footer';
 
-export default function Landing(){
+export default function Landing() {
   return (
     <>
       {/* <Header /> */}
       <main>
         <div>
-          <div className={styles.campoPesquisaWrapper} >
+          <div className={styles.campoPesquisaWrapper}>
             <div className={styles.campoPesquisa}>
               <img src={search} className={styles.searchIcon} alt="" />
-              <input type="text" placeholder='Busque por uma licitação' className={styles.inputStyle} />
+              <input
+                type="text"
+                placeholder="Busque por uma licitação"
+                className={styles.inputStyle}
+              />
             </div>
             <div>
               <div>
-                <a href="" className={styles.botaoBuscar}>Buscar</a>
+                <a href="" className={styles.botaoBuscar}>
+                  Buscar
+                </a>
               </div>
             </div>
           </div>
@@ -27,5 +33,5 @@ export default function Landing(){
       </main>
       {/* <Footer/> */}
     </>
-  )
+  );
 }

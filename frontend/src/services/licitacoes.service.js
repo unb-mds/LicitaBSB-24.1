@@ -2,14 +2,14 @@ import licitacoes1 from '../../../backend/data_collection_avisos/database/data.j
 import licitacoes2 from '../../../backend/data_collection_extrato/database/data.json';
 import { transformDate } from '../utils/transform-date.utils';
 
-const data_licitacoes = [...licitacoes1, ...licitacoes2]
+const data_licitacoes = [...licitacoes1, ...licitacoes2];
 
 export function getLicitacoes() {
   let licit = data_licitacoes;
 
   licit.sort((a, b) => {
-    const dateA = Date.parse(transformDate(a["data_abertura"]))
-    const dateB = Date.parse(transformDate(b["data_abertura"]))
+    const dateA = Date.parse(transformDate(a['data_abertura']));
+    const dateB = Date.parse(transformDate(b['data_abertura']));
     if (dateA > dateB) {
       return -1;
     }
@@ -18,11 +18,13 @@ export function getLicitacoes() {
     }
 
     return 0;
-  })
+  });
 
   return licit;
 }
 
 export function pagLicitacoes(array, size, pos) {
-  return array.length > size ? array.slice((size * pos), (size * (pos + 1))) : array
+  return array.length > size
+    ? array.slice(size * pos, size * (pos + 1))
+    : array;
 }

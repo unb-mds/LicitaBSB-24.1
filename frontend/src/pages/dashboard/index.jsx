@@ -1,10 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 // import data from '../../../../backend/data_collection/database/data.json';
 import style from '../dashboard/style.module.css';
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+);
 
 export default function Dashboard() {
   const [licitacoesPorAno, setLicitacoesPorAno] = useState({});
@@ -22,7 +37,10 @@ export default function Dashboard() {
         const dateStr = licitacao['data_abertura'];
         if (dateStr) {
           const [day, month, year] = dateStr.split('/').map(Number);
-          if (!isNaN(year) && (selectedMonth === '' || month === selectedMonth)) {
+          if (
+            !isNaN(year) &&
+            (selectedMonth === '' || month === selectedMonth)
+          ) {
             const countYear = acc[year] || 0;
             acc[year] = countYear + 1;
           }
@@ -94,7 +112,9 @@ export default function Dashboard() {
   };
 
   const handleMonthChange = (event) => {
-    setSelectedMonth(event.target.value === '' ? '' : parseInt(event.target.value));
+    setSelectedMonth(
+      event.target.value === '' ? '' : parseInt(event.target.value),
+    );
   };
 
   const months = [
@@ -119,7 +139,9 @@ export default function Dashboard() {
       </div>
       <div className={style.dashboardDataWrapper}>
         <div className={style.dashboardData}>
-          <h1 style={{ textAlign: 'center', fontSize: '1.5em' }}>Quantidade de Licitações por Ano</h1>
+          <h1 style={{ textAlign: 'center', fontSize: '1.5em' }}>
+            Quantidade de Licitações por Ano
+          </h1>
           <p>Em 2019 tivemos {total2019} licitações.</p>
           <p>Em 2020 tivemos {total2020} licitações.</p>
           <p>Em 2021 tivemos {total2021} licitações.</p>
@@ -128,7 +150,11 @@ export default function Dashboard() {
           <p>Em 2024 tivemos {total2024} licitações.</p>
           <div className={style.selector}>
             <label htmlFor="selectMonth">Selecione o Mês:</label>
-            <select id="selectMonth" onChange={handleMonthChange} value={selectedMonth}>
+            <select
+              id="selectMonth"
+              onChange={handleMonthChange}
+              value={selectedMonth}
+            >
               <option value="">Todos os Meses</option>
               {months.map((month) => (
                 <option key={month.id} value={month.id}>
@@ -140,7 +166,13 @@ export default function Dashboard() {
         </div>
         <div className={style.dashboardText}>
           <p>
-            O gráfico representa o número de licitações por ano em Brasília, evidenciando um crescimento constante durante os anos analisados, mesmo durante a pandemia. Esse aumento pode ser atribuído à necessidade contínua de serviços públicos essenciais e à importância das licitações na manutenção da transparência e da economia local, sustentando empregos e garantindo a eficiência na gestão pública em um período desafiador.
+            O gráfico representa o número de licitações por ano em Brasília,
+            evidenciando um crescimento constante durante os anos analisados,
+            mesmo durante a pandemia. Esse aumento pode ser atribuído à
+            necessidade contínua de serviços públicos essenciais e à importância
+            das licitações na manutenção da transparência e da economia local,
+            sustentando empregos e garantindo a eficiência na gestão pública em
+            um período desafiador.
           </p>
         </div>
       </div>

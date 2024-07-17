@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import Landing from './pages/landing';
 import AboutBidding from './pages/about-bidding';
 import {
@@ -8,8 +8,8 @@ import {
   Route,
   RouterProvider,
   Routes,
-} from "react-router-dom";
-import './styles/global.css'
+} from 'react-router-dom';
+import './styles/global.css';
 import AboutUs from './pages/about-us';
 import Dashboard from './pages/dashboard';
 import BiddingList from './pages/bidding-list';
@@ -43,26 +43,26 @@ import Footer from './components/footer';
 //   </Route>
 // ])
 
-function AppRoutes(){
-  return(
+function AppRoutes() {
+  return (
     <BrowserRouter>
-      <Header/>
+      <Header />
       <Routes>
-        <Route path='/' element={<Landing />}/>
-        <Route path='/sobrelicitacao' element={<AboutBidding/>}/>
-        <Route path='/sobrenos' element={<AboutUs/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
-        <Route path='/licitacoes' element={<BiddingList/>}/>
-        <Route path='/licitacoes/:id' element={<BiddingPage/>}/>
+        <Route path="/" element={<Landing />} />
+        <Route path="/sobrelicitacao" element={<AboutBidding />} />
+        <Route path="/sobrenos" element={<AboutUs />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/licitacoes" element={<BiddingList />} />
+        <Route path="/licitacoes/:id" element={<BiddingPage />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
-  )
+  );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     {/* <RouterProvider router={router} /> */}
-    <AppRoutes/>
+    <AppRoutes />
   </React.StrictMode>,
-)
+);

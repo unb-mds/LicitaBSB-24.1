@@ -11,35 +11,49 @@ const Header = () => {
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
       <div className={styles.subHeader}>
-        <a href='/'>
+        <a href="/">
           <img src={logo} alt="Logo do Projeto 'licita bsb'" />
         </a>
         <ul className={styles.headerLinksWrapper}>
           <li className={styles.headerListItem}>
-            <a href="" className={styles.headerLink}>Licitações</a>
+            <a href="" className={styles.headerLink}>
+              Licitações
+            </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/SobreLicitacao" className={styles.headerLink}>Sobre as Licitações</a>
+            <a href="/SobreLicitacao" className={styles.headerLink}>
+              Sobre as Licitações
+            </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="" className={styles.headerLink}>Sobre o Projeto</a>
+            <a href="" className={styles.headerLink}>
+              Sobre o Projeto
+            </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/sobrenos" className={styles.headerLink}>Sobre Nós</a>
+            <a href="/sobrenos" className={styles.headerLink}>
+              Sobre Nós
+            </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/dashboard" className={styles.headerLink}>Dashboard</a>
+            <a href="/dashboard" className={styles.headerLink}>
+              Dashboard
+            </a>
           </li>
         </ul>
         <div>
           <div className={styles.campoPesquisa}>
             <img src={search} alt="" />
-            <input type="text" placeholder='Pesquise aqui' className={styles.textInput}/>
+            <input
+              type="text"
+              placeholder="Pesquise aqui"
+              className={styles.textInput}
+            />
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

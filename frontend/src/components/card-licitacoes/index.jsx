@@ -1,24 +1,23 @@
-import React from 'react'
-import { setStatusBidding } from '../../utils/status-bidding'
+import React from 'react';
+import { setStatusBidding } from '../../utils/status-bidding';
 
-import styles from './style.module.css'
-import formatCurrency from '../../utils/format-currency'
-import { Link } from 'react-router-dom'
+import styles from './style.module.css';
+import formatCurrency from '../../utils/format-currency';
+import { Link } from 'react-router-dom';
 
 export default function CardLicitacoes({ data }) {
+  const statusBidding = setStatusBidding(data);
 
-  const statusBidding = setStatusBidding(data)
-  
-  const dataLicitacao = data['data_abertura']
-  const tipoLicitacao = data['tipo']
-  const objetoLicitacao = data['objeto']
-  
-  if('nomeOrgao' in data){
-    var tituloLicitacao = data['nomeOrgao']
-    var valorLicitacao = data['valores_licitacao']
+  const dataLicitacao = data['data_abertura'];
+  const tipoLicitacao = data['tipo'];
+  const objetoLicitacao = data['objeto'];
+
+  if ('nomeOrgao' in data) {
+    var tituloLicitacao = data['nomeOrgao'];
+    var valorLicitacao = data['valores_licitacao'];
   } else {
-    var tituloLicitacao = data['Nome_UG']
-    var valorLicitacao = data['Valor_Licitacao']
+    var tituloLicitacao = data['Nome_UG'];
+    var valorLicitacao = data['Valor_Licitacao'];
   }
 
   // {`R$ ${formatCurrency(data["Valor_Licitacao"])}`}
@@ -26,7 +25,7 @@ export default function CardLicitacoes({ data }) {
   return (
     <div className={styles.cardWrapper}>
       <h5 className={styles.cardTitle}>{tituloLicitacao}</h5>
-      
+
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
@@ -36,17 +35,17 @@ export default function CardLicitacoes({ data }) {
         </div>
 
         <div className={styles.licitacoesInfo}>
-            <p>Dara de publicação: {dataLicitacao}</p>
-            <p className={styles.statusContainer}>Valor da licitação: R$ 0.000.000,00</p>
+          <p>Dara de publicação: {dataLicitacao}</p>
+          <p className={styles.statusContainer}>
+            Valor da licitação: R$ 0.000.000,00
+          </p>
         </div>
 
-        <div className={styles.cardSection}>
-        </div>
+        <div className={styles.cardSection}></div>
 
         <div>
           <p className={styles.cardDescricao}>{objetoLicitacao}</p>
         </div>
-        
       </div>
       <div>
         <Link to={`/licitacoes/${data.id}`}>
@@ -55,6 +54,5 @@ export default function CardLicitacoes({ data }) {
         {/* <a href={`/licitacao`} className={styles.cardButton}>Ver Mais</a> */}
       </div>
     </div>
-  )
+  );
 }
-
