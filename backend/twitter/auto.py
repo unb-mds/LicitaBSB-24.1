@@ -113,7 +113,7 @@ else:
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
         tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
-        tweet_message = editar_mensagem(tweet_message)
+        #tweet_message = editar_mensagem(tweet_message)
         mensagens.append((tweet_message, licitacao["descricao"]))
 
 consumer_key = os.getenv('TWITTER_API_KEY')
