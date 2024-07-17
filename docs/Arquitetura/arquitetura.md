@@ -6,7 +6,7 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Ofic
 
 ### Diagrama de Arquitetura
 
-![Diagrama de Arquitetura](diagrama_3.png)
+![Diagrama de Arquitetura](diagrama_final.png)
 
 #### Fluxo de Trabalho
 - **Entrada de dados:** Os dados são obtidos através das extração de dados oficiais do governo.
@@ -103,6 +103,32 @@ A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos da
 
     - Salvar o arquivo JSON com as informações dos avisos de licitação no diretório `database`.
 
+## Estrutura do Frontend
+
+O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, **services**, **pages** e **components**.
+
+- **src:**
+  - `main.jsx`: Contém o código inicial e as configurações das rotas da página, além das configurações iniciais do React.
+
+- **utils:**
+  - Contém funções com pequenas funcionalidades que são utilizadas por todos os componentes do projeto.
+
+- **styles:**
+  - Contém as estilizações globais da página.
+
+- **services:**
+  - Contém os arquivos que se comunicam diretamente com a nossa base de dados presente na pasta `backend`.
+
+- **pages:**
+  - Contém subpastas dedicadas a cada página específica do site.
+
+- **components:**
+  - Contém trechos de código que são reutilizados por mais de uma página do site, organizando melhor as funcionalidades do site e tornando o código mais limpo e centralizado.
+
+
+O frontend foi desenvolvido utilizando a biblioteca React com o framework Vite e está localizado na pasta ‘frontend’ do repositório do projeto. Os principais códigos estão na pasta src, onde o arquivo main.jsx configura as rotas da página e as configurações iniciais do React. As pastas estão organizadas da seguinte forma: utils contém funções reutilizáveis, styles armazena as estilizações globais, services inclui arquivos que se comunicam com a base de dados no backend, pages possui subpastas para cada página do site e components guarda trechos de código reutilizáveis para várias páginas.
+
+
 
 ## Histórico de Versões
 
@@ -112,3 +138,4 @@ A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos da
 | 2024-07-01 | 1.1    | Modificações segundo requisições        | Marcelo Adrian  |
 | 2024-07-08 | 1.2    | Explicações estruturais                 | Marcelo Adrian  |
 | 2024-07-11 | 1.3    | Explicação da raspagem de dados         | Marcelo Adrian  |
+| 2024-07-14 | 1.4    | Informações sobre o Frontend            | Marcelo Adrian  |
