@@ -4,11 +4,26 @@
     align-items: center;
     flex-direction: column;
     width: 80%;
-    padding: 5rem;
-    margin-left: 15%;
+    padding: 32px;
+    background-color: var(--branco);
+    margin: 52px auto;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
 
-    
+.titleContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-direction: column;
+}
 
+.title {
+    font-size: 32px;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    font-size: 18px;
 }
 
 .horizontalLine {

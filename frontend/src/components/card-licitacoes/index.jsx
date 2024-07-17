@@ -12,13 +12,17 @@ export default function CardLicitacoes({ data }) {
   const dataLicitacao = data['data_abertura']
   const tipoLicitacao = data['tipo']
   const objetoLicitacao = data['objeto']
-  
+
+  console.log(data.numero_processo)
+
   if('nomeOrgao' in data){
     var tituloLicitacao = data['nomeOrgao']
     var valorLicitacao = data['valores_licitacao']
+    var categoriaData = "aviso"
   } else {
     var tituloLicitacao = data['Nome_UG']
     var valorLicitacao = data['Valor_Licitacao']
+    var categoriaData = "extrato"
   }
 
   return (
@@ -49,7 +53,7 @@ export default function CardLicitacoes({ data }) {
 
       </div>
       <div>
-        <Link to={`/licitacoes/${data.id}`}>
+        <Link to={`/licitacoes/${data.id}-${categoriaData}`}>
           <p className={styles.cardButton}>Ver Mais</p>
         </Link>
         {/* <a href={`/licitacao`} className={styles.cardButton}>Ver Mais</a> */}
