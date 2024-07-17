@@ -3,6 +3,7 @@ import Header from '../../components/header';
 import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css';
 import UltimasLicitacoes from './ultimas-licitacoes';
+import Footer from '../../components/footer';
 
 export default function Landing(){
   return (
@@ -24,6 +25,7 @@ export default function Landing(){
           <UltimasLicitacoes />
         </div>
       </main>
+      {/* <Footer/> */}
     </>
   )
 }
