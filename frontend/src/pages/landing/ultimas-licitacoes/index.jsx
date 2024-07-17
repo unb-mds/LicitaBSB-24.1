@@ -13,11 +13,8 @@ export default function UltimasLicitacoes (){
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
 
   useEffect(() => {
-    // setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
     setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0))
   }, [])
-
-  // console.log(listaLicitacoes)
 
   return (
     <>

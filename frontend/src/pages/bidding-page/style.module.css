@@ -1,6 +1,7 @@
 .biddingContainer{
     display: flex;
-    justify-content: center;
+    flex: 1;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 80%;
@@ -30,4 +31,23 @@
     border-bottom: 1px solid black; /* Espessura e cor da linha */
     width: 100%; /* Largura da linha */
     margin: 20px 0; /* Espaçamento em torno da linha */
-  }
+}
+
+.objetoText {
+    text-align: justify;
+}
+
+@media (max-width: 720px) {
+    .biddingContainer {
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+    }
+
+    .title {
+        font-size: 24px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+}

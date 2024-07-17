@@ -29,7 +29,7 @@ export default function BiddingPage(){
 
         <div className={styles.horizontalLine}></div>
 
-        <p>{dados.objeto}</p>
+        <p className={styles.objetoText}>{dados.objeto}</p>
     </div>
     )
 }

@@ -13,8 +13,6 @@ export default function CardLicitacoes({ data }) {
   const tipoLicitacao = data['tipo']
   const objetoLicitacao = data['objeto']
 
-  console.log(data.numero_processo)
-
   if('nomeOrgao' in data){
     var tituloLicitacao = data['nomeOrgao']
     var valorLicitacao = data['valores_licitacao']
