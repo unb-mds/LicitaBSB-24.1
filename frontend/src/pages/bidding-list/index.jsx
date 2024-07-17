@@ -37,8 +37,11 @@ export default function BiddingList() {
           </div>
         </div>
 
+
         <div className={styles.licitacoesSection}>
+          {/*
           <Filter />
+          */}
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map(item => {
               return (
