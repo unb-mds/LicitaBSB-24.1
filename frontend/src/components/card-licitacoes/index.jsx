@@ -15,12 +15,12 @@ export default function CardLicitacoes({ data }) {
   if ('nomeOrgao' in data) {
     var tituloLicitacao = data['nomeOrgao'];
     var valorLicitacao = data['valores_licitacao'];
+    var categoriaData = 'aviso';
   } else {
     var tituloLicitacao = data['Nome_UG'];
     var valorLicitacao = data['Valor_Licitacao'];
+    var categoriaData = 'extrato';
   }
-
-  // {`R$ ${formatCurrency(data["Valor_Licitacao"])}`}
 
   return (
     <div className={styles.cardWrapper}>
@@ -35,10 +35,12 @@ export default function CardLicitacoes({ data }) {
         </div>
 
         <div className={styles.licitacoesInfo}>
-          <p>Dara de publicação: {dataLicitacao}</p>
-          <p className={styles.statusContainer}>
-            Valor da licitação: R$ 0.000.000,00
-          </p>
+          <p>Data de publicação: {dataLicitacao}</p>
+          {valorLicitacao && (
+            <p className={styles.statusContainer}>
+              Valor da licitação: R$ {formatCurrency(valorLicitacao)}
+            </p>
+          )}
         </div>
 
         <div className={styles.cardSection}></div>
@@ -48,10 +50,9 @@ export default function CardLicitacoes({ data }) {
         </div>
       </div>
       <div>
-        <Link to={`/licitacoes/${data.id}`}>
+        <Link to={`/licitacoes/${data.id}-${categoriaData}`}>
           <p className={styles.cardButton}>Ver Mais</p>
         </Link>
-        {/* <a href={`/licitacao`} className={styles.cardButton}>Ver Mais</a> */}
       </div>
     </div>
   );

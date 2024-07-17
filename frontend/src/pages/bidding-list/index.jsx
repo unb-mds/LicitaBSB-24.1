@@ -52,7 +52,7 @@ export default function BiddingList() {
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map((item) => {
               return (
-                <CardLicitacoes key={item['N�mero Processo']} data={item} />
+                <CardLicitacoes key={item['numero_processo']} data={item} />
               );
             })}
 

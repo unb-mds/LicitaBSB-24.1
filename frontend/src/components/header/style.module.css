@@ -11,6 +11,11 @@
   height: 35px;
 }
 
+.subHeaderWrapper {
+  width: 100%;
+  background-color: var(--azulMedio);
+}
+
 .subHeader {
   display: flex;
   align-items: center;
@@ -24,6 +29,10 @@
   display: flex;
   flex-direction: row;
   gap: 24px;
+}
+
+.headerLinksWrapperResponsive {
+  display: none;
 }
 
 .headerLink {
@@ -62,4 +71,39 @@
 .textInput:focus{
   border: none;
   outline: none;
+}
+
+@media (max-width: 720px) {
+  .subHeader {
+    justify-content: center;
+  }
+
+  .headerLinksWrapper {
+    display: none;
+  }
+
+  .campoPesquisa {
+    display: none;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1300px){
+  .subHeaderWrapper {
+    justify-content: center;
+  }
+
+  .headerLinksWrapper {
+    display: none;
+  }
+
+  .headerLinksWrapperResponsive {
+    background-color: var(--azulEscuro);
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 8px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 }

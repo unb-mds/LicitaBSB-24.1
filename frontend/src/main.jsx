@@ -2,13 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Landing from './pages/landing';
 import AboutBidding from './pages/about-bidding';
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './styles/global.css';
 import AboutUs from './pages/about-us';
 import Dashboard from './pages/dashboard';
@@ -16,32 +10,6 @@ import BiddingList from './pages/bidding-list';
 import BiddingPage from './pages/bidding-page';
 import Header from './components/header';
 import Footer from './components/footer';
-
-// const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Landing />
-//   },
-//   {
-//     path: "/sobrelicitacao",
-//     element: <AboutBidding/>
-//   },
-//   {
-//     path: "/sobrenos",
-//     element: <AboutUs/>
-//   },
-//   // {
-//   //   path: "/dashboard",
-//   //   element: <Dashboard />
-//   // },
-//   {
-//     path: "/licitacoes",
-//     element: <BiddingList />
-//   },
-//   <Route path='/licitacao'>
-//     <BiddingPage/>
-//   </Route>
-// ])
 
 function AppRoutes() {
   return (
@@ -62,7 +30,6 @@ function AppRoutes() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
     <AppRoutes />
   </React.StrictMode>,
 );

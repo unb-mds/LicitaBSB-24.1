@@ -31,16 +31,16 @@ def encurtar_url(url):
 
 site = encurtar_url("https://licitabsb-repo.vercel.app")
 
-# def editar_mensagem(mensagem):
-#     result = parse_tweet(mensagem).asdict()
-#     if result['valid']:
-#         return mensagem
-#     else:
-#         mensagem_editada = mensagem[:result['validRangeEnd']]
-#         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
-#         if len(mensagem_editada) > 3:
-#             mensagem_editada = mensagem_editada[:-3] + "..."
-#         return mensagem_editada
+def editar_mensagem(mensagem):
+    result = parse_tweet(mensagem).asdict()
+    if result['valid']:
+        return mensagem
+    else:
+        mensagem_editada = mensagem[:result['validRangeEnd']]
+        mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
+        if len(mensagem_editada) > 3:
+            mensagem_editada = mensagem_editada[:-3] + "..."
+        return mensagem_editada
 
 def texto_para_imagem(texto, caminho_imagem):
     largura = 800
@@ -150,8 +150,8 @@ for i, (mensagem, descricao) in enumerate(mensagens):
         # remove a imagem para liberar espaço em disco
         os.remove(caminho_imagem)
 
-        # posta a cada 5 minutos
-        time.sleep(300)
+        # posta a cada 30 segundos
+        time.sleep(30)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()

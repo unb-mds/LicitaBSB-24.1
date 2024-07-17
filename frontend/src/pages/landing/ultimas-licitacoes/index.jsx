@@ -4,7 +4,6 @@ import {
   getLicitacoes,
   pagLicitacoes,
 } from '../../../services/licitacoes.service';
-// import licitacoes from '../../../../../backend/data_collection/database/data_copy.json';
 import CardLicitacoes from '../../../components/card-licitacoes';
 
 import styles from './style.module.css';
@@ -15,11 +14,8 @@ export default function UltimasLicitacoes() {
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
 
   useEffect(() => {
-    // setListaLicitacoes(licitacoes[15].length > 3 ? licitacoes[15].slice(0, 3) : licitacoes[15]);
     setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0));
   }, []);
-
-  // console.log(listaLicitacoes)
 
   return (
     <>
@@ -33,7 +29,7 @@ export default function UltimasLicitacoes() {
         <div className={styles.licitacoesWrapper}>
           {listaLicitacoes.map((item) => {
             // console.log(item)
-            return <CardLicitacoes data={item} />;
+            return <CardLicitacoes key={item.id} data={item} />;
           })}
         </div>
       </div>

@@ -23,6 +23,22 @@ export function getLicitacoes() {
   return licit;
 }
 
+export function getLicitacaoById(parametros){
+  const dados = parametros.split('-')
+  let licit;
+  if(dados[1] == "aviso"){
+    licit = licitacoes1.find(data => {
+      return data.id === Number(dados[0])
+    })
+  } else {
+    licit = licitacoes2.find(data => {
+      return data.id === Number(dados[0])
+    })
+  }
+
+  return licit;
+}
+
 export function pagLicitacoes(array, size, pos) {
   return array.length > size
     ? array.slice(size * pos, size * (pos + 1))
