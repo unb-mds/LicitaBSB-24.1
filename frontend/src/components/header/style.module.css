@@ -8,7 +8,7 @@
 .headerUnb {
   display: flex;
   align-items: center;
-  height: 25px;
+  height: 35px;
 }
 
 .subHeader {
@@ -17,7 +17,7 @@
   justify-content: space-between;
   width: 100%;
   background-color: var(--azulMedio);
-  padding: 0 128px;
+  padding: 8px 128px;
 }
 
 .headerLinksWrapper {
@@ -31,7 +31,7 @@
   text-decoration: none;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1.5rem;
   color: var(--brancoTexto);
 }
 
