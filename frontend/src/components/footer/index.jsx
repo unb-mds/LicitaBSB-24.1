@@ -5,8 +5,6 @@ import logoUnb from "../../../assets/logoUnb.png"
 
 const FooterEstilizada = styled.footer`
     background-color: #474747;
-    /* position: fixed;
-    bottom: 0; */
     width: 100%;
     height: 18rem;
     margin-top: 5rem;
@@ -14,7 +12,9 @@ const FooterEstilizada = styled.footer`
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    @media(max-width: 740px){
+        height: 320px;
+    }
 `
 const LinhaEstilizada = styled.div`
     width: 95%;
@@ -25,6 +25,9 @@ const LinhaEstilizada = styled.div`
     margin-top: 1rem;
     /* margin-bottom: 1rem; */
     border-bottom: 1px solid var(--branco);
+    @media (max-width: 740px) {
+        margin-top: 0.2rem;
+    }
 `
 const NavEstilizada = styled.nav`
     margin: 0;
@@ -42,8 +45,8 @@ const NavEstilizada = styled.nav`
         gap: 2rem;
     }
     div img{
-        width: 14rem;
-        height: 8rem;
+        width: 238px;
+        height: 129px;
     }
     div ul{
         list-style: none;
@@ -58,6 +61,26 @@ const NavEstilizada = styled.nav`
             text-decoration: none;
             font-size: 1.5rem;
             color: #E9E4DF;
+        }
+    }
+    @media (max-width: 740px) {
+        flex-direction: column;
+        gap: 0.5rem;
+        img{
+            margin-top:1rem;
+            width: 96px;
+            height: 48px;
+        }
+        div{
+            gap: 0.2rem;
+            flex-direction: column;
+            img{
+                width: 263px;
+                height: 64px;
+            }
+            ul p{
+                font-size: 18px;
+            }
         }
     }
 `
