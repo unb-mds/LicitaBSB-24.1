@@ -16,7 +16,17 @@
 
 .cardTitle {
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1.2em;
+  max-height: 3.6em;
+  height: 3.6em;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-align: center;
 }
 
 .cardSection {
@@ -59,9 +69,20 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.4em;
 }
 .cardStatusText{
   font-weight: bold;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: 1em;
+  max-height: 1em;
+  height: 1em;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 @media (max-width: 1500px){
