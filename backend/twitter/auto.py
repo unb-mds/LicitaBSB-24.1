@@ -31,16 +31,16 @@ def encurtar_url(url):
 
 site = encurtar_url("https://licitabsb-repo.vercel.app")
 
-# def editar_mensagem(mensagem):
-#     result = parse_tweet(mensagem).asdict()
-#     if result['valid']:
-#         return mensagem
-#     else:
-#         mensagem_editada = mensagem[:result['validRangeEnd']]
-#         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
-#         if len(mensagem_editada) > 3:
-#             mensagem_editada = mensagem_editada[:-3] + "..."
-#         return mensagem_editada
+def editar_mensagem(mensagem):
+    result = parse_tweet(mensagem).asdict()
+    if result['valid']:
+        return mensagem
+    else:
+        mensagem_editada = mensagem[:result['validRangeEnd']]
+        mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
+        if len(mensagem_editada) > 3:
+            mensagem_editada = mensagem_editada[:-3] + "..."
+        return mensagem_editada
 
 def texto_para_imagem(texto, caminho_imagem):
     largura = 800
@@ -113,7 +113,7 @@ else:
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
         tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
-        #tweet_message = editar_mensagem(tweet_message)
+        tweet_message = editar_mensagem(tweet_message)
         mensagens.append((tweet_message, licitacao["descricao"]))
 
 consumer_key = os.getenv('TWITTER_API_KEY')
