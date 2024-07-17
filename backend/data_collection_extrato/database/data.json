@@ -26684,5 +26684,47 @@
             "7180.00"
         ],
         "id": 1911
+    },
+    {
+        "tipo": "EXTRATO DE DISPENSA DE LICITAÇÃO",
+        "nomeOrgao": "Ministério da Defesa/Comando da Marinha/Comando de Operações Navais/7º Distrito Naval/Hospital Naval de Brasília",
+        "objeto": "Processo Administrativo nº 63060.004123/2024-19, do Ato de Autorização de Dispensa de Licitação nº 33/2024, contratada: BCMED PRODUTOS E EQUIPAMENTOS PARA SAÚDE LTDA., CNPJ: 14.327.411/0003-62. Objeto: Aquisição de 02 (dois) equipamentos aquecedores de gel de ultrassonografia para atendimento aos pacientes na realização de procedimento ultrassonográfico do Serviço de Imagenologia do Hospital Naval de Brasília (HNBra). Justificativa: permitir a substituição do acessório inoperante e a não interrupção do atendimento aos pacientes do HNBra, evitando o encaminhamento desta demanda para Organização de Saúde Extra Marinha. O enquadramento da contratação e o art.75, inciso II, da Lei nº 14.133/2021. Autoridade Competente: STELLA TAYLOR PORTELLA. Valor total de RS 1.437,80.",
+        "numero_processo": null,
+        "data_abertura": "16/07/2024",
+        "edicao": "135",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n24",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-572116703",
+        "valores_licitacao": [
+            "1437.80"
+        ],
+        "id": 1912
+    },
+    {
+        "tipo": "EXTRATO DE DISPENSA DE LICITAÇÃO",
+        "nomeOrgao": "Ministério da Defesa/Comando da Marinha/Comando de Operações Navais/7º Distrito Naval/Hospital Naval de Brasília",
+        "objeto": "Processo Administrativo nº 63060.006688/2024-22, do Ato de Autorização de Dispensa de Licitação nº 36/2024, contratada: LASALUS LABORATÓRIOS E VACINAS, CNPJ: 32.025.000/0001-32. Objeto: realização de Exame laboratorial Macromilasemia por Organização de Saúde Extra-Marinha (OSE), em usuário do Sistema de Saúde da Marinha, em caráter imediato e excepcional. Justificativa: trata-se de teste macromolecular, metodologia não disponível no Laboratório de Análises Clínicas do Hospital Naval de Brasília. O enquadramento da contratação é o art.75, inciso II, da Lei nº 14.133/2021. Autoridade Competente: STELLA TAYLOR PORTELLA. Valor total de RS 469,99.",
+        "numero_processo": null,
+        "data_abertura": "16/07/2024",
+        "edicao": "135",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n24",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-572252674",
+        "valores_licitacao": [
+            "469.99"
+        ],
+        "id": 1913
+    },
+    {
+        "tipo": "EXTRATO DE DISPENSA DE LICITAÇÃO",
+        "nomeOrgao": "Ministério da Defesa/Comando da Marinha/Comando de Operações Navais/7º Distrito Naval/Hospital Naval de Brasília",
+        "objeto": "Processo Administrativo nº 63060.005601/2024-08, do Ato de Autorização de Dispensa de Licitação nº 40/2024, contratada: LP COMERCIO DE TINTAS LTDA, CNPJ: 36.949.823/0001-05. Objeto: Aquisição de material para pintura e manutenção do Hospital Naval de Brasília (HNBra). Justificativa: necessidade de manutenção da pintura interna e externa das instalações do HNBra em virtude de desgaste causado pela ação do tempo. O enquadramento da contratação e o art.75, inciso II, da Lei nº 14.133/2021. Autoridade Competente: STELLA TAYLOR PORTELLA. Valor total de RS 2.924,85.",
+        "numero_processo": null,
+        "data_abertura": "16/07/2024",
+        "edicao": "135",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n24",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-572202164",
+        "valores_licitacao": [
+            "2924.85"
+        ],
+        "id": 1914
     }
 ]
