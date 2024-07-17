@@ -150,8 +150,8 @@ for i, (mensagem, descricao) in enumerate(mensagens):
         # remove a imagem para liberar espaço em disco
         os.remove(caminho_imagem)
 
-        # posta a cada 5 minutos
-        time.sleep(300)
+        # posta a cada 30 segundos
+        time.sleep(30)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
