@@ -1,42 +1,63 @@
-Padrões de commits 📜
-De acordo com a documentação do Conventional Commits, commits semânticos são uma convenção simples para ser utilizada nas mensagens de commit. Essa convenção define um conjunto de regras para criar um histórico de commit explícito, o que facilita a criação de ferramentas automatizadas.
+# Padrões de Commits 📜
 
-Esses commits auxiliarão você e sua equipe a entenderem de forma facilitada quais alterações foram realizadas no trecho de código que foi commitado.
+De acordo com a documentação do [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), commits semânticos são uma convenção simples para ser utilizada nas mensagens de commit. Esta convenção define um conjunto de regras para criar um histórico de commit explícito, facilitando a criação de ferramentas automatizadas.
 
-Essa identificação ocorre por meio de uma palavra e emoji que identifica se aquele commit realizado se trata de uma alteração de código, atualização de pacotes, documentação, alteração de visual, teste...
+Esses commits auxiliarão você e sua equipe a entenderem de forma facilitada quais alterações foram realizadas no trecho de código que foi commitado. Essa identificação ocorre por meio de uma palavra e um emoji que identifica se aquele commit realizado se trata de uma alteração de código, atualização de pacotes, documentação, alteração de visual, teste, entre outros.
 
-Tipo e descrição 🦄
-O commit semântico possui os elementos estruturais abaixo (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código.
+## Tipo e Descrição 🦄
 
-feat- Commits do tipo feat indicam que seu trecho de código está incluindo um novo recurso (se relaciona com o MINOR do versionamento semântico).
+O commit semântico possui os seguintes elementos estruturais (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código:
 
-fix - Commits do tipo fix indicam que seu trecho de código commitado está solucionando um problema (bug fix), (se relaciona com o PATCH do versionamento semântico).
+### feat
+- **Descrição**: Indica que seu trecho de código está incluindo um novo recurso.
+- **Relacionamento**: Se relaciona com o MINOR do versionamento semântico.
 
-docs - Commits do tipo docs indicam que houveram mudanças na documentação, como por exemplo no Readme do seu repositório. (Não inclui alterações em código).
+### fix
+- **Descrição**: Indica que seu trecho de código commitado está solucionando um problema (bug fix).
+- **Relacionamento**: Se relaciona com o PATCH do versionamento semântico.
 
-test - Commits do tipo test são utilizados quando são realizadas alterações em testes, seja criando, alterando ou excluindo testes unitários. (Não inclui alterações em código)
+### docs
+- **Descrição**: Indica que houveram mudanças na documentação, como por exemplo no README do seu repositório.
+- **Relacionamento**: Não inclui alterações em código.
 
-build - Commits do tipo build são utilizados quando são realizadas modificações em arquivos de build e dependências.
+### test
+- **Descrição**: Utilizado quando são realizadas alterações em testes, seja criando, alterando ou excluindo testes unitários.
+- **Relacionamento**: Não inclui alterações em código.
 
-perf - Commits do tipo perf servem para identificar quaisquer alterações de código que estejam relacionadas a performance.
+### build
+- **Descrição**: Utilizado quando são realizadas modificações em arquivos de build e dependências.
 
-style - Commits do tipo style indicam que houveram alterações referentes a formatações de código, semicolons, trailing spaces, lint... (Não inclui alterações em código).
+### perf
+- **Descrição**: Serve para identificar quaisquer alterações de código que estejam relacionadas a performance.
 
-refactor - Commits do tipo refactor referem-se a mudanças devido a refatorações que não alterem sua funcionalidade, como por exemplo, uma alteração no formato como é processada determinada parte da tela, mas que manteve a mesma funcionalidade, ou melhorias de performance devido a um code review.
+### style
+- **Descrição**: Indica alterações referentes a formatações de código, semicolons, trailing spaces, lint, etc.
+- **Relacionamento**: Não inclui alterações em código.
 
-chore - Commits do tipo chore indicam atualizações de tarefas de build, configurações de administrador, pacotes... como por exemplo adicionar um pacote no gitignore. (Não inclui alterações em código)
+### refactor
+- **Descrição**: Refere-se a mudanças devido a refatorações que não alterem sua funcionalidade, como melhorias de performance ou alteração na estrutura de código.
+- **Relacionamento**: Pode incluir mudanças que não alterem a funcionalidade.
 
-ci - Commits do tipo ci indicam mudanças relacionadas a integração contínua (continuous integration).
+### chore
+- **Descrição**: Indica atualizações de tarefas de build, configurações de administrador, pacotes, etc.
+- **Relacionamento**: Não inclui alterações em código.
 
-raw - Commits to tipo raw indicam mudanças relacionadas a arquivos de configurações, dados, features, parametros.
+### ci
+- **Descrição**: Indica mudanças relacionadas a integração contínua (continuous integration).
 
-cleanup - Commits do tipo cleanup são utilizados para remover código comentado, trechos desnecessários ou qualquer outra forma de limpeza do código-fonte, visando aprimorar sua legibilidade e manutenibilidade.
+### raw
+- **Descrição**: Indica mudanças relacionadas a arquivos de configurações, dados, features, parâmetros.
 
-remove - Commits do tipo remove indicam a exclusão de arquivos, diretórios ou funcionalidades obsoletas ou não utilizadas, reduzindo o tamanho e a complexidade do projeto e mantendo-o mais organizado.
+### cleanup
+- **Descrição**: Utilizado para remover código comentado, trechos desnecessários ou qualquer outra forma de limpeza do código-fonte, visando aprimorar sua legibilidade e manutenibilidade.
 
-Recomendações 🎉
-Adicione um tipo consistente com o título do conteúdo.
-Recomendamos que na primeira linha deve ter no máximo 4 palavras.
-Para descrever com detalhes, usar a descrição do commit.
-Usar um emoji no início da mensagem de commit representando sobre o commit.
-Os links precisam ser adicionados em sua forma mais autêntica, ou seja: sem encurtadores de link e links afiliados.
+### remove
+- **Descrição**: Indica a exclusão de arquivos, diretórios ou funcionalidades obsoletas ou não utilizadas, reduzindo o tamanho e a complexidade do projeto e mantendo-o mais organizado.
+
+## Recomendações 🎉
+
+- Adicione um tipo consistente com o título do conteúdo.
+- Recomendamos que a primeira linha tenha no máximo 4 palavras.
+- Para descrever com detalhes, use a descrição do commit.
+- Utilize um emoji no início da mensagem de commit representando o conteúdo do commit.
+- Os links precisam ser adicionados em sua forma mais autêntica, ou seja, sem encurtadores de link e links afiliados.
