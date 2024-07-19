@@ -45,7 +45,7 @@ def editar_mensagem(mensagem):
 def texto_para_imagem(texto, caminho_imagem):
     largura = 400
     altura = 300
-    imagem = Image.new('RGB', (largura, altura), color=(255, 255, 255))
+    imagem = Image.open('backend/twitter/logo.png')
     desenho = ImageDraw.Draw(imagem)
     
     # Tentativa de carregar a fonte do caminho fornecido
@@ -76,13 +76,25 @@ def texto_para_imagem(texto, caminho_imagem):
     imagem.save(caminho_imagem)
     print(f"Imagem salva como {caminho_imagem}")
 
+# FUNCAO PARA FAZER MARCA D'AGUA
+
+# def watermark_with_transparency(input_image_path, output_image_path, watermark_image_path, position):
+#     base_image = Image.open(input_image_path).convert('RGBA')
+#     watermark = Image.open(watermark_image_path).convert('RGBA')
+#     width, height = base_image.size
+#     transparent = Image.new('RGBA', (width, height), (0,0,0,0))
+#     transparent.paste(base_image, (0,0))
+#     transparent.paste(watermark, position, mask=watermark)
+#     transparent.save(output_image_path)
+#     print(f"Imagem com marca d'água salva como {output_image_path}")
+
 # Chamada da função
 
 licitacoes = []
 caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
 caminho_avisos = 'backend/colecao_de_dados/database/data_avisos.json'
 
-data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
+data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
 
@@ -140,10 +152,16 @@ api = tweepy.API(auth)
 if len(mensagens) > 50:
     mensagens = mensagens[:50]
 
+watermark_image_path = 'backend/twitter/logolicita.png'
+
 for i, (mensagem, descricao) in enumerate(mensagens):
     try:
         caminho_imagem = f"tweet_image_{i}.png"
+        # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
         texto_para_imagem(descricao, caminho_imagem)
+
+        # adiciona a marca dagua
+        # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
 
         # upload na imagem
         response = api.media_upload(filename=caminho_imagem)
@@ -152,11 +170,11 @@ for i, (mensagem, descricao) in enumerate(mensagens):
         # cria o tweet já com a imagem
         tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
         print(tweet)
-        i.show()
         # remove a imagem para liberar espaço em disco
         os.remove(caminho_imagem)
+        # os.remove(caminho_imagem_com_marca)
 
-        # posta a cada 30 segundos
+        # posta a cada 20 segundos
         time.sleep(20)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
