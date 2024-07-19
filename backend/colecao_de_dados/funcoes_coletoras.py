@@ -203,7 +203,7 @@ def criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     licita = 0
     for link in links_avisos:
         try:
-            info_aviso = extrair_info_licitacao(link)
+            info_aviso = extrair_info_licitacao(link, tipo)
             print("\033[0mProcessando licitação " + str(cont) + " de " + str(maxil))
             if info_aviso:  # Verifica se o dicionário não está vazio
                 licitacoes_detalhadas.append(info_aviso)
