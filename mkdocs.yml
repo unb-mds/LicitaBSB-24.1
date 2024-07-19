@@ -9,7 +9,8 @@ nav:
   - Arquitetura: Arquitetura/arquitetura.md
   - Jornada de produção: storymap/storymap.md
 
-  - Sprints:
+  - Reuniões:
+    - Feedback R1: Atas/feedbackR1.md
     - Sprint 0:
       - Reunião 1: Atas/Sprint0_reunião1.md
       - Reunião 2: Atas/Sprint0_reunião2.md
@@ -17,30 +18,31 @@ nav:
       - Reunião 1: Atas/Sprint1_reunião1.md
       - Reunião 2: Atas/Sprint1_reunião2.md
     - Sprint 2:
-      - Reunião: Atas/Sprint2_reunião1.md
+      - Reunião: Atas/Sprint2.md
     - Sprint 3:
       - Reunião 1: Atas/Sprint3_reunião1.md
       - Reunião 2: Atas/Sprint3_reunião2.md
     - Sprint 4:
-      - Reunião: Atas/Sprint4_reunião1.md
+      - Reunião: Atas/Sprint4.md
     - Sprint 5:
-      - Reunião: Atas/Sprint5_reunião1.md
+      - Reunião: Atas/Sprint5.md
     - Sprint 6:
-      - Reunião: Atas/Sprint6_reunião1.md
+      - Reunião: Atas/Sprint6.md
     - Sprint 7:
       - Reunião 1: Atas/Sprint7_reunião1.md
       - Reunião 2: Atas/Sprint7_reunião2.md
     - Sprint 8:
-      - Reunião: Atas/Sprint8_reunião1.md
+      - Reunião: Atas/Sprint8.md
     - Sprint 9:
-      - Reunião: Atas/Sprint9_reunião1.md
+      - Reunião: Atas/Sprint9.md
     - Sprint 10:
-      - Reunião: Atas/Sprint10_reunião1.md
-    - Feedback R1: Atas/feedbackR1.md
+      - Reunião: Atas/Sprint10.md
     - Sprint 11:
-      - Reunião 1: Atas/Sprint11_reunião1.md
+      - Reunião: Atas/Sprint11.md
     - Sprint 12:
-      - Reunião 1: Atas/Sprint_12.md
+      - Reunião: Atas/Sprint12.md
+    - Sprint 13:
+      - Reunião: Atas/Sprint13.md
       
   - Materiais de Estudos: Estudos/Estudos.md
   - Ferramentas para o projeto: Ferramentas/ferramentas.md
