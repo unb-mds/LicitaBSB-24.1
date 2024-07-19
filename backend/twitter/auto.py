@@ -43,12 +43,12 @@ def editar_mensagem(mensagem):
         return mensagem_editada
 
 def texto_para_imagem(texto, caminho_imagem):
-    largura = 800
-    altura = 600
+    largura = 400
+    altura = 300
     imagem = Image.new('RGB', (largura, altura), color=(255, 255, 255))
     desenho = ImageDraw.Draw(imagem)
     try:
-        fonte = ImageFont.truetype("arial.ttf", 20)
+        fonte = ImageFont.truetype("Arial.ttf", 40)
     except IOError:
         fonte = ImageFont.load_default()
 
