@@ -94,7 +94,7 @@ licitacoes = []
 caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
 caminho_avisos = 'backend/colecao_de_dados/database/data_avisos.json'
 
-data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
+data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
 
