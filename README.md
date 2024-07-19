@@ -2,11 +2,11 @@
 # Licita BSB
 Licita BSB é um projeto de divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação mais recentes publicadas nos diários oficiais serão divulgadas de maneira acessível e compreensível para o público em geral.
 
-Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU de forma diária 
-
 Visando ampliar a divulgação desse material, Licita BSB também possui um bot na rede social X (antigo Twitter), onde serão compartilhadas as dispensas de licitação mais recentes, de modo a alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
 
-> Esse projeto será realizado durante a disciplica de Métodos de Desenvolvimento de Software da Universida de Brasília, no primeiro semestre de 2024.
+Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU de forma diária 
+
+> Esse projeto será realizado durante a disciplica de Métodos de Desenvolvimento de Software da Universidade de Brasília, no primeiro semestre de 2024.
 
 ## Como executar o projeto
 
@@ -34,8 +34,8 @@ npm run dev
 O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (ou http://127.0.0.1:5432/)
 
 ### Observações
-- A atualização do banco de dados é feita de forma automatica no projeta por Cronjob.
-- Caso deseje testar os componetes do backend [clique aqui](https://github.com/unb-mds/LicitaBSB-24.1/tree/main/backend) e depois clique no componente que deseja testar.
+- A atualização do banco de dados é feita de forma automatica no projeto por Cronjob.
+- Caso deseje testar os componentes do backend [clique aqui](https://github.com/unb-mds/LicitaBSB-24.1/tree/main/backend) e depois clique no componente que deseja testar.
 
 
 ## 📚 Documentação
