@@ -73,8 +73,8 @@ def texto_para_imagem(texto, caminho_imagem):
     print(f"Imagem salva como {caminho_imagem}")
 
 licitacoes = []
-caminho_extrato = 'backend/data_collection_extrato/database/data.json'
-caminho_avisos = 'backend/data_collection_avisos/database/data.json'
+caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
+caminho_avisos = 'backend/colecao_de_dados/database/data_avisos.json'
 
 data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
