@@ -30,6 +30,9 @@ hide:
 - Víctor Hugo Lima Schmidt;
 - Nathan Benigno
 - Marllon Fausto
+- Thales Euflauzino
+- Marcelo Adrian
+
 
 ## Tempo de Reunião:
 Hora de início: 21:12h.
