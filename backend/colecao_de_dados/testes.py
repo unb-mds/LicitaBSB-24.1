@@ -1,6 +1,6 @@
-import functions as func
+import funcoes_coletoras as func
 import pytest
-import functions
+import funcoes_coletoras as functions
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from datetime import datetime, timedelta
@@ -226,5 +226,3 @@ def test_criandojsoncomavisos_criacao_json():
     output_directory = 'backend/data_collection/database'
     output_file = os.path.join(output_directory, 'data.json')
     assert os.path.exists(output_file)
-
-

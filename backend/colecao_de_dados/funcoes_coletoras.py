@@ -73,17 +73,18 @@ def extrair_url_titles(url):
 
     return url_titles
 
-def extraindo_avisos_licitacao(lista_de_urls):
-    links_avisos_licitacao = []
-    termos = ["aviso-de-licitacao", "aviso-de-licitação", "aviso-de-dispensa-de-licitacao"]
-
+def extraindo_links_licitacoes(lista_de_urls, tipo):
+    links_licitacoes = []
+    if tipo == 'avisos': termos = ["aviso-de-licitacao", "aviso-de-licitação", "aviso-de-dispensa-de-licitacao"]
+    elif tipo == 'extratos': termos = ["extrato-de-dispensa-de-licitacao", "extrato-de-dispensa-de-licitação", "extrato-de-inexigibilidade-de-licitacao" ]
+    else: return KeyError("Tipo inválido. Use 'avisos' ou 'extratos'.")
     for url in lista_de_urls:
         if any(term in url for term in termos):
-            links_avisos_licitacao.append(url)
+            links_licitacoes.append(url)
 
-    return links_avisos_licitacao
+    return links_licitacoes
 
-def filtrando_os_avisos_de_brasilia(descricao):
+def filtrando_licitacoes_brasilia(descricao):
     # Palavras específicas que estamos procurando
     palavras_especificas = ["Brasilia", "Brasília", " DF ", " Ceilândia ", " Plano Piloto " ]
     descricao = descricao.lower()  # Usar .lower() para fazer a verificação case-insensitive
@@ -105,7 +106,7 @@ def filtrando_os_avisos_de_brasilia(descricao):
                     return True  # Se encontrar, retorna o aviso_info
     return False  # Se nenhuma palavra específica estiver presente ou se encontrar "horarios"/"horário" nas proximidades
 
-def extrair_info_aviso(url):
+def extrair_info_licitacao(url,tipo):
     # Cria uma sessão HTTP com retries
     sessao = criar_sessao_com_retries()
     response = sessao.get(url)
@@ -124,31 +125,17 @@ def extrair_info_aviso(url):
     # Encontra os elementos de identificação e subtítulo
     identifica_elems = soup.find('p', class_='identifica')
     titulo = identifica_elems.text.strip() if identifica_elems else None
-    if titulo == None:
-        identifica_elems = soup.find('h3', class_='titulo-dou')
-        titulo = identifica_elems.text.strip() if identifica_elems else "Aviso de Licitação"
+    if titulo == None: identifica_elems = soup.find('h3', class_='titulo-dou')
+    titulo = identifica_elems.text.strip() if identifica_elems else None
 
     # Filtra os avisos que não são de Brasília
-    if not filtrando_os_avisos_de_brasilia(descricao):
+    if not filtrando_licitacoes_brasilia(descricao):
         return None
 
     #Extrai o número do processo usando regex
     numero_processo_regex = re.compile(r'Processo(?:\s*n[ºo])?:?\s*([\d.]+[-\d/]*\d+)', re.IGNORECASE)
     match = numero_processo_regex.search(descricao)
     numero_processo = match.group(1) if match else None
-
-    # Encontra os elementos de identificação e subtítulo
-    identifica_elems = soup.find_all('p', class_='identifica')
-    subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
-
-    # Encontra o elemento que contém o assinante
-    assinante_elem = soup.find('p', class_='assina')
-    assinante = assinante_elem.text.strip() if assinante_elem else None
-
-    # Encontra o elemento que contém o cargo do assinante
-    cargo_elem = soup.find('p', class_='cargo')
-    cargo = cargo_elem.text.strip() if cargo_elem else None
-
     # Encontra o elemento que contém os detalhes do DOU (data de publicação, edição, seção/página, órgão)
     detalhes_dou = soup.find('div', class_='detalhes-dou')
     data_publicacao = detalhes_dou.find('span', class_='publicado-dou-data').text.strip() if detalhes_dou and detalhes_dou.find('span', 'publicado-dou-data') else None
@@ -163,38 +150,63 @@ def extrair_info_aviso(url):
     # Converte os valores para o formato numérico e remove duplicatas
     valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
     if "" in valores_licitacao: valores_licitacao.remove("")
-
+    if tipo == 'avisos':
+        # Encontra os elementos de identificação e subtítulo
+        identifica_elems = soup.find_all('p', class_='identifica')
+        subtitulo = identifica_elems[1].text.strip() if len(identifica_elems) > 1 else None
+        # Encontra o elemento que contém o assinante
+        assinante_elem = soup.find('p', class_='assina')
+        assinante = assinante_elem.text.strip() if assinante_elem else None
+        # Encontra o elemento que contém o cargo do assinante
+        cargo_elem = soup.find('p', class_='cargo')
+        cargo = cargo_elem.text.strip() if cargo_elem else None
+        if titulo == None: titulo = "Aviso de Licitação"
+        aviso_info = {
+            "tipo": titulo,
+            "numero_licitacao": subtitulo,
+            "nomeOrgao": orgao,
+            "objeto": descricao,
+            "numero_processo": numero_processo,
+            "assinante": assinante,
+            "data_abertura": data_publicacao,
+            "cargo": cargo,
+            "edicao": edicao,
+            "secao_pagina": secao_pagina,
+            "link": url,
+            "valores_licitacao": valores_licitacao if valores_licitacao else None
+        }
+    elif tipo == 'extratos':
+        if titulo == None: titulo = "Extrato de Licitação"
+        aviso_info = {
+            "tipo": titulo,
+            "nomeOrgao": orgao,
+            "objeto": descricao,
+            "numero_processo": numero_processo,
+            "data_abertura": data_publicacao,
+            "edicao": edicao,
+            "secao_pagina": secao_pagina,
+            "link": url,
+            "valores_licitacao": valores_licitacao if valores_licitacao else None
+        }
     # Monta o dicionário com as informações do aviso
-    aviso_info = {
-        "tipo": titulo,
-        "numero_licitacao": subtitulo,
-        "nomeOrgao": orgao,
-        "objeto": descricao,
-        "numero_processo": numero_processo,
-        "assinante": assinante,
-        "data_abertura": data_publicacao,
-        "cargo": cargo,
-        "edicao": edicao,
-        "secao_pagina": secao_pagina,
-        "link": url,
-        "valores_licitacao": valores_licitacao if valores_licitacao else None
-    }
+    
 
     return aviso_info
 
 
-def criandojsoncomavisos(links_avisos, dia, mes, ano):
-    print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
-    avisos_detalhados = []
+def criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo):
+    if tipo == 'avisos': print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
+    elif tipo == 'extratos': print("Realizando a extração dos extratos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
+    licitacoes_detalhadas = []
     maxil = len(links_avisos)
     cont = 1
     licita = 0
     for link in links_avisos:
         try:
-            info_aviso = extrair_info_aviso(link)
+            info_aviso = extrair_info_licitacao(link, tipo)
             print("\033[0mProcessando licitação " + str(cont) + " de " + str(maxil))
             if info_aviso:  # Verifica se o dicionário não está vazio
-                avisos_detalhados.append(info_aviso)
+                licitacoes_detalhadas.append(info_aviso)
                 licita += 1
                 print("\033[92mA licitação " + str(cont) + " era de Brasilia.\033[0m")
         except Exception as e:
@@ -204,9 +216,11 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
     print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
     
     # Nome do arquivo JSON
-    output_directory = 'backend/data_collection_avisos/database'
+    output_directory = 'backend/colecao_de_dados/database'
     os.makedirs(output_directory, exist_ok=True)  # Garante que o diretório de saída exista
-    output_file = os.path.join(output_directory, 'data.json')
+    if tipo == 'avisos': output_file = os.path.join(output_directory, 'data_avisos.json')
+    elif tipo == 'extratos': output_file = os.path.join(output_directory, 'data_extratos.json')
+    
     
     # Carregar dados existentes, se houver
     if os.path.exists(output_file):
@@ -225,12 +239,12 @@ def criandojsoncomavisos(links_avisos, dia, mes, ano):
         ultimo_id = 0
 
     # Adicionar novos dados com IDs incrementais
-    for index, aviso in enumerate(avisos_detalhados, start=ultimo_id + 1):
-        aviso['id'] = index
-        dados_existentes.append(aviso)
+    for index, licitacao in enumerate(licitacoes_detalhadas, start=ultimo_id + 1):
+        licitacao['id'] = index
+        dados_existentes.append(licitacao)
     
     # Salvar dados de volta no arquivo
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(dados_existentes, f, ensure_ascii=False, indent=4)
 
-    return avisos_detalhados
+    return licitacoes_detalhadas

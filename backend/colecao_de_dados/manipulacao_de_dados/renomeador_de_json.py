@@ -1,3 +1,9 @@
+'''
+Essa função serve para renomear os arquivos json a utilize para realizar alterações e
+manipulações nos nomes das tags dos jsons que contém os dados
+'''
+
+
 import json
 
 # Variável para o caminho do arquivo JSON

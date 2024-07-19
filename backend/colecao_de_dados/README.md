@@ -23,31 +23,45 @@ pip install requests beautifulsoup4 urllib3
 
 ### Executando o Script
 
-Você pode executar o script `main.py` de três maneiras diferentes:
+Você pode executar o script `main.py` de três maneiras diferentes sendo de extrema importância que o tipo seja especificado, sendo `avisos`ou `extratos`:
 
-1. **Processar desde 05/02/2018 até a data atual:**
+1. **Processar dados do dia anterior até a data atual:**
     ```sh
-    python3 main.py
+    python3 main.py avisos # para procurar os avisos
     ```
-
+    ```sh
+    python3 main.py extratos # para procurar os extratos
+    ```
 2. **Processar desde uma data inicial até a data atual:**
     ```sh
-    python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial>
+    python3 main.py avisos <dia-inicial>/<mes-inicial>/<ano-inicial>
     ```
-
+    ```sh
+    python3 main.py extratos <dia-inicial>/<mes-inicial>/<ano-inicial>
+    ```
     Exemplo:
     ```sh
-    python3 main.py 01/01/2020
+    python3 main.py avisos 01/01/2020
     ```
+    ```sh
+    python3 main.py extratos 01/01/2020
+    ```
+
 
 3. **Processar um intervalo específico de datas:**
     ```sh
-    python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>
+    python3 main.py avisos <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>
+    ```
+    ```sh
+    python3 main.py extratos <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>
     ```
 
     Exemplo:
     ```sh
-    python3 main.py 01/01/2020 31/12/2020
+    python3 main.py avisos 01/01/2020 31/12/2020
+    ```
+    ```sh
+    python3 main.py extratos 01/01/2020 31/12/2020
     ```
 
 ### Formato de Data
