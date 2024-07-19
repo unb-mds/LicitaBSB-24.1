@@ -8,50 +8,50 @@ Esses commits auxiliarão você e sua equipe a entenderem de forma facilitada qu
 
 O commit semântico possui os seguintes elementos estruturais (tipos), que informam a intenção do seu commit ao utilizador(a) de seu código:
 
-### feat
+### ```feat```
 - **Descrição**: Indica que seu trecho de código está incluindo um novo recurso.
 - **Relacionamento**: Se relaciona com o MINOR do versionamento semântico.
 
-### fix
+### ```fix```
 - **Descrição**: Indica que seu trecho de código commitado está solucionando um problema (bug fix).
 - **Relacionamento**: Se relaciona com o PATCH do versionamento semântico.
 
-### docs
+### ```docs```
 - **Descrição**: Indica que houveram mudanças na documentação, como por exemplo no README do seu repositório.
 - **Relacionamento**: Não inclui alterações em código.
 
-### test
+### ```test```
 - **Descrição**: Utilizado quando são realizadas alterações em testes, seja criando, alterando ou excluindo testes unitários.
 - **Relacionamento**: Não inclui alterações em código.
 
-### build
+### ```build```
 - **Descrição**: Utilizado quando são realizadas modificações em arquivos de build e dependências.
 
-### perf
+### ```perf```
 - **Descrição**: Serve para identificar quaisquer alterações de código que estejam relacionadas a performance.
 
-### style
+### ```style```
 - **Descrição**: Indica alterações referentes a formatações de código, semicolons, trailing spaces, lint, etc.
 - **Relacionamento**: Não inclui alterações em código.
 
-### refactor
+### ```refactor```
 - **Descrição**: Refere-se a mudanças devido a refatorações que não alterem sua funcionalidade, como melhorias de performance ou alteração na estrutura de código.
 - **Relacionamento**: Pode incluir mudanças que não alterem a funcionalidade.
 
-### chore
+### ```chore```
 - **Descrição**: Indica atualizações de tarefas de build, configurações de administrador, pacotes, etc.
 - **Relacionamento**: Não inclui alterações em código.
 
-### ci
+### ```ci```
 - **Descrição**: Indica mudanças relacionadas a integração contínua (continuous integration).
 
-### raw
+### ```raw```
 - **Descrição**: Indica mudanças relacionadas a arquivos de configurações, dados, features, parâmetros.
 
-### cleanup
+### ```cleanup```
 - **Descrição**: Utilizado para remover código comentado, trechos desnecessários ou qualquer outra forma de limpeza do código-fonte, visando aprimorar sua legibilidade e manutenibilidade.
 
-### remove
+### ```remove```
 - **Descrição**: Indica a exclusão de arquivos, diretórios ou funcionalidades obsoletas ou não utilizadas, reduzindo o tamanho e a complexidade do projeto e mantendo-o mais organizado.
 
 ## Recomendações 🎉
