@@ -6,8 +6,8 @@ Este projeto contém scripts para extrair informações sobre avisos de licitaç
 ## Estrutura do Projeto
 
 - `main.py`: Script principal para execução via terminal.
-- `functions.py`: Contém todas as funções auxiliares utilizadas pelo script principal.
-- `data.json`: Arquivo JSON onde os dados extraídos são armazenados.
+- `funcoes_coletoras.py`: Contém todas as funções auxiliares utilizadas pelo script principal.
+- `database/`: Pasta contendo JSON's onde os dados extraídos são armazenados.
 
 ## Requisitos
 
@@ -112,11 +112,11 @@ Isso processará todos os avisos de licitação do DOU para o intervalo de 01/01
 ## Instruções de Teste
 Para executar os testes, utilize o comando:
 ```bash
-python3 -m pytest teste_functions.py
+python3 -m pytest testes.py
 ```
-Isso irá executar todos os testes definidos no arquivo `teste_functions.py` e fornecer um relatório detalhado dos resultados.
+Isso irá executar todos os testes definidos no arquivo `testes.py` e fornecer um relatório detalhado dos resultados.
 
 #### Considerações Finais
-Esses testes visam aumentar a cobertura de testes e garantir que as funções no módulo `functions.py` funcionem corretamente sob diferentes condições. Por favor, revise os testes adicionados e informe caso haja alguma sugestão ou modificação necessária.
+Esses testes visam aumentar a cobertura de testes e garantir que as funções no módulo `funcoes_coletoras.py` funcionem corretamente sob diferentes condições. Por favor, revise os testes adicionados e informe caso haja alguma sugestão ou modificação necessária.
 
 Obrigado!
