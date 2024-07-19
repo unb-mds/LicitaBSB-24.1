@@ -1,35 +1,43 @@
 import sys
 from datetime import datetime, timedelta
-from functions import link_jornal_diario, extrair_url_titles, extraindo_avisos_licitacao, criandojsoncomavisos
+import funcoes_coletoras as func
 
 def main():
     # Verificação dos argumentos passados
-    if len(sys.argv) not in [1, 2, 3]:
+    if len(sys.argv) < 2:
         print("Uso incorreto. Exemplos de uso:")
-        print("python3 main.py")
-        print("python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial>")
-        print("python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>")
+        print("python3 main.py avisos")
+        print("python3 main.py extratos")
+        print("python3 main.py avisos <dia-inicial>/<mes-inicial>/<ano-inicial>")
+        print("python3 main.py extratos <dia-inicial>/<mes-inicial>/<ano-inicial>")
+        print("python3 main.py avisos <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>")
+        print("python3 main.py extratos <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>")
+        return
+
+    # Definindo o tipo
+    tipo = sys.argv[1]
+    if tipo not in ['avisos', 'extratos']:
+        print("Tipo inválido. Use 'avisos' ou 'extratos'.")
         return
 
     # Definindo data inicial e final
-    if len(sys.argv) == 1:
+    if len(sys.argv) == 2:
         # Caso nenhuma data seja fornecida, a leitura será realizada do dia anterior
         data_final = datetime.now() - timedelta(days=1)
-        #data_inicial = datetime(2018, 2, 5)
         data_inicial = data_final
-    elif len(sys.argv) == 2:
+    elif len(sys.argv) == 3:
         # Caso apenas a data inicial seja fornecida
         try:
-            data_inicial = datetime.strptime(sys.argv[1], "%d/%m/%Y")
+            data_inicial = datetime.strptime(sys.argv[2], "%d/%m/%Y")
             data_final = datetime.now()
         except ValueError:
             print("Formato de data inválido. Use dd/mm/aaaa.")
             return
-    elif len(sys.argv) == 3:
+    elif len(sys.argv) == 4:
         # Caso ambas as datas sejam fornecidas
         try:
-            data_inicial = datetime.strptime(sys.argv[1], "%d/%m/%Y")
-            data_final = datetime.strptime(sys.argv[2], "%d/%m/%Y")
+            data_inicial = datetime.strptime(sys.argv[2], "%d/%m/%Y")
+            data_final = datetime.strptime(sys.argv[3], "%d/%m/%Y")
         except ValueError:
             print("Formato de data inválido. Use dd/mm/aaaa.")
             return
@@ -54,20 +62,20 @@ def main():
         print(f"Processando {dia}/{mes}/{ano}...")
 
         # Capturar o link do jornal diário
-        url = link_jornal_diario(dia, mes, ano)
+        url = func.link_jornal_diario(dia, mes, ano)
         if not url.startswith("http"):
             print(url)
             data_atual += timedelta(days=1)
             continue
 
         # Extrair as URLs dos títulos
-        urls_titulos = extrair_url_titles(url)
+        urls_titulos = func.extrair_url_titles(url)
 
-        # Extrair avisos de licitação
-        links_avisos = extraindo_avisos_licitacao(urls_titulos)
+        # Extrair avisos ou extratos de licitação
+        links_avisos = func.extraindo_links_licitacoes(urls_titulos, tipo)
 
-        # Criar JSON com avisos
-        criandojsoncomavisos(links_avisos, dia, mes, ano)
+        # Criar JSON com avisos ou extratos
+        func.criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo)
 
         # Avançar para o próximo dia
         data_atual += timedelta(days=1)
