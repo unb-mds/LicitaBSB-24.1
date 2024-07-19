@@ -47,11 +47,14 @@ def texto_para_imagem(texto, caminho_imagem):
     altura = 300
     imagem = Image.new('RGB', (largura, altura), color=(255, 255, 255))
     desenho = ImageDraw.Draw(imagem)
+    
+    # Tentativa de carregar a fonte do caminho fornecido
     try:
-        fonte = ImageFont.truetype("Arial.ttf", 40)
+        fonte = ImageFont.truetype('backend/twitter/assets/ARIAL.TTF', 13)
     except IOError:
+        print("Fonte não encontrada. Usando fonte padrão.")
         fonte = ImageFont.load_default()
-
+    
     margem = 10
     espaco_linhas = 5
     palavras = texto.split(' ')
@@ -67,10 +70,13 @@ def texto_para_imagem(texto, caminho_imagem):
             linha = palavra + ' '
             altura_linha = desenho.textbbox((0, 0), linha, font=fonte)[3]  # Posição 3 retorna a altura da caixa delimitadora
             y_text += altura_linha + espaco_linhas
+    
     desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
 
     imagem.save(caminho_imagem)
     print(f"Imagem salva como {caminho_imagem}")
+
+# Chamada da função
 
 licitacoes = []
 caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
@@ -146,12 +152,12 @@ for i, (mensagem, descricao) in enumerate(mensagens):
         # cria o tweet já com a imagem
         tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
         print(tweet)
-
+        i.show()
         # remove a imagem para liberar espaço em disco
         os.remove(caminho_imagem)
 
         # posta a cada 30 segundos
-        time.sleep(30)
+        time.sleep(20)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
