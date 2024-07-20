@@ -26740,5 +26740,19 @@
             "4680.00"
         ],
         "id": 1915
+    },
+    {
+        "tipo": "EXTRATO DE DISPENSA DE LICITAÇÃO",
+        "nomeOrgao": "Ministério da Defesa/Comando da Marinha/Comando de Operações Navais/7º Distrito Naval/Hospital Naval de Brasília",
+        "objeto": "Processo Administrativo nº 63060.008069/2024-72, do Ato de Autorização de Dispensa de Licitação nº 45/2024, contratada: ONCOEXO DISTRIBUIDORA DE MEDICAMENTOS LTDA., CNPJ: 08.958.628/0002-97. Objeto: Aquisição do medicamento de Alto Custo Tofacitinibe 5 mg para atender um paciente inscrito no Programa de Medicamento Especial do Hospital Naval de Brasília. Justificativa: Houve tentativa de aquisição por Dispensa Eletrônica com disputa, no entanto o processo foi fracassado. O enquadramento da contratação é o art.75, inciso III, alínea a, da Lei nº 14.133/2021. Autoridade Competente: STELLA TAYLOR PORTELLA. Valor total de RS 27.939,60.",
+        "numero_processo": null,
+        "data_abertura": "19/07/2024",
+        "edicao": "138",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n27",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-572986174",
+        "valores_licitacao": [
+            "27939.60"
+        ],
+        "id": 1916
     }
 ]
