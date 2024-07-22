@@ -6,7 +6,7 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Ofic
 
 ### Diagrama de Arquitetura
 
-![Diagrama de Arquitetura](diagrama_3.png)
+![Diagrama de Arquitetura](diagrama_final.png)
 
 #### Fluxo de Trabalho
 - **Entrada de dados:** Os dados são obtidos através das extração de dados oficiais do governo.
@@ -32,19 +32,21 @@ O projeto LicitaBSB tem como objetivo coletar licitações do site "Diário Ofic
 
 ## Estrutura do Backend
 
-O backend está dividido em três pastas: **extrair_dados_csv**, **data_collection_avisos** e **data_collection_extrato**.
+O backend está dividido em três pastas: **extrair_dados_csv**, **colecao_de_dados** e **twitter**.
 
 - **extrair_dados_csv:**
   - `licitacoes_csv`: Pasta contendo as licitações do site [Portal da Transparência](https://portaldatransparencia.gov.br/download-de-dados/licitacoes_csv).
   - `extrair_dados_csv.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [csv](https://docs.python.org/3/library/csv.html) e [json](https://docs.python.org/3/library/json.html) para iterar sobre os arquivos contidos na pasta `licitacoes_csv`, extraindo os dados de licitações de Brasília e armazenando-os no arquivo `dados_csv.json`.
   - `dados_csv.json`: Base de dados das licitações do projeto, gerada pela função `extrair_dados_csv.py`.
 
-- **Data_collection_avisos:** 
-  - `database/data.json`: Base de dados completa pela junção da base de dados gerada pelo `extrair_dados_csv` e a `main.py`.
-  - `function.py`: Utiliza as bibliotecas [os](https://docs.python.org/3/library/os.html), [requests](https://pypi.org/project/requests/), [re](https://docs.python.org/3/library/re.html), [datetime](https://docs.python.org/3/library/datetime.html), [bs4](https://pypi.org/project/beautifulsoup4/), [json](https://docs.python.org/3/library/json.html) e [urllib3](https://pypi.org/project/urllib3/) para auxiliar nas operações feitas em `main.py`.
-  - `main.py`: Utiliza as bibliotecas [sys](https://docs.python.org/3/library/sys.html) e [datetime](https://docs.python.org/3/library/datetime.html) para realizar a extração de avisos de licitações a partir de um intervalo de datas fornecido pelo usuário ou do dia anterior à execução.
+- **colecao_de_dados:** 
+  - `database/`: Base de dados completa pela junção da base de dados gerada pelo `extrair_dados_csv` e a `main.py`, separadas entre avisos e extratos.
+  - `manipulacao_de_dados/renomeador_de_json`: Script que muda os parâmetros da raspagem de dados.
+  - `funcoes_coletoras`: Esse script possue funções auxiliares para a realização do web scraping de licitações publicadas no Diário Oficial da União. 
+  - `main.py`: Realizar a extração de avisos ou extratos de licitações a partir de um intervalo de datas fornecido pelo usuário ou do dia anterior à execução.
 
-- **Data_collection_extrato:** Possui a mesma função da `main.py` da pasta `data_collection_avisos`, porém direcionada à extração apenas de extratos.
+- **twitter:** 
+  - `auto.py`: Esse script importa licitações e as modifica para um formato padronizado para que sejam postado no twitter. 
 
 A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos dados para nosso banco de dados, enquanto as pastas `data_collection_avisos` e `data_collection_extrato` servem para tirar semanalmente as licitações novas. O método usado em `extrair_dados_csv`, embora completo, só consegue pegar os dados fornecidos pelo Portal da Transparência, que demoram um mês ou mais para estarem prontos.
 
@@ -103,6 +105,32 @@ A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos da
 
     - Salvar o arquivo JSON com as informações dos avisos de licitação no diretório `database`.
 
+## Estrutura do Frontend
+
+O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, **services**, **pages** e **components**.
+
+- **src:**
+  - `main.jsx`: Contém o código inicial e as configurações das rotas da página, além das configurações iniciais do React.
+
+- **utils:**
+  - Contém funções com pequenas funcionalidades que são utilizadas por todos os componentes do projeto.
+
+- **styles:**
+  - Contém as estilizações globais da página.
+
+- **services:**
+  - Contém os arquivos que se comunicam diretamente com a nossa base de dados presente na pasta `backend`.
+
+- **pages:**
+  - Contém subpastas dedicadas a cada página específica do site.
+
+- **components:**
+  - Contém trechos de código que são reutilizados por mais de uma página do site, organizando melhor as funcionalidades do site e tornando o código mais limpo e centralizado.
+
+
+O frontend foi desenvolvido utilizando a biblioteca React com o framework Vite e está localizado na pasta ‘frontend’ do repositório do projeto. Os principais códigos estão na pasta src, onde o arquivo main.jsx configura as rotas da página e as configurações iniciais do React. As pastas estão organizadas da seguinte forma: utils contém funções reutilizáveis, styles armazena as estilizações globais, services inclui arquivos que se comunicam com a base de dados no backend, pages possui subpastas para cada página do site e components guarda trechos de código reutilizáveis para várias páginas.
+
+
 
 ## Histórico de Versões
 
@@ -112,3 +140,4 @@ A pasta `extrair_dados_csv` foi utilizada para fazer a extração inicial dos da
 | 2024-07-01 | 1.1    | Modificações segundo requisições        | Marcelo Adrian  |
 | 2024-07-08 | 1.2    | Explicações estruturais                 | Marcelo Adrian  |
 | 2024-07-11 | 1.3    | Explicação da raspagem de dados         | Marcelo Adrian  |
+| 2024-07-14 | 1.4    | Informações sobre o Frontend            | Marcelo Adrian  |

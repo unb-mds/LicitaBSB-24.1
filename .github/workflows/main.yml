@@ -23,17 +23,17 @@ jobs:
         python3 -m pip install --upgrade pip
         pip install -r backend/requirements.txt
 
-    - name: Run data_collection_avisos script
+    - name: Run colecao de dados avisos script
       run: |
         echo "Running data_collection_avisos script..."
-        python3 backend/data_collection_avisos/main.py
-        echo "Finished data_collection_avisos script."
+        python backend/colecao_de_dados/main.py avisos
+        echo "Finalizado a colecao dos dados de avisos."
 
-    - name: Run data_collection_extrato script
+    - name: Run colecao de dados extratos script
       run: |
         echo "Running data_collection_extrato script..."
-        python3 backend/data_collection_extrato/main.py
-        echo "Finished data_collection_extrato script."
+        python backend/colecao_de_dados/main.py extratos
+        echo "Finalizado a colecao dos dados de extratos."
 
 
     - name: Commit and push updated last date
