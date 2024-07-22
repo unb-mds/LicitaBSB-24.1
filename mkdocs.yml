@@ -9,38 +9,42 @@ nav:
   - Arquitetura: Arquitetura/arquitetura.md
   - Jornada de produção: storymap/storymap.md
 
-  - Sprints:
-    - Sprint 0:
-      - Reunião 1: Atas/Sprint0_reunião1.md
-      - Reunião 2: Atas/Sprint0_reunião2.md
-    - Sprint 1:
-      - Reunião 1: Atas/Sprint1_reunião1.md
-      - Reunião 2: Atas/Sprint1_reunião2.md
-    - Sprint 2:
-      - Reunião 1: Atas/Sprint2_reunião1.md
-    - Sprint 3:
-      - Reunião 1: Atas/Sprint3_reunião1.md
-      - Reunião 2: Atas/Sprint3_reunião2.md
-    - Sprint 4:
-      - Reunião 1: Atas/Sprint4_reunião1.md
-    - Sprint 5:
-      - Reunião 1: Atas/Sprint5_reunião1.md
-    - Sprint 6:
-      - Reunião 1: Atas/Sprint6_reunião1.md
-    - Sprint 7:
-      - Reunião 1: Atas/Sprint7_reunião1.md
-      - Reunião 2: Atas/Sprint7_reunião2.md
-    - Sprint 8:
-      - Reunião 1: Atas/Sprint8_reunião1.md
-    - Sprint 9:
-          - Reunião 1: Atas/Sprint9_reunião1.md
-    - Sprint 10:
-          - Reunião 1: Atas/Sprint10_reunião1.md
+  - Reuniões:
     - Feedback R1: Atas/feedbackR1.md
+    - Sprint 0:
+      - Reunião 1: Atas/Sprint0_reuniao1.md
+      - Reunião 2: Atas/Sprint0_reuniao2.md
+    - Sprint 1:
+      - Reunião 1: Atas/Sprint1_reuniao1.md
+      - Reunião 2: Atas/Sprint1_reuniao2.md
+    - Sprint 2:
+      - Reunião: Atas/Sprint2.md
+    - Sprint 3:
+      - Reunião 1: Atas/Sprint3_reuniao1.md
+      - Reunião 2: Atas/Sprint3_reuniao2.md
+    - Sprint 4:
+      - Reunião: Atas/Sprint4.md
+    - Sprint 5:
+      - Reunião: Atas/Sprint5.md
+    - Sprint 6:
+      - Reunião: Atas/Sprint6.md
+    - Sprint 7:
+      - Reunião 1: Atas/Sprint7_reuniao1.md
+      - Reunião 2: Atas/Sprint7_reuniao2.md
+    - Sprint 8:
+      - Reunião 1: Atas/Sprint8_reuniao1.md
+      - Reunião 2: Atas/Sprint8_reuniao2.md
+    - Sprint 9:
+      - Reunião: Atas/Sprint9.md
+    - Sprint 10:
+      - Reunião: Atas/Sprint10.md
     - Sprint 11:
-          - Reunião 1: Atas/Sprint11_reuniao1.md
+      - Reunião: Atas/Sprint11.md
     - Sprint 12:
-          - Reunião 2: Atas/Sprint12.md
+      - Reunião: Atas/Sprint12.md
+    - Sprint 13:
+      - Reunião: Atas/Sprint13.md
+      
   - Materiais de Estudos: Estudos/Estudos.md
   - Ferramentas para o projeto: Ferramentas/ferramentas.md
   - Organização da Equipe: OrganizacaoEquipe/Cargos do Time.md

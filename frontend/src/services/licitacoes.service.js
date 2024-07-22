@@ -1,5 +1,5 @@
-import licitacoes1 from '../../../backend/data_collection_avisos/database/data.json';
-import licitacoes2 from '../../../backend/data_collection_extrato/database/data.json';
+import licitacoes1 from '../../../backend/colecao_de_dados/database/data_avisos.json';
+import licitacoes2 from '../../../backend/colecao_de_dados/database/data_extratos.json';
 import { transformDate } from '../utils/transform-date.utils';
 
 const data_licitacoes = [...licitacoes1, ...licitacoes2];

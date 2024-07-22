@@ -43,15 +43,18 @@ def editar_mensagem(mensagem):
         return mensagem_editada
 
 def texto_para_imagem(texto, caminho_imagem):
-    largura = 800
-    altura = 600
-    imagem = Image.new('RGB', (largura, altura), color=(255, 255, 255))
+    largura = 400
+    altura = 300
+    imagem = Image.open('backend/twitter/logo.png')
     desenho = ImageDraw.Draw(imagem)
+    
+    # Tentativa de carregar a fonte do caminho fornecido
     try:
-        fonte = ImageFont.truetype("arial.ttf", 20)
+        fonte = ImageFont.truetype('backend/twitter/assets/ARIAL.TTF', 13)
     except IOError:
+        print("Fonte não encontrada. Usando fonte padrão.")
         fonte = ImageFont.load_default()
-
+    
     margem = 10
     espaco_linhas = 5
     palavras = texto.split(' ')
@@ -67,14 +70,29 @@ def texto_para_imagem(texto, caminho_imagem):
             linha = palavra + ' '
             altura_linha = desenho.textbbox((0, 0), linha, font=fonte)[3]  # Posição 3 retorna a altura da caixa delimitadora
             y_text += altura_linha + espaco_linhas
+    
     desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
 
     imagem.save(caminho_imagem)
     print(f"Imagem salva como {caminho_imagem}")
 
+# FUNCAO PARA FAZER MARCA D'AGUA
+
+# def watermark_with_transparency(input_image_path, output_image_path, watermark_image_path, position):
+#     base_image = Image.open(input_image_path).convert('RGBA')
+#     watermark = Image.open(watermark_image_path).convert('RGBA')
+#     width, height = base_image.size
+#     transparent = Image.new('RGBA', (width, height), (0,0,0,0))
+#     transparent.paste(base_image, (0,0))
+#     transparent.paste(watermark, position, mask=watermark)
+#     transparent.save(output_image_path)
+#     print(f"Imagem com marca d'água salva como {output_image_path}")
+
+# Chamada da função
+
 licitacoes = []
-caminho_extrato = 'backend/data_collection_extrato/database/data.json'
-caminho_avisos = 'backend/data_collection_avisos/database/data.json'
+caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
+caminho_avisos = 'backend/colecao_de_dados/database/data_avisos.json'
 
 data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
@@ -134,10 +152,16 @@ api = tweepy.API(auth)
 if len(mensagens) > 50:
     mensagens = mensagens[:50]
 
+watermark_image_path = 'backend/twitter/logolicita.png'
+
 for i, (mensagem, descricao) in enumerate(mensagens):
     try:
         caminho_imagem = f"tweet_image_{i}.png"
+        # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
         texto_para_imagem(descricao, caminho_imagem)
+
+        # adiciona a marca dagua
+        # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
 
         # upload na imagem
         response = api.media_upload(filename=caminho_imagem)
@@ -146,12 +170,12 @@ for i, (mensagem, descricao) in enumerate(mensagens):
         # cria o tweet já com a imagem
         tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
         print(tweet)
-
         # remove a imagem para liberar espaço em disco
         os.remove(caminho_imagem)
+        # os.remove(caminho_imagem_com_marca)
 
-        # posta a cada 30 segundos
-        time.sleep(30)
+        # posta a cada 20 segundos
+        time.sleep(20)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
