@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
+import { BiddingContext } from '../../context/BiddingContext';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const { biddings, setSearchBiddgins } = useContext(BiddingContext);
+  const [input, setInput] = useState('');
+
+  function handdleChange(e) {
+    const busca = e.target.value;
+    setInput(busca);
+  }
+
+  function verifyBiddingType(data) {
+    return 'Nome_UG' in data ? 'aviso' : 'extrato';
+  }
+
+  function searchBidding() {
+    const listaFiltrada = biddings.filter((licitacao) => {
+      const titulo =
+        verifyBiddingType(licitacao) === 'aviso'
+          ? licitacao['Nome_UG']
+          : licitacao['nomeOrgao'];
+      return licitacao['objeto'].includes(input) || titulo.includes(input);
+    });
+    setSearchBiddgins([...listaFiltrada]);
+    navigate('/licitacoesBuscadas');
+  }
+
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.headerUnb}>
@@ -42,16 +69,24 @@ const Header = () => {
               </a>
             </li>
           </ul>
+          {/* ------------------------------------------- */}
           <div>
             <div className={styles.campoPesquisa}>
-              <img src={search} alt="" />
+              <button
+                className={styles.botaoPesquisa}
+                onClick={() => searchBidding()}
+              >
+                <img src={search} alt="" />
+              </button>
               <input
+                onChange={(e) => handdleChange(e)}
                 type="text"
                 placeholder="Pesquise aqui"
                 className={styles.textInput}
               />
             </div>
           </div>
+          {/* ------------------------------------------- */}
         </div>
         <ul className={styles.headerLinksWrapperResponsive}>
           <li className={styles.headerListItem}>

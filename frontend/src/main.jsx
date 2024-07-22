@@ -10,20 +10,25 @@ import BiddingList from './pages/bidding-list';
 import BiddingPage from './pages/bidding-page';
 import Header from './components/header';
 import Footer from './components/footer';
+import { BiddingProvider } from './context/BiddingContext';
+import BiddingSearchList from './pages/bidding-search-list';
 
 function AppRoutes() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/sobrelicitacao" element={<AboutBidding />} />
-        <Route path="/sobrenos" element={<AboutUs />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/licitacoes" element={<BiddingList />} />
-        <Route path="/licitacoes/:id" element={<BiddingPage />} />
-      </Routes>
-      <Footer />
+      <BiddingProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/sobrelicitacao" element={<AboutBidding />} />
+          <Route path="/sobrenos" element={<AboutUs />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/licitacoes" element={<BiddingList />} />
+          <Route path="/licitacoesBuscadas" element={<BiddingSearchList />} />
+          <Route path="/licitacoes/:id" element={<BiddingPage />} />
+        </Routes>
+        <Footer />
+      </BiddingProvider>
     </BrowserRouter>
   );
 }

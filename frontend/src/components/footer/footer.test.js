@@ -14,3 +14,4 @@ test('Deve renderizar o innerText do componente', () => {
     const dash = screen.getByText('Dashboard')
     expect(dash).toBeInTheDocument()
 })
+

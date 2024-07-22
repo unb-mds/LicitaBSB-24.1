@@ -59,6 +59,11 @@
   border-radius: 3px;
 }
 
+.botaoPesquisa{
+  background-color: transparent;
+  border: 0;
+}
+
 .textInput {
   background-color: var(--azulEscuro);
   border: none;
