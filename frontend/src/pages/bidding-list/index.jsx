@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../../components/header';
 import Filter from './filter';
 import CardLicitacoes from '../../components/card-licitacoes';
 import search from '../../../assets/SearchDark.svg';

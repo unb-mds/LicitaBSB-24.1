@@ -23,10 +23,10 @@ export function getLicitacoes() {
   return licit;
 }
 
-export function getLicitacaoById(parametros){
+export function getLicitacaoById(parametros) {
   const dados = parametros.split('-')
   let licit;
-  if(dados[1] == "aviso"){
+  if (dados[1] == "aviso") {
     licit = licitacoes1.find(data => {
       return data.id === Number(dados[0])
     })
@@ -37,6 +37,21 @@ export function getLicitacaoById(parametros){
   }
 
   return licit;
+}
+
+function searchBidding(biddings, input) {
+  return listaFiltrada = biddings.filter((licitacao) => {
+    const titulo =
+      verifyBiddingType(licitacao) === 'aviso'
+        ? licitacao['Nome_UG']
+        : licitacao['nomeOrgao'];
+    return licitacao['objeto'].includes(input) || titulo.includes(input);
+  });
+}
+
+export function getLicitacaoByString(parametros) {
+  const dados = parametros.search
+  return searchBidding(getLicitacoes(), dados)
 }
 
 export function pagLicitacoes(array, size, pos) {

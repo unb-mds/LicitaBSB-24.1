@@ -24,8 +24,8 @@ function AppRoutes() {
           <Route path="/sobrenos" element={<AboutUs />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/licitacoes" element={<BiddingList />} />
-          <Route path="/licitacoesBuscadas" element={<BiddingSearchList />} />
           <Route path="/licitacoes/:id" element={<BiddingPage />} />
+          <Route path="/resultadobusca/:word" element={<BiddingSearchList />} />
         </Routes>
         <Footer />
       </BiddingProvider>

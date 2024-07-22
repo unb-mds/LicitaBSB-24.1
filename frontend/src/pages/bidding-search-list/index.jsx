@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
 import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css';
 import {
-  getLicitacoes,
   pagLicitacoes,
+  getLicitacoes,
 } from '../../services/licitacoes.service';
+import { useParams } from 'react-router-dom';
+import { BiddingContext } from '../../context/BiddingContext';
+import Filter from '../bidding-list/filter';
+import { searchBidding } from '../../utils/searchBiddings';
 
 export default function BiddingSearchList() {
-  const licitacoes = getLicitacoes();
+  const { searchBiddings, setSearchBiddgins } = useContext(BiddingContext);
+  const licitacoes = searchBiddings;
+
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
 
@@ -22,10 +28,10 @@ export default function BiddingSearchList() {
 
   useEffect(() => {
     setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
-  }, [lengthBids]);
+  }, [lengthBids, searchBiddings]);
+
   return (
     <>
-      {/* <Header /> */}
       <section className={styles.mainSection}>
         <div className={styles.campoPesquisaWrapper}>
           <div className={styles.campoPesquisa}>
@@ -46,6 +52,7 @@ export default function BiddingSearchList() {
         </div>
 
         <div className={styles.licitacoesSection}>
+          <Filter />
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map((item) => {
               return (

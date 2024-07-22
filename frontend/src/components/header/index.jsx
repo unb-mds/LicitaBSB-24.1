@@ -1,14 +1,18 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
 import { BiddingContext } from '../../context/BiddingContext';
+import { searchBidding } from '../../utils/searchBiddings';
+import { getLicitacoes } from '../../services/licitacoes.service';
 
 const Header = () => {
   const navigate = useNavigate();
-  const { biddings, setSearchBiddgins } = useContext(BiddingContext);
+  const location = useLocation();
+  const { biddings, searchBiddings, setSearchBiddgins, words, setWords } =
+    useContext(BiddingContext);
   const [input, setInput] = useState('');
 
   function handdleChange(e) {
@@ -16,20 +20,18 @@ const Header = () => {
     setInput(busca);
   }
 
-  function verifyBiddingType(data) {
-    return 'Nome_UG' in data ? 'aviso' : 'extrato';
-  }
+  function buscarLicitacao() {
+    const rotaAtual = location.pathname.split('/');
+    const rotaAtualNome = location.pathname.split('/')[rotaAtual.length - 2];
+    console.log(rotaAtualNome);
 
-  function searchBidding() {
-    const listaFiltrada = biddings.filter((licitacao) => {
-      const titulo =
-        verifyBiddingType(licitacao) === 'aviso'
-          ? licitacao['Nome_UG']
-          : licitacao['nomeOrgao'];
-      return licitacao['objeto'].includes(input) || titulo.includes(input);
-    });
-    setSearchBiddgins([...listaFiltrada]);
-    navigate('/licitacoesBuscadas');
+    if (!(rotaAtualNome === 'resultadobusca')) {
+      navigate(`/resultadobusca/${input}`, { replace: true });
+      setSearchBiddgins([...searchBidding(biddings, input)]);
+    } else {
+      setSearchBiddgins([...searchBidding(biddings, input)]);
+    }
+    setWords(input);
   }
 
   return (
@@ -74,7 +76,7 @@ const Header = () => {
             <div className={styles.campoPesquisa}>
               <button
                 className={styles.botaoPesquisa}
-                onClick={() => searchBidding()}
+                onClick={() => buscarLicitacao()}
               >
                 <img src={search} alt="" />
               </button>
@@ -83,6 +85,7 @@ const Header = () => {
                 type="text"
                 placeholder="Pesquise aqui"
                 className={styles.textInput}
+                value={input}
               />
             </div>
           </div>
