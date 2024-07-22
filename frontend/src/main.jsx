@@ -15,6 +15,7 @@ import Dashboard from './pages/dashboard';
 import BiddingList from './pages/bidding-list';
 import BiddingPage from './pages/bidding-page';
 import Header from './components/header';
+import Newsletter from './components/newsletter'
 
 function AppRoutes(){
   return(
@@ -26,9 +27,9 @@ function AppRoutes(){
         <Route path='/sobrenos' element={<AboutUs/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/licitacoes' element={<BiddingList/>}/>
-
         <Route path='/licitacoes/:id' element={<BiddingPage/>}/>
       </Routes>
+      <Newsletter/>
     </BrowserRouter>
   )
 }
