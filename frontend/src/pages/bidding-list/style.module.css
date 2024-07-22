@@ -1,3 +1,10 @@
+
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  margin: 40px 128px;
+}
+
 .campoPesquisaWrapper {
   display: flex;
   align-items: center;
@@ -51,12 +58,6 @@
   height: 32px;
 }
 
-.mainSection {
-  display: flex;
-  flex-direction: column;
-  margin: 40px 128px;
-}
-
 .licitacoesSection {
   display: flex;
   align-items: center;
@@ -82,4 +83,54 @@
   box-shadow: -4px 4px 4px rgba(0, 0, 0, .25);
   font-size: 1rem;
 
+}
+
+.filterButton {
+  display: none;
+}
+
+@media (max-width: 900px){
+  .cardsWrapper{
+    width: 100%;
+  }
+
+  .mainSection {
+    display: flex;
+    flex-direction: column;
+    margin: 26px 32px;
+  }
+
+  .botaoBuscar {
+    display: none;
+  }
+
+  .filterButton {
+    display: block;
+    height: 50px;
+  }
+
+  .campoPesquisaWrapper {
+    gap: 16px;
+  }
+
+  .inputStyle {
+    border-bottom: 3px solid rgba(0, 0, 0, 0.42);
+    padding-bottom: 12px;
+  }
+
+  .campoPesquisa {
+    border: none;
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .inputStyle {
+    background-color: var(--branco);
+    font-size: 20px;
+  }
+
+  .campoPesquisaWrapper {
+    gap: 0;
+  }
 }

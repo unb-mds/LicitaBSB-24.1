@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import Header from '../../components/header'
-import Filter from './filter'
 import CardLicitacoes from '../../components/card-licitacoes';
 import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css'
 import { getLicitacoes, pagLicitacoes } from '../../services/licitacoes.service';
 
+import filter from '../../../assets/filter.svg';
 
 export default function BiddingList() {
 
@@ -27,13 +26,14 @@ export default function BiddingList() {
       <section className={styles.mainSection}>
         <div className={styles.campoPesquisaWrapper} >
           <div className={styles.campoPesquisa}>
-            <img src={search} className={styles.searchIcon} alt="" />
+            <img src={search} className={styles.searchIcon} />
             <input type="text" placeholder='Busque por uma licitação' className={styles.inputStyle} />
           </div>
           <div>
             <div>
               <a href="" className={styles.botaoBuscar}>Buscar</a>
             </div>
+            <img src={filter} className={styles.filterButton}/>
           </div>
         </div>
 
