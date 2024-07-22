@@ -1,10 +1,13 @@
 import React from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 
 export default function Filter({
   setFilter,
 }) {
+  const navigate = useNavigate();
+
   return (
     <section className={styles.filterSection}>
       <h2 className={styles.title}>Resultados obtidos de:</h2>
@@ -16,8 +19,8 @@ export default function Filter({
           biddingTypes.map((type) => (
             <li key={type} className={styles.listItemStyle}>
               <input type='radio' name='licit-tipo' id={type}
-                onClick={(e) => {
-                  setFilter(e.target.id);
+                onClick={() => {
+                  navigate(`/licitacoes?tipo=${type}`)
                 }}
               />
               <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
@@ -41,6 +44,16 @@ export default function Filter({
         </li>
       </ul>
       <h3 className={styles.sectionTitle}>Status</h3>
+      <ul>
+        <li className={styles.listItemStyle}>
+          <input type='radio' name='status' id='aberto' />
+          <label htmlFor="aberto">Aberto</label>
+        </li>
+        <li className={styles.listItemStyle}>
+          <input type='radio' name='status' id='fechado' />
+          <label htmlFor="fechado">Fechado</label>
+        </li>
+      </ul>
       <h3 className={styles.sectionTitle}>Preço</h3>
       <input type="range" />
       <h3 className={styles.sectionTitle}>Período</h3>

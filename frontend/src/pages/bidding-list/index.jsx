@@ -6,10 +6,14 @@ import { getLicitacoes, getLicitacoesByType, pagLicitacoes } from '../../service
 import Filter from './filter';
 
 import filter from '../../../assets/filter.svg';
+import { useSearchParams } from 'react-router-dom';
 
 export default function BiddingList() {
 
-  const licitacoes = getLicitacoes();
+  const [searchParams] = useSearchParams();
+  const filterTipo = searchParams.get('tipo');
+
+  const licitacoes = filterTipo ? getLicitacoesByType(filterTipo) : getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10)
 
@@ -23,12 +27,8 @@ export default function BiddingList() {
   }
 
   useEffect(() => {
-
-  }, [listaLicitacoes])
-
-  useEffect(() => {
     setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
-  }, [lengthBids])
+  }, [lengthBids, licitacoes])
   return (
     <section className={styles.mainSection}>
       <div className={styles.campoPesquisaWrapper} >
