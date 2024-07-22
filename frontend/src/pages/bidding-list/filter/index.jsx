@@ -1,7 +1,10 @@
 import React from 'react';
 import styles from './style.module.css';
+import { biddingTypes } from '../../../utils/bidding-types';
 
-export default function Filter() {
+export default function Filter({
+  setFilter,
+}) {
   return (
     <section className={styles.filterSection}>
       <h2 className={styles.title}>Resultados obtidos de:</h2>
@@ -9,18 +12,18 @@ export default function Filter() {
       <span className={styles.description}>14 resultados obtidos</span>
       <h3 className={styles.sectionTitle}>Modalidade de compra</h3>
       <ul>
-        <li className={styles.listItemStyle}>
-          <input type='checkbox' name='licit1' />
-          <label htmlFor="licit1">Tipo de licitação</label>
-        </li>
-        <li className={styles.listItemStyle}>
-          <input type='checkbox' name='licit1' />
-          <label htmlFor="licit1">Tipo de licitação</label>
-        </li>
-        <li className={styles.listItemStyle}>
-          <input type='checkbox' name='licit1' />
-          <label htmlFor="licit1">Tipo de licitação</label>
-        </li>
+        {
+          biddingTypes.map((type) => (
+            <li key={type} className={styles.listItemStyle}>
+              <input type='radio' name='licit-tipo' id={type}
+                onClick={(e) => {
+                  setFilter(e.target.id);
+                }}
+              />
+              <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
+            </li>
+          ))
+        }
       </ul>
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
