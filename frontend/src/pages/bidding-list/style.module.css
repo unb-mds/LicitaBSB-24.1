@@ -60,7 +60,7 @@
 
 .licitacoesSection {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   gap: 32px;
 }
@@ -70,7 +70,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  width: 80%;
+  width: 70%;
 }
 
 .botaoCarregarMais {
@@ -89,10 +89,32 @@
   display: none;
 }
 
-@media (max-width: 900px){
+@media (max-width: 1300px){
   .cardsWrapper{
     width: 100%;
   }
+
+  .filterButton {
+    display: block;
+    height: 50px;
+  }
+
+  .botaoBuscar {
+    display: none;
+  }
+
+  .campoPesquisaWrapper {
+    gap: 16px;
+  }
+
+  .mainSection {
+    display: flex;
+    flex-direction: column;
+    margin: 26px 20%;
+  }
+}
+
+@media (max-width: 900px){
 
   .mainSection {
     display: flex;
@@ -100,14 +122,6 @@
     margin: 26px 32px;
   }
 
-  .botaoBuscar {
-    display: none;
-  }
-
-  .filterButton {
-    display: block;
-    height: 50px;
-  }
 
   .campoPesquisaWrapper {
     gap: 16px;

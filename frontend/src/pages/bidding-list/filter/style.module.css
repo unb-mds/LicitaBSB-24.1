@@ -1,5 +1,5 @@
 .filterSection {
-  width: 346px;
+  width: 30%;
   background-color: var(--brancoTexto);
   border-radius: 16px;
   flex: 1;
@@ -27,4 +27,10 @@
 
 .listItemStyle {
   list-style-type: none;
+}
+
+@media (max-width: 1300px) {
+  .filterSection {
+    display: none;
+  }
 }

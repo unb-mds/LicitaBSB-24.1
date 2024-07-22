@@ -3,6 +3,7 @@ import CardLicitacoes from '../../components/card-licitacoes';
 import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css'
 import { getLicitacoes, pagLicitacoes } from '../../services/licitacoes.service';
+import Filter from './filter';
 
 import filter from '../../../assets/filter.svg';
 
@@ -39,9 +40,7 @@ export default function BiddingList() {
 
 
         <div className={styles.licitacoesSection}>
-          {/*
           <Filter />
-          */}
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map(item => {
               return (
