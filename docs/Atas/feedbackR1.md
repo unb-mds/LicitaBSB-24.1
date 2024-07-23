@@ -28,21 +28,21 @@
 ### Recomendações:
 
 1. *Melhorar a Organização do Board:*
-   - Reorganizar o board das sprints para que as tarefas e o progresso sejam mais claros e facilmente acompanháveis.
+   - [x] Reorganizar o board das sprints para que as tarefas e o progresso sejam mais claros e facilmente acompanháveis.
 
 2. *Aprimorar a Arquitetura:*
-   - Adicionar uma visão de pacotes detalhada que mostre a interação entre os componentes, especialmente como o webscraping se integra com o backend.
-   - Incluir um serviço de disparo de emails na arquitetura para permitir notificações automáticas.
-   - Definir claramente o processo de atualização contínua dos scrappers para garantir dados atualizados.
+   - [x] Adicionar uma visão de pacotes detalhada que mostre a interação entre os componentes, especialmente como o webscraping se integra com o backend.
+   - [x] Incluir um serviço de disparo de emails na arquitetura para permitir notificações automáticas.
+   - [x] Definir claramente o processo de atualização contínua dos scrappers para garantir dados atualizados.
 
 3. *Equilibrar Contribuições:*
-   - Incentivar uma distribuição mais equilibrada de commits entre os membros da equipe, garantindo que todos contribuam de maneira uniforme.
+   - [ ] Incentivar uma distribuição mais equilibrada de commits entre os membros da equipe, garantindo que todos contribuam de maneira uniforme.
 
 4. *Refinar a Raspagem de Dados:*
-   - Utilizar técnicas como regex para refinar e detalhar melhor as informações raspadas sobre as licitações, aumentando a qualidade e a utilidade dos dados obtidos.
+   - [x] Utilizar técnicas como regex para refinar e detalhar melhor as informações raspadas sobre as licitações, aumentando a qualidade e a utilidade dos dados obtidos.
 
 5. *Gestão de Branches:*
-   - Adotar a prática de apagar branches após o fechamento dos PRs para manter o repositório organizado.
+   - [ ] Adotar a prática de apagar branches após o fechamento dos PRs para manter o repositório organizado.
 
 6. *Exploração Detalhada dos Dados:*
-   - Aprofundar a análise dos dados das licitações, categorizando e detalhando mais as informações. Isso pode incluir a classificação por tipo de licitação, valores, participantes, etc.
+   - [x] Aprofundar a análise dos dados das licitações, categorizando e detalhando mais as informações. Isso pode incluir a classificação por tipo de licitação, valores, participantes, etc.
