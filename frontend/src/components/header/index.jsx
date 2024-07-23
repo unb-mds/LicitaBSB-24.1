@@ -65,7 +65,6 @@ const Header = () => {
               </a>
             </li>
           </ul>
-          {/* ------------------------------------------- */}
           <div>
             <div className={styles.campoPesquisa}>
               <button
@@ -83,7 +82,6 @@ const Header = () => {
               />
             </div>
           </div>
-          {/* ------------------------------------------- */}
         </div>
         <ul className={styles.headerLinksWrapperResponsive}>
           <li className={styles.headerListItem}>

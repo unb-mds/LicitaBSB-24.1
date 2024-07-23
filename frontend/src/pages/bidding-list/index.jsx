@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Filter from './filter';
 import CardLicitacoes from '../../components/card-licitacoes';
-import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css';
 import {
   getLicitacoes,
   pagLicitacoes,
 } from '../../services/licitacoes.service';
+import CampoPesquisa from '../../components/campo-pesquisa';
 
 export default function BiddingList() {
   const licitacoes = getLicitacoes();
@@ -28,24 +28,7 @@ export default function BiddingList() {
     <>
       {/* <Header /> */}
       <section className={styles.mainSection}>
-        <div className={styles.campoPesquisaWrapper}>
-          <div className={styles.campoPesquisa}>
-            <img src={search} className={styles.searchIcon} alt="" />
-            <input
-              type="text"
-              placeholder="Busque por uma licitação"
-              className={styles.inputStyle}
-            />
-          </div>
-          <div>
-            <div>
-              <a href="" className={styles.botaoBuscar}>
-                Buscar
-              </a>
-            </div>
-          </div>
-        </div>
-
+        <CampoPesquisa />
         <div className={styles.licitacoesSection}>
           <Filter />
           <div className={styles.cardsWrapper}>
