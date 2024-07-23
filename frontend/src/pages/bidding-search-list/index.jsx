@@ -34,6 +34,7 @@ export default function BiddingSearchList() {
     <>
       <section className={styles.mainSection}>
         <div className={styles.campoPesquisaWrapper}>
+          <h1>{licitacoes.length}</h1>
           <div className={styles.campoPesquisa}>
             <img src={search} className={styles.searchIcon} alt="" />
             <input
@@ -55,9 +56,7 @@ export default function BiddingSearchList() {
           <Filter />
           <div className={styles.cardsWrapper}>
             {listaLicitacoes.map((item) => {
-              return (
-                <CardLicitacoes key={item['numero_processo']} data={item} />
-              );
+              return <CardLicitacoes key={item['id']} data={item} />;
             })}
 
             {lengthBids >= licitacoes.length ? (

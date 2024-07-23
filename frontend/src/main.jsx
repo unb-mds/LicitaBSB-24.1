@@ -12,6 +12,7 @@ import Header from './components/header';
 import Footer from './components/footer';
 import { BiddingProvider } from './context/BiddingContext';
 import BiddingSearchList from './pages/bidding-search-list';
+import { Error } from './pages/error';
 
 function AppRoutes() {
   return (
@@ -20,6 +21,7 @@ function AppRoutes() {
         <Header />
         <Routes>
           <Route path="/" element={<Landing />} />
+          <Route path="*" element={<Error />} />
           <Route path="/sobrelicitacao" element={<AboutBidding />} />
           <Route path="/sobrenos" element={<AboutUs />} />
           <Route path="/dashboard" element={<Dashboard />} />

@@ -1,37 +1,31 @@
-import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
-import { BiddingContext } from '../../context/BiddingContext';
-import { searchBidding } from '../../utils/searchBiddings';
-import { getLicitacoes } from '../../services/licitacoes.service';
+import { useSearchBidding } from '../../hooks/useSearchBidding';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const { biddings, searchBiddings, setSearchBiddgins, words, setWords } =
-    useContext(BiddingContext);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState(''); //Estado com o input de texto
+
+  const { searchBidding, biddings, setSearchBiddgins, setWords } =
+    useSearchBidding();
 
   function handdleChange(e) {
-    const busca = e.target.value;
-    setInput(busca);
+    setInput(e.target.value);
   }
 
   function buscarLicitacao() {
-    const rotaAtual = location.pathname.split('/');
-    const rotaAtualNome = location.pathname.split('/')[rotaAtual.length - 2];
-    console.log(rotaAtualNome);
-
-    if (!(rotaAtualNome === 'resultadobusca')) {
-      navigate(`/resultadobusca/${input}`, { replace: true });
-      setSearchBiddgins([...searchBidding(biddings, input)]);
-    } else {
-      setSearchBiddgins([...searchBidding(biddings, input)]);
-    }
     setWords(input);
+    const listaBuscada = searchBidding(biddings, input);
+    if (listaBuscada.length === 0) {
+      navigate(`*`);
+    } else {
+      setSearchBiddgins(listaBuscada);
+      navigate(`/resultadobusca/${input}`);
+    }
   }
 
   return (
