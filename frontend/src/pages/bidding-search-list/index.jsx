@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
-import search from '../../../assets/SearchDark.svg';
 import styles from './style.module.css';
 import { pagLicitacoes } from '../../services/licitacoes.service';
 import { BiddingContext } from '../../context/BiddingContext';
@@ -8,7 +7,7 @@ import Filter from '../bidding-list/filter';
 import CampoPesquisa from '../../components/campo-pesquisa';
 
 export default function BiddingSearchList() {
-  const { searchBiddings } = useContext(BiddingContext);
+  const { searchBiddings, words } = useContext(BiddingContext);
   const licitacoes = searchBiddings;
 
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
@@ -22,6 +21,8 @@ export default function BiddingSearchList() {
       : setLengthBids((prevLength) => (prevLength += 10));
   };
 
+  const quantidadeDeLicitacoes = licitacoes.length;
+
   useEffect(() => {
     setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
   }, [lengthBids, searchBiddings]);
@@ -29,6 +30,10 @@ export default function BiddingSearchList() {
   return (
     <>
       <section className={styles.mainSection}>
+        <h1>Resultados obtidos de:</h1>
+        <h2>{words}</h2>
+        <p>{quantidadeDeLicitacoes} resultados encontrados</p>
+
         <CampoPesquisa />
 
         <div className={styles.licitacoesSection}>

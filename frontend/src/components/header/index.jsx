@@ -4,7 +4,7 @@ import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
 import { useSearchBidding } from '../../hooks/useSearchBidding';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
