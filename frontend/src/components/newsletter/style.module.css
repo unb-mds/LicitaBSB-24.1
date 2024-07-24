@@ -1,0 +1,31 @@
+.newsletter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 100px;
+}
+
+.newsletter h1{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.newsletter button{
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 3px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.newsletter input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+    width: 300px;
+    outline: none;
+}

@@ -123,9 +123,10 @@ with open(caminho_extrato, 'r', encoding='utf-8') as file:
                 'data': licitacao['data_abertura'],
                 'link': a
             })
-
+verificador_de_licitacao = False
 if not licitacoes:
     mensagens = [f'Hoje não tivemos nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
+    verificador_de_licitacao = True
 else:
     mensagens = []
     for licitacao in licitacoes:
@@ -153,29 +154,37 @@ if len(mensagens) > 50:
     mensagens = mensagens[:50]
 
 watermark_image_path = 'backend/twitter/logolicita.png'
+if verificador_de_licitacao == False:
+    for i, (mensagem, descricao) in enumerate(mensagens):
+        try:
+            caminho_imagem = f"tweet_image_{i}.png"
+            # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
+            texto_para_imagem(descricao, caminho_imagem)
 
-for i, (mensagem, descricao) in enumerate(mensagens):
+            # adiciona a marca dagua
+            # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
+
+            # upload na imagem
+            response = api.media_upload(filename=caminho_imagem)
+            media_id = response.media_id
+
+            # cria o tweet já com a imagem
+            tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
+            print(tweet)
+            # remove a imagem para liberar espaço em disco
+            os.remove(caminho_imagem)
+            # os.remove(caminho_imagem_com_marca)
+
+            # posta a cada 20 segundos
+            time.sleep(20)
+        except Exception as e:
+            print(f"Erro ao enviar tweet: {e}")
+            traceback.print_exc()
+            time.sleep(5)
+else:
     try:
-        caminho_imagem = f"tweet_image_{i}.png"
-        # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
-        texto_para_imagem(descricao, caminho_imagem)
-
-        # adiciona a marca dagua
-        # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
-
-        # upload na imagem
-        response = api.media_upload(filename=caminho_imagem)
-        media_id = response.media_id
-
-        # cria o tweet já com a imagem
-        tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
+        tweet = client.create_tweet(text=mensagens[0])
         print(tweet)
-        # remove a imagem para liberar espaço em disco
-        os.remove(caminho_imagem)
-        # os.remove(caminho_imagem_com_marca)
-
-        # posta a cada 20 segundos
-        time.sleep(20)
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
