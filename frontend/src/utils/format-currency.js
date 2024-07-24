@@ -1,7 +1,7 @@
-export default function formatCurrency(valor){
+export default function formatCurrency(valor) {
   let valorNumerico;
 
-  if (typeof valor === "string") {
+  if (typeof valor === 'string') {
     valorNumerico = parseFloat(valor);
   } else {
     valorNumerico = valor;
@@ -12,12 +12,12 @@ export default function formatCurrency(valor){
   }
 
   return valorNumerico
-    .toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
+    .toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     })
-    .replace("R$", "")
+    .replace('R$', '')
     .trim();
 }

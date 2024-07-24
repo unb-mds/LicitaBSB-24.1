@@ -6,14 +6,18 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "format": "prettier --write \"src/**/*{.js,.jsx}\"",
+    "test": "react-scripts test",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.7.2",
     "chart.js": "^4.4.3",
+    "install": "^0.13.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "npm": "^10.8.2",
     "plotly.js": "^2.33.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -21,16 +25,24 @@
     "react-icons": "^5.2.0",
     "react-plotly.js": "^2.6.0",
     "react-router-dom": "^6.23.0",
-    "sort-by": "^1.2.0"
+    "react-scripts": "^5.0.1",
+    "sort-by": "^1.2.0",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
+    "@testing-library/dom": "^10.3.2",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-react": "^7.34.4",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "prettier": "^3.3.3",
     "vite": "^5.2.0"
   }
 }
