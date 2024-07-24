@@ -60,14 +60,41 @@ export function pagLicitacoes(array, size, pos) {
     : array;
 }
 
-export function getLicitacoesByType(tipo){
-  const licitacoes = getLicitacoes();
+export function getLicitacoesFilter(tipo, input, valor){
 
-  const filteredArray = licitacoes.filter((licit) => {
-    return licit.tipo.toLowerCase().includes(tipo);
-  })
+  let licitacoes = getLicitacoes();
 
-  filteredArray.sort((a, b) => {
+  if(tipo){
+    licitacoes = licitacoes.filter((licit) => {
+      return licit.tipo.toLowerCase().includes(tipo);
+    })
+  }
+
+  if(input){
+    licitacoes = licitacoes.filter((licitacao) => {
+      const tipo = 'Nome_UG' in licitacao ? 'aviso' : 'extrato';
+      const titulo =
+        tipo === 'aviso' ? licitacao['Nome_UG'] : licitacao['nomeOrgao'];
+      return (
+        licitacao['objeto'].includes(input) ||
+        titulo
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .includes(input)
+      );
+    });
+  }
+
+  if(valor){
+    licitacoes = licitacoes.filter((licitacao) => {
+      if(typeof licitacao.valores_licitacao == "string")
+          return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > valor;
+      return parseFloat(licitacao.valores_licitacao[0].replace(",", ".")) > valor;
+    });
+  }
+
+  licitacoes.sort((a, b) => {
     const dateA = Date.parse(transformDate(a["data_abertura"]))
     const dateB = Date.parse(transformDate(b["data_abertura"]))
     if (dateA > dateB) {
@@ -80,5 +107,5 @@ export function getLicitacoesByType(tipo){
     return 0;
   })
 
-  return filteredArray;
+  return licitacoes;
 }

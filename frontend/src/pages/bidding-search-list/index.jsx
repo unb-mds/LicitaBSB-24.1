@@ -44,8 +44,6 @@ export default function BiddingSearchList() {
           {quantidadeDeLicitacoes} resultados encontrados
         </p>
 
-        <CampoPesquisa />
-
         <div className={styles.licitacoesSection}>
           <Filter />
           <div className={styles.cardsWrapper}>

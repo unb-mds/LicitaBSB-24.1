@@ -29,6 +29,17 @@
   list-style-type: none;
 }
 
+.inputRangeWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-right: 15%;
+}
+
+.inputRange {
+  flex: 1;
+}
+
 @media (max-width: 1300px) {
   .filterSection {
     display: none;

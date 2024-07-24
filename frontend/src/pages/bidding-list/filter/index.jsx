@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { Slider } from '@mui/material';
 
 export default function Filter({
-  setFilter,
+  filterParams,
+  setFilterParams,
+  handleSearch
 }) {
-  const navigate = useNavigate();
+  const [value, setValue] = useState(0);
+
+  const marks = [
+    {
+      value: 0,
+      label: 'R$ 0',
+    },
+    {
+      value: 1000000,
+      label: 'R$ 1.000.000,00',
+    },
+  ];
 
   return (
     <section className={styles.filterSection}>
@@ -20,7 +33,10 @@ export default function Filter({
             <li key={type} className={styles.listItemStyle}>
               <input type='radio' name='licit-tipo' id={type}
                 onClick={() => {
-                  navigate(`/licitacoes?tipo=${type}`)
+                  setFilterParams({
+                    ...filterParams,
+                    tipo: type
+                  })
                 }}
               />
               <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
@@ -55,8 +71,26 @@ export default function Filter({
         </li>
       </ul>
       <h3 className={styles.sectionTitle}>Preço</h3>
-      <input type="range" />
+      <div className={styles.inputRangeWrapper}>
+        <Slider
+          size="small"
+          aria-label="Small"
+          valueLabelDisplay="auto"
+          value={value}
+          onChange={(e) => {
+            setValue(e.target.value)
+          }}
+          max={1000000}
+          step={10}
+          marks={marks}
+        />
+      </div>
       <h3 className={styles.sectionTitle}>Período</h3>
+      <button
+        onClick={handleSearch}
+      >
+        Buscar
+      </button>
     </section>
   );
 }
