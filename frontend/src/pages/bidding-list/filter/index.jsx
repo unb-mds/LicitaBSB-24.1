@@ -76,9 +76,12 @@ export default function Filter({
           size="small"
           aria-label="Small"
           valueLabelDisplay="auto"
-          value={value}
+          value={filterParams.value}
           onChange={(e) => {
-            setValue(e.target.value)
+            setFilterParams({
+              ...filterParams,
+              value: e.target.value
+            })
           }}
           max={1000000}
           step={10}

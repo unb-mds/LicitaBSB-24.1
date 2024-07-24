@@ -62,6 +62,8 @@ export function pagLicitacoes(array, size, pos) {
 
 export function getLicitacoesFilter(tipo, input, valor){
 
+  const biddingValor = parseInt(valor);
+
   let licitacoes = getLicitacoes();
 
   if(tipo){
@@ -89,8 +91,8 @@ export function getLicitacoesFilter(tipo, input, valor){
   if(valor){
     licitacoes = licitacoes.filter((licitacao) => {
       if(typeof licitacao.valores_licitacao == "string")
-          return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > valor;
-      return parseFloat(licitacao.valores_licitacao[0].replace(",", ".")) > valor;
+          return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > biddingValor;
+      return parseFloat(licitacao.valores_licitacao?.[0].replace(",", ".")) > biddingValor;
     });
   }
 

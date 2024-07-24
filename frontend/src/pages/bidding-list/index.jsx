@@ -14,13 +14,15 @@ export default function BiddingList() {
   const [filterParams, setFilterParams] = useState({
     tipo: '',
     input: '',
+    value: 0
   })
 
   const [searchParams] = useSearchParams();
   const filterTipo = searchParams.get('tipo');
   const filterInput = searchParams.get('input');
+  const filterValue = searchParams.get('value');
 
-  const licitacoes = filterTipo || filterInput ? getLicitacoesFilter(filterTipo, filterInput) : getLicitacoes();
+  const licitacoes = filterTipo || filterInput || filterValue ? getLicitacoesFilter(filterTipo, filterInput, filterValue) : getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
 
@@ -37,7 +39,7 @@ export default function BiddingList() {
   }, [])
 
   const handleSearch = () => {
-    const querySearch = `/licitacoes?${filterParams.tipo && `tipo=${filterParams.tipo}`}&${filterParams.input && `input=${filterParams.input}`}`;
+    const querySearch = `/licitacoes?${filterParams.tipo && `tipo=${filterParams.tipo}`}&${filterParams.input && `input=${filterParams.input}`}&${filterParams.value && `value=${filterParams.value}`}`;
     navigate(querySearch);
   }
 
