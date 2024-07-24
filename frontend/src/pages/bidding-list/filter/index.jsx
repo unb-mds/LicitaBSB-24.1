@@ -31,15 +31,15 @@ export default function Filter({
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
         <li className={styles.listItemStyle}>
-          <input type='checkbox' name='org1' />
+          <input type="checkbox" name="org1" />
           <label htmlFor="org1">Órgão</label>
         </li>
         <li className={styles.listItemStyle}>
-          <input type='checkbox' name='org1' />
+          <input type="checkbox" name="org1" />
           <label htmlFor="org1">Órgão</label>
         </li>
         <li className={styles.listItemStyle}>
-          <input type='checkbox' name='org1' />
+          <input type="checkbox" name="org1" />
           <label htmlFor="org1">Órgão</label>
         </li>
       </ul>
@@ -58,5 +58,5 @@ export default function Filter({
       <input type="range" />
       <h3 className={styles.sectionTitle}>Período</h3>
     </section>
-  )
+  );
 }

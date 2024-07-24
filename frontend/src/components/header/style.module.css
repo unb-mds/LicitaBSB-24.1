@@ -8,7 +8,7 @@
 .headerUnb {
   display: flex;
   align-items: center;
-  height: 25px;
+  height: 35px;
 }
 
 .subHeaderWrapper {
@@ -22,7 +22,7 @@
   justify-content: space-between;
   width: 100%;
   background-color: var(--azulMedio);
-  padding: 0 128px;
+  padding: 8px 128px;
 }
 
 .headerLinksWrapper {
@@ -40,7 +40,7 @@
   text-decoration: none;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1.5rem;
   color: var(--brancoTexto);
 }
 
@@ -57,6 +57,11 @@
   gap: 10px;
   padding: 5px 10px;
   border-radius: 3px;
+}
+
+.botaoPesquisa{
+  background-color: transparent;
+  border: 0;
 }
 
 .textInput {
