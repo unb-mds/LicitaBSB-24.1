@@ -2,13 +2,19 @@ import React, { useState, useEffect, useContext } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
 import styles from './style.module.css';
 import { pagLicitacoes } from '../../services/licitacoes.service';
-import { BiddingContext } from '../../context/BiddingContext';
 import Filter from '../bidding-list/filter';
 import CampoPesquisa from '../../components/campo-pesquisa';
+import { useSearchBidding } from '../../hooks/useSearchBidding';
+import { useLocation } from 'react-router-dom';
 
 export default function BiddingSearchList() {
-  const { searchBiddings, words } = useContext(BiddingContext);
-  const licitacoes = searchBiddings;
+  const { biddings, searchBiddings, searchBidding } = useSearchBidding();
+  const location = useLocation().pathname.split('/');
+  const locationName = location[location.length - 1];
+  const licitacoes = searchBidding(
+    biddings,
+    decodeURIComponent(locationName).replace(/-/g, '/'),
+  );
 
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
@@ -31,7 +37,7 @@ export default function BiddingSearchList() {
     <>
       <section className={styles.mainSection}>
         <h1>Resultados obtidos de:</h1>
-        <h2>{words}</h2>
+        <h2>{decodeURIComponent(locationName).replace(/-/g, '/')}</h2>
         <p>{quantidadeDeLicitacoes} resultados encontrados</p>
 
         <CampoPesquisa />

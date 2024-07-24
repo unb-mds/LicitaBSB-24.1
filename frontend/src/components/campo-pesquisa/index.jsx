@@ -16,14 +16,20 @@ export default function CampoPesquisa() {
   }
 
   function buscarLicitacao() {
-    setWords(input);
-    const listaBuscada = searchBidding(biddings, input);
-    if (listaBuscada.length === 0) {
-      navigate(`*`);
-    } else {
-      setSearchBiddgins(listaBuscada);
-      navigate(`/resultadobusca/${input}`);
-    }
+    const nomeDaRota = input
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\//g, '-');
+    setWords(nomeDaRota);
+    navigate(`/resultadobusca/${nomeDaRota}`);
+    // const listaBuscada = searchBidding(biddings, nomeDaRota);
+    // if (listaBuscada.length === 0) {
+    //   navigate(`*`);
+    // } else {
+    //   setSearchBiddgins(listaBuscada);
+    //   navigate(`/resultadobusca/${nomeDaRota}`);
+    // }
   }
   return (
     <div className={styles.campoPesquisaWrapper}>
