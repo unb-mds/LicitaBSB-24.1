@@ -1,0 +1,32 @@
+name: Script de automação dos envio de emails
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '00 15 * * *' # todos os dias às 15h00
+
+jobs:
+  run-js:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+
+    - name: Install dependencies
+      run: |
+        npm install
+
+    - name: Run Script
+      env:
+        URL_CHIMP: ${{ secrets.URL_CHIMP }}
+        API: ${{ secrets.API }}
+        GMAIL_USER: ${{ secrets.GMAIL_USER }}
+        GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+      run: |
+        node backend/newsletter/sendEmail.js
