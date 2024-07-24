@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
 import styles from './style.module.css';
 import { pagLicitacoes } from '../../services/licitacoes.service';
@@ -8,10 +8,10 @@ import { useSearchBidding } from '../../hooks/useSearchBidding';
 import { useLocation } from 'react-router-dom';
 
 export default function BiddingSearchList() {
-  const { biddings, searchBiddings, searchBidding } = useSearchBidding();
+  const { biddings, searchBiddings, getBiddingSearch } = useSearchBidding();
   const location = useLocation().pathname.split('/');
   const locationName = location[location.length - 1];
-  const licitacoes = searchBidding(
+  const licitacoes = getBiddingSearch(
     biddings,
     decodeURIComponent(locationName).replace(/-/g, '/'),
   );

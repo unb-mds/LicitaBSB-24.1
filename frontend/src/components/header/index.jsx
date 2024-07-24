@@ -10,8 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState(''); //Estado com o input de texto
 
-  const { searchBidding, biddings, setSearchBiddgins, setWords } =
-    useSearchBidding();
+  const { setWords } = useSearchBidding();
 
   function handdleChange(e) {
     setInput(e.target.value);
@@ -25,13 +24,6 @@ const Header = () => {
       .replace(/\//g, '-');
     setWords(nomeDaRota);
     navigate(`/resultadobusca/${nomeDaRota}`);
-    // const listaBuscada = searchBidding(biddings, nomeDaRota);
-    // if (listaBuscada.length === 0) {
-    //   navigate(`*`);
-    // } else {
-    //   setSearchBiddgins(listaBuscada);
-    //   navigate(`/resultadobusca/${nomeDaRota}`);
-    // }
   }
 
   return (
