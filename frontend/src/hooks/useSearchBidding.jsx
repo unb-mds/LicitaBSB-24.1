@@ -16,7 +16,6 @@ export const useSearchBidding = () => {
       .toLowerCase()
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '');
-    console.log(inputFormat);
     //Retorna lista com os resultados buscados
     const busca = licitacoes.filter((licitacao) => {
       const tipo = 'Nome_UG' in licitacao ? 'aviso' : 'extrato';

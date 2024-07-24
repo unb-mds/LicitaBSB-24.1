@@ -13,6 +13,7 @@ import Footer from './components/footer';
 import { BiddingProvider } from './context/BiddingContext';
 import BiddingSearchList from './pages/bidding-search-list';
 import { Error } from './pages/error';
+import Newsletter from './components/newsletter';
 
 function AppRoutes() {
   return (
