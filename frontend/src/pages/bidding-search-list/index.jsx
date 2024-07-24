@@ -36,9 +36,13 @@ export default function BiddingSearchList() {
   return (
     <>
       <section className={styles.mainSection}>
-        <h1>Resultados obtidos de:</h1>
-        <h2>{decodeURIComponent(locationName).replace(/-/g, '/')}</h2>
-        <p>{quantidadeDeLicitacoes} resultados encontrados</p>
+        <h1 className={styles.h1Section}>Resultados obtidos de:</h1>
+        <h2 className={styles.h2Section}>
+          "{decodeURIComponent(locationName).replace(/-/g, '/')}"
+        </h2>
+        <p className={styles.pSection}>
+          {quantidadeDeLicitacoes} resultados encontrados
+        </p>
 
         <CampoPesquisa />
 
