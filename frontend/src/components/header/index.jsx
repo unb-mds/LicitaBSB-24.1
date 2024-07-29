@@ -4,7 +4,7 @@ import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
 import { useSearchBidding } from '../../hooks/useSearchBidding';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const Header = () => {
 
   function handdleChange(e) {
     setInput(e.target.value);
+    const listaDeLinks = screen.getAllByRole('listitem');
   }
 
   function buscarLicitacao() {
@@ -36,7 +37,10 @@ const Header = () => {
           <a href="/">
             <img src={logo} alt="Logo do Projeto 'licita bsb'" />
           </a>
-          <ul className={styles.headerLinksWrapper}>
+          <ul
+            data-testid="listaResponsiva"
+            className={styles.headerLinksWrapper}
+          >
             <li className={styles.headerListItem}>
               <a href="/licitacoes" className={styles.headerLink}>
                 Licitações
