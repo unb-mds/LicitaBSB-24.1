@@ -92,18 +92,26 @@ const Footer = () => {
         <div>
           <img src={logoLicitaBSB} />
           <ul>
-            <a to={'/licitacoes'}>
-              <p>Licitações</p>
-            </a>
-            <a to={'/sobrelicitacao'}>
-              <p>Sobre as Licitações</p>
-            </a>
-            <a to={'/sobrenos'}>
-              <p>Sobre a Equipe</p>
-            </a>
-            <a to={'/dashboard'}>
-              <p>Dashboard</p>
-            </a>
+            <li>
+              <a to={'/licitacoes'}>
+                <p>Licitações</p>
+              </a>
+            </li>
+            <li>
+              <a to={'/sobrelicitacao'}>
+                <p>Sobre as Licitações</p>
+              </a>
+            </li>
+            <li>
+              <a to={'/sobrenos'}>
+                <p>Sobre a Equipe</p>
+              </a>
+            </li>
+            <li>
+              <a to={'/dashboard'}>
+                <p>Dashboard</p>
+              </a>
+            </li>
           </ul>
         </div>
         <img src={logoUnb} />
