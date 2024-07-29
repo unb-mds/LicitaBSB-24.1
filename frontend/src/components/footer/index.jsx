@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import logoLicitaBSB from '../../../assets/logo.png';
-import { Link } from 'react-router-dom';
 import logoUnb from '../../../assets/logoUnb.png';
 
 const FooterEstilizada = styled.footer`
@@ -46,7 +45,7 @@ const NavEstilizada = styled.nav`
   }
   div img {
     width: 238px;
-    height: 129px;
+    height: 109px;
   }
   div ul {
     list-style: none;
