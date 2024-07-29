@@ -125,7 +125,7 @@ with open(caminho_extrato, 'r', encoding='utf-8') as file:
             })
 verificador_de_licitacao = False
 if not licitacoes:
-    mensagens = [f'Hoje não tivemos nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
+    mensagens = [f'Nas últimas 24 horas não houve nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
     verificador_de_licitacao = True
 else:
     mensagens = []
