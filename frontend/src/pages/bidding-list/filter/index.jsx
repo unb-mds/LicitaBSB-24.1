@@ -3,6 +3,7 @@ import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
 import { Slider } from '@mui/material';
 import { getOrgaosNomes } from '../../../services/orgaos.service';
+import CustomButton from '../../../components/layout/custom-button';
 
 function reducer(state, action) {
   if(action.type === 'increment_value') {
@@ -20,7 +21,7 @@ export default function Filter({
   setFilterParams,
   handleSearch
 }) {
-  const [orgaosState, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
+  const [orgaosValue, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
 
   const marks = [
     {
@@ -63,7 +64,7 @@ export default function Filter({
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
         {
-          orgaosState.orgaos.map((type) => (
+          orgaosValue.orgaos.map((type) => (
             <li key={type} className={styles.listItemStyle}>
               <input type='radio' name='licit-tipo' id={type}
                 onClick={() => {
@@ -111,11 +112,7 @@ export default function Filter({
         />
       </div>
       <h3 className={styles.sectionTitle}>Período</h3>
-      <button
-        onClick={handleSearch}
-      >
-        Buscar
-      </button>
+      <CustomButton onPress={handleSearch} title="buscar"/>
     </section>
   );
 }
