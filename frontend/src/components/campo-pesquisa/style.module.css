@@ -3,11 +3,11 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    gap: 80px;
+    gap: 56px;
     margin-top: 40px;
     margin-bottom: 40px;
   }
-  
+
   .campoPesquisa {
     display: flex;
     flex-direction: row;
@@ -16,12 +16,13 @@
     padding-bottom: 12px;
     flex: 1;
     gap: 24px;
+    min-width: 80%;
   }
-  
+
   .searchIcon {
     width: 30px;
   }
-  
+
   .inputStyle {
     background-color: var(--background);
     color: (--texto);
@@ -32,12 +33,12 @@
     outline: none;
     width: 100%;
   }
-  
+
   .inputStyle:focus {
     border: none;
     outline: none;
   }
-  
+
   .botaoBuscar {
     display: flex;
     align-items: center;
@@ -51,4 +52,3 @@
     width: 222px;
     height: 32px;
   }
-  

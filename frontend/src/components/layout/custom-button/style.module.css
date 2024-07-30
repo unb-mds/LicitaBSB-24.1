@@ -13,4 +13,5 @@
   outline: none;
   border: none;
   cursor: pointer;
+  flex: 1;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './style.module.css';
 import search from '../../../assets/SearchDark.svg';
+import CustomButton from '../layout/custom-button';
 
 export default function CampoPesquisa({
   filterParams,
@@ -23,16 +24,7 @@ export default function CampoPesquisa({
           })}
         />
       </div>
-      <div>
-        <div>
-          <button
-            onClick={handleSearch}
-            className={styles.botaoBuscar}
-          >
-            Buscar
-          </button>
-        </div>
-      </div>
+      <CustomButton title="Buscar" onPress={handleSearch}/>
     </div>
   );
 }
