@@ -10,7 +10,7 @@ export default function Filter({
   handleSearch
 }) {
   const [value, setValue] = useState(0);
-  const orgaos = getOrgaosNomes();
+  const [orgaos, setOrgaos] = useState(getOrgaosNomes().slice(0, 10));
 
   const marks = [
     {
@@ -48,18 +48,21 @@ export default function Filter({
       </ul>
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
-        <li className={styles.listItemStyle}>
-          <input type="checkbox" name="org1" />
-          <label htmlFor="org1">Órgão</label>
-        </li>
-        <li className={styles.listItemStyle}>
-          <input type="checkbox" name="org1" />
-          <label htmlFor="org1">Órgão</label>
-        </li>
-        <li className={styles.listItemStyle}>
-          <input type="checkbox" name="org1" />
-          <label htmlFor="org1">Órgão</label>
-        </li>
+        {
+          orgaos.map((type) => (
+            <li key={type} className={styles.listItemStyle}>
+              <input type='radio' name='licit-tipo' id={type}
+                onClick={() => {
+                  setFilterParams({
+                    ...filterParams,
+                    tipo: type
+                  })
+                }}
+              />
+              <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
+            </li>
+          ))
+        }
       </ul>
       <h3 className={styles.sectionTitle}>Status</h3>
       <ul>
