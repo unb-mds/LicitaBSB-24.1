@@ -4,6 +4,7 @@ import { biddingTypes } from '../../../utils/bidding-types';
 import { Slider } from '@mui/material';
 import { getOrgaosNomes } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
+import CustomInputRadio from '../../../components/layout/custom-input-radio';
 
 function reducer(state, action) {
   if(action.type === 'increment_value') {
@@ -51,15 +52,17 @@ export default function Filter({
           {
             biddingTypes.map((type) => (
               <li key={type} className={styles.listItemStyle}>
-                <input type='radio' name='licit-tipo' id={type}
-                  onClick={() => {
+                <CustomInputRadio
+                  name="licit-tipo"
+                  label={type.charAt(0).toUpperCase() + type.slice(1)}
+                  onPress={() => {
                     setFilterParams({
                       ...filterParams,
                       tipo: type
                     })
                   }}
+                  id={type}
                 />
-                <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
               </li>
             ))
           }
