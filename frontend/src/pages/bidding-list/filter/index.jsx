@@ -1,16 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
 import { Slider } from '@mui/material';
 import { getOrgaosNomes } from '../../../services/orgaos.service';
+
+function reducer(state, action) {
+  if(action.type === 'increment_value') {
+    return {
+      index: state.index + 1,
+      orgaos: getOrgaosNomes().slice(0, 10 + state.index*10),
+    };
+  }
+
+  throw Error('Unknown action.');
+}
 
 export default function Filter({
   filterParams,
   setFilterParams,
   handleSearch
 }) {
-  const [value, setValue] = useState(0);
-  const [orgaos, setOrgaos] = useState(getOrgaosNomes().slice(0, 10));
+  const [value, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
 
   const marks = [
     {
@@ -24,8 +34,7 @@ export default function Filter({
   ];
 
   const mostrarMais = () => {
-    setValue(value + 1);
-    setOrgaos(getOrgaosNomes().slice(0, value*10))
+    dispatch({ type: 'increment_value' });
   }
 
   return (
@@ -54,7 +63,7 @@ export default function Filter({
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
         {
-          orgaos.map((type) => (
+          value.orgaos.map((type) => (
             <li key={type} className={styles.listItemStyle}>
               <input type='radio' name='licit-tipo' id={type}
                 onClick={() => {
