@@ -23,6 +23,11 @@ export default function Filter({
     },
   ];
 
+  const mostrarMais = () => {
+    setValue(value + 1);
+    setOrgaos(getOrgaosNomes().slice(0, value*10))
+  }
+
   return (
     <section className={styles.filterSection}>
       <h2 className={styles.title}>Resultados obtidos de:</h2>
@@ -63,6 +68,9 @@ export default function Filter({
             </li>
           ))
         }
+        <li>
+          <a onClick={mostrarMais}>Mostrar mais...</a>
+        </li>
       </ul>
       <h3 className={styles.sectionTitle}>Status</h3>
       <ul>
