@@ -41,77 +41,89 @@ export default function Filter({
   return (
     <section className={styles.filterSection}>
       <h2 className={styles.title}>Resultados obtidos de:</h2>
-      <h3 className={styles.subtitle}>"Palavras-chave de busca"</h3>
-      <span className={styles.description}>14 resultados obtidos</span>
-      <h3 className={styles.sectionTitle}>Modalidade de compra</h3>
-      <ul>
-        {
-          biddingTypes.map((type) => (
-            <li key={type} className={styles.listItemStyle}>
-              <input type='radio' name='licit-tipo' id={type}
-                onClick={() => {
-                  setFilterParams({
-                    ...filterParams,
-                    tipo: type
-                  })
-                }}
-              />
-              <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
-            </li>
-          ))
-        }
-      </ul>
-      <h3 className={styles.sectionTitle}>Órgão</h3>
-      <ul>
-        {
-          orgaosValue.orgaos.map((type) => (
-            <li key={type} className={styles.listItemStyle}>
-              <input type='radio' name='licit-tipo' id={type}
-                onClick={() => {
-                  setFilterParams({
-                    ...filterParams,
-                    tipo: type
-                  })
-                }}
-              />
-              <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
-            </li>
-          ))
-        }
-        <li>
-          <a onClick={mostrarMais}>Mostrar mais...</a>
-        </li>
-      </ul>
-      <h3 className={styles.sectionTitle}>Status</h3>
-      <ul>
-        <li className={styles.listItemStyle}>
-          <input type='radio' name='status' id='aberto' />
-          <label htmlFor="aberto">Aberto</label>
-        </li>
-        <li className={styles.listItemStyle}>
-          <input type='radio' name='status' id='fechado' />
-          <label htmlFor="fechado">Fechado</label>
-        </li>
-      </ul>
-      <h3 className={styles.sectionTitle}>Preço</h3>
-      <div className={styles.inputRangeWrapper}>
-        <Slider
-          size="small"
-          aria-label="Small"
-          valueLabelDisplay="auto"
-          value={filterParams.value}
-          onChange={(e) => {
-            setFilterParams({
-              ...filterParams,
-              value: e.target.value
-            })
-          }}
-          max={1000000}
-          step={10}
-          marks={marks}
-        />
+      <div>
+        <h3 className={styles.subtitle}>"Palavras-chave de busca"</h3>
+        <span className={styles.description}>14 resultados obtidos</span>
       </div>
-      <h3 className={styles.sectionTitle}>Período</h3>
+      <div>
+        <h3 className={styles.sectionTitle}>Modalidade de compra</h3>
+        <ul>
+          {
+            biddingTypes.map((type) => (
+              <li key={type} className={styles.listItemStyle}>
+                <input type='radio' name='licit-tipo' id={type}
+                  onClick={() => {
+                    setFilterParams({
+                      ...filterParams,
+                      tipo: type
+                    })
+                  }}
+                />
+                <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div>
+        <h3 className={styles.sectionTitle}>Órgão</h3>
+        <ul>
+          {
+            orgaosValue.orgaos.map((type) => (
+              <li key={type} className={styles.listItemStyle}>
+                <input type='radio' name='licit-tipo' id={type}
+                  onClick={() => {
+                    setFilterParams({
+                      ...filterParams,
+                      tipo: type
+                    })
+                  }}
+                />
+                <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
+              </li>
+            ))
+          }
+          <li>
+            <a onClick={mostrarMais}>Mostrar mais...</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 className={styles.sectionTitle}>Status</h3>
+        <ul>
+          <li className={styles.listItemStyle}>
+            <input type='radio' name='status' id='aberto' />
+            <label htmlFor="aberto">Aberto</label>
+          </li>
+          <li className={styles.listItemStyle}>
+            <input type='radio' name='status' id='fechado' />
+            <label htmlFor="fechado">Fechado</label>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 className={styles.sectionTitle}>Preço</h3>
+        <div className={styles.inputRangeWrapper}>
+          <Slider
+            size="small"
+            aria-label="Small"
+            valueLabelDisplay="auto"
+            value={filterParams.value}
+            onChange={(e) => {
+              setFilterParams({
+                ...filterParams,
+                value: e.target.value
+              })
+            }}
+            max={1000000}
+            step={10}
+            marks={marks}
+          />
+        </div>
+      </div>
+      <div>
+        <h3 className={styles.sectionTitle}>Período</h3>
+      </div>
       <CustomButton onPress={handleSearch} title="buscar"/>
     </section>
   );
