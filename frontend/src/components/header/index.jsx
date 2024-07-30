@@ -14,7 +14,7 @@ const Header = () => {
 
   function handdleChange(e) {
     setInput(e.target.value);
-    const listaDeLinks = screen.getAllByRole('listitem');
+    // const listaDeLinks = screen.getAllByRole('listitem');
   }
 
   function buscarLicitacao() {

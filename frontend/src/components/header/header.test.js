@@ -4,6 +4,7 @@ import { render, screen } from "@testing-library/react";
 import Header from ".";
 import { MemoryRouter } from "react-router-dom";
 import { BiddingProvider } from "../../context/BiddingContext";
+import userEvent from '@testing-library/user-event'
 
 describe("Deve renderizar os links das rotas: ", () => {
     test("Licitações", () => {
@@ -71,4 +72,39 @@ test("Deve renderizar o snapshot da lista de links do componente", () => {
     </MemoryRouter>)
     const listaDeLinks = screen.getAllByRole('listitem')
     expect(listaDeLinks).toMatchSnapshot()
+})
+
+describe("Deve renderizar um campo de input", () => {
+    test("no documento", () => {
+        render(<MemoryRouter>
+            <BiddingProvider>
+                <Header />
+            </BiddingProvider>
+        </MemoryRouter>)
+        const campoTexto = screen.getByPlaceholderText("Pesquise aqui")
+        expect(campoTexto).toBeInTheDocument()
+    })
+
+    test("de type: text", () => {
+        render(<MemoryRouter>
+            <BiddingProvider>
+                <Header />
+            </BiddingProvider>
+        </MemoryRouter>)
+        const campoTexto = screen.getByPlaceholderText("Pesquise aqui")
+        expect(campoTexto).toBeInTheDocument('type', 'text')
+    })
+
+    test(" de type: text que pode ser preenchido", async () => {
+        render(
+            <MemoryRouter>
+                <BiddingProvider>
+                    <Header />
+                </BiddingProvider>
+            </MemoryRouter>
+        );
+        const campoTexto = screen.getByPlaceholderText("Pesquise aqui");
+        await userEvent.type(campoTexto, 'inputtest');
+        expect(campoTexto).toHaveValue('inputtest');
+    });
 })
