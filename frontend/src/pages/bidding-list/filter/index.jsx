@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
 import { Slider } from '@mui/material';
+import { getOrgaosNomes } from '../../../services/orgaos.service';
 
 export default function Filter({
   filterParams,
@@ -9,6 +10,7 @@ export default function Filter({
   handleSearch
 }) {
   const [value, setValue] = useState(0);
+  const orgaos = getOrgaosNomes();
 
   const marks = [
     {
