@@ -50,15 +50,17 @@ export default function AboutUs() {
 
       <TitulosEstilizados>Agora, um pouco de cada um</TitulosEstilizados>
 
-      {membros.map((membro) => (
-        <CardMember
-          key={membro.id}
-          nome={membro.nome}
-          descricao={membro.descricao}
-          github={membro.github}
-          id={membro.id}
-        />
-      ))}
+      <ul>
+        {membros.map((membro) => (
+          <CardMember
+            key={membro.id}
+            nome={membro.nome}
+            descricao={membro.descricao}
+            github={membro.github}
+            id={membro.id}
+          />
+        ))}
+      </ul>
     </AboutUsContainer>
   );
 }

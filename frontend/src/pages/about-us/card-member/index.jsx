@@ -48,14 +48,14 @@ export default function CardMember({ nome, descricao, github, id }) {
     <CardAboutUsContextEstilizada $id={controler}>
       <span>
         <h3>{nome}</h3>
-        <p>{descricao}</p>
+        <p data-testid="campoDescrica">{descricao}</p>
       </span>
       <CardAboutUsPhotoContextEstilizada>
         <CardAboutUsPhotoEstilizado
           src={`../../../../assets/members/${id}.jpg`}
           alt="Foto do membro"
         />
-        <a href={github} target="_blank">
+        <a data-testid="campoLink" href={github} target="_blank">
           <FaGithub /> Github
         </a>
       </CardAboutUsPhotoContextEstilizada>
