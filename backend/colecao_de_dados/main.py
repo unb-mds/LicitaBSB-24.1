@@ -75,7 +75,7 @@ def main():
         links_avisos = func.extraindo_links_licitacoes(urls_titulos, tipo)
 
         # Criar JSON com avisos ou extratos
-        func.criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo)
+        func.alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo)
 
         # Avançar para o próximo dia
         data_atual += timedelta(days=1)
