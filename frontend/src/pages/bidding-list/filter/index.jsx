@@ -20,7 +20,7 @@ export default function Filter({
   setFilterParams,
   handleSearch
 }) {
-  const [value, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
+  const [orgaosState, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
 
   const marks = [
     {
@@ -63,7 +63,7 @@ export default function Filter({
       <h3 className={styles.sectionTitle}>Órgão</h3>
       <ul>
         {
-          value.orgaos.map((type) => (
+          orgaosState.orgaos.map((type) => (
             <li key={type} className={styles.listItemStyle}>
               <input type='radio' name='licit-tipo' id={type}
                 onClick={() => {
