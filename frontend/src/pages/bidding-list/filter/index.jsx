@@ -47,7 +47,7 @@ export default function Filter({
         <span className={styles.description}>14 resultados obtidos</span>
       </div>
       <div>
-        <h3 className={styles.sectionTitle}>Modalidade de compra</h3>
+        <h3 className={styles.sectionTitle}>Tipo de Licitação</h3>
         <ul>
           {
             biddingTypes.map((type) => (
@@ -95,12 +95,30 @@ export default function Filter({
         <h3 className={styles.sectionTitle}>Status</h3>
         <ul>
           <li className={styles.listItemStyle}>
-            <input type='radio' name='status' id='aberto' />
-            <label htmlFor="aberto">Aberto</label>
+            <CustomInputRadio
+              name="status"
+              label="Aberto"
+              onPress={() => {
+                setFilterParams({
+                  ...filterParams,
+                  tipo: 'aberto'
+                })
+              }}
+              id='aberto'
+            />
           </li>
           <li className={styles.listItemStyle}>
-            <input type='radio' name='status' id='fechado' />
-            <label htmlFor="fechado">Fechado</label>
+            <CustomInputRadio
+              name="status"
+              label="Fechado"
+              onPress={() => {
+                setFilterParams({
+                  ...filterParams,
+                  tipo: 'fechado'
+                })
+              }}
+              id='fechado'
+            />
           </li>
         </ul>
       </div>
