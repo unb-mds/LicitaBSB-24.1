@@ -3,7 +3,7 @@ name: Script de automação dos envio de emails
 on:
   workflow_dispatch:
   schedule:
-    - cron: '00 5 * * 1' # todos as segunda-feiras às 12:00
+    - cron: '00 15 * * 1' # todos as segunda-feiras às 12:00
 
 jobs:
   run-js:
