@@ -26,9 +26,9 @@ jobs:
     - name: Run Script
       working-directory: backend/newsletter
       env:
-        URL_CHIMP: ${{ secrets.URL_CHIMP }}
-        API: ${{ secrets.API }}
-        GMAIL_USER: ${{ secrets.GMAIL_USER }}
-        GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+        URL_CHIMP: ${{ env.URL_CHIMP }}
+        API: ${{ env.API }}
+        GMAIL_USER: ${{ env.GMAIL_USER }}
+        GMAIL_PASS: ${{ env.GMAIL_PASS }}
       run: |
         node sendEmails.js

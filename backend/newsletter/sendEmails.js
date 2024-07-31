@@ -8,9 +8,6 @@ const API = process.env.API;
 const email = process.env.GMAIL_USER;
 const password = process.env.GMAIL_PASS;
 
-console.log('Mailchimp URL:', mailchimpUrl);
-console.log('Gmail user:', email);
-
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -38,7 +35,6 @@ const getSubscribers = async () => {
     const subscribers = response.data.members
       .filter(member => member.status === 'subscribed')
       .map(member => member.email_address);
-    console.log('Filtered subscribers:', subscribers);
     return subscribers;
   } catch (error) {
     console.error('Error fetching subscribers:', error);
@@ -47,7 +43,6 @@ const getSubscribers = async () => {
 };
 
 const sendMail = async (emailAddress) => {
-  console.log(`Preparing to send email to ${emailAddress}...`);
   const mailOptions = {
     from: {
       name: "LicitaBSB",
@@ -71,9 +66,7 @@ Equipe Licita BSB`,
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Email successfully sent to ${emailAddress}!`);
   } catch (error) {
-    console.error(`Error sending email to ${emailAddress}:`, error);
   }
 };
 
