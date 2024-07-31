@@ -49,7 +49,7 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Tipo de Licitação</h3>
-        <ul>
+        <ul className={styles.filterOptionsContainer}>
           {
             biddingTypes.map((type) => (
               <li key={type} className={styles.listItemStyle}>
@@ -71,7 +71,7 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Órgão</h3>
-        <ul>
+        <ul className={styles.filterOptionsContainer}>
           {
             orgaosValue.orgaos.map((type) => (
               <li key={type} className={styles.listItemStyle}>
@@ -91,7 +91,7 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Status</h3>
-        <ul>
+        <ul className={styles.filterOptionsContainer}>
           <li className={styles.listItemStyle}>
             <CustomInputRadio
               name="status"
