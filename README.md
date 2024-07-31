@@ -3,7 +3,10 @@
 - [Sobre o Projeto](#Sobre-o-Projeto)
 - [Como Executar o Projeto](#Como-Executar-o-Projeto)
   - [Pré-requisitos](#Pré-requisitos)
-  - [Execução](#Execução)
+  - [Backend](#Backend)
+    1. [Execucao-Back](#Execucao-Back)
+    2. [Endpoints](#Endpoints)
+  - [Frontend](#Frontend)
   - [Observações](#Observações)
 - [Documentação](#Documentação)
 - [Equipe](#Equipe)
@@ -23,14 +26,74 @@ Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompan
 ### Pré-requisitos
 
 - [NodeJS v20 ou superior](https://nodejs.org/en/download) instalada.
+- [Python 3.12.3](https://www.python.org/downloads/) instalada.
 
 Clone o repositório do projeto com o seguinte comando:
 
 ```bash
 git clone https://github.com/unb-mds/LicitaBSB-24.1.git
 ```
+### Backend
 
-### Execução
+#### Execução Back
+Navegue até o diretório `backend/` e execute o seguinte comando:
+
+Linux
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+Windows
+```bash
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+Para rodar o projeto, navegue ao diretorio `backend/server`, e execute o comando:
+
+```bash
+python manage.py runserver
+```
+
+Com isso a API REST estará sendo executada no seu backend na porta http://127.0.0.1:8000/
+
+#### Endpoints
+
+##### Listar Órgãos
+
+- **Método:** `GET`
+- **URL:** `app/orgaos`
+- **Descrição:** Retorna uma lista de todos os órgãos.
+- **Exemplo:**
+    ```bash
+    curl -X GET http://127.0.0.1:8000/app/orgaos
+    ```
+
+##### Listar Licitações
+
+- **Método:** `GET`
+- **URL:** `/app/licitacoes`
+- **Descrição:** Retorna uma lista de licitações com suporte para paginação e filtros.
+- **Parâmetros de Query (opcionais):**
+  - `tipo`: Filtra as licitações pelo tipo (`aviso` ou `extrato`).
+  - `data`: Filtra as licitações pela data (formato `dd-mm-aaaa`, será convertido para `dd/mm/aaaa`).
+- **Exemplo:**
+    ```bash
+    curl -X GET "http://127.0.0.1:8000/app/licitacoes?tipo=aviso&data=01-07-2024"
+    ```
+
+##### Licitação por ID
+
+- **Método:** `GET`
+- **URL:** `app/licitacoes/<int:id>`
+- **Descrição:** Retorna os detalhes de uma licitação específica pelo ID.
+- **Exemplo:**
+    ```bash
+    curl -X GET http://127.0.0.1:8000/app/licitacoes/1
+    ```
+
+### Frontend
 
 Navegue até o diretório `web` e execute o seguinte comando:
 
