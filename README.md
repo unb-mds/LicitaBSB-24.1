@@ -118,6 +118,7 @@ Automatizar a publicação de licitações do DODF e do DOU no Twitter [@LicitaB
 ##### Tecnologias Utilizadas
 
 - Python
+- Django REST framework
 - Tweepy (biblioteca para interação com a API do Twitter)
 - Requests (para encurtamento de URLs)
 - dotenv (para gerenciamento de variáveis de ambiente)
