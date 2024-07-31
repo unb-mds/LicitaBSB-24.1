@@ -14,6 +14,8 @@ import { BiddingProvider } from './context/BiddingContext';
 import BiddingSearchList from './pages/bidding-search-list';
 import { Error } from './pages/error';
 import Newsletter from './components/newsletter';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 function AppRoutes() {
   return (
@@ -38,6 +40,8 @@ function AppRoutes() {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
     <AppRoutes />
+    </LocalizationProvider>
   </React.StrictMode>,
 );
