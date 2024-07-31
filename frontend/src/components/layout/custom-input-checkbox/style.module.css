@@ -1,0 +1,42 @@
+.checkboxBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.4em;
+  flex: 1;
+}
+
+/* Checkbox Input */
+.checkboxBtn span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.2em;
+  height: 1.2em;
+  background-color: #ddd;
+}
+
+.checkboxBtn span::before {
+  content: '';
+  display: inline-block;
+  width: 0.6em;
+  height: 0.25em;
+  border-bottom: 2px solid #fff;
+  border-left: 2px solid #fff;
+  transform: scale(0) rotate(-45deg);
+  position: relative;
+  bottom: 1px;
+}
+
+.checkboxBtn input {
+  display: none;
+}
+
+.checkboxBtn input:checked ~ span {
+  background-color: var(--texto);
+}
+
+.checkboxBtn input:checked ~ span::before {
+  transform: scale(1) rotate(-45deg);
+}

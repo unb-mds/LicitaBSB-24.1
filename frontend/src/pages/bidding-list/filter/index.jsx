@@ -5,6 +5,7 @@ import { Slider } from '@mui/material';
 import { getOrgaosNomes } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
+import CustomInputCheckbox from '../../../components/layout/custom-input-checkbox';
 
 function reducer(state, action) {
   if(action.type === 'increment_value') {
@@ -86,6 +87,14 @@ export default function Filter({
               </li>
             ))
           }
+          <li>
+            <CustomInputCheckbox
+              name="teste"
+              label="teste"
+              onPress={() => {}}
+              id='teste'
+            />
+          </li>
           <li>
             <a onClick={mostrarMais}>Mostrar mais...</a>
           </li>

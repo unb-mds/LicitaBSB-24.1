@@ -17,7 +17,6 @@
   border-radius: 50%;
   background-color: #ddd;
   position: relative;
-  transition: 0.3s;
 }
 
 .radioButton span::before {
