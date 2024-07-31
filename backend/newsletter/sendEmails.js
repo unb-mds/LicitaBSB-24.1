@@ -8,22 +8,6 @@ const API = process.env.API;
 const email = process.env.GMAIL_USER;
 const password = process.env.GMAIL_PASS;
 
-if (!mailchimpUrl) {
-  console.error('Error: Mailchimp URL is not defined in environment variables.');
-}
-
-if (!API) {
-  console.error('Error: Mailchimp API key is not defined in environment variables.');
-}
-
-if (!email) {
-  console.error('Error: Gmail user is not defined in environment variables.');
-}
-
-if (!password) {
-  console.error('Error: Gmail password is not defined in environment variables.');
-}
-
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
