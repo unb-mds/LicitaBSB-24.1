@@ -63,6 +63,11 @@
 
 .calendariosWrapper {
   display: flex;
+  flex-direction: column;
+}
+
+.calendario {
+  width: 100px;
 }
 
 @media (max-width: 1300px) {
