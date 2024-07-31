@@ -61,6 +61,10 @@
   cursor: pointer;
 }
 
+.calendariosWrapper {
+  display: flex;
+}
+
 @media (max-width: 1300px) {
   .filterSection {
     display: none;

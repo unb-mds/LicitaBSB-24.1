@@ -143,8 +143,15 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Período</h3>
-        <div>
-          <DateCalendar />
+        <div className={styles.calendariosWrapper}>
+          <div>
+            <p>De</p>
+            <DateCalendar />
+          </div>
+          <div>
+            <p>Até</p>
+            <DateCalendar />
+          </div>
         </div>
       </div>
       <CustomButton onPress={handleSearch} title="buscar"/>
