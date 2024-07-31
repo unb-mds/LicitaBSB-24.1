@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import json
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
+import sqlite3
 
 # Função para criar uma sessão com retries
 def criar_sessao_com_retries(retries=3, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
@@ -150,6 +151,11 @@ def extrair_info_licitacao(url,tipo):
     # Converte os valores para o formato numérico e remove duplicatas
     valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
     if "" in valores_licitacao: valores_licitacao.remove("")
+    for valor in valores_licitacao: 
+        try:
+            valor = float(valor)
+        except:
+            valores_licitacao.remove(valor)
     if tipo == 'avisos':
         # Encontra os elementos de identificação e subtítulo
         identifica_elems = soup.find_all('p', class_='identifica')
@@ -193,8 +199,86 @@ def extrair_info_licitacao(url,tipo):
 
     return aviso_info
 
+def insert_valores_licitacao(valores, licitacao_id, cursor):
+    if isinstance(valores, list):
+        for valor in valores:
+            cursor.execute("INSERT INTO app_valores (idlicitacao_id, valor) VALUES (?, ?)", (licitacao_id, valor))
 
-def criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo):
+def insert_extrato_data(data, cursor):
+    # Verificar se o órgão já existe
+    cursor.execute("SELECT id FROM app_orgao WHERE nome = ?", (data['nomeOrgao'],))
+    orgao_id = cursor.fetchone()
+    if orgao_id:
+        orgao_id = orgao_id[0]
+    else:
+        # Inserir novo órgão e obter o id
+        cursor.execute("INSERT INTO app_orgao (nome) VALUES (?)", (data['nomeOrgao'],))
+        orgao_id = cursor.lastrowid
+
+    # Definir valores para campos que podem ser nulos
+    assinante = data.get('assinante', None)
+    data_abertura = data.get('data_abertura', None)
+    cargo = data.get('cargo', None)
+    edicao = data.get('edicao', None)
+    secao_pagina = data.get('secao_pagina', None)
+    link = data.get('link', None)
+    valores_licitacao = data.get('valores_licitacao', [])
+
+    # Inserir a licitação
+    cursor.execute("""
+        INSERT INTO app_licitacao (
+            titulo, tipo, idorgao_id, objeto, numero_processo, 
+            assinante, data, cargo, edicao, secao_pagina, link
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        data['tipo'], 'extrato', orgao_id, data['objeto'], data['numero_processo'],
+        assinante, data_abertura, cargo, edicao, secao_pagina,
+        link
+    ))
+    # Obter o ID da licitação recém-inserida
+    licitacao_id = cursor.lastrowid
+
+    # Inserir os valores de licitação
+    insert_valores_licitacao(valores_licitacao, licitacao_id, cursor)
+
+def insert_avisos_data(data, cursor):
+    # Verificar se o órgão já existe
+    cursor.execute("SELECT id FROM app_orgao WHERE nome = ?", (data['nomeOrgao'],))
+    orgao_id = cursor.fetchone()
+    if orgao_id:
+        orgao_id = orgao_id[0]
+    else:
+        # Inserir novo órgão e obter o id
+        cursor.execute("INSERT INTO app_orgao (nome) VALUES (?)", (data['nomeOrgao'],))
+        orgao_id = cursor.lastrowid
+
+    # Definir valores para campos que podem ser nulos
+    assinante = data.get('assinante', None)
+    data_abertura = data.get('data_abertura', None)
+    cargo = data.get('cargo', None)
+    edicao = data.get('edicao', None)
+    secao_pagina = data.get('secao_pagina', None)
+    link = data.get('link', None)
+    valores_licitacao = data.get('valores_licitacao', [])
+
+    # Inserir a licitação
+    cursor.execute("""
+        INSERT INTO app_licitacao (
+            titulo, tipo, numero_licitacao, idorgao_id, objeto, numero_processo, 
+            assinante, data, cargo, edicao, secao_pagina, link
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    """, (
+        data['tipo'], 'aviso', data['numero_licitacao'], orgao_id, data['objeto'], data['numero_processo'],
+        assinante, data_abertura, cargo, edicao, secao_pagina,
+        link
+    ))
+    # Obter o ID da licitação recém-inserida
+    licitacao_id = cursor.lastrowid
+
+    # Inserir os valores de licitação
+    insert_valores_licitacao(valores_licitacao, licitacao_id, cursor)
+
+def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     if tipo == 'avisos': print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
     elif tipo == 'extratos': print("Realizando a extração dos extratos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
     licitacoes_detalhadas = []
@@ -215,36 +299,19 @@ def criando_json_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     
     print("Foram encontrados " + str(licita) + " licitações do DOU referentes a Brasília na data informada.")
     
-    # Nome do arquivo JSON
-    output_directory = 'backend/colecao_de_dados/database'
-    os.makedirs(output_directory, exist_ok=True)  # Garante que o diretório de saída exista
-    if tipo == 'avisos': output_file = os.path.join(output_directory, 'data_avisos.json')
-    elif tipo == 'extratos': output_file = os.path.join(output_directory, 'data_extratos.json')
+    db_path = 'backend/server/db.sqlite3'
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
     
-    
-    # Carregar dados existentes, se houver
-    if os.path.exists(output_file):
-        with open(output_file, 'r', encoding='utf-8') as f:
-            try:
-                dados_existentes = json.load(f)
-            except json.JSONDecodeError:
-                dados_existentes = []
-    else:
-        dados_existentes = []
-    
-    # Determinar o próximo ID
-    if dados_existentes:
-        ultimo_id = max(item['id'] for item in dados_existentes) if dados_existentes else 0
-    else:
-        ultimo_id = 0
-
-    # Adicionar novos dados com IDs incrementais
-    for index, licitacao in enumerate(licitacoes_detalhadas, start=ultimo_id + 1):
-        licitacao['id'] = index
-        dados_existentes.append(licitacao)
-    
-    # Salvar dados de volta no arquivo
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(dados_existentes, f, ensure_ascii=False, indent=4)
-
+    if tipo == 'extratos':
+        # Inserir dados
+        for licitacao in licitacoes_detalhadas:
+            insert_extrato_data(licitacao, cursor)
+    elif tipo == 'avisos':
+        # Inserir dados
+        for licitacao in licitacoes_detalhadas:
+            insert_avisos_data(licitacao, cursor)
+        
+    conn.commit()
+    conn.close()
     return licitacoes_detalhadas

@@ -8,7 +8,7 @@ import requests
 from dotenv import load_dotenv
 from twitter_text import parse_tweet
 from PIL import Image, ImageDraw, ImageFont
-
+import sqlite3
 load_dotenv()  # Carrega os segredos da API do Twitter
 
 def encurtar_url(url):
@@ -91,38 +91,36 @@ def texto_para_imagem(texto, caminho_imagem):
 # Chamada da função
 
 licitacoes = []
-caminho_extrato = 'backend/colecao_de_dados/database/data_extratos.json'
-caminho_avisos = 'backend/colecao_de_dados/database/data_avisos.json'
+db_path = 'backend/server/db.sqlite3'
+connection = sqlite3.connect(db_path)
+cursor = connection.cursor()
 
 data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
+query = """
+SELECT titulo, objeto, data, link
+FROM app_licitacao
+WHERE data = ?
+"""
 
-with open(caminho_avisos, 'r', encoding='utf-8') as file:
-    licitacoes_data = json.load(file)
-    for licitacao in licitacoes_data:
-        if licitacao['data_abertura'] == data_ontem:
-            a = encurtar_url(licitacao['link'])
-            time.sleep(1)
-            licitacoes.append({
-                'titulo': licitacao['tipo'],
-                'descricao': licitacao['objeto'],
-                'data': licitacao['data_abertura'],
-                'link': a
-            })
+# Executar a consulta
+cursor.execute(query, (data_ontem,))
+licitacoes_data = cursor.fetchall()
 
-with open(caminho_extrato, 'r', encoding='utf-8') as file:
-    licitacoes_data = json.load(file)
-    for licitacao in licitacoes_data:
-        if licitacao['data_abertura'] == data_ontem:
-            a = encurtar_url(licitacao['link'])
-            time.sleep(1)
-            licitacoes.append({
-                'titulo': licitacao['tipo'],
-                'descricao': licitacao['objeto'],
-                'data': licitacao['data_abertura'],
-                'link': a
-            })
+# Fechar a conexão com o banco de dados
+connection.close()
+for licitacao in licitacoes_data:
+    tipo, objeto, data_abertura, link = licitacao
+    a = encurtar_url(link)
+    time.sleep(1)  # Pausa para evitar sobrecarga
+    licitacoes.append({
+        'titulo': tipo,
+        'descricao': objeto,
+        'data': data_abertura,
+        'link': a
+    })
+
 verificador_de_licitacao = False
 if not licitacoes:
     mensagens = [f'Nas últimas 24 horas não houve nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
@@ -167,7 +165,6 @@ if verificador_de_licitacao == False:
             # upload na imagem
             response = api.media_upload(filename=caminho_imagem)
             media_id = response.media_id
-
             # cria o tweet já com a imagem
             tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
             print(tweet)
