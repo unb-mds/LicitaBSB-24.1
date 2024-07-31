@@ -75,15 +75,12 @@ export default function Filter({
           {
             orgaosValue.orgaos.map((type) => (
               <li key={type} className={styles.listItemStyle}>
-                <input type='radio' name='licit-tipo' id={type}
-                  onClick={() => {
-                    setFilterParams({
-                      ...filterParams,
-                      tipo: type
-                    })
-                  }}
+                <CustomInputCheckbox
+                  name={type}
+                  label={type.charAt(0).toUpperCase() + type.slice(1)}
+                  onPress={() => {}}
+                  id={type}
                 />
-                <label htmlFor={type}>{type.charAt(0).toUpperCase() + type.slice(1)}</label>
               </li>
             ))
           }
