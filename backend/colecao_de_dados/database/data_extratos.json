@@ -26782,5 +26782,19 @@
             "9554.85"
         ],
         "id": 1918
+    },
+    {
+        "tipo": "Extrato de Dispensa de Licitação",
+        "nomeOrgao": "Presidência da República/Secretaria de Comunicação Social/Empresa Brasil de Comunicação S.A.",
+        "objeto": "N° Processo: 0176/20243. Objeto: Contratação de empresa especializada em manutenção dos extintores de incêndio, instalados nas unidades da Empresa Brasil de Comunicação - EBC, na cidade de Brasília / DF. Fundamento Legal: art. 29, inciso II e art. 40 da Lei 13.303/2016 e pelo Art. 13, inciso II do Regulamento Interno de Licitações e Contratações da EBC. Nota de Empenho: 2024NE1252, no valor total de R$ 10.045,00 (dez mil e quarenta e cinco reais). Contratante: Empresa Brasil de Comunicação S.A. - EBC, CNPJ: 09.168.704/0001-42. Contratada: SISTEC - Sistemas de Proteção e Combate a Incêndio LTDA., CNPJ: 11.916.462/0001-70. WELLINGTON DE MELO SOUZA - Gerente da Central de Compras",
+        "numero_processo": "0176/20243",
+        "data_abertura": "30/07/2024",
+        "edicao": "145",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n1",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-574869573",
+        "valores_licitacao": [
+            "10045.00"
+        ],
+        "id": 1919
     }
 ]
