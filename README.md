@@ -1,51 +1,169 @@
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-# Licita BSB
-Licita BSB é um projeto de divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação mais recentes publicadas nos diários oficiais serão divulgadas de maneira acessível e compreensível para o público em geral.
+## Sumário
 
-Visando ampliar a divulgação desse material, Licita BSB também possui um bot na rede social X (antigo Twitter), onde serão compartilhadas as dispensas de licitação mais recentes, de modo a alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Como Executar o Projeto](#como-executar-o-projeto)
+  - [Pré-requisitos](#pré-requisitos)
+  - [Backend](#backend)
+    - [Execução](#execução)
+    - [Endpoints](#endpoints)
+    - [Bot de Licitações no X](#bot-de-licitações-no-x)
+  - [Frontend](#frontend)
+  - [Observações](#observações)
+- [Documentação](#documentação)
+- [Equipe](#equipe)
 
-Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU de forma diária 
+## Sobre o Projeto
 
-> Esse projeto será realizado durante a disciplica de Métodos de Desenvolvimento de Software da Universidade de Brasília, no primeiro semestre de 2024.
+**Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
-## Como executar o projeto
+Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais.
 
-### 📋 Pré-requisitos
+Acesse o nosso bot no [X (antigo Twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU diariamente.
 
-- [NodeJS v20 ou superior](https://nodejs.org/en/download) instalada.
+> Este projeto faz parte da disciplina de Métodos de Desenvolvimento de Software da Universidade de Brasília, no primeiro semestre de 2024.
 
-Clone o repositório do projeto com o seguinte comando:
+## Como Executar o Projeto
+
+### Pré-requisitos
+
+- [NodeJS v20 ou superior](https://nodejs.org/en/download)
+- [Python 3.12.3](https://www.python.org/downloads/)
+
+Clone o repositório do projeto:
 
 ```bash
 git clone https://github.com/unb-mds/LicitaBSB-24.1.git
 ```
-### Execução
 
-Navegue até o diretório `web` e execute o seguinte comando:
-```
-npm install
-```
+### Backend
 
-Para rodar o projeto, dentro do diretório /web, execute o comando:
-```
-npm run dev
-```
+#### Execução
 
-O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (ou http://127.0.0.1:5432/)
+1. Navegue até o diretório `backend/` e crie um ambiente virtual:
+
+    **Linux**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
+    ```
+
+    **Windows**
+    ```bash
+    python -m venv venv
+    venv\Scripts\activate
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Para rodar o projeto, navegue até o diretório `backend/server` e execute:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+A API REST estará disponível em `http://127.0.0.1:8000/`.
+
+#### Endpoints
+
+- **Listar Órgãos**
+  - **Método:** `GET`
+  - **URL:** `app/orgaos`
+  - **Descrição:** Retorna uma lista de todos os órgãos.
+  
+- **Listar Licitações**
+  - **Método:** `GET`
+  - **URL:** `/app/licitacoes`
+  - **Descrição:** Retorna uma lista de licitações com suporte para paginação e filtros.
+  - **Parâmetros de Query (opcionais):**
+    - `tipo`: Filtra as licitações pelo tipo (`aviso` ou `extrato`).
+    - `data`: Filtra as licitações pela data (formato `dd-mm-aaaa`).
+    
+- **Licitação por ID**
+  - **Método:** `GET`
+  - **URL:** `app/licitacoes/<int:id>`
+  - **Descrição:** Retorna os detalhes de uma licitação específica pelo ID.
+
+#### Bot de Licitações no X
+
+Este bot publica automaticamente as licitações do Diário Oficial do Distrito Federal (DODF) e do Diário Oficial da União (DOU) referentes a Brasília na conta [@LicitaBSB](https://x.com/LicitaBSB).
+
+##### Funcionalidades
+
+- Autenticação automática na API do Twitter.
+- Integração com o sistema de coleta de dados.
+- Formatação de dados para postagens legíveis.
+- Publicação automática das licitações.
+- Testes com dados simulados.
+
+##### Configuração
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/unb-mds/LicitaBSB-24.1.git
+    cd LicitaBSB-24.1
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    pip install -r backend/requirements.txt
+    ```
+
+3. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com as chaves da API do Twitter:
+
+    ```env
+    TWITTER_API_KEY=seu_api_key
+    TWITTER_API_KEY_SECRET=seu_api_key_secret
+    TWITTER_ACCESS_TOKEN=seu_access_token
+    TWITTER_ACCESS_TOKEN_SECRET=seu_access_token_secret
+    TWITTER_BEARER_TOKEN=seu_bearer_token
+    ```
+
+4. Atualize o sistema de coleta de dados para garantir que a database esteja atualizada.
+
+##### Uso
+
+1. Execute o script principal:
+
+    ```bash
+    python backend/twitter_bot/bot.py
+    ```
+
+2. O bot publicará as licitações no Twitter. Se não houver licitações no dia, o bot publicará uma mensagem informando.
+
+### Frontend
+
+1. Navegue até o diretório `web` e instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+2. Para rodar o projeto, execute:
+
+    ```bash
+    npm run dev
+    ```
+
+O site estará disponível em `http://localhost:5432/`.
 
 ### Observações
-- A atualização do banco de dados é feita de forma automatica no projeto por Cronjob.
-- Caso deseje testar os componentes do backend [clique aqui](https://github.com/unb-mds/LicitaBSB-24.1/tree/main/backend) e depois clique no componente que deseja testar.
 
+- A atualização do banco de dados é feita automaticamente por Cronjob.
+- Para testar os componentes do backend, acesse o repositório e clique no componente desejado.
 
-## 📚 Documentação
-
+## Documentação
 
 - [Documentação](https://unb-mds.github.io/LicitaBSB-24.1/)
-- [Nosso quadro do Miro](https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307)
+- [Quadro do Miro](https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307)
 - [Figma da equipe](https://www.figma.com/file/vdfnVL6qkyUAPGeYfCCqol/Licita?type=design&node-id=0-1&mode=design&t=ZOaqmrSccc577Pog-0)
 
-## 👥 Equipe
+## Equipe
 
 <center>
 <table style="margin-left: auto; margin-right: auto;">
@@ -93,5 +211,4 @@ O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (
             </a>
         </td>
 </table>
-
 </center>
