@@ -24,6 +24,7 @@ jobs:
         npm install
 
     - name: Run Script
+      working-directory: backend/newsletter
       env:
         URL_CHIMP: ${{ secrets.URL_CHIMP }}
         API: ${{ secrets.API }}
