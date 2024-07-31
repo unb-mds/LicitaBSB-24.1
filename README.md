@@ -1,14 +1,24 @@
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-# Licita BSB
+## Sumário
+
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Como Executar o Projeto](#como-executar-o-projeto)
+  - [📋 Pré-requisitos](#📋-pré-requisitos)
+  - [Execução](#Execução)
+  - [Observações](#observações)
+- [📚 Documentação](#📚-documentação)
+- [👥 Equipe](#👥-equipe)
+
+## Sobre o Projeto
+
 Licita BSB é um projeto de divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação mais recentes publicadas nos diários oficiais serão divulgadas de maneira acessível e compreensível para o público em geral.
 
 Visando ampliar a divulgação desse material, Licita BSB também possui um bot na rede social X (antigo Twitter), onde serão compartilhadas as dispensas de licitação mais recentes, de modo a alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
 
-Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU de forma diária 
+Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU de forma diária.
 
-> Esse projeto será realizado durante a disciplica de Métodos de Desenvolvimento de Software da Universidade de Brasília, no primeiro semestre de 2024.
+> Esse projeto será realizado durante a disciplina de Métodos de Desenvolvimento de Software da Universidade de Brasília, no primeiro semestre de 2024.
 
-## Como executar o projeto
+## Como Executar o Projeto
 
 ### 📋 Pré-requisitos
 
@@ -19,27 +29,29 @@ Clone o repositório do projeto com o seguinte comando:
 ```bash
 git clone https://github.com/unb-mds/LicitaBSB-24.1.git
 ```
+
 ### Execução
 
 Navegue até o diretório `web` e execute o seguinte comando:
-```
+
+```bash
 npm install
 ```
 
-Para rodar o projeto, dentro do diretório /web, execute o comando:
-```
+Para rodar o projeto, dentro do diretório `/web`, execute o comando:
+
+```bash
 npm run dev
 ```
 
 O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (ou http://127.0.0.1:5432/)
 
 ### Observações
-- A atualização do banco de dados é feita de forma automatica no projeto por Cronjob.
+
+- A atualização do banco de dados é feita de forma automática no projeto por Cronjob.
 - Caso deseje testar os componentes do backend [clique aqui](https://github.com/unb-mds/LicitaBSB-24.1/tree/main/backend) e depois clique no componente que deseja testar.
 
-
 ## 📚 Documentação
-
 
 - [Documentação](https://unb-mds.github.io/LicitaBSB-24.1/)
 - [Nosso quadro do Miro](https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307)
