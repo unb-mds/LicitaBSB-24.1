@@ -3,12 +3,8 @@ from app.models import Licitacao, Orgao
 from app.serializers import LicitacaoSerializer, OrgaoSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
+from rest_framework.pagination import PageNumberPagination
 
-@api_view(['GET'])
-def licitacao_listar(request):
-    licitacoes = Licitacao.objects.all()
-    serializer = LicitacaoSerializer(licitacoes, many=True)
-    return Response(serializer.data)
 
 @api_view(['GET'])
 def nome_orgaos_listar(request):
@@ -17,20 +13,37 @@ def nome_orgaos_listar(request):
     return Response(serializer.data)
 
 @api_view(['GET'])
-def listar_licitacoes_por_tipo(request):
-    tipo = request.query_params.get('type')  # Obtém o parâmetro 'type' da URL
-    
-    if tipo:
-        print(f"Filtrando por tipo: {tipo}")  # Verifica o tipo recebido
-        licitacoes = Licitacao.objects.filter(tipo=tipo)  # Filtra as licitações pelo tipo
-        if not licitacoes.exists():
-            print(f"Nenhuma licitação encontrada com o tipo: {tipo}")  # Mensagem para quando não encontrar nenhuma licitação
-    else:
-        print("Nenhum tipo fornecido, retornando todas as licitações.")  # Mensagem para quando nenhum tipo é fornecido
-        licitacoes = Licitacao.objects.all()  # Caso nenhum tipo seja fornecido, retorna todas as licitações
+def listar_licitacoes(request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 10  # Define o número de itens por página
 
-    serializer = LicitacaoSerializer(licitacoes, many=True)
-    return Response(serializer.data)
+    # Lista de possíveis campos de filtro
+    filtro_campos = ['tipo', 'data']
+
+    # Dicionário para armazenar os filtros dinâmicos
+    filtros = {}
+
+    # Itera sobre os campos de filtro possíveis e adiciona ao dicionário de filtros
+    for campo in filtro_campos:
+        valor = request.query_params.get(campo)
+        if valor:
+            if campo == 'data':
+                # Converte o formato da data de dd-mm-aaaa para dd/mm/aaaa
+                valor = valor.replace('-', '/')
+            filtros[campo] = valor
+            print(f"Filtrando por {campo}: {valor}")  # Mensagem para verificação
+
+    licitacoes = Licitacao.objects.filter(**filtros)
+
+    if not licitacoes.exists():
+        print(f"Nenhuma licitação encontrada com os filtros: {filtros}")  # Mensagem quando não encontrar licitações
+    else:
+        print(f"{licitacoes.count()} licitações encontradas com os filtros: {filtros}")
+
+    result_page = paginator.paginate_queryset(licitacoes, request)
+    serializer = LicitacaoSerializer(result_page, many=True)
+    return paginator.get_paginated_response(serializer.data)
+    
 
 @api_view(['GET'])
 def licitacao_por_id(request, id):
