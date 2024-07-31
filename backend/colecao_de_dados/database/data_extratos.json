@@ -26768,5 +26768,33 @@
             "90000.00"
         ],
         "id": 1917
+    },
+    {
+        "tipo": "Extrato de Dispensa de Licitação nº 56/2024 - UASG 135058",
+        "nomeOrgao": "Ministério da Agricultura e Pecuária/Empresa Brasileira de Pesquisa Agropecuária",
+        "objeto": "Espécie: Nº Processo: 21148.010072/2024-46. Objeto: Contratação do Curso Elaboração do ETP, do Termo de Referência e do Projeto Básico a ser realizado em Brasília nos dias 29 e 30 de julho de 2024 na modalidade presencial para 3 empregados. 1. Fundamento Legal: Art. 29º, Inciso II da Lei nº 13.303 de 30/06/2016. Justificativa: Contratação dentro dos limites legais previstos para aquisição pelo Inciso II do artigo 29 da Lei 13.303/2016. Declaração de Dispensa em 23/7/2024. ERICA MOREIRA TORRES. Gerente Adjunta de Contratações. Ratificação em 23/4/2024.TENISSON WALDOW DE SOUZA. Superintendente de Serviços Compartilhados. Valor Global: R$ 9.554,85. CONTRATADA: ORZIL CURSOS E EVENTOS LTDA. CNPJ: 08.942.423/0001-32.",
+        "numero_processo": "21148.010072/2024-46",
+        "data_abertura": "24/07/2024",
+        "edicao": "141",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n4",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-n-56/2024-uasg-135058-573796797",
+        "valores_licitacao": [
+            "9554.85"
+        ],
+        "id": 1918
+    },
+    {
+        "tipo": "Extrato de Dispensa de Licitação",
+        "nomeOrgao": "Presidência da República/Secretaria de Comunicação Social/Empresa Brasil de Comunicação S.A.",
+        "objeto": "N° Processo: 0176/20243. Objeto: Contratação de empresa especializada em manutenção dos extintores de incêndio, instalados nas unidades da Empresa Brasil de Comunicação - EBC, na cidade de Brasília / DF. Fundamento Legal: art. 29, inciso II e art. 40 da Lei 13.303/2016 e pelo Art. 13, inciso II do Regulamento Interno de Licitações e Contratações da EBC. Nota de Empenho: 2024NE1252, no valor total de R$ 10.045,00 (dez mil e quarenta e cinco reais). Contratante: Empresa Brasil de Comunicação S.A. - EBC, CNPJ: 09.168.704/0001-42. Contratada: SISTEC - Sistemas de Proteção e Combate a Incêndio LTDA., CNPJ: 11.916.462/0001-70. WELLINGTON DE MELO SOUZA - Gerente da Central de Compras",
+        "numero_processo": "0176/20243",
+        "data_abertura": "30/07/2024",
+        "edicao": "145",
+        "secao_pagina": "Seção: 3\n | \nPágina: \n1",
+        "link": "http://www.in.gov.br/web/dou/-/extrato-de-dispensa-de-licitacao-574869573",
+        "valores_licitacao": [
+            "10045.00"
+        ],
+        "id": 1919
     }
 ]
