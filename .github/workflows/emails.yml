@@ -31,4 +31,4 @@ jobs:
         GMAIL_USER: ${{ secrets.GMAIL_USER }}
         GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
       run: |
-        node sendEmail.js
+        node sendEmails.js
