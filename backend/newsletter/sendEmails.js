@@ -8,6 +8,9 @@ const API = process.env.API;
 const email = process.env.GMAIL_USER;
 const password = process.env.GMAIL_PASS;
 
+console.log('Mailchimp URL:', mailchimpUrl);
+console.log('Gmail user:', email);
+
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
   service: "gmail",
@@ -20,7 +23,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log('Nodemailer transporter created.');
+
 const getSubscribers = async () => {
+  console.log('Fetching subscribers from Mailchimp...');
   try {
     const response = await axios.get(mailchimpUrl, {
       auth: {
@@ -28,9 +34,11 @@ const getSubscribers = async () => {
         password: API,
       },
     });
+    console.log('Successfully fetched subscribers.');
     const subscribers = response.data.members
       .filter(member => member.status === 'subscribed')
       .map(member => member.email_address);
+    console.log('Filtered subscribers:', subscribers);
     return subscribers;
   } catch (error) {
     console.error('Error fetching subscribers:', error);
@@ -39,6 +47,7 @@ const getSubscribers = async () => {
 };
 
 const sendMail = async (emailAddress) => {
+  console.log(`Preparing to send email to ${emailAddress}...`);
   const mailOptions = {
     from: {
       name: "LicitaBSB",
@@ -62,13 +71,14 @@ Equipe Licita BSB`,
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Email sent to ${emailAddress}!`);
+    console.log(`Email successfully sent to ${emailAddress}!`);
   } catch (error) {
     console.error(`Error sending email to ${emailAddress}:`, error);
   }
 };
 
 const main = async () => {
+  console.log('Starting main workflow...');
   const subscribers = await getSubscribers();
   if (subscribers.length === 0) {
     console.log('No subscribers to send emails to.');
@@ -78,6 +88,8 @@ const main = async () => {
   for (const subscriber of subscribers) {
     await sendMail(subscriber);
   }
+
+  console.log('All emails sent.');
 };
 
 main();
