@@ -85,14 +85,6 @@ export default function Filter({
             ))
           }
           <li>
-            <CustomInputCheckbox
-              name="teste"
-              label="teste"
-              onPress={() => {}}
-              id='teste'
-            />
-          </li>
-          <li>
             <a onClick={mostrarMais}>Mostrar mais...</a>
           </li>
         </ul>

@@ -6,7 +6,7 @@ export default function CustomInputCheckbox({ name, label, onPress, id }) {
     <label className={styles.checkboxBtn} htmlFor={id} onClick={onPress}>
       <input type="checkbox" name={name} id={id} />
       <span></span>
-      {label}
+      <p>{label}</p>
     </label>
   )
 }
