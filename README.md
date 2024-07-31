@@ -2,11 +2,11 @@
 
 - [Sobre o Projeto](#Sobre-o-Projeto)
 - [Como Executar o Projeto](#Como-Executar-o-Projeto)
-  - [📋 Pré-requisitos](#Pré-requisitos)
+  - [Pré-requisitos](#Pré-requisitos)
   - [Execução](#Execução)
   - [Observações](#Observações)
-- [📚 Documentação](#📚-Documentação)
-- [👥 Equipe](#👥-Equipe)
+- [Documentação](#Documentação)
+- [Equipe](#Equipe)
 
 ## Sobre o Projeto
 
@@ -51,13 +51,13 @@ O site estará disponível por padrão na porta 5432 em http://localhost:5432/ (
 - A atualização do banco de dados é feita de forma automática no projeto por Cronjob.
 - Caso deseje testar os componentes do backend [clique aqui](https://github.com/unb-mds/LicitaBSB-24.1/tree/main/backend) e depois clique no componente que deseja testar.
 
-## 📚 Documentação
+## Documentação
 
 - [Documentação](https://unb-mds.github.io/LicitaBSB-24.1/)
 - [Nosso quadro do Miro](https://miro.com/app/board/uXjVKcAWUlc=/?share_link_id=295633820307)
 - [Figma da equipe](https://www.figma.com/file/vdfnVL6qkyUAPGeYfCCqol/Licita?type=design&node-id=0-1&mode=design&t=ZOaqmrSccc577Pog-0)
 
-## 👥 Equipe
+## Equipe
 
 <center>
 <table style="margin-left: auto; margin-right: auto;">
