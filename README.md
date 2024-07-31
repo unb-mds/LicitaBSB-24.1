@@ -3,7 +3,7 @@
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Como Executar o Projeto](#como-executar-o-projeto)
   - [📋 Pré-requisitos](#📋-pré-requisitos)
-  - [Execução](#execução)
+  - [Execução](#Execução)
   - [Observações](#observações)
 - [📚 Documentação](#📚-documentação)
 - [👥 Equipe](#👥-equipe)
