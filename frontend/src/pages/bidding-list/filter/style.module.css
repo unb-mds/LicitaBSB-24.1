@@ -51,6 +51,16 @@
   margin-top: 0.8em;
 }
 
+.mostrarMaisOrgaos {
+  list-style-type: none;
+}
+
+.mostrarMaisOrgaos a {
+  color: var(--link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 @media (max-width: 1300px) {
   .filterSection {
     display: none;

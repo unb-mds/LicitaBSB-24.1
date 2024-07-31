@@ -84,7 +84,7 @@ export default function Filter({
               </li>
             ))
           }
-          <li>
+          <li className={styles.mostrarMaisOrgaos}>
             <a onClick={mostrarMais}>Mostrar mais...</a>
           </li>
         </ul>
