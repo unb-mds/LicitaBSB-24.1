@@ -6,6 +6,7 @@ import { getOrgaosNomes } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
 import CustomInputCheckbox from '../../../components/layout/custom-input-checkbox';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 function reducer(state, action) {
   if(action.type === 'increment_value') {
@@ -142,6 +143,9 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Período</h3>
+        <div>
+          <DateCalendar />
+        </div>
       </div>
       <CustomButton onPress={handleSearch} title="buscar"/>
     </section>
