@@ -17,12 +17,10 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '18.x'
-        
-    - name: Navigate to project directory
-      run: cd backend/newsletter
 
     - name: Install dependencies
       run: |
+        cd backend/newsletter
         npm install
 
     - name: Run Script
@@ -32,4 +30,5 @@ jobs:
         GMAIL_USER: ${{ secrets.GMAIL_USER }}
         GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
       run: |
-        node backend/newsletter/sendEmail.js
+        cd backend/newsletter
+        node sendEmail.js
