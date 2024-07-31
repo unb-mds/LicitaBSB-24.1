@@ -151,6 +151,11 @@ def extrair_info_licitacao(url,tipo):
     # Converte os valores para o formato numérico e remove duplicatas
     valores_licitacao = list(set([valor[0].replace('.', '').replace(',', '.') if valor[0] else valor[1].replace('.', '').replace(',', '.') for valor in valores_licitacao]))
     if "" in valores_licitacao: valores_licitacao.remove("")
+    for valor in valores_licitacao: 
+        try:
+            valor = float(valor)
+        except:
+            valores_licitacao.remove(valor)
     if tipo == 'avisos':
         # Encontra os elementos de identificação e subtítulo
         identifica_elems = soup.find_all('p', class_='identifica')
@@ -222,11 +227,11 @@ def insert_extrato_data(data, cursor):
     # Inserir a licitação
     cursor.execute("""
         INSERT INTO app_licitacao (
-            titulo, tipo, numero_licitacao, idorgao_id, objeto, numero_processo, 
+            titulo, tipo, idorgao_id, objeto, numero_processo, 
             assinante, data, cargo, edicao, secao_pagina, link
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        data['tipo'], 'aviso', data['numero_licitacao'], orgao_id, data['objeto'], data['numero_processo'],
+        data['tipo'], 'extrato', orgao_id, data['objeto'], data['numero_processo'],
         assinante, data_abertura, cargo, edicao, secao_pagina,
         link
     ))

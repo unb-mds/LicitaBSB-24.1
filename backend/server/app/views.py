@@ -4,13 +4,15 @@ from app.serializers import LicitacaoSerializer, OrgaoSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
-
+from datetime import datetime
 
 @api_view(['GET'])
 def nome_orgaos_listar(request):
     orgaos = Orgao.objects.all()
     serializer = OrgaoSerializer(orgaos, many=True)
     return Response(serializer.data)
+
+
 
 @api_view(['GET'])
 def listar_licitacoes(request):
@@ -25,7 +27,7 @@ def listar_licitacoes(request):
 
     # Itera sobre os campos de filtro possíveis e adiciona ao dicionário de filtros
     for campo in filtro_campos:
-        valor = request.query_params.get(campo)
+        valor = request.GET.get(campo)
         if valor:
             if campo == 'data':
                 # Converte o formato da data de dd-mm-aaaa para dd/mm/aaaa
@@ -39,6 +41,9 @@ def listar_licitacoes(request):
         print(f"Nenhuma licitação encontrada com os filtros: {filtros}")  # Mensagem quando não encontrar licitações
     else:
         print(f"{licitacoes.count()} licitações encontradas com os filtros: {filtros}")
+
+    # Ordena as licitações por data mais recente
+    licitacoes = sorted(licitacoes, key=lambda x: datetime.strptime(x.data, '%d/%m/%Y'), reverse=True)
 
     result_page = paginator.paginate_queryset(licitacoes, request)
     serializer = LicitacaoSerializer(result_page, many=True)
