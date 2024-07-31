@@ -2,7 +2,7 @@
 
 - [Sobre o Projeto](#Sobre-o-Projeto)
 - [Como Executar o Projeto](#Como-Executar-o-Projeto)
-  - [📋 Pré-requisitos](#📋-Pré-requisitos)
+  - [📋 Pré-requisitos](#Pré-requisitos)
   - [Execução](#Execução)
   - [Observações](#Observações)
 - [📚 Documentação](#📚-Documentação)
@@ -20,7 +20,7 @@ Acesse o nosso bot no [X (antigo twitter)](https://x.com/LicitaBSB) para acompan
 
 ## Como Executar o Projeto
 
-### 📋 Pré-requisitos
+### Pré-requisitos
 
 - [NodeJS v20 ou superior](https://nodejs.org/en/download) instalada.
 
