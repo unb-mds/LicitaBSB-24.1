@@ -41,13 +41,23 @@ const getSubscribers = async () => {
 const sendMail = async (emailAddress) => {
   const mailOptions = {
     from: {
-      name: "Nate",
+      name: "LicitaBSB",
       address: email,
     },
     to: emailAddress,
-    subject: "Testando",
-    text: "Testando #01",
-    html: "<b>Oi</b>",
+    subject: "Atualizações Semanais de Licitações - Licita BSB",
+    text: `Olá,
+
+Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal Licita BSB. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.
+
+Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: https://x.com/licitabsb. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
+
+Atenciosamente,
+Equipe Licita BSB`,
+    html: `<p>Olá,</p>
+           <p>Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal <strong>Licita BSB</strong>. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.</p>
+           <p>Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: <a href="https://x.com/licitabsb" target="_blank">https://x.com/licitabsb</a>. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.</p>
+           <p>Atenciosamente,<br>Equipe Licita BSB</p>`
   };
 
   try {
