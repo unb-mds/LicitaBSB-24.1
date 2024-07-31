@@ -1,12 +1,12 @@
 ## Sumário
 
-- [Sobre o Projeto](#sobre-o-projeto)
-- [Como Executar o Projeto](#como-executar-o-projeto)
-  - [📋 Pré-requisitos](#📋-pré-requisitos)
+- [Sobre o Projeto](#Sobre-o-Projeto)
+- [Como Executar o Projeto](#Como-Executar-o-Projeto)
+  - [📋 Pré-requisitos](#📋-Pré-requisitos)
   - [Execução](#Execução)
-  - [Observações](#observações)
-- [📚 Documentação](#📚-documentação)
-- [👥 Equipe](#👥-equipe)
+  - [Observações](#Observações)
+- [📚 Documentação](#📚-Documentação)
+- [👥 Equipe](#👥-Equipe)
 
 ## Sobre o Projeto
 
