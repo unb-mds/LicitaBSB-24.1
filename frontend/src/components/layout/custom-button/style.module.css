@@ -1,0 +1,17 @@
+.customButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--texto);
+  text-decoration: none;
+  color: var(--brancoTexto);
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: 100%;
+  padding: 0.5em;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+}

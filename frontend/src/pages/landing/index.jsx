@@ -8,7 +8,6 @@ export default function Landing() {
     <>
       <main>
         <div>
-          <CampoPesquisa />
           <UltimasLicitacoes />
           <SubscribeForm />
         </div>

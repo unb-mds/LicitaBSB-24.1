@@ -20,7 +20,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+console.log('Nodemailer transporter created.');
+
 const getSubscribers = async () => {
+  console.log('Fetching subscribers from Mailchimp...');
   try {
     const response = await axios.get(mailchimpUrl, {
       auth: {
@@ -28,6 +31,7 @@ const getSubscribers = async () => {
         password: API,
       },
     });
+    console.log('Successfully fetched subscribers.');
     const subscribers = response.data.members
       .filter(member => member.status === 'subscribed')
       .map(member => member.email_address);
@@ -41,24 +45,33 @@ const getSubscribers = async () => {
 const sendMail = async (emailAddress) => {
   const mailOptions = {
     from: {
-      name: "Nate",
+      name: "LicitaBSB",
       address: email,
     },
     to: emailAddress,
-    subject: "Testando",
-    text: "Testando #01",
-    html: "<b>Oi</b>",
+    subject: "Atualizações Semanais de Licitações - Licita BSB",
+    text: `Olá,
+
+Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal Licita BSB. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.
+
+Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: https://x.com/licitabsb. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
+
+Atenciosamente,
+Equipe Licita BSB`,
+    html: `<p>Olá,</p>
+           <p>Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal <strong>Licita BSB</strong>. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.</p>
+           <p>Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: <a href="https://x.com/licitabsb" target="_blank">https://x.com/licitabsb</a>. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.</p>
+           <p>Atenciosamente,<br>Equipe Licita BSB</p>`
   };
 
   try {
     await transporter.sendMail(mailOptions);
-    console.log(`Email sent to ${emailAddress}!`);
   } catch (error) {
-    console.error(`Error sending email to ${emailAddress}:`, error);
   }
 };
 
 const main = async () => {
+  console.log('Starting main workflow...');
   const subscribers = await getSubscribers();
   if (subscribers.length === 0) {
     console.log('No subscribers to send emails to.');
@@ -68,6 +81,8 @@ const main = async () => {
   for (const subscriber of subscribers) {
     await sendMail(subscriber);
   }
+
+  console.log('All emails sent.');
 };
 
 main();

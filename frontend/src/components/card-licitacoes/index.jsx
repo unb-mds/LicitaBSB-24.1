@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { setStatusBidding } from '../../utils/status-bidding';
 
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
 import { Link } from 'react-router-dom';
+import { BiddingContext } from '../../context/BiddingContext';
 
 export default function CardLicitacoes({ data }) {
+  const { biddings } = useContext(BiddingContext);
+
   const statusBidding = setStatusBidding(data);
 
   const dataLicitacao = data['data_abertura'];
