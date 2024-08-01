@@ -18,7 +18,15 @@ def nome_orgaos_listar(request):
 
     return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+def nome_orgaos_por_id(request, id):
+    try:
+        orgao = Orgao.objects.get(id=id)
+    except Orgao.DoesNotExist:
+        raise NotFound(f'Órgão com ID {id} não encontrado.')
 
+    serializer = OrgaoSerializer(orgao)
+    return Response(serializer.data)
 
 @api_view(['GET'])
 def listar_licitacoes(request):
