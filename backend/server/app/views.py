@@ -29,6 +29,18 @@ def nome_orgaos_por_id(request, id):
     return Response(serializer.data)
 
 @api_view(['GET'])
+def nome_orgaos_pesquisar(request):
+    search_term = request.GET.get('search', '')
+
+    if search_term:
+        orgaos = Orgao.objects.filter(Q(nome__icontains=search_term))
+    else:
+        orgaos = Orgao.objects.all()
+
+    serializer = OrgaoSerializer(orgaos, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
 def listar_licitacoes(request):
     paginator = PageNumberPagination()
     paginator.page_size = 10  # Define o número de itens por página
