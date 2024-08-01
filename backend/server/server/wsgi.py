@@ -1,16 +1,9 @@
-"""
-WSGI config for server project.
-
-It exposes the WSGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
-https://docs.djangoproject.com/en/5.0/howto/deployment/wsgi/
-"""
-
 import os
+import sys
+
+# Adicione o diretório pai ao sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from django.core.wsgi import get_wsgi_application
-
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.server.server.settings')
-
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'server.settings')
 application = get_wsgi_application()
