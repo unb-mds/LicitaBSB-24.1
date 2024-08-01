@@ -6,11 +6,17 @@ from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from datetime import datetime
 
+
 @api_view(['GET'])
 def nome_orgaos_listar(request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 10  # Define o número de itens por página
+
     orgaos = Orgao.objects.all()
-    serializer = OrgaoSerializer(orgaos, many=True)
-    return Response(serializer.data)
+    page = paginator.paginate_queryset(orgaos, request)
+    serializer = OrgaoSerializer(page, many=True)
+
+    return paginator.get_paginated_response(serializer.data)
 
 
 
