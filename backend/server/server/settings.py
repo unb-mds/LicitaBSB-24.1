@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ygz=9^0q@e1q_yju4*)(cs0_+x3&xcdt7a-#rv_dt4y^!638x#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'licitabsbserver-b85620d9bf48.herokuapp.com',
+    'licitabsbserver-6f0bfb6e0572.herokuapp.com',
     'localhost'
     ]
 
