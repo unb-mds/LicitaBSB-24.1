@@ -5,12 +5,42 @@ from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from datetime import datetime
+from django.core.paginator import Paginator
+
+
 
 @api_view(['GET'])
-def nome_orgaos_listar(request):
-    orgaos = Orgao.objects.all()
-    serializer = OrgaoSerializer(orgaos, many=True)
+def nome_orgaos_por_id(request, id):
+    try:
+        orgao = Orgao.objects.get(id=id)
+    except Orgao.DoesNotExist:
+        raise NotFound(f'Órgão com ID {id} não encontrado.')
+
+    serializer = OrgaoSerializer(orgao)
     return Response(serializer.data)
+
+
+@api_view(['GET'])
+def listar_orgaos(request):
+    # Define o número de itens por página
+    paginator = PageNumberPagination()
+    paginator.page_size = 10
+
+    # Obtém o termo de pesquisa do parâmetro 'search'
+    search_term = request.GET.get('search', '')
+
+    # Filtra órgãos pelo nome, usando o termo de pesquisa
+    if search_term:
+        orgaos = Orgao.objects.filter(nome__icontains=search_term)
+    else:
+        orgaos = Orgao.objects.all()
+
+    # Paginação
+    page = paginator.paginate_queryset(orgaos, request)
+    serializer = OrgaoSerializer(page, many=True)
+
+    # Prepara a resposta com a paginação
+    return paginator.get_paginated_response(serializer.data)
 
 
 
