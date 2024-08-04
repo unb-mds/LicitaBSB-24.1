@@ -25,13 +25,13 @@ export default function BiddingPage() {
           <span className={styles.subtitle}>{dados.nomeOrgao}</span>
         </div>
         <div className={styles.shareContainer}>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={twitter} />
           </a>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={facebook} />
           </a>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={google} />
           </a>
         </div>

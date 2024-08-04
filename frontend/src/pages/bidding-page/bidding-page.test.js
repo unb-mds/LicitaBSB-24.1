@@ -15,5 +15,16 @@ describe("Deve renderizar as seguintes informações da licitação: ", () => {
         const info = screen.getAllByRole('heading')
         expect(info).toHaveLength(2)
     })
-
+    test("lista de links para compartilhamento.", () => {
+        const mockId = '10101010'
+        render(
+            <MemoryRouter initialEntries={[`/licitacoes/${mockId}`]}>
+                <Routes>
+                    <Route path='/licitacoes/:id' element={<BiddingPage />} />
+                </Routes>
+            </MemoryRouter>
+        )
+        const info = screen.getAllByTestId('role-link-id')
+        expect(info).toHaveLength(3)
+    })
 })
