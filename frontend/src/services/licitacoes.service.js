@@ -25,11 +25,11 @@ export function getLicitacaoById(parametros) {
   const dados = parametros.split('-')
   let licit;
   if (dados[1] == "aviso") {
-    licit = licitacoes1.find(data => {
+    licit = data_licitacoes.find(data => {
       return data.id === Number(dados[0])
     })
   } else {
-    licit = licitacoes2.find(data => {
+    licit = data_licitacoes.find(data => {
       return data.id === Number(dados[0])
     })
   }
@@ -59,19 +59,19 @@ export function pagLicitacoes(array, size, pos) {
   return [];
 }
 
-export function getLicitacoesFilter(tipo, input, valor){
+export function getLicitacoesFilter(tipo, input, valor) {
 
   const biddingValor = parseInt(valor);
 
   let licitacoes = getLicitacoes();
 
-  if(tipo){
+  if (tipo) {
     licitacoes = licitacoes.filter((licit) => {
       return licit.tipo.toLowerCase().includes(tipo);
     })
   }
 
-  if(input){
+  if (input) {
     licitacoes = licitacoes.filter((licitacao) => {
       const tipo = 'Nome_UG' in licitacao ? 'aviso' : 'extrato';
       const titulo =
@@ -87,10 +87,10 @@ export function getLicitacoesFilter(tipo, input, valor){
     });
   }
 
-  if(valor){
+  if (valor) {
     licitacoes = licitacoes.filter((licitacao) => {
-      if(typeof licitacao.valores_licitacao == "string")
-          return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > biddingValor;
+      if (typeof licitacao.valores_licitacao == "string")
+        return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > biddingValor;
       return parseFloat(licitacao.valores_licitacao?.[0].replace(",", ".")) > biddingValor;
     });
   }
