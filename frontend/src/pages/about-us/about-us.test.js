@@ -28,4 +28,9 @@ describe("Deve renderizar as seguintes informações presentes na página Sobre 
         const lista = screen.getAllByRole('listitem')
         expect(lista).toHaveLength(7)
     })
+    test("Lista o snapshot da lista com os cards dos membros do projeto", () => {
+        render(<AboutUs />)
+        const lista = screen.getAllByRole('listitem')
+        expect(lista).toMatchSnapshot();
+    })
 })
