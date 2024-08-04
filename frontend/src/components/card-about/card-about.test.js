@@ -74,3 +74,16 @@ describe("Deve renderizar as seguintes informações do artigo: ", () => {
         expect(info).toBeInTheDocument()
     })
 })
+
+test("Deve renderizar o snapshot da lista de informações presentes no artigo", () => {
+    render(<CardAbout primeiroTitulo={artigoTeste.primeiroTitulo}
+        segundoTitulo={artigoTeste.segundoTitulo}
+        primeiroP={artigoTeste.primeiroP}
+        segundoP={artigoTeste.segundoP}
+        urlDaFonte={artigoTeste.urlDaFonte}
+        imagem={artigoTeste.imagem} />)
+    const listaTitulos = screen.getAllByRole('heading')
+    const listaP = screen.getAllByRole('paragraph')
+    const listaFinal = [listaTitulos, listaP]
+    expect(listaFinal).toMatchSnapshot()
+})
