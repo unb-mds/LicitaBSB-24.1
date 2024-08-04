@@ -13,4 +13,10 @@ describe("Deve renderizar as seguintes informações presentes na página Sobre 
         const info = screen.getByTestId("desc-testid")
         expect(info).toBeInTheDocument()
     })
+    test("Foto de toda a equipe", () => {
+        render(<AboutUs />)
+        const info = screen.getByTestId("photo-testid")
+        expect(info).toBeInTheDocument()
+    })
 })
+

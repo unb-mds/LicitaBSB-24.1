@@ -44,6 +44,7 @@ export default function AboutUs() {
       </DescMemberEstilizada>
 
       <PhotoEstilizada
+        data-testid="photo-testid"
         src="../../assets/download.jpg"
         alt="Foto de toda a equipe"
       />
