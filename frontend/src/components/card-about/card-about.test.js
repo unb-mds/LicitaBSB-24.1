@@ -11,3 +11,17 @@ const artigoTeste = {
     urlDaFonte: "linkTeste",
     imagem: "urlTeste",
 }
+
+describe("Deve renderizar as seguintes informações do artigo: ", () => {
+    test("Título do artigo", () => {
+        render(<CardAbout primeiroTitulo={artigoTeste.primeiroTitulo}
+            segundoTitulo={artigoTeste.segundoTitulo}
+            primeiroP={artigoTeste.primeiroP}
+            segundoP={artigoTeste.segundoP}
+            urlDaFonte={artigoTeste.urlDaFonte}
+            imagem={artigoTeste.imagem} />)
+        const info = screen.getByText(artigoTeste.primeiroTitulo)
+        expect(info).toBeInTheDocument("Título teste")
+    })
+
+})
