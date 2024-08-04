@@ -18,5 +18,10 @@ describe("Deve renderizar as seguintes informações presentes na página Sobre 
         const info = screen.getByTestId("photo-testid")
         expect(info).toBeInTheDocument()
     })
+    test("Subtítulo da página", () => {
+        render(<AboutUs />)
+        const info = screen.getByText("Agora, um pouco de cada um")
+        expect(info).toBeInTheDocument()
+    })
 })
 
