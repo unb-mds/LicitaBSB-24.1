@@ -24,7 +24,20 @@ describe("Deve renderizar as seguintes informações da licitação: ", () => {
                 </Routes>
             </MemoryRouter>
         )
-        const info = screen.getAllByTestId('role-link-id')
-        expect(info).toHaveLength(3)
+        const listaDeLinks = screen.getAllByTestId('role-link-id')
+        expect(listaDeLinks).toHaveLength(3)
     })
+})
+
+test("Deve renderizar o snapshot da lista de links para compartilhamento", () => {
+    const mockId = '10101010'
+    render(
+        <MemoryRouter initialEntries={[`/licitacoes/${mockId}`]}>
+            <Routes>
+                <Route path='/licitacoes/:id' element={<BiddingPage />} />
+            </Routes>
+        </MemoryRouter>
+    )
+    const listaDeLinks = screen.getAllByTestId('role-link-id')
+    expect(listaDeLinks).toMatchSnapshot()
 })
