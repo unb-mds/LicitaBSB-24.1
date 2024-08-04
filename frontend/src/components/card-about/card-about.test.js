@@ -53,4 +53,14 @@ describe("Deve renderizar as seguintes informações do artigo: ", () => {
         const info = screen.getByText("conteudoTeste2")
         expect(info).toBeInTheDocument(artigoTeste.segundoP)
     })
+    test("URL da fonte utilizada para escrita do artigo", () => {
+        render(<CardAbout primeiroTitulo={artigoTeste.primeiroTitulo}
+            segundoTitulo={artigoTeste.segundoTitulo}
+            primeiroP={artigoTeste.primeiroP}
+            segundoP={artigoTeste.segundoP}
+            urlDaFonte={artigoTeste.urlDaFonte}
+            imagem={artigoTeste.imagem} />)
+        const info = screen.getByRole("link")
+        expect(info).toBeInTheDocument()
+    })
 })
