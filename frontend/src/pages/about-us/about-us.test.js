@@ -23,5 +23,9 @@ describe("Deve renderizar as seguintes informações presentes na página Sobre 
         const info = screen.getByText("Agora, um pouco de cada um")
         expect(info).toBeInTheDocument()
     })
+    test("Lista com os cards dos membros do projeto", () => {
+        render(<AboutUs />)
+        const lista = screen.getAllByRole('listitem')
+        expect(lista).toHaveLength(7)
+    })
 })
-

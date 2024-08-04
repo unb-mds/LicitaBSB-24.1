@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FaGithub } from 'react-icons/fa';
 
-const CardAboutUsContextEstilizada = styled.div`
+const CardAboutUsContextEstilizada = styled.li`
   display: flex;
   align-items: center;
   gap: 16px;
