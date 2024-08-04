@@ -35,7 +35,7 @@ export default function AboutUs() {
     <AboutUsContainer>
       <TitulosEstilizados>Sobre nós</TitulosEstilizados>
 
-      <DescMemberEstilizada>
+      <DescMemberEstilizada data-testid="desc-testid">
         Somos um grupo de estudantes da Universidade de Brasília (UnB) dedicados
         a facilitar o acesso à informação sobre licitações e promover a
         transparência pública nesse processo. Nosso objetivo é criar ferramentas

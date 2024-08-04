@@ -8,4 +8,9 @@ describe("Deve renderizar as seguintes informações presentes na página Sobre 
         const info = screen.getByText("Sobre nós")
         expect(info).toBeInTheDocument()
     })
+    test("Descrição da equipe", () => {
+        render(<AboutUs />)
+        const info = screen.getByTestId("desc-testid")
+        expect(info).toBeInTheDocument()
+    })
 })
