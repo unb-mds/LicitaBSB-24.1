@@ -30,8 +30,8 @@ describe("Deve renderizar as seguintes informações do artigo: ", () => {
             segundoP={artigoTeste.segundoP}
             urlDaFonte={artigoTeste.urlDaFonte}
             imagem={artigoTeste.imagem} />)
-        const info = screen.getByText(artigoTeste.segundoTitulo)
-        expect(info).toBeInTheDocument("Subtítulo teste")
+        const info = screen.getByText("Subtítulo teste")
+        expect(info).toBeInTheDocument(artigoTeste.segundoTitulo)
     })
     test("Primeiro parágrafo do artigo", () => {
         render(<CardAbout primeiroTitulo={artigoTeste.primeiroTitulo}
