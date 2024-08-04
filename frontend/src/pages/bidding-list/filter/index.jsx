@@ -9,10 +9,10 @@ import CustomInputCheckbox from '../../../components/layout/custom-input-checkbo
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 function reducer(state, action) {
-  if(action.type === 'increment_value') {
+  if (action.type === 'increment_value') {
     return {
       index: state.index + 1,
-      orgaos: getOrgaosNomes().slice(0, 10 + state.index*10),
+      orgaos: getOrgaosNomes().slice(0, 10 + state.index * 10),
     };
   }
 
@@ -22,9 +22,12 @@ function reducer(state, action) {
 export default function Filter({
   filterParams,
   setFilterParams,
-  handleSearch
+  handleSearch,
 }) {
-  const [orgaosValue, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
+  const [orgaosValue, dispatch] = useReducer(reducer, {
+    index: 1,
+    orgaos: getOrgaosNomes().slice(0, 10),
+  });
 
   const marks = [
     {
@@ -39,7 +42,7 @@ export default function Filter({
 
   const mostrarMais = () => {
     dispatch({ type: 'increment_value' });
-  }
+  };
 
   return (
     <section className={styles.filterSection}>
@@ -51,40 +54,36 @@ export default function Filter({
       <div>
         <h3 className={styles.sectionTitle}>Tipo de Licitação</h3>
         <ul className={styles.filterOptionsContainer}>
-          {
-            biddingTypes.map((type) => (
-              <li key={type} className={styles.listItemStyle}>
-                <CustomInputRadio
-                  name="licit-tipo"
-                  label={type.charAt(0).toUpperCase() + type.slice(1)}
-                  onPress={() => {
-                    setFilterParams({
-                      ...filterParams,
-                      tipo: type
-                    })
-                  }}
-                  id={type}
-                />
-              </li>
-            ))
-          }
+          {biddingTypes.map((type) => (
+            <li key={type} className={styles.listItemStyle}>
+              <CustomInputRadio
+                name="licit-tipo"
+                label={type.charAt(0).toUpperCase() + type.slice(1)}
+                onPress={() => {
+                  setFilterParams({
+                    ...filterParams,
+                    tipo: type,
+                  });
+                }}
+                id={type}
+              />
+            </li>
+          ))}
         </ul>
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Órgão</h3>
         <ul className={styles.filterOptionsContainer}>
-          {
-            orgaosValue.orgaos.map((type) => (
-              <li key={type} className={styles.listItemStyle}>
-                <CustomInputCheckbox
-                  name={type}
-                  label={type.charAt(0).toUpperCase() + type.slice(1)}
-                  onPress={() => {}}
-                  id={type}
-                />
-              </li>
-            ))
-          }
+          {orgaosValue.orgaos.map((type) => (
+            <li key={type} className={styles.listItemStyle}>
+              <CustomInputCheckbox
+                name={type}
+                label={type.charAt(0).toUpperCase() + type.slice(1)}
+                onPress={() => {}}
+                id={type}
+              />
+            </li>
+          ))}
           <li className={styles.mostrarMaisOrgaos}>
             <a onClick={mostrarMais}>Mostrar mais...</a>
           </li>
@@ -100,10 +99,10 @@ export default function Filter({
               onPress={() => {
                 setFilterParams({
                   ...filterParams,
-                  tipo: 'aberto'
-                })
+                  tipo: 'aberto',
+                });
               }}
-              id='aberto'
+              id="aberto"
             />
           </li>
           <li className={styles.listItemStyle}>
@@ -113,10 +112,10 @@ export default function Filter({
               onPress={() => {
                 setFilterParams({
                   ...filterParams,
-                  tipo: 'fechado'
-                })
+                  tipo: 'fechado',
+                });
               }}
-              id='fechado'
+              id="fechado"
             />
           </li>
         </ul>
@@ -132,8 +131,8 @@ export default function Filter({
             onChange={(e) => {
               setFilterParams({
                 ...filterParams,
-                value: e.target.value
-              })
+                value: e.target.value,
+              });
             }}
             max={1000000}
             step={10}
@@ -144,16 +143,16 @@ export default function Filter({
       <div>
         <h3 className={styles.sectionTitle}>Período</h3>
         <div className={styles.calendariosWrapper}>
-          <div width='20px'>
+          <div width="20px">
             <p>De</p>
             <Box
               sx={{
-                width: '100%',  // Ajusta a largura conforme necessário
-                maxWidth: '100%',  // Define um limite máximo de largura para o calendário
-                aspectRatio: '1 / 1',  // Mantém a proporção de aspecto
+                width: '100%', // Ajusta a largura conforme necessário
+                maxWidth: '100%', // Define um limite máximo de largura para o calendário
+                aspectRatio: '1 / 1', // Mantém a proporção de aspecto
                 '& .MuiPickersCalendar-root': {
                   height: '100%',
-                  maxHeight: '100%'  // Garante que o calendário preencha a altura do container
+                  maxHeight: '100%', // Garante que o calendário preencha a altura do container
                 },
               }}
             >
@@ -166,9 +165,9 @@ export default function Filter({
                     justifyContent: 'space-between',
                   },
                   '& .MuiPickersDay-root': {
-                    width: 'calc(100% / 7)',  // Divide igualmente a largura entre os dias da semana
-                    height: 'auto',  // Ajusta a altura automaticamente
-                    aspectRatio: '1 / 1',  // Mantém os dias como quadrados
+                    width: 'calc(100% / 7)', // Divide igualmente a largura entre os dias da semana
+                    height: 'auto', // Ajusta a altura automaticamente
+                    aspectRatio: '1 / 1', // Mantém os dias como quadrados
                   },
                 }}
               />
@@ -178,11 +177,11 @@ export default function Filter({
             <p>Até</p>
             <Box
               sx={{
-                width: '100%',  // Ajusta a largura conforme necessário
-                maxWidth: '100%',  // Define um limite máximo de largura para o calendário
-                aspectRatio: '1 / 1',  // Mantém a proporção de aspecto
+                width: '100%', // Ajusta a largura conforme necessário
+                maxWidth: '100%', // Define um limite máximo de largura para o calendário
+                aspectRatio: '1 / 1', // Mantém a proporção de aspecto
                 '& .MuiPickersCalendar-root': {
-                  height: '100%',  // Garante que o calendário preencha a altura do container
+                  height: '100%', // Garante que o calendário preencha a altura do container
                 },
               }}
             >
@@ -194,9 +193,9 @@ export default function Filter({
                     justifyContent: 'space-between',
                   },
                   '& .MuiPickersDay-root': {
-                    width: 'calc(100% / 7)',  // Divide igualmente a largura entre os dias da semana
-                    height: 'auto',  // Ajusta a altura automaticamente
-                    aspectRatio: '1 / 1',  // Mantém os dias como quadrados
+                    width: 'calc(100% / 7)', // Divide igualmente a largura entre os dias da semana
+                    height: 'auto', // Ajusta a altura automaticamente
+                    aspectRatio: '1 / 1', // Mantém os dias como quadrados
                   },
                 }}
               />
@@ -204,7 +203,7 @@ export default function Filter({
           </div>
         </div>
       </div>
-      <CustomButton onPress={handleSearch} title="buscar"/>
+      <CustomButton onPress={handleSearch} title="buscar" />
     </section>
   );
 }

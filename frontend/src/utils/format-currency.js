@@ -4,7 +4,7 @@ export default function formatCurrency(valor) {
   if (typeof valor === 'string') {
     valorNumerico = parseFloat(valor);
   } else {
-    valorNumerico = parseFloat(valor[0].replace(".", ","));
+    valorNumerico = parseFloat(valor[0].replace('.', ','));
   }
 
   if (isNaN(valorNumerico)) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from "./style.module.css";
+import styles from './style.module.css';
 
 export default function CustomInputRadio({ name, label, onPress, id }) {
   return (
@@ -8,5 +8,5 @@ export default function CustomInputRadio({ name, label, onPress, id }) {
       <span></span>
       {label}
     </label>
-  )
+  );
 }

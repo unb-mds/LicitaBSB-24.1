@@ -6,9 +6,8 @@ import CustomButton from '../layout/custom-button';
 export default function CampoPesquisa({
   filterParams,
   setFilterParams,
-  handleSearch
+  handleSearch,
 }) {
-
   return (
     <div className={styles.campoPesquisaWrapper}>
       <div className={styles.campoPesquisa}>
@@ -18,13 +17,15 @@ export default function CampoPesquisa({
           placeholder="Busque por uma licitação"
           className={styles.inputStyle}
           value={filterParams.input}
-          onChange={(e) => setFilterParams({
-            ...filterParams,
-            input: e.target.value,
-          })}
+          onChange={(e) =>
+            setFilterParams({
+              ...filterParams,
+              input: e.target.value,
+            })
+          }
         />
       </div>
-      <CustomButton title="Buscar" onPress={handleSearch}/>
+      <CustomButton title="Buscar" onPress={handleSearch} />
     </div>
   );
 }
