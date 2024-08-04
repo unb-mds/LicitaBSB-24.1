@@ -27,6 +27,18 @@ describe("Deve renderizar as seguintes informações da licitação: ", () => {
         const listaDeLinks = screen.getAllByTestId('role-link-id')
         expect(listaDeLinks).toHaveLength(3)
     })
+    test("lista de imagens referentes aos links de compartilamento", () => {
+        const mockId = '10101010'
+        render(
+            <MemoryRouter initialEntries={[`/licitacoes/${mockId}`]}>
+                <Routes>
+                    <Route path='/licitacoes/:id' element={<BiddingPage />} />
+                </Routes>
+            </MemoryRouter>
+        )
+        const listaDeLinks = screen.getAllByRole('img')
+        expect(listaDeLinks).toHaveLength(4)
+    })
 })
 
 test("Deve renderizar o snapshot da lista de links para compartilhamento", () => {
