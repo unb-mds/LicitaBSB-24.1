@@ -6,8 +6,8 @@ import CardAbout from ".";
 const artigoTeste = {
     primeiroTitulo: "Título teste",
     segundoTitulo: "Subtítulo teste",
-    primeiroP: "conteudoTeste",
-    segundoP: "conteudoTeste",
+    primeiroP: "conteudoTeste1",
+    segundoP: "conteudoTeste2",
     urlDaFonte: "linkTeste",
     imagem: "urlTeste",
 }
@@ -32,5 +32,15 @@ describe("Deve renderizar as seguintes informações do artigo: ", () => {
             imagem={artigoTeste.imagem} />)
         const info = screen.getByText(artigoTeste.segundoTitulo)
         expect(info).toBeInTheDocument("Subtítulo teste")
+    })
+    test("Primeiro parágrafo do artigo", () => {
+        render(<CardAbout primeiroTitulo={artigoTeste.primeiroTitulo}
+            segundoTitulo={artigoTeste.segundoTitulo}
+            primeiroP={artigoTeste.primeiroP}
+            segundoP={artigoTeste.segundoP}
+            urlDaFonte={artigoTeste.urlDaFonte}
+            imagem={artigoTeste.imagem} />)
+        const info = screen.getByText("conteudoTeste1")
+        expect(info).toBeInTheDocument(artigoTeste.primeiroP)
     })
 })
