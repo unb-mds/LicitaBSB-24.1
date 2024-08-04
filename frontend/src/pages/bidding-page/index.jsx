@@ -39,19 +39,21 @@ export default function BiddingPage() {
       <div className={styles.biddingInfoContainer}>
         <div className={styles.biddingInfoElement}>
           <img src={calendario} />
-          <p>{dados.data_abertura}</p>
+          <p data-testid="data-test-id">{dados.data_abertura}</p>
         </div>
         {dados.valor_Licitacao && (
           <div className={styles.biddingInfoElement}>
             <img src={valor} />
-            <p>{dados.valor_Licitacao}</p>
+            <p data-testid="valor-test-id">{dados.valor_Licitacao}</p>
           </div>
         )}
       </div>
 
       <div className={styles.horizontalLine}></div>
 
-      <p className={styles.objetoText}>{dados.objeto}</p>
+      <p data-testid="objeto-test-id" className={styles.objetoText}>
+        {dados.objeto}
+      </p>
       <div className={styles.BiddingLink}>
         {dados.link && (
           <p>
