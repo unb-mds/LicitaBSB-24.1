@@ -44,7 +44,7 @@ export default function BiddingPage() {
         {dados.valor_Licitacao && (
           <div className={styles.biddingInfoElement}>
             <img src={valor} />
-            <p data-testid="valor-test-id">{dados.valor_Licitacao}</p>
+            <p>{dados.valor_Licitacao}</p>
           </div>
         )}
       </div>
