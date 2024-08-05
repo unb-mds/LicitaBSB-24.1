@@ -12,6 +12,16 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "jest": {
+    "coverageThreshold": {
+      "global":{
+        "branchs": 95,
+        "lines": 95,
+        "functions": 95,
+        "statements": 95
+      }
+    }
+  },
   "dependencies": {
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
