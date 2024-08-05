@@ -8,6 +8,7 @@
     "build": "vite build",
     "format": "prettier --write \"src/**/*{.js,.jsx}\"",
     "test": "react-scripts test",
+    "test:coverage": "npm run test -- --coverage --watchAll=false",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
