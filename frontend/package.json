@@ -14,7 +14,7 @@
   },
   "jest": {
     "coverageThreshold": {
-      "global":{
+      "global": {
         "branchs": 95,
         "lines": 95,
         "functions": 95,
@@ -27,7 +27,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/material": "^5.16.6",
     "@mui/x-date-pickers": "^7.11.1",
-    "axios": "^1.7.2",
+    "axios": "^1.7.3",
     "chart.js": "^4.4.3",
     "dayjs": "^1.11.12",
     "install": "^0.13.0",
