@@ -1,40 +1,14 @@
+import axios from 'axios';
 import { transformDate } from '../utils/transform-date.utils';
 
-const data_licitacoes = [];
-
-export function getLicitacoes() {
-  let licit = data_licitacoes;
-
-  licit.sort((a, b) => {
-    const dateA = Date.parse(transformDate(a['data_abertura']));
-    const dateB = Date.parse(transformDate(b['data_abertura']));
-    if (dateA > dateB) {
-      return -1;
-    }
-    if (dateA < dateB) {
-      return 1;
-    }
-
-    return 0;
-  });
-
-  return [];
-}
-
-export function getLicitacaoById(parametros) {
-  const dados = parametros.split('-')
-  let licit;
-  if (dados[1] == "aviso") {
-    licit = licitacoes1.find(data => {
-      return data.id === Number(dados[0])
-    })
-  } else {
-    licit = licitacoes2.find(data => {
-      return data.id === Number(dados[0])
-    })
+export async function getLicitacoes() {
+  try {
+    const { data } = await axios.get('/app/licitacoes');
+    return data.response;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
-
-  return [];
 }
 
 function searchBidding(biddings, input) {
