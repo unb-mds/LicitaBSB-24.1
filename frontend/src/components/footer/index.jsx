@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import logoLicitaBSB from '../../../assets/logo.png';
 import logoUnb from '../../../assets/logoUnb.png';
 import styles from './style.module.css';
@@ -10,18 +11,26 @@ const Footer = () => {
         <div>
           <img src={logoLicitaBSB} />
           <ul>
-            <a to={'/licitacoes'}>
-              <p>Licitações</p>
-            </a>
-            <a to={'/sobrelicitacao'}>
-              <p>Sobre as Licitações</p>
-            </a>
-            <a to={'/sobrenos'}>
-              <p>Sobre a Equipe</p>
-            </a>
-            <a to={'/dashboard'}>
-              <p>Dashboard</p>
-            </a>
+            <li>
+              <Link to={'/licitacoes'}>
+                <p>Licitações</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={'/sobrelicitacao'}>
+                <p>Sobre as Licitacoes</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={'/sobrenos'}>
+                <p>Sobre a Equipe</p>
+              </Link>
+            </li>
+            <li>
+              <Link to={'/dashboard'}>
+                <p>Dashboard</p>
+              </Link>
+            </li>
           </ul>
         </div>
         <img src={logoUnb} />
