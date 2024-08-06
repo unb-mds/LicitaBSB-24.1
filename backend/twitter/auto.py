@@ -183,9 +183,6 @@ if verificador_de_licitacao == False:
             # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
             texto_para_imagem(titulo, descricao, data, caminho_imagem)
 
-            # adiciona a marca dagua
-            # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
-
             # upload na imagem
             # response = api.media_upload(filename=caminho_imagem)
             # media_id = response.media_id
