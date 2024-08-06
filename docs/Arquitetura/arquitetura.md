@@ -6,7 +6,7 @@ O projeto LicitaBSB visa coletar licitações do site "Diário Oficial da União
 
 ### Diagrama de Arquitetura
 
-![Diagrama de Arquitetura](diagrama_vai.png)
+![Diagrama de Arquitetura](Diagrama_vai.png)
 
 #### Fluxo de Trabalho
 - **Coleta de dados:** Quando ativado, o GitHub Actions ativa um script para a raspagem de dados no portal da transparência.
