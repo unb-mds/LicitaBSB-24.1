@@ -13,10 +13,7 @@ export default function BiddingList() {
   const navigate = useNavigate();
 
   const [filterParams, setFilterParams] = useState({
-    tipo: '',
-    input: '',
-    value: 0,
-    page: 0
+    page: 1
   })
 
   const [searchParams] = useSearchParams();
