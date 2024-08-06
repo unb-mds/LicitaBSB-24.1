@@ -118,32 +118,57 @@ db_path = 'backend/server/db.sqlite3'
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
-data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
+data_ontem = '02/08/2024' #(datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
-query = """
-SELECT titulo, objeto, data, link
+
+# Consulta para selecionar as licitações
+query_licitacoes = """
+SELECT id, titulo, objeto, data, link
 FROM app_licitacao
 WHERE data = ?
 """
 
-# Executar a consulta
-cursor.execute(query, (data_ontem,))
+# Executar a consulta das licitações
+cursor.execute(query_licitacoes, (data_ontem,))
 licitacoes_data = cursor.fetchall()
 
-# Fechar a conexão com o banco de dados
-connection.close()
+# Lista para armazenar as licitações e seus valores
+licitacoes = []
 
+# Iterar sobre as licitações e buscar os valores relacionados
 for licitacao in licitacoes_data:
-    tipo, objeto, data_abertura, link = licitacao
+    licitacao_id, tipo, objeto, data_abertura, link = licitacao
+    
+    # Consulta para selecionar os valores relacionados à licitação
+    query_valores = """
+    SELECT valor
+    FROM app_valores
+    WHERE idlicitacao_id = ?
+    """
+    
+    # Executar a consulta dos valores
+    cursor.execute(query_valores, (licitacao_id,))
+    valores_data = cursor.fetchall()
+    
+    # Extrair os valores em uma lista
+    valores = [valor[0] for valor in valores_data]
+    
+    # Encurtar o link
     a = encurtar_url(link)
     time.sleep(1)  # Pausa para evitar sobrecarga
+    
+    # Adicionar a licitação com os valores à lista
     licitacoes.append({
         'titulo': tipo,
         'descricao': objeto,
         'data': data_abertura,
-        'link': a
+        'link': a,
+        'valores': sum(valores)
     })
+
+# Fechar a conexão com o banco de dados
+connection.close()
 
 verificador_de_licitacao = False
 if not licitacoes:
