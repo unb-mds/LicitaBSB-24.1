@@ -29,7 +29,7 @@ const Header = () => {
       </div>
       <div className={styles.subHeaderWrapper}>
         <div className={styles.subHeader}>
-          <a href="/">
+          <a href="/" className={styles.logo}>
             <img src={logo} alt="Logo do Projeto 'licita bsb'" />
           </a>
           <ul className={styles.headerLinksWrapper}>
