@@ -9,7 +9,9 @@ const Footer = () => {
       <div className={styles.linhaEstilizada}></div>
       <nav className={styles.navEstilizada}>
         <div>
-          <img src={logoLicitaBSB} />
+          <Link to={'/'}>
+            <img src={logoLicitaBSB} />
+          </Link>
           <ul>
             <li>
               <Link to={'/licitacoes'}>
