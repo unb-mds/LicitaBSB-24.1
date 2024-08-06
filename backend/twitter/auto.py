@@ -118,7 +118,7 @@ db_path = 'backend/server/db.sqlite3'
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
-data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
+data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 
 print(f"Buscando licitações para a data: {data_ontem}")
 query = """
