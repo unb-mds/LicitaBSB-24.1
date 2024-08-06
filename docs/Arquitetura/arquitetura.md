@@ -87,24 +87,24 @@ O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, 
 3. **Iterar por quantidade de dias:**
 
     Para cada dia no intervalo:
+  
+  - **Capturar Link do DOU:**
+    - Utilizar a função `link_jornal_diario` para obter o link da página do DOU para o dia específico.
 
-    - **Capturar Link do DOU:**
-        - Utilizar a função `link_jornal_diario` para obter o link da página do DOU para o dia específico.
+  - **Extrair URLs de Títulos:**
+    - Utilizar a função `extrair_url_titles` para extrair as URLs dos títulos dos avisos de licitação a partir da página do DOU.
 
-    - **Extrair URLs de Títulos:**
-        - Utilizar a função `extrair_url_titles` para extrair as URLs dos títulos dos avisos de licitação a partir da página do DOU.
+  - **Extrair Avisos de Licitação:**
+    - Utilizar a função `extraindo_avisos_licitacao` para filtrar as URLs dos títulos e identificar apenas os avisos de licitação.
 
-    - **Extrair Avisos de Licitação:**
-        - Utilizar a função `extraindo_avisos_licitacao` para filtrar as URLs dos títulos e identificar apenas os avisos de licitação.
+  - **Criar lista com Avisos:**
+    - Processar cada aviso de licitação:
+      - Extrair informações como tipo, número, órgão, objeto, data de abertura, valores e outras.
+      - Salvar as informações em uma lista.
+      - Utilizar a função `alimentando_banco_com_licitacoes` para realizar o processo completo.
 
-    - **Criar lista com Avisos:**
-        - Processar cada aviso de licitação:
-            - Extrair informações como tipo, número, órgão, objeto, data de abertura, valores e outras.
-            - Salvar as informações em uma lista.
-        - Utilizar a função `alimentando_banco_com_licitacoes` para realizar o processo completo.
-
-    - **Filtrar por Brasília:**
-        - Utilizar a função `filtrando_os_avisos_de_brasilia` para garantir que apenas os avisos relacionados a Brasília sejam incluídos no arquivo banco de dados.
+  - **Filtrar por Brasília:**
+    - Utilizar a função `filtrando_os_avisos_de_brasilia` para garantir que apenas os avisos relacionados a Brasília sejam incluídos no arquivo banco de dados.
 
 4. **Armazenamento:**
 
