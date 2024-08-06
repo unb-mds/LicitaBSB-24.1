@@ -22,20 +22,16 @@ export default function BiddingList() {
   const filterInput = searchParams.get('input');
   const filterValue = searchParams.get('value');
 
-  const licitacoes = filterTipo || filterInput || filterValue ? getLicitacoesFilter(filterTipo, filterInput, filterValue) : getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
 
-  const loadMoreBids = () => {
-    licitacoes.length - lengthBids < 10
-      ? setLengthBids(
-          (prevLength) => (prevLength += licitacoes.length - lengthBids),
-        )
-      : setLengthBids((prevLength) => (prevLength += 10));
-  };
+  async function loadData(params) {
+    const data = await getLicitacoes();
+    setListaLicitacoes(data);
+  }
 
   useEffect(() => {
-    setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
+    loadData();
   }, [])
 
   const handleSearch = () => {
