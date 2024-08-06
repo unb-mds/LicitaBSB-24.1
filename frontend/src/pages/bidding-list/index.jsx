@@ -5,6 +5,7 @@ import styles from './style.module.css';
 import CampoPesquisa from '../../components/campo-pesquisa';
 import Filter from './filter';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Pagination } from '@mui/material';
 
 
 export default function BiddingList() {
@@ -14,7 +15,8 @@ export default function BiddingList() {
   const [filterParams, setFilterParams] = useState({
     tipo: '',
     input: '',
-    value: 0
+    value: 0,
+    page: 0
   })
 
   const [searchParams] = useSearchParams();
@@ -25,14 +27,20 @@ export default function BiddingList() {
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
 
-  async function loadData(params) {
-    const data = await getLicitacoes();
-    setListaLicitacoes(data);
+  async function loadData() {
+    const data = await getLicitacoes(filterParams);
+    setLengthBids(Math.round(data.count/10));
+    setListaLicitacoes(data.results);
   }
+
+  const handlePageChange = (_, value) => {
+    setFilterParams({...filterParams, page: value});
+  };
 
   useEffect(() => {
     loadData();
-  }, [])
+    console.log(filterParams)
+  }, [filterParams])
 
   const handleSearch = () => {
     const querySearch = `/licitacoes?${filterParams.tipo && `tipo=${filterParams.tipo}`}&${filterParams.input && `input=${filterParams.input}`}&${filterParams.value && `value=${filterParams.value}`}`;
@@ -58,10 +66,7 @@ export default function BiddingList() {
               <CardLicitacoes key={`${idx} ${item.id}`} data={item}/>
             );
           })}
-
-          {lengthBids >= licitacoes.length ? <></> :
-            <button className={styles.botaoCarregarMais} type='button' onClick={loadMoreBids}>Carregar Mais</button>
-          }
+          <Pagination count={lengthBids} onChange={handlePageChange} />
         </div>
       </div>
     </section>
