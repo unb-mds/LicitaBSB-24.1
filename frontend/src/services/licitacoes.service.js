@@ -1,10 +1,15 @@
 import axios from 'axios';
 import { transformDate } from '../utils/transform-date.utils';
 
-export async function getLicitacoes() {
+export async function getLicitacoes(filters) {
   try {
-    const { data } = await axios.get('/app/licitacoes');
-    return data.response;
+    const { data } = await axios.get('/app/licitacoes', {
+      params: {
+        ...filters
+      }
+    });
+    console.log(data)
+    return data;
   } catch (error) {
     console.log(error);
     return [];
