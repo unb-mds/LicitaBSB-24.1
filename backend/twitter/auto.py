@@ -40,10 +40,10 @@ def editar_mensagem(mensagem):
         mensagem_editada = mensagem[:result['validRangeEnd']]
         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
         if len(mensagem_editada) > 3:
-            mensagem_editada = mensagem_editada[:-3] + "..."
+            mensagem_ditada = mensagem_editada[:-3] + "..."
         return mensagem_editada
 
-def texto_para_imagem(titulo, descricao, data, caminho_imagem):
+def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
     largura_imagem = 1080
     altura_imagem = 1080
     margem_lateral = 100
@@ -57,11 +57,13 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem):
         fonte_titulo = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 44)
         fonte_descricao = ImageFont.truetype('backend/twitter/assets/IBMPLEXSERIF.TTF', 35)
         fonte_data = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 32)
+        fonte_valor = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 32)
     except IOError:
         print("Fonte não encontrada. Usando fonte padrão.")
         fonte_titulo = ImageFont.load_default()
         fonte_descricao = ImageFont.load_default()
         fonte_data = ImageFont.load_default()
+        fonte_valor = ImageFont.load_default()
 
     def desenhar_texto_negrito(desenho, posicao, texto, fonte, cor, deslocamento=1):
         x, y = posicao
@@ -75,18 +77,20 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem):
     # Título
     titulo_largura, titulo_altura = desenho.textbbox((0, 0), titulo, font=fonte_titulo)[2:4]
     y_text = (altura_imagem - titulo_altura) / 2 - 300  # Ajuste vertical
-    x_text = (largura_imagem - titulo_largura) /2
+    x_text = (largura_imagem - titulo_largura) / 2
     desenhar_texto_negrito(desenho, (x_text, y_text), titulo, fonte_titulo, "black")
     
     # Data
     data_text = f"Data: {data}"
     largura_data, altura_data = desenho.textbbox((0, 0), data_text, font=fonte_data)[2:4]
-    y_text = (altura_imagem - titulo_altura) / 2 - 350
-    x_text = (largura_imagem - titulo_largura) / 1.25
+    y_text = 170
+    x_text = 420
     desenhar_texto_negrito(desenho, (x_text, y_text), data_text, fonte_data, "black")
 
     # Descrição
-    y_text += titulo_altura + 150  # Espaço entre título e descrição
+    if len(descricao) > 447:
+        descricao = descricao[:444] + "..."
+    y_text += titulo_altura + 100  # Espaço entre título e descrição
     palavras = descricao.split(' ')
     linhas = []
     linha = ''
@@ -108,7 +112,13 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem):
         desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
         y_text += altura_linha
 
-    
+    # pega o valor (se disponível)
+    if valor is not None:
+        valor_text = f"Valor: R$ {valor:.2f}"
+        largura_valor, altura_valor = desenho.textbbox((0, 0), valor_text, font=fonte_valor)[2:4]
+        y_text += altura_linha   # Espaço entre descrição e valor
+        x_text = (largura_imagem - largura_valor) / 2
+        desenhar_texto_negrito(desenho, (x_text, y_text), valor_text, fonte_valor, "black")
 
     imagem.save(caminho_imagem)
     print(f"Imagem salva em: {caminho_imagem}")
@@ -118,13 +128,13 @@ db_path = 'backend/server/db.sqlite3'
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
-data_ontem = '02/08/2024' #(datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
-
+#data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
+data_ontem = '02/08/2024'
 print(f"Buscando licitações para a data: {data_ontem}")
 
 # Consulta para selecionar as licitações
 query_licitacoes = """
-SELECT id, titulo, objeto, data, link
+SELECT id, titulo, objeto, data, link, tipo
 FROM app_licitacao
 WHERE data = ?
 """
@@ -138,7 +148,7 @@ licitacoes = []
 
 # Iterar sobre as licitações e buscar os valores relacionados
 for licitacao in licitacoes_data:
-    licitacao_id, tipo, objeto, data_abertura, link = licitacao
+    licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
     
     # Consulta para selecionar os valores relacionados à licitação
     query_valores = """
@@ -156,15 +166,15 @@ for licitacao in licitacoes_data:
     
     # Encurtar o link
     a = encurtar_url(link)
-    time.sleep(1)  # Pausa para evitar sobrecarga
+    #time.sleep(1)  # Pausa para evitar sobrecarga
     
     # Adicionar a licitação com os valores à lista
     licitacoes.append({
-        'titulo': tipo,
+        'titulo': titulo,
         'descricao': objeto,
         'data': data_abertura,
         'link': a,
-        'valores': sum(valores)
+        'valores': sum(valores) if valores else None
     })
 
 # Fechar a conexão com o banco de dados
@@ -180,7 +190,7 @@ else:
         link_encurtado = encurtar_url(licitacao['link'])
         tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
-        mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"]))
+        mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
 
 consumer_key = os.getenv('TWITTER_API_KEY')
 consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
@@ -202,11 +212,10 @@ if len(mensagens) > 50:
 
 watermark_image_path = 'backend/twitter/logolicita.png'
 if verificador_de_licitacao == False:
-    for i, (mensagem, titulo, descricao, data) in enumerate(mensagens):
+    for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
         try:
             caminho_imagem = f"tweet_image_{i}.png"
-            # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
-            texto_para_imagem(titulo, descricao, data, caminho_imagem)
+            texto_para_imagem(titulo, descricao, data, caminho_imagem, valor if tipo.lower() == 'extrato' else None)
 
             # upload na imagem
             # response = api.media_upload(filename=caminho_imagem)
