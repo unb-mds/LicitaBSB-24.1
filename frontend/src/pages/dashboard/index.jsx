@@ -9,7 +9,6 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-// import data from '../../../../backend/data_collection/database/data.json';
 import style from '../dashboard/style.module.css';
 
 ChartJS.register(
@@ -32,33 +31,62 @@ export default function Dashboard() {
   const [selectedMonth, setSelectedMonth] = useState('');
 
   useEffect(() => {
-    const countLicitacoesPorAno = (licitacoes, selectedMonth) => {
-      return licitacoes.reduce((acc, licitacao) => {
-        const dateStr = licitacao['data_abertura'];
-        if (dateStr) {
-          const [day, month, year] = dateStr.split('/').map(Number);
-          if (
-            !isNaN(year) &&
-            (selectedMonth === '' || month === selectedMonth)
-          ) {
-            const countYear = acc[year] || 0;
-            acc[year] = countYear + 1;
-          }
+    const fetchAllData = async () => {
+      let allResults = [];
+      let nextPage = 'https://licitabsbserver-6f0bfb6e0572.herokuapp.com/app/licitacoes/tudo';
+
+      while (nextPage) {
+        try {
+          const response = await fetch(nextPage);
+          const data = await response.json();
+          console.log('API Response:', data);
+
+          allResults = allResults.concat(data.results);
+          nextPage = data.next;
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          nextPage = null;
         }
-        return acc;
-      }, {});
+      }
+
+      console.log('All Results:', allResults);
+
+      const licitacoesPorAno = countLicitacoesPorAno(allResults, selectedMonth);
+      console.log('Licitacoes por Ano:', licitacoesPorAno);
+
+      setLicitacoesPorAno(licitacoesPorAno);
+      setTotal2019(licitacoesPorAno[2019] || 0);
+      setTotal2020(licitacoesPorAno[2020] || 0);
+      setTotal2021(licitacoesPorAno[2021] || 0);
+      setTotal2022(licitacoesPorAno[2022] || 0);
+      setTotal2023(licitacoesPorAno[2023] || 0);
+      setTotal2024(licitacoesPorAno[2024] || 0);
     };
 
-    const licitacoesPorAno = countLicitacoesPorAno(data, selectedMonth);
-
-    setLicitacoesPorAno(licitacoesPorAno);
-    setTotal2019(licitacoesPorAno[2019] || 0);
-    setTotal2020(licitacoesPorAno[2020] || 0);
-    setTotal2021(licitacoesPorAno[2021] || 0);
-    setTotal2022(licitacoesPorAno[2022] || 0);
-    setTotal2023(licitacoesPorAno[2023] || 0);
-    setTotal2024(licitacoesPorAno[2024] || 0);
+    fetchAllData();
   }, [selectedMonth]);
+
+  const countLicitacoesPorAno = (licitacoes, selectedMonth) => {
+    const result = licitacoes.reduce((acc, licitacao) => {
+      const dateStr = licitacao['data'];
+      console.log('Date String:', dateStr);
+
+      if (dateStr) {
+        const [day, month, year] = dateStr.split('/').map(Number);
+        console.log('Parsed Date:', { day, month, year });
+
+        if (
+          !isNaN(year) &&
+          (selectedMonth === '' || month === selectedMonth)
+        ) {
+          acc[year] = (acc[year] || 0) + 1;
+        }
+      }
+      return acc;
+    }, {});
+    console.log('Processed Data:', result);
+    return result;
+  };
 
   const anos = Object.keys(licitacoesPorAno);
   const quantidades = Object.values(licitacoesPorAno);
@@ -131,6 +159,8 @@ export default function Dashboard() {
     { id: 11, name: 'Novembro' },
     { id: 12, name: 'Dezembro' },
   ];
+
+  console.log('Dashboard Rendered', { total2019, total2020, total2021, total2022, total2023, total2024 });
 
   return (
     <div className={style.dashboardContainer}>
