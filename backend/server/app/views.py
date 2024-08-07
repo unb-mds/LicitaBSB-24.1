@@ -52,10 +52,11 @@ def listar_orgaos(request):
 
 @swagger_auto_schema(
     method='get',
-    operation_description="Listar todas as licitações com filtros dinâmicos e paginação",
+    operation_description="Listar todas as licitações com filtros dinâmicos e paginação. Filtros disponíveis: tipo (Tipo de licitação), data (Data da licitação no formato dd-mm-aaaa) e search (Termo de busca no campo 'objeto').",
     manual_parameters=[
         openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação", type=openapi.TYPE_STRING),
-        openapi.Parameter('data', openapi.IN_QUERY, description="Data da licitação (dd-mm-aaaa)", type=openapi.TYPE_STRING)
+        openapi.Parameter('data', openapi.IN_QUERY, description="Data da licitação (dd-mm-aaaa)", type=openapi.TYPE_STRING),
+        openapi.Parameter('search', openapi.IN_QUERY, description="Termo de busca no campo 'objeto'", type=openapi.TYPE_STRING)
     ],
     responses={200: LicitacaoSerializer(many=True)}
 )
@@ -64,15 +65,22 @@ def listar_licitacoes(request):
     paginator = PageNumberPagination()
     paginator.page_size = 10
 
-    filtro_campos = ['tipo', 'data']
+    # Lista de possíveis campos de filtro e seus correspondentes no banco de dados
+    filtro_campos = ['tipo', 'data', 'search']
+    nomes_dos_campos_db = ['tipo', 'data', 'objeto']
     filtros = {}
 
-    for campo in filtro_campos:
+    # Itera sobre os campos de filtro e seus nomes correspondentes no banco de dados
+    for campo, real_campo in zip(filtro_campos, nomes_dos_campos_db):
         valor = request.GET.get(campo)
         if valor:
             if campo == 'data':
                 valor = valor.replace('-', '/')
-            filtros[campo] = valor
+            if campo == 'search':
+                # Para o campo 'search', use icontains para busca parcial
+                filtros[f'{real_campo}__icontains'] = valor
+            else:
+                filtros[real_campo] = valor
 
     licitacoes = Licitacao.objects.filter(**filtros)
 
@@ -82,6 +90,7 @@ def listar_licitacoes(request):
     result_page = paginator.paginate_queryset(licitacoes, request)
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
+
 
 
 @swagger_auto_schema(
