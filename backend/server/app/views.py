@@ -111,6 +111,11 @@ def listar_licitacoes(request):
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
 
+@api_view(['GET'])
+def listar_todas_licitacoes(request):
+    licitacao = Licitacao.objects.all()
+    serializer = LicitacaoSerializer(licitacao, many=True)
+    return Response(serializer.data)
 
 
 @swagger_auto_schema(
