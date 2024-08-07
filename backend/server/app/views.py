@@ -113,9 +113,15 @@ def listar_licitacoes(request):
 
 @api_view(['GET'])
 def listar_todas_licitacoes(request):
+    paginator = PageNumberPagination()
+    paginator.page_size = 1000
+
     licitacao = Licitacao.objects.all()
-    serializer = LicitacaoSerializer(licitacao, many=True)
-    return Response(serializer.data)
+
+    page = paginator.paginate_queryset(licitacao, request)
+    serializer = LicitacaoSerializer(page, many=True)
+    return paginator.get_paginated_response(serializer.data)
+
 
 
 @swagger_auto_schema(
