@@ -128,8 +128,7 @@ db_path = 'backend/server/db.sqlite3'
 connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
-#data_ontem = (datetime.now() - timedelta(days=0)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
-data_ontem = '02/08/2024'
+data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
 print(f"Buscando licitações para a data: {data_ontem}")
 
 # Consulta para selecionar as licitações
@@ -217,29 +216,29 @@ if verificador_de_licitacao == False:
             caminho_imagem = f"tweet_image_{i}.png"
             texto_para_imagem(titulo, descricao, data, caminho_imagem, valor if tipo.lower() == 'extrato' else None)
 
-            # upload na imagem
-            # response = api.media_upload(filename=caminho_imagem)
-            # media_id = response.media_id
-
-            # cria o tweet já com a imagem
-            # tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
-            # print(tweet)
-
-            # remove a imagem para liberar espaço em disco
-            # os.remove(caminho_imagem)
-            # os.remove(caminho_imagem_com_marca)
-            # posta a cada 20 segundos
-            #time.sleep(20)
-        except Exception as e:
-            print(f"Erro ao processar a mensagem {i}: {e}")
-            print(f"Erro ao enviar tweet: {e}")
-            traceback.print_exc()
-            time.sleep(5)
-# else:
-    # try:
-        # tweet = client.create_tweet(text=mensagens[0])
-        # print(tweet)
-    # except Exception as e:
-    #     print(f"Erro ao enviar tweet: {e}")
-    #     traceback.print_exc()
-    #     time.sleep(5)
+            # upload na imagem 
+            response = api.media_upload(filename=caminho_imagem)
+            media_id = response.media_id
+ 
+            # cria o tweet já com a imagem 
+            tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
+            print(tweet)
+ 
+            # remove a imagem para liberar espaço em disco 
+            os.remove(caminho_imagem)
+            # os.remove(caminho_imagem_com_marca) 
+            # posta a cada 20 segundos 
+            time.sleep(20)
+        except Exception as e: 
+            print(f"Erro ao processar a mensagem {i}: {e}" ) 
+            print(f"Erro ao enviar tweet: {e}") 
+            traceback.print_exc() 
+            time.sleep(5) 
+else: 
+    try:
+        tweet = client.create_tweet(text=mensagens[0])
+        print(tweet)
+    except Exception as e:
+        print(f"Erro ao enviar tweet: {e}")
+        traceback.print_exc()
+        time.sleep(5)
