@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from twitter_text import parse_tweet
 from PIL import Image, ImageDraw, ImageFont
 import sqlite3
+
 load_dotenv()  # Carrega os segredos da API do Twitter
 
 def encurtar_url(url):
@@ -39,56 +40,116 @@ def editar_mensagem(mensagem):
         mensagem_editada = mensagem[:result['validRangeEnd']]
         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
         if len(mensagem_editada) > 3:
-            mensagem_editada = mensagem_editada[:-3] + "..."
+            mensagem_ditada = mensagem_editada[:-3] + "..."
         return mensagem_editada
 
-def texto_para_imagem(texto, caminho_imagem):
-    largura = 400
-    altura = 300
-    imagem = Image.open('backend/twitter/logo.png')
+def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
+    largura_imagem = 1080
+    altura_imagem = 1080
+    margem_lateral = 100
+    largura_texto = largura_imagem - 2 * margem_lateral
+
+    imagem = Image.open('backend/twitter/background.jpg')
     desenho = ImageDraw.Draw(imagem)
     
     # Tentativa de carregar a fonte do caminho fornecido
     try:
-        fonte = ImageFont.truetype('backend/twitter/assets/ARIAL.TTF', 13)
+        fonte_titulo = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 44)
+        fonte_descricao = ImageFont.truetype('backend/twitter/assets/IBMPLEXSERIF.TTF', 35)
+        fonte_data = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 32)
+        fonte_valor = ImageFont.truetype('backend/twitter/assets/IBMPLEXSANS.TTF', 32)
     except IOError:
         print("Fonte não encontrada. Usando fonte padrão.")
-        fonte = ImageFont.load_default()
+        fonte_titulo = ImageFont.load_default()
+        fonte_descricao = ImageFont.load_default()
+        fonte_data = ImageFont.load_default()
+        fonte_valor = ImageFont.load_default()
+
+    def desenhar_texto_negrito(desenho, posicao, texto, fonte, cor, deslocamento=1):
+        x, y = posicao
+        desenho.text((x - deslocamento, y), texto, font=fonte, fill=cor)
+        desenho.text((x + deslocamento, y), texto, font=fonte, fill=cor)
+        desenho.text((x, y - deslocamento), texto, font=fonte, fill=cor)
+        desenho.text((x, y + deslocamento), texto, font=fonte, fill=cor)
+        desenho.text((x, y), texto, font=fonte, fill=cor)
+
+
+    # Título
+    if len(titulo) > 33:
+        titulo = titulo[:33] + '\n' + titulo[33:]
+    titulo_largura, titulo_altura = desenho.textbbox((0, 0), titulo, font=fonte_titulo)[2:4]
+    y_text = (altura_imagem - titulo_altura) / 2 - 300  # Ajuste vertical
+    x_text = (largura_imagem - titulo_largura) / 2
+    desenhar_texto_negrito(desenho, (x_text, y_text), titulo, fonte_titulo, "black")
     
-    margem = 10
-    espaco_linhas = 5
-    palavras = texto.split(' ')
+    # Data
+    data_text = f"Data: {data}"
+    largura_data, altura_data = desenho.textbbox((0, 0), data_text, font=fonte_data)[2:4]
+    if len(titulo) > 33:
+        y_text += titulo_altura - 150
+    else:
+        y_text = 170  
+    x_text = 420
+    desenhar_texto_negrito(desenho, (x_text, y_text), data_text, fonte_data, "black")
+
+    # Descrição
+    if len(descricao) > 520:
+        descricao = descricao[:517] + "..."
+    y_text += titulo_altura + 100  # Espaço entre título e descrição
+    palavras = descricao.split(' ')
+    linhas = []
     linha = ''
-    y_text = margem
+
+   
+    def dividir_palavras_longas(palavras, max_len=48):
+        novas_palavras = []
+        for palavra in palavras:
+            while len(palavra) > max_len:
+                novas_palavras.append(palavra[:max_len])
+                palavra = palavra[max_len:]
+            novas_palavras.append(palavra)
+        return novas_palavras
+
+# Dividir palavras longas antes de processar a descrição
+    palavras = dividir_palavras_longas(palavras)
 
     for palavra in palavras:
-        largura_linha = desenho.textbbox((0, 0), linha + palavra, font=fonte)[2]  # Posição 2 retorna a largura da caixa delimitadora
-        if largura_linha <= (largura - 2 * margem):
+        largura_linha, altura_linha = desenho.textbbox((0, 0), linha + palavra, font=fonte_descricao)[2:4]
+        if largura_linha <= largura_texto:
             linha += palavra + ' '
         else:
-            desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
+            linhas.append(linha)
             linha = palavra + ' '
-            altura_linha = desenho.textbbox((0, 0), linha, font=fonte)[3]  # Posição 3 retorna a altura da caixa delimitadora
-            y_text += altura_linha + espaco_linhas
+    linhas.append(linha)
     
-    desenho.text((margem, y_text), linha, font=fonte, fill=(0, 0, 0))
+    altura_texto = sum([desenho.textbbox((0, 0), linha, font=fonte_descricao)[3] for linha in linhas])
+    
+    for linha in linhas:
+        palavras_linha = linha.split()
+        if len(palavras_linha) > 1:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            espaco_extra = (largura_texto - largura_linha) / (len(palavras_linha) - 1)
+            x_text = margem_lateral
+            for palavra in palavras_linha:
+                desenho.text((x_text, y_text), palavra, font=fonte_descricao, fill="black")
+                largura_palavra, _ = desenho.textbbox((0, 0), palavra + ' ', font=fonte_descricao)[2:4]  # Inclui o espaço original
+                x_text += largura_palavra + espaco_extra
+        else:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            x_text = (largura_imagem - largura_linha) / 2
+            desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
+        y_text += altura_linha
+    
+    # pega o valor (se disponível)
+    if valor is not None:
+        valor_text = f"Valor: R$ {valor:.2f}"
+        y_text = 830  
+        x_text = 420
+        largura_valor, altura_valor = desenho.textbbox((0, 0), valor_text, font=fonte_valor)[2:4]
+        desenhar_texto_negrito(desenho, (x_text, y_text), valor_text, fonte_valor, "black")
 
     imagem.save(caminho_imagem)
-    print(f"Imagem salva como {caminho_imagem}")
-
-# FUNCAO PARA FAZER MARCA D'AGUA
-
-# def watermark_with_transparency(input_image_path, output_image_path, watermark_image_path, position):
-#     base_image = Image.open(input_image_path).convert('RGBA')
-#     watermark = Image.open(watermark_image_path).convert('RGBA')
-#     width, height = base_image.size
-#     transparent = Image.new('RGBA', (width, height), (0,0,0,0))
-#     transparent.paste(base_image, (0,0))
-#     transparent.paste(watermark, position, mask=watermark)
-#     transparent.save(output_image_path)
-#     print(f"Imagem com marca d'água salva como {output_image_path}")
-
-# Chamada da função
+    print(f"Imagem salva em: {caminho_imagem}")
 
 licitacoes = []
 db_path = 'backend/server/db.sqlite3'
@@ -96,30 +157,55 @@ connection = sqlite3.connect(db_path)
 cursor = connection.cursor()
 
 data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
-
 print(f"Buscando licitações para a data: {data_ontem}")
-query = """
-SELECT titulo, objeto, data, link
+
+# Consulta para selecionar as licitações
+query_licitacoes = """
+SELECT id, titulo, objeto, data, link, tipo
 FROM app_licitacao
 WHERE data = ?
 """
 
-# Executar a consulta
-cursor.execute(query, (data_ontem,))
+# Executar a consulta das licitações
+cursor.execute(query_licitacoes, (data_ontem,))
 licitacoes_data = cursor.fetchall()
+
+# Lista para armazenar as licitações e seus valores
+licitacoes = []
+
+# Iterar sobre as licitações e buscar os valores relacionados
+for licitacao in licitacoes_data:
+    licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
+    
+    # Consulta para selecionar os valores relacionados à licitação
+    query_valores = """
+    SELECT valor
+    FROM app_valores
+    WHERE idlicitacao_id = ?
+    """
+    
+    # Executar a consulta dos valores
+    cursor.execute(query_valores, (licitacao_id,))
+    valores_data = cursor.fetchall()
+    
+    # Extrair os valores em uma lista
+    valores = [valor[0] for valor in valores_data]
+    
+    # Encurtar o link
+    a = encurtar_url(link)
+    time.sleep(1)  # Pausa para evitar sobrecarga
+    
+    # Adicionar a licitação com os valores à lista
+    licitacoes.append({
+        'titulo': titulo,
+        'descricao': objeto,
+        'data': data_abertura,
+        'link': a,
+        'valores': sum(valores) if valores else None
+    })
 
 # Fechar a conexão com o banco de dados
 connection.close()
-for licitacao in licitacoes_data:
-    tipo, objeto, data_abertura, link = licitacao
-    a = encurtar_url(link)
-    time.sleep(1)  # Pausa para evitar sobrecarga
-    licitacoes.append({
-        'titulo': tipo,
-        'descricao': objeto,
-        'data': data_abertura,
-        'link': a
-    })
 
 verificador_de_licitacao = False
 if not licitacoes:
@@ -129,9 +215,9 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
+        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: teste\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
-        mensagens.append((tweet_message, licitacao["descricao"]))
+        mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
 
 consumer_key = os.getenv('TWITTER_API_KEY')
 consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
@@ -151,37 +237,35 @@ api = tweepy.API(auth)
 if len(mensagens) > 50:
     mensagens = mensagens[:50]
 
-watermark_image_path = 'backend/twitter/logolicita.png'
 if verificador_de_licitacao == False:
-    for i, (mensagem, descricao) in enumerate(mensagens):
+    for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
         try:
             caminho_imagem = f"tweet_image_{i}.png"
-            # caminho_imagem_com_marca = f"tweet_image_watermarked_{i}.png"
-            texto_para_imagem(descricao, caminho_imagem)
+            texto_para_imagem(titulo, descricao, data, caminho_imagem, valor if tipo.lower() == 'extrato' else None)
 
-            # adiciona a marca dagua
-            # watermark_with_transparency(caminho_imagem, caminho_imagem_com_marca, watermark_image_path, position=(0, 0))
-
-            # upload na imagem
+            # upload na imagem 
             response = api.media_upload(filename=caminho_imagem)
             media_id = response.media_id
-            # cria o tweet já com a imagem
+ 
+            # cria o tweet já com a imagem 
             tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
             print(tweet)
-            # remove a imagem para liberar espaço em disco
+ 
+            # remove a imagem para liberar espaço em disco 
             os.remove(caminho_imagem)
-            # os.remove(caminho_imagem_com_marca)
-
-            # posta a cada 20 segundos
+             
+            # posta a cada 20 segundos 
             time.sleep(20)
-        except Exception as e:
-            print(f"Erro ao enviar tweet: {e}")
-            traceback.print_exc()
-            time.sleep(5)
-else:
+        except Exception as e: 
+            print(f"Erro ao processar a mensagem {i}: {e}" ) 
+            print(f"Erro ao enviar tweet: {e}") 
+            traceback.print_exc() 
+            time.sleep(5) 
+else: 
     try:
         tweet = client.create_tweet(text=mensagens[0])
         print(tweet)
+        print('isso')
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
