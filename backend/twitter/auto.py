@@ -75,6 +75,8 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
 
 
     # Título
+    if len(titulo) > 33:
+        titulo = titulo[:33] + '\n' + titulo[33:]
     titulo_largura, titulo_altura = desenho.textbbox((0, 0), titulo, font=fonte_titulo)[2:4]
     y_text = (altura_imagem - titulo_altura) / 2 - 300  # Ajuste vertical
     x_text = (largura_imagem - titulo_largura) / 2
@@ -83,18 +85,34 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
     # Data
     data_text = f"Data: {data}"
     largura_data, altura_data = desenho.textbbox((0, 0), data_text, font=fonte_data)[2:4]
-    y_text = 170
+    if len(titulo) > 33:
+        y_text += titulo_altura - 150
+    else:
+        y_text = 170  
     x_text = 420
     desenhar_texto_negrito(desenho, (x_text, y_text), data_text, fonte_data, "black")
 
     # Descrição
-    if len(descricao) > 447:
-        descricao = descricao[:444] + "..."
+    if len(descricao) > 520:
+        descricao = descricao[:517] + "..."
     y_text += titulo_altura + 100  # Espaço entre título e descrição
     palavras = descricao.split(' ')
     linhas = []
     linha = ''
-    
+
+   
+    def dividir_palavras_longas(palavras, max_len=48):
+        novas_palavras = []
+        for palavra in palavras:
+            while len(palavra) > max_len:
+                novas_palavras.append(palavra[:max_len])
+                palavra = palavra[max_len:]
+            novas_palavras.append(palavra)
+        return novas_palavras
+
+# Dividir palavras longas antes de processar a descrição
+    palavras = dividir_palavras_longas(palavras)
+
     for palavra in palavras:
         largura_linha, altura_linha = desenho.textbbox((0, 0), linha + palavra, font=fonte_descricao)[2:4]
         if largura_linha <= largura_texto:
@@ -107,17 +125,27 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
     altura_texto = sum([desenho.textbbox((0, 0), linha, font=fonte_descricao)[3] for linha in linhas])
     
     for linha in linhas:
-        largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
-        x_text = (largura_imagem - largura_linha) / 2
-        desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
+        palavras_linha = linha.split()
+        if len(palavras_linha) > 1:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            espaco_extra = (largura_texto - largura_linha) / (len(palavras_linha) - 1)
+            x_text = margem_lateral
+            for palavra in palavras_linha:
+                desenho.text((x_text, y_text), palavra, font=fonte_descricao, fill="black")
+                largura_palavra, _ = desenho.textbbox((0, 0), palavra + ' ', font=fonte_descricao)[2:4]  # Inclui o espaço original
+                x_text += largura_palavra + espaco_extra
+        else:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            x_text = (largura_imagem - largura_linha) / 2
+            desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
         y_text += altura_linha
-
+    
     # pega o valor (se disponível)
     if valor is not None:
         valor_text = f"Valor: R$ {valor:.2f}"
+        y_text = 830  
+        x_text = 420
         largura_valor, altura_valor = desenho.textbbox((0, 0), valor_text, font=fonte_valor)[2:4]
-        y_text += altura_linha   # Espaço entre descrição e valor
-        x_text = (largura_imagem - largura_valor) / 2
         desenhar_texto_negrito(desenho, (x_text, y_text), valor_text, fonte_valor, "black")
 
     imagem.save(caminho_imagem)
@@ -165,7 +193,7 @@ for licitacao in licitacoes_data:
     
     # Encurtar o link
     a = encurtar_url(link)
-    #time.sleep(1)  # Pausa para evitar sobrecarga
+    time.sleep(1)  # Pausa para evitar sobrecarga
     
     # Adicionar a licitação com os valores à lista
     licitacoes.append({
@@ -187,7 +215,7 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
+        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: teste\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
         mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
 
@@ -209,7 +237,6 @@ api = tweepy.API(auth)
 if len(mensagens) > 50:
     mensagens = mensagens[:50]
 
-watermark_image_path = 'backend/twitter/logolicita.png'
 if verificador_de_licitacao == False:
     for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
         try:
@@ -226,7 +253,7 @@ if verificador_de_licitacao == False:
  
             # remove a imagem para liberar espaço em disco 
             os.remove(caminho_imagem)
-            # os.remove(caminho_imagem_com_marca) 
+             
             # posta a cada 20 segundos 
             time.sleep(20)
         except Exception as e: 
@@ -238,6 +265,7 @@ else:
     try:
         tweet = client.create_tweet(text=mensagens[0])
         print(tweet)
+        print('isso')
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
