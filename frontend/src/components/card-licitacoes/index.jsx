@@ -6,8 +6,6 @@ import formatCurrency from '../../utils/format-currency';
 import { Link } from 'react-router-dom';
 
 export default function CardLicitacoes({ data }) {
-  const statusBidding = setStatusBidding(data);
-
   const dataLicitacao = data['data_abertura'];
   const tipoLicitacao = data['tipo'];
   const objetoLicitacao = data['objeto'];
@@ -29,7 +27,7 @@ export default function CardLicitacoes({ data }) {
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
-            <p className={styles.cardStatusText}>Status: {statusBidding}</p>
+            <p className={styles.cardStatusText}>Status:</p>
           </div>
           <p className={styles.cardStatusText}>Modalidade: {tipoLicitacao}</p>
         </div>
