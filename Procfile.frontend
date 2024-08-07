@@ -1,0 +1,1 @@
+web: serve -s frontend/dist -l 3000
