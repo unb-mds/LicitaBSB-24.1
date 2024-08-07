@@ -5,7 +5,7 @@ export default function CardMember({ nome, descricao, github, id }) {
   const controler = id % 2 === 1;
 
   return (
-    <li $id={controler}>
+    <li>
       <span className={styles.cardSpan}>
         <h3 className={styles.name}>{nome}</h3>
         <p className={styles.desc} data-testid="campoDescrica">
