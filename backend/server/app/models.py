@@ -32,3 +32,10 @@ class Valores(models.Model):
 
     def __str__(self):
         return f"{self.id} - {self.valor}"
+    
+class LicitacaoQuantidade(models.Model):
+    ano = models.IntegerField()
+    mes = models.IntegerField()
+    total_licitacoes = models.IntegerField()
+    def __str__(self):
+        return f"{self.ano}-{self.mes}: {self.total_licitacoes} licitações"

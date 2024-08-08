@@ -311,7 +311,16 @@ def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
         # Inserir dados
         for licitacao in licitacoes_detalhadas:
             insert_avisos_data(licitacao, cursor)
-        
+    
+    # Atualiza a tabela de contagem de licitações
+    ano = int(ano)
+    mes = int(mes)
+    cursor.execute('''
+        INSERT INTO app_licitacaoquantidade (ano, mes, total_licitacoes)
+        VALUES (?, ?, ?)
+        ON CONFLICT(ano, mes) DO UPDATE SET total_licitacoes = total_licitacoes + ?
+    ''', (ano, mes, licita, licita))  # Atualiza a contagem com o novo valor
+
     conn.commit()
     conn.close()
     return licitacoes_detalhadas
