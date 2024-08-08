@@ -39,3 +39,10 @@ class LicitacaoQuantidade(models.Model):
     total_licitacoes = models.IntegerField()
     def __str__(self):
         return f"{self.ano}-{self.mes}: {self.total_licitacoes} licitações"
+
+class LicitacaoValoresMensal(models.Model):
+    ano = models.IntegerField()
+    mes = models.IntegerField()
+    valor_total = models.FloatField()
+    def __str__(self):
+        return f"{self.ano}-{self.mes}: {self.total_licitacoes} reais"
