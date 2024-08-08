@@ -30,7 +30,7 @@ def encurtar_url(url):
         print(f"Exceção ao encurtar URL: {e}")
         return url
 
-site = encurtar_url("https://licitabsb-repo.vercel.app")
+site = encurtar_url("https://66b17066871fef417c49ecee--fastidious-daffodil-724e94.netlify.app/")
 
 def editar_mensagem(mensagem):
     result = parse_tweet(mensagem).asdict()
@@ -215,7 +215,7 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: teste\nMais detalhes: {link_encurtado}'
+        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
         mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
 
