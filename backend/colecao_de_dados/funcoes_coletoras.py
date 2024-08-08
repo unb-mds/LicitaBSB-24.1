@@ -277,6 +277,41 @@ def insert_avisos_data(data, cursor):
 
     # Inserir os valores de licitação
     insert_valores_licitacao(valores_licitacao, licitacao_id, cursor)
+import sqlite3
+
+def atualizar_quantidade_licitacoes(mes, ano, quantidade_licitacoes):
+    db_path = 'backend/server/db.sqlite3'
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    # Verifica se já existe um registro para o ano e mês
+    cursor.execute('''
+        SELECT total_licitacoes
+        FROM app_licitacaoquantidade
+        WHERE ano = ? AND mes = ?
+    ''', (ano, mes))
+    
+    resultado = cursor.fetchone()
+    
+    if resultado:
+        # Se já existe, atualiza a quantidade
+        total_licitacoes_existente = resultado[0]
+        nova_quantidade = total_licitacoes_existente + quantidade_licitacoes
+        cursor.execute('''
+            UPDATE app_licitacaoquantidade
+            SET total_licitacoes = ?
+            WHERE ano = ? AND mes = ?
+        ''', (nova_quantidade, ano, mes))
+    else:
+        # Se não existe, insere um novo registro
+        cursor.execute('''
+            INSERT INTO app_licitacaoquantidade (ano, mes, total_licitacoes)
+            VALUES (?, ?, ?)
+        ''', (ano, mes, quantidade_licitacoes))
+    
+    conn.commit()
+
+
 
 def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     if tipo == 'avisos': print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
@@ -311,16 +346,10 @@ def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
         # Inserir dados
         for licitacao in licitacoes_detalhadas:
             insert_avisos_data(licitacao, cursor)
-    
+    conn.commit()
     # Atualiza a tabela de contagem de licitações
     ano = int(ano)
     mes = int(mes)
-    cursor.execute('''
-        INSERT INTO app_licitacaoquantidade (ano, mes, total_licitacoes)
-        VALUES (?, ?, ?)
-        ON CONFLICT(ano, mes) DO UPDATE SET total_licitacoes = total_licitacoes + ?
-    ''', (ano, mes, licita, licita))  # Atualiza a contagem com o novo valor
-
-    conn.commit()
+    atualizar_quantidade_licitacoes(mes, ano, licita)
     conn.close()
     return licitacoes_detalhadas
