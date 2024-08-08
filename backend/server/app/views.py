@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from app.models import Licitacao, Orgao, LicitacaoQuantidade
-from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacaoQuantidadeFormattedSerializer
+from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
@@ -134,7 +134,7 @@ def licitacao_por_id(request, id):
     responses={
         200: openapi.Response(
             description="Retorna a quantidade de licitações por ano e mês",
-            schema=LicitacaoQuantidadeFormattedSerializer(many=True)
+            schema=LicitacoesQuantidadeSerializer(many=True)
         )
     }
 )
@@ -144,5 +144,5 @@ def listar_licitacoes_quantidade(request):
     licitacao_quantidade = LicitacaoQuantidade.objects.values('ano', 'mes').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano', 'mes')
 
     # Cria o serializer e retorna a resposta
-    serializer = LicitacaoQuantidadeFormattedSerializer(licitacao_quantidade, many=True)
+    serializer = LicitacoesQuantidadeSerializer(licitacao_quantidade, many=True)
     return Response(serializer.data)

@@ -32,8 +32,5 @@ class LicitacoesQuantidadeSerializer(serializers.ModelSerializer):
         fields = ['ano', 'mes', 'total_licitacoes']
 
 
-class LicitacaoQuantidadeFormattedSerializer(serializers.Serializer):
-    ano = serializers.IntegerField()
-    mes = serializers.IntegerField()
-    total_licitacoes = serializers.IntegerField()
+
 
