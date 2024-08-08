@@ -277,7 +277,6 @@ def insert_avisos_data(data, cursor):
 
     # Inserir os valores de licitação
     insert_valores_licitacao(valores_licitacao, licitacao_id, cursor)
-import sqlite3
 
 def atualizar_quantidade_licitacoes(mes, ano, quantidade_licitacoes):
     db_path = 'backend/server/db.sqlite3'
@@ -311,7 +310,40 @@ def atualizar_quantidade_licitacoes(mes, ano, quantidade_licitacoes):
     
     conn.commit()
 
+def atualizar_licitacao_valores_mensal(cursor):
+    # Obter todas as licitações e seus valores
+    db_path = 'backend/server/db.sqlite3'
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    cursor.execute('SELECT id, data FROM app_licitacao')
+    
+    licitacoes = cursor.fetchall()
 
+    # Criar um dicionário para armazenar a soma dos valores por ano e mês
+    somas_por_mes = {}
+
+    for licitacao_id, data in licitacoes:
+        ano, mes = parse_date(data)
+        if ano and mes:
+            # Obter a soma dos valores para a licitação atual
+            cursor.execute('SELECT SUM(valor) FROM app_valores WHERE idlicitacao_id = ?', (licitacao_id,))
+            soma_valores = cursor.fetchone()[0] or 0
+
+            # Adicionar a soma ao dicionário
+            if (ano, mes) not in somas_por_mes:
+                somas_por_mes[(ano, mes)] = 0
+            somas_por_mes[(ano, mes)] += soma_valores
+
+    # Atualizar ou inserir valores na tabela LicitacaoValoresMensal
+    for (ano, mes), valor_total in somas_por_mes.items():
+        cursor.execute('''
+            INSERT INTO app_licitacaovaloresmensal (ano, mes, valor_total)
+            VALUES (?, ?, ?)
+            ON CONFLICT(ano, mes) DO UPDATE SET valor_total = valor_total + excluded.valor_total
+        ''', (ano, mes, valor_total))
+
+    # Commit para garantir que as atualizações sejam salvas
+    conn.commit()
 
 def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     if tipo == 'avisos': print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
@@ -351,5 +383,8 @@ def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     ano = int(ano)
     mes = int(mes)
     atualizar_quantidade_licitacoes(mes, ano, licita)
+
+    # Atualiza a tabela com os valores das licitações
+    atualizar_licitacao_valores_mensal(cursor)
     conn.close()
     return licitacoes_detalhadas
