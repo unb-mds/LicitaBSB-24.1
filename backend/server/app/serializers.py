@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from app.models import Orgao, Licitacao, Valores
+from app.models import Orgao, Licitacao, Valores, LicitacaoQuantidade
+from collections import defaultdict
 
 class OrgaoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,4 +25,15 @@ class LicitacaoSerializer(serializers.ModelSerializer):
     def get_valores(self, obj):
         valores = Valores.objects.filter(idlicitacao=obj).values_list('valor', flat=True)  # Obtém todos os valores associados
         return list(valores) if valores else None  # Retorna uma lista simples de valores ou None se não houver valores
+
+class LicitacoesQuantidadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LicitacaoQuantidade
+        fields = ['ano', 'mes', 'total_licitacoes']
+
+
+class LicitacaoQuantidadeFormattedSerializer(serializers.Serializer):
+    ano = serializers.IntegerField()
+    mes = serializers.IntegerField()
+    total_licitacoes = serializers.IntegerField()
 

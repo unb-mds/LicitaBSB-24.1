@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
-from app.models import Licitacao, Orgao
-from app.serializers import LicitacaoSerializer, OrgaoSerializer
+from app.models import Licitacao, Orgao, LicitacaoQuantidade
+from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacaoQuantidadeFormattedSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
@@ -111,18 +111,6 @@ def listar_licitacoes(request):
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
 
-@api_view(['GET'])
-def listar_todas_licitacoes(request):
-    paginator = PageNumberPagination()
-    paginator.page_size = 1000
-
-    licitacao = Licitacao.objects.all()
-
-    page = paginator.paginate_queryset(licitacao, request)
-    serializer = LicitacaoSerializer(page, many=True)
-    return paginator.get_paginated_response(serializer.data)
-
-
 
 @swagger_auto_schema(
     method='get',
@@ -137,4 +125,24 @@ def licitacao_por_id(request, id):
         raise NotFound("Licitacao não encontrada")
 
     serializer = LicitacaoSerializer(licitacao)
+    return Response(serializer.data)
+
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade de licitações organizadas por ano e mês.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade de licitações por ano e mês",
+            schema=LicitacaoQuantidadeFormattedSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_quantidade(request):
+    # Busca todos os registros da tabela LicitacaoQuantidade
+    licitacao_quantidade = LicitacaoQuantidade.objects.values('ano', 'mes').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano', 'mes')
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacaoQuantidadeFormattedSerializer(licitacao_quantidade, many=True)
     return Response(serializer.data)
