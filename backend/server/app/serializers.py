@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from app.models import Orgao, Licitacao, Valores, LicitacaoQuantidade
+from app.models import Orgao, Licitacao, Valores, LicitacaoQuantidade, LicitacaoValoresMensal
 from collections import defaultdict
 
 class OrgaoSerializer(serializers.ModelSerializer):
@@ -31,6 +31,9 @@ class LicitacoesQuantidadeSerializer(serializers.ModelSerializer):
         model = LicitacaoQuantidade
         fields = ['ano', 'mes', 'total_licitacoes']
 
-
+class LicitacoesValoresMensaisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LicitacaoValoresMensal
+        fields = ['ano', 'mes', 'valor_total']
 
 

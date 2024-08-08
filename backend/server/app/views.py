@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
-from app.models import Licitacao, Orgao, LicitacaoQuantidade
-from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeSerializer
+from app.models import Licitacao, Orgao, LicitacaoQuantidade, LicitacaoValoresMensal
+from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeSerializer, LicitacoesValoresMensaisSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
@@ -145,4 +145,23 @@ def listar_licitacoes_quantidade(request):
 
     # Cria o serializer e retorna a resposta
     serializer = LicitacoesQuantidadeSerializer(licitacao_quantidade, many=True)
+    return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade total de valores mensais de licitações, organizados por ano e mês.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade total de valores mensais por ano e mês",
+            schema=LicitacoesValoresMensaisSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_valores_mensais(request):
+    # Busca todos os registros da tabela LicitacaoQuantidade
+    valores_mensais =  LicitacaoValoresMensal.objects.values('ano', 'mes').annotate(valor_total=Sum('valor_total')).order_by('ano', 'mes')
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesValoresMensaisSerializer(valores_mensais, many=True)
     return Response(serializer.data)
