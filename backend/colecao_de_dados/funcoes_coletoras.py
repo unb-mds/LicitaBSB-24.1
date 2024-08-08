@@ -8,6 +8,12 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import sqlite3
 
+def parse_date(date_str):
+    try:
+        dt = datetime.strptime(date_str, '%d/%m/%Y')
+        return dt.year, dt.month
+    except ValueError:
+        return None, None
 # Função para criar uma sessão com retries
 def criar_sessao_com_retries(retries=3, backoff_factor=0.3, status_forcelist=(500, 502, 504)):
     session = requests.Session()
@@ -310,40 +316,65 @@ def atualizar_quantidade_licitacoes(mes, ano, quantidade_licitacoes):
     
     conn.commit()
 
-def atualizar_licitacao_valores_mensal(cursor):
-    # Obter todas as licitações e seus valores
-    db_path = 'backend/server/db.sqlite3'
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute('SELECT id, data FROM app_licitacao')
+
+def atualizar_licitacao_valores_mensal(cursor, data_atual):
+    # Converter a data atual para ano e mês
+    ano_atual, mes_atual = parse_date(data_atual)
+
+    if not ano_atual or not mes_atual:
+        print("Data inválida.")
+        return
     
+    # Obter todas as licitações inseridas na data atual
+    cursor.execute('''
+        SELECT id FROM app_licitacao WHERE data = ?
+    ''', (data_atual,))
     licitacoes = cursor.fetchall()
+
+    if not licitacoes:
+        print("Nenhuma licitação encontrada para a data fornecida.")
+        return
 
     # Criar um dicionário para armazenar a soma dos valores por ano e mês
     somas_por_mes = {}
 
-    for licitacao_id, data in licitacoes:
-        ano, mes = parse_date(data)
-        if ano and mes:
-            # Obter a soma dos valores para a licitação atual
-            cursor.execute('SELECT SUM(valor) FROM app_valores WHERE idlicitacao_id = ?', (licitacao_id,))
-            soma_valores = cursor.fetchone()[0] or 0
+    for (licitacao_id,) in licitacoes:
+        # Obter a soma dos valores para a licitação atual
+        cursor.execute('SELECT SUM(valor) FROM app_valores WHERE idlicitacao_id = ?', (licitacao_id,))
+        soma_valores = cursor.fetchone()[0] or 0
 
-            # Adicionar a soma ao dicionário
-            if (ano, mes) not in somas_por_mes:
-                somas_por_mes[(ano, mes)] = 0
-            somas_por_mes[(ano, mes)] += soma_valores
+        # Adicionar a soma ao dicionário
+        if (ano_atual, mes_atual) not in somas_por_mes:
+            somas_por_mes[(ano_atual, mes_atual)] = 0
+        somas_por_mes[(ano_atual, mes_atual)] += soma_valores
+
+    if not somas_por_mes:
+        print("Nenhum valor encontrado para a soma.")
+        return
 
     # Atualizar ou inserir valores na tabela LicitacaoValoresMensal
     for (ano, mes), valor_total in somas_por_mes.items():
-        cursor.execute('''
-            INSERT INTO app_licitacaovaloresmensal (ano, mes, valor_total)
-            VALUES (?, ?, ?)
-            ON CONFLICT(ano, mes) DO UPDATE SET valor_total = valor_total + excluded.valor_total
-        ''', (ano, mes, valor_total))
+        # Verificar se o registro já existe
+        cursor.execute('SELECT valor_total FROM app_licitacaovaloresmensal WHERE ano = ? AND mes = ?', (ano, mes))
+        resultado = cursor.fetchone()
+        
+        if resultado:
+            # Atualizar o valor existente
+            cursor.execute('''
+                UPDATE app_licitacaovaloresmensal
+                SET valor_total = valor_total + ?
+                WHERE ano = ? AND mes = ?
+            ''', (valor_total, ano, mes))
+        else:
+            # Inserir novo registro
+            cursor.execute('''
+                INSERT INTO app_licitacaovaloresmensal (ano, mes, valor_total)
+                VALUES (?, ?, ?)
+            ''', (ano, mes, valor_total))
+            
 
     # Commit para garantir que as atualizações sejam salvas
-    conn.commit()
+    cursor.connection.commit()
 
 def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     if tipo == 'avisos': print("Realizando a extração dos avisos de licitação de Brasília na data de " + str(dia) + "/" + str(mes) + "/" + str(ano))
@@ -385,6 +416,8 @@ def alimentando_banco_com_licitacoes(links_avisos, dia, mes, ano, tipo):
     atualizar_quantidade_licitacoes(mes, ano, licita)
 
     # Atualiza a tabela com os valores das licitações
-    atualizar_licitacao_valores_mensal(cursor)
+    data_atual = f"{str(dia).zfill(2)}/{str(mes).zfill(2)}/{ano}"
+    print(data_atual)
+    atualizar_licitacao_valores_mensal(cursor, data_atual)
     conn.close()
     return licitacoes_detalhadas
