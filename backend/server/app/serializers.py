@@ -1,5 +1,7 @@
 from rest_framework import serializers
-from app.models import Orgao, Licitacao, Valores
+from app.models import Orgao, Licitacao, Valores, LicitacaoQuantidade, LicitacaoValoresMensal
+from collections import defaultdict
+from django.db.models import Sum
 
 class OrgaoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -25,3 +27,26 @@ class LicitacaoSerializer(serializers.ModelSerializer):
         valores = Valores.objects.filter(idlicitacao=obj).values_list('valor', flat=True)  # Obtém todos os valores associados
         return list(valores) if valores else None  # Retorna uma lista simples de valores ou None se não houver valores
 
+class LicitacoesQuantidadeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LicitacaoQuantidade
+        fields = ['ano', 'mes', 'total_licitacoes']
+
+class LicitacoesValoresMensaisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LicitacaoValoresMensal
+        fields = ['ano', 'mes', 'valor_total']
+
+class LicitacoesValoresAnuaisSerializer(serializers.Serializer):
+    ano = serializers.IntegerField()
+    valor_total = serializers.SerializerMethodField()
+
+    def get_valor_total(self, obj):
+        ano = obj['ano']
+        valor_total = LicitacaoValoresMensal.objects.filter(ano=ano).aggregate(Sum('valor_total'))['valor_total__sum']
+        return valor_total if valor_total is not None else 0
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        representation['valor_total'] = self.get_valor_total(instance)
+        return representation
