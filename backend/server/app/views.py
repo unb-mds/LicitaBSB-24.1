@@ -10,6 +10,11 @@ from drf_yasg import openapi
 from django.db.models import Sum, F, FloatField, Q
 from django.db.models.functions import Cast
 from rest_framework import status
+from dotenv import load_dotenv
+from django.conf import settings
+import requests
+from requests.auth import HTTPBasicAuth
+load_dotenv() 
 
 @swagger_auto_schema(
     method='get',
@@ -233,3 +238,40 @@ def licitacao_maior_valor(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
     else:
         return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
+
+
+@swagger_auto_schema(
+    method='post',
+    operation_description="Subscribe an email to a Mailchimp list.",
+    responses={
+        200: "Subscription successful!",
+        500: "Subscription failed."
+    }
+)
+@api_view(['POST'])
+def subscribe_email(request):
+    email = request.data.get('email_address')  # Ajustado para 'email_address'
+    
+    if not email:
+        return Response({"detail": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    mailchimp_url = settings.DJANGO_URL_CHIMP
+    mailchimp_api_key = settings.DJANGO_API
+
+    try:
+        response = requests.post(
+            mailchimp_url,
+            json={
+                'email_address': email,
+                'status': 'subscribed',
+            },
+            auth=HTTPBasicAuth('anystring', mailchimp_api_key)  # 'anystring' pode ser qualquer valor
+        )
+
+        if response.status_code == 200:
+            return Response("Subscription successful!", status=status.HTTP_200_OK)
+        else:
+            return Response(f"Subscription failed: {response.text}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except requests.exceptions.RequestException as e:
+        print(f"Error subscribing: {e}")
+        return Response("Subscription failed.", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

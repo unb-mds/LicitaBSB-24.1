@@ -1,15 +1,5 @@
-import { useContext } from 'react';
-import { BiddingContext } from '../context/BiddingContext';
 
 export const useSearchBidding = () => {
-  const {
-    biddings,
-    setBiddgins,
-    searchBiddings,
-    setSearchBiddgins,
-    words,
-    setWords,
-  } = useContext(BiddingContext);
 
   function getBiddingSearch(licitacoes, input) {
     const inputFormat = input
