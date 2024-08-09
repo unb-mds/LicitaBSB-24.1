@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ygz=9^0q@e1q_yju4*)(cs0_+x3&xcdt7a-#rv_dt4y^!638x#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'licitabsbserver-6f0bfb6e0572.herokuapp.com',
+    'licitabsbserer-a1c309841042.herokuapp.com',
     'localhost'
     ]
 
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app',
+    'corsheaders',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -53,7 +55,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "https://66b17066871fef417c49ecee--fastidious-daffodil-724e94.netlify.app",
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'server.urls'
 
