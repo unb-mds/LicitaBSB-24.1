@@ -3,7 +3,7 @@ import { transformDate } from '../utils/transform-date.utils';
 
 export async function getLicitacoes(filters) {
   try {
-    const { data } = await axios.get('/app/licitacoes', {
+    const { data } = await axios.get('https://licitabsbserer-a1c309841042.herokuapp.com/app/licitacoes', {
       params: {
         ...filters
       }

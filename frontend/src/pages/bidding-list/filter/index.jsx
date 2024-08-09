@@ -19,12 +19,29 @@ function reducer(state, action) {
   throw Error('Unknown action.');
 }
 
+
+
 export default function Filter({
   filterParams,
   setFilterParams,
   handleSearch
 }) {
   const [orgaosValue, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
+
+  const handleDateChange = (value) => {
+    function formatNumber(number) {
+      if(number < 10){
+        return `0${number}`
+      }
+      return number
+    }
+
+    setFilterParams({
+      ...filterParams,
+      data: `${formatNumber(value.$D)}-${formatNumber(value.$M +1)}-${value.$y}`
+    })
+    console.log(value)
+  }
 
   const marks = [
     {
@@ -145,7 +162,6 @@ export default function Filter({
         <h3 className={styles.sectionTitle}>Período</h3>
         <div className={styles.calendariosWrapper}>
           <div width='20px'>
-            <p>De</p>
             <Box
               sx={{
                 width: '100%',  // Ajusta a largura conforme necessário
@@ -158,37 +174,10 @@ export default function Filter({
               }}
             >
               <DateCalendar
+                onChange={handleDateChange}
                 sx={{
                   width: '100%',
                   height: '100%',
-                  '& .MuiPickersCalendar-week': {
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                  },
-                  '& .MuiPickersDay-root': {
-                    width: 'calc(100% / 7)',  // Divide igualmente a largura entre os dias da semana
-                    height: 'auto',  // Ajusta a altura automaticamente
-                    aspectRatio: '1 / 1',  // Mantém os dias como quadrados
-                  },
-                }}
-              />
-            </Box>
-          </div>
-          <div>
-            <p>Até</p>
-            <Box
-              sx={{
-                width: '100%',  // Ajusta a largura conforme necessário
-                maxWidth: '100%',  // Define um limite máximo de largura para o calendário
-                aspectRatio: '1 / 1',  // Mantém a proporção de aspecto
-                '& .MuiPickersCalendar-root': {
-                  height: '100%',  // Garante que o calendário preencha a altura do container
-                },
-              }}
-            >
-              <DateCalendar
-                sx={{
-                  width: '100%',
                   '& .MuiPickersCalendar-week': {
                     display: 'flex',
                     justifyContent: 'space-between',

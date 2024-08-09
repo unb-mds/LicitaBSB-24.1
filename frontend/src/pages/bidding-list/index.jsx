@@ -13,7 +13,9 @@ export default function BiddingList() {
   const navigate = useNavigate();
 
   const [filterParams, setFilterParams] = useState({
-    page: 1
+    page: 1,
+    tipo: '',
+    data: '',
   })
 
   const [searchParams] = useSearchParams();
@@ -33,6 +35,7 @@ export default function BiddingList() {
   const handlePageChange = (_, value) => {
     setFilterParams({...filterParams, page: value});
   };
+
 
   useEffect(() => {
     loadData();
