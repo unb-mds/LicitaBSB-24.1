@@ -69,6 +69,10 @@ export default function Filter({
     loadOrgaos();
   }, [orgaosPage])
 
+  const handleLimparFiltros = () => {
+
+  }
+
   return (
     <section className={styles.filterSection}>
       <h2 className={styles.title}>Resultados obtidos de:</h2>
@@ -216,6 +220,7 @@ export default function Filter({
           </div>
         </div>
       </div>
+      <CustomButton onPress={handleLimparFiltros} title="limpar filtros" light/>
       <CustomButton onPress={handleSearch} title="buscar"/>
     </section>
   );

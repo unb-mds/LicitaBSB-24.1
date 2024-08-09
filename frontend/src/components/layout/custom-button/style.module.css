@@ -15,3 +15,8 @@
   cursor: pointer;
   flex: 1;
 }
+
+.customButtonLight {
+  background-color: var(--branco);
+  color: var(--texto);
+}
