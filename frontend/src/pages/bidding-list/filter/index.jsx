@@ -8,12 +8,16 @@ import CustomInputRadio from '../../../components/layout/custom-input-radio';
 import CustomInputCheckbox from '../../../components/layout/custom-input-checkbox';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import seach from "../../../../assets/SearchDark.svg"
+import { useNavigate } from 'react-router-dom';
 
 export default function Filter({
   filterParams,
   setFilterParams,
-  handleSearch
+  handleSearch,
+  resultCount = 0,
+  filterInput
 }) {
+  const navigate = useNavigate();
 
   const handleDateChange = (value) => {
     function formatNumber(number) {
@@ -53,7 +57,6 @@ export default function Filter({
       search: orgaosName,
       page: orgaosPage
     })
-    console.log(orgaos);
     setOrgaosDados(orgaos.results);
   }
 
@@ -69,16 +72,17 @@ export default function Filter({
     loadOrgaos();
   }, [orgaosPage])
 
-  const handleLimparFiltros = () => {
-
+  const handleLimparFiltros = async () => {
+    navigate('/licitacoes');
+    navigate(0);
   }
 
   return (
     <section className={styles.filterSection}>
-      <h2 className={styles.title}>Resultados obtidos de:</h2>
+      <h2 className={styles.title}>Resultados obtidos:</h2>
       <div>
-        <h3 className={styles.subtitle}>"Palavras-chave de busca"</h3>
-        <span className={styles.description}>14 resultados obtidos</span>
+        {filterInput && <h3 className={styles.subtitle}>"{filterInput}"</h3>}
+        <span className={styles.description}>{resultCount * 10} resultados obtidos</span>
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Tipo de Licitação</h3>
@@ -95,6 +99,7 @@ export default function Filter({
                       tipo: type
                     })
                   }}
+                  checked={filterParams.tipo === type}
                   id={type}
                 />
               </li>

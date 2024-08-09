@@ -9,28 +9,33 @@ import { Pagination } from '@mui/material';
 
 export default function BiddingList() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const filterTipo = searchParams.get('tipo') ? searchParams.get('tipo') : '';
+  const filterInput = searchParams.get('search') ? searchParams.get('search') : '';
+  const filterValue = searchParams.get('value') ? searchParams.get('value') : '';
 
   const [filterParams, setFilterParams] = useState({
     page: 1,
-    tipo: '',
+    tipo: filterTipo,
     status: '',
-    search: '',
-    value: '',
+    search: filterInput,
+    value: filterValue,
   });
 
-
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
-  const [lengthBids, setLengthBids] = useState(10);
+  const [resultCount, serResultCount] = useState(0);
 
   async function loadData(filter) {
     const data = await getLicitacoes(filter);
-    setLengthBids(Math.round(data.count / 10));
+    serResultCount(data.count);
     setListaLicitacoes(data.results);
   }
 
-  const handlePageChange = useCallback((_, value) => {
+  const handlePageChange = (_, value) => {
     setFilterParams(prevParams => ({ ...prevParams, page: value }));
-  }, []);
+    loadData(filterParams);
+  };
 
   const buildFilterQuery = (params) => {
     return Object.keys(params)
@@ -45,18 +50,9 @@ export default function BiddingList() {
     navigate(0);
   };
 
-  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    const filterTipo = searchParams.get('tipo');
-    const filterInput = searchParams.get('search');
-    const filterValue = searchParams.get('value');
-    loadData({
-      page: 1,
-      tipo: filterTipo ? filterTipo : '',
-      search: filterInput ? filterInput : '',
-      value: filterValue ? filterValue : '',
-    });
+    loadData(filterParams);
   }, [])
 
   return (
@@ -71,6 +67,8 @@ export default function BiddingList() {
           filterParams={filterParams}
           setFilterParams={setFilterParams}
           handleSearch={handleSearch}
+          resultCount={resultCount}
+          filterInput={filterInput}
         />
         <div className={styles.cardsWrapper}>
           {listaLicitacoes.map((item, idx) => {
@@ -78,7 +76,7 @@ export default function BiddingList() {
               <CardLicitacoes key={`${idx} ${item.id}`} data={item}/>
             );
           })}
-          <Pagination count={lengthBids} onChange={handlePageChange} />
+          <Pagination count={resultCount} onChange={handlePageChange} />
         </div>
       </div>
     </section>
