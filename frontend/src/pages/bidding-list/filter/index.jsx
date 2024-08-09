@@ -109,11 +109,19 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Órgão</h3>
-        <div>
-          <input type='text' value={orgaosName} onChange={(e) => setOrgaosName(e.target.value)} />
+        <div className={styles.orgaosInputContainer}>
+          <input
+            type='text'
+            value={orgaosName}
+            onChange={(e) => {
+              setOrgaosName(e.target.value);
+              handleOrgaoSearch();
+            }}
+            className={styles.orgaosInput}
+            placeholder='Pesquise o nome do órgão'
+          />
           <img
             src={seach}
-            onClick={handleOrgaoSearch}
           />
         </div>
         <ul className={styles.filterOptionsContainer}>
