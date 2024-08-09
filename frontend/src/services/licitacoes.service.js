@@ -1,9 +1,9 @@
-import axios from 'axios';
 import { transformDate } from '../utils/transform-date.utils';
+import { api } from '../config/api';
 
 export async function getLicitacoes(filters) {
   try {
-    const { data } = await axios.get('https://licitabsbserer-a1c309841042.herokuapp.com/app/licitacoes', {
+    const { data } = await api.get('/licitacoes', {
       params: {
         ...filters
       }
