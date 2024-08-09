@@ -7,7 +7,7 @@ from rest_framework.pagination import PageNumberPagination
 from datetime import datetime
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-from django.db.models import Sum, F, FloatField
+from django.db.models import Sum, F, FloatField, Q
 from django.db.models.functions import Cast
 from rest_framework import status
 
@@ -56,8 +56,11 @@ def listar_orgaos(request):
     method='get',
     operation_description=(
         "Listar todas as licitações com filtros dinâmicos e paginação. \n"
-        "Filtros disponíveis: tipo (Tipo de licitação), data (Data da licitação no formato dd-mm-aaaa),\n "
-        "search (Termo de busca no campo 'objeto'). \n"
+        "Filtros disponíveis: \n"
+        "- tipo: Tipo de licitação, pode ser 'aviso' ou 'extrato'.\n"
+        "- data: Data da licitação no formato dd-mm-aaaa.\n"
+        "- search: Termo de busca no campo 'objeto'.\n"
+        "- orgao: Termos de busca parcial no nome do órgão, separados por vírgula. Suporta espaços entre termos.\n"
         "Ordenação: adicione o parâmetro 'ordenar_por' com valor 'valor' para ordenar por valor total, \n"
         "ou deixe em branco para ordenar por data (padrão).\n"
     ),
@@ -65,6 +68,7 @@ def listar_orgaos(request):
         openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação, pode ser 'aviso' ou 'extrato'", type=openapi.TYPE_STRING),
         openapi.Parameter('data', openapi.IN_QUERY, description="Data da licitação (dd-mm-aaaa)", type=openapi.TYPE_STRING),
         openapi.Parameter('search', openapi.IN_QUERY, description="Termo de busca no campo 'objeto'", type=openapi.TYPE_STRING),
+        openapi.Parameter('orgao', openapi.IN_QUERY, description="Termos de busca parcial no nome do órgão, separados por vírgula. Suporta espaços entre termos.", type=openapi.TYPE_STRING),
         openapi.Parameter('ordenar_por', openapi.IN_QUERY, description="Ordenação dos resultados. Use 'valor' para ordenar por valor total, ou deixe em branco para ordenar por data.", type=openapi.TYPE_STRING)
     ],
     responses={200: openapi.Response('Lista de licitações', LicitacaoSerializer(many=True))}
@@ -74,44 +78,39 @@ def listar_licitacoes(request):
     paginator = PageNumberPagination()
     paginator.page_size = 10
 
-    # Lista de possíveis campos de filtro e seus correspondentes no banco de dados
-    filtro_campos = ['tipo', 'data', 'search']
-    nomes_dos_campos_db = ['tipo', 'data', 'objeto']
-    filtros = {}
+    filtro_campos = ['tipo', 'data', 'search', 'orgao']
+    nomes_dos_campos_db = ['tipo', 'data', 'objeto', 'idorgao__nome']
+    filtros = Q()
 
-    # Itera sobre os campos de filtro e seus nomes correspondentes no banco de dados
     for campo, real_campo in zip(filtro_campos, nomes_dos_campos_db):
         valor = request.GET.get(campo)
         if valor:
             if campo == 'data':
                 valor = valor.replace('-', '/')
             if campo == 'search':
-                # Para o campo 'search', use icontains para busca parcial
-                filtros[f'{real_campo}__icontains'] = valor
+                filtros &= Q(**{f'{real_campo}__icontains': valor})
+            elif campo == 'orgao':
+                # Suporte para múltiplos órgãos separados por vírgula
+                orgaos = [orgao.strip() for orgao in valor.split(',')]  # Remove espaços extras
+                orgaos_q = Q()
+                for orgao in orgaos:
+                    orgaos_q |= Q(**{f'{real_campo}__icontains': orgao})
+                filtros &= orgaos_q
             else:
-                filtros[real_campo] = valor
+                filtros &= Q(**{real_campo: valor})
 
-    # Filtro inicial
-    licitacoes = Licitacao.objects.filter(**filtros)
+    licitacoes = Licitacao.objects.filter(filtros)
 
-    # Verifica se o parâmetro 'ordenar_por' está presente na URL e se o valor é 'valor'
     if request.GET.get('ordenar_por') == 'valor':
-        # Anota cada licitação com a soma de seus valores
         licitacoes = licitacoes.annotate(
             total_valor=Sum(Cast(F('valores'), FloatField()))
-        )
-        # Ordena as licitações pelo valor total (do maior para o menor)
-        licitacoes = licitacoes.order_by('-total_valor')
+        ).order_by('-total_valor')
     else:
-        # Ordena as licitações pela data mais recente (do mais recente para o mais antigo) na memória
-        licitacoes = list(licitacoes)  # Converte o QuerySet para uma lista
         licitacoes = sorted(licitacoes, key=lambda x: datetime.strptime(x.data, '%d/%m/%Y'), reverse=True)
 
-    # Paginação
     result_page = paginator.paginate_queryset(licitacoes, request)
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
-
 
 @swagger_auto_schema(
     method='get',
