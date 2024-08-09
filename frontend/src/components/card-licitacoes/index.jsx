@@ -1,5 +1,4 @@
 import React from 'react';
-import { setStatusBidding } from '../../utils/status-bidding';
 
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
