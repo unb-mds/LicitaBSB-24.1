@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ygz=9^0q@e1q_yju4*)(cs0_+x3&xcdt7a-#rv_dt4y^!638x#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     'licitabsbserer-a1c309841042.herokuapp.com',
@@ -62,6 +62,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "https://66b17066871fef417c49ecee--fastidious-daffodil-724e94.netlify.app",
+    "https://fastidious-daffodil-724e94.netlify.app/",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
