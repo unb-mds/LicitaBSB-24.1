@@ -1,30 +1,18 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useEffect } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
 import { Box, Slider } from '@mui/material';
-import { getOrgaosNomes } from '../../../services/orgaos.service';
+import { getOrgaos } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
 import CustomInputCheckbox from '../../../components/layout/custom-input-checkbox';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
-
-function reducer(state, action) {
-  if(action.type === 'increment_value') {
-    return {
-      index: state.index + 1,
-      orgaos: getOrgaosNomes().slice(0, 10 + state.index*10),
-    };
-  }
-
-  throw Error('Unknown action.');
-}
 
 export default function Filter({
   filterParams,
   setFilterParams,
   handleSearch
 }) {
-  const [orgaosValue, dispatch] = useReducer(reducer, { index: 1, orgaos: getOrgaosNomes().slice(0, 10) });
 
   const handleDateChange = (value) => {
     function formatNumber(number) {
@@ -51,9 +39,26 @@ export default function Filter({
     },
   ];
 
+  const [orgaosPage, setOrgaosPage] = useState(1);
+  const [orgaosName, setOrgaosName] = useState('');
+  const [orgaosDados, setOrgaosDados] = useState([]);
+
   const mostrarMais = () => {
-    dispatch({ type: 'increment_value' });
+    setOrgaosPage((cur) => cur++);
   }
+
+  const loadOrgaos = async () => {
+    const orgaos = await getOrgaos({
+      search: orgaosName,
+      page: orgaosPage
+    })
+    console.log(orgaos)
+    setOrgaosDados(orgaos.results);
+  }
+
+  useEffect(() => {
+    loadOrgaos();
+  }, [])
 
   return (
     <section className={styles.filterSection}>
@@ -88,13 +93,13 @@ export default function Filter({
         <h3 className={styles.sectionTitle}>Órgão</h3>
         <ul className={styles.filterOptionsContainer}>
           {
-            orgaosValue.orgaos.map((type) => (
-              <li key={type} className={styles.listItemStyle}>
+            orgaosDados.map((orgao) => (
+              <li key={orgao.id} className={styles.listItemStyle}>
                 <CustomInputCheckbox
-                  name={type}
-                  label={type.charAt(0).toUpperCase() + type.slice(1)}
+                  name={orgao.nome}
+                  label={orgao.nome}
                   onPress={() => {}}
-                  id={type}
+                  id={orgao.nome}
                 />
               </li>
             ))
