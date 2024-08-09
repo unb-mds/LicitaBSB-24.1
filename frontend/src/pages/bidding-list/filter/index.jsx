@@ -45,6 +45,7 @@ export default function Filter({
 
   const mostrarMais = () => {
     setOrgaosPage((cur) => cur++);
+    loadOrgaos();
   }
 
   const loadOrgaos = async () => {
@@ -52,13 +53,12 @@ export default function Filter({
       search: orgaosName,
       page: orgaosPage
     })
-    console.log(orgaos)
-    setOrgaosDados(orgaos.results);
+    setOrgaosDados((curr) => [...curr, ...orgaos.results]);
   }
 
   useEffect(() => {
     loadOrgaos();
-  }, [])
+  }, [orgaosPage])
 
   return (
     <section className={styles.filterSection}>
