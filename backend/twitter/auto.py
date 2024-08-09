@@ -30,7 +30,7 @@ def encurtar_url(url):
         print(f"Exceção ao encurtar URL: {e}")
         return url
 
-site = encurtar_url("https://66b17066871fef417c49ecee--fastidious-daffodil-724e94.netlify.app/")
+site = encurtar_url("https://licitabsb-repo.vercel.app")
 
 def editar_mensagem(mensagem):
     result = parse_tweet(mensagem).asdict()
@@ -75,8 +75,10 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
 
 
     # Título
-    if len(titulo) > 33:
+    if len(titulo) > 33 and len(titulo) < 38:
         titulo = titulo[:33] + '\n' + titulo[33:]
+    elif len(titulo) > 38:
+        titulo = titulo[:30] + '\n' + titulo[30:]
     titulo_largura, titulo_altura = desenho.textbbox((0, 0), titulo, font=fonte_titulo)[2:4]
     y_text = (altura_imagem - titulo_altura) / 2 - 300  # Ajuste vertical
     x_text = (largura_imagem - titulo_largura) / 2
@@ -215,7 +217,7 @@ else:
     mensagens = []
     for licitacao in licitacoes:
         link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
+        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: coming soon...\nMais detalhes: {link_encurtado}'
         tweet_message = editar_mensagem(tweet_message)
         mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
 
@@ -265,7 +267,6 @@ else:
     try:
         tweet = client.create_tweet(text=mensagens[0])
         print(tweet)
-        print('isso')
     except Exception as e:
         print(f"Erro ao enviar tweet: {e}")
         traceback.print_exc()
