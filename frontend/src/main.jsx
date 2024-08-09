@@ -36,9 +36,7 @@ function AppRoutes() {
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
     <AppRoutes />
-    </LocalizationProvider>
-  </React.StrictMode>,
+  </LocalizationProvider>,
 );

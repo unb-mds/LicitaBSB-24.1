@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
 import { Box, Slider } from '@mui/material';
@@ -7,6 +7,7 @@ import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
 import CustomInputCheckbox from '../../../components/layout/custom-input-checkbox';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+import seach from "../../../../assets/SearchDark.svg"
 
 export default function Filter({
   filterParams,
@@ -44,8 +45,16 @@ export default function Filter({
   const [orgaosDados, setOrgaosDados] = useState([]);
 
   const mostrarMais = () => {
-    setOrgaosPage((cur) => cur++);
-    loadOrgaos();
+    setOrgaosPage(orgaosPage +1);
+  }
+
+  const handleOrgaoSearch = async () => {
+    const orgaos = await getOrgaos({
+      search: orgaosName,
+      page: orgaosPage
+    })
+    console.log(orgaos);
+    setOrgaosDados(orgaos.results);
   }
 
   const loadOrgaos = async () => {
@@ -91,10 +100,17 @@ export default function Filter({
       </div>
       <div>
         <h3 className={styles.sectionTitle}>Órgão</h3>
+        <div>
+          <input type='text' value={orgaosName} onChange={(e) => setOrgaosName(e.target.value)} />
+          <img
+            src={seach}
+            onClick={handleOrgaoSearch}
+          />
+        </div>
         <ul className={styles.filterOptionsContainer}>
           {
             orgaosDados.map((orgao) => (
-              <li key={orgao.id} className={styles.listItemStyle}>
+              <li key={`${orgao.nome}${orgao.id}`} className={styles.listItemStyle}>
                 <CustomInputCheckbox
                   name={orgao.nome}
                   label={orgao.nome}
