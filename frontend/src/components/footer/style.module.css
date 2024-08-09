@@ -26,6 +26,7 @@
   flex-direction: row;
   justify-content: space-between;
   gap: 2rem;
+  padding: 0 64px;
   align-items: center;
   img {
     height: 30px;

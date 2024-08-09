@@ -22,7 +22,7 @@
   justify-content: space-between;
   width: 100%;
   background-color: var(--azulMedio);
-  padding: 0px 128px;
+  padding: 0px 240px;
   height: 48px;
 }
 
@@ -101,7 +101,7 @@
   }
 }
 
-@media (min-width: 720px) and (max-width: 1300px){
+@media (min-width: 720px) and (max-width: 1480px){
   .subHeaderWrapper {
     justify-content: center;
   }

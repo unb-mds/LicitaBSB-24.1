@@ -2,7 +2,7 @@
 .mainSection {
   display: flex;
   flex-direction: column;
-  margin: 40px 128px;
+  margin: 40px 240px;
 }
 
 .campoPesquisaWrapper {

@@ -56,7 +56,7 @@ export default function BiddingList() {
   }, [])
 
   return (
-    <section className={styles.mainSection}>
+    <main className={styles.mainSection}>
       <CampoPesquisa
         filterParams={filterParams}
         setFilterParams={setFilterParams}
@@ -79,6 +79,6 @@ export default function BiddingList() {
           <Pagination count={resultCount} onChange={handlePageChange} />
         </div>
       </div>
-    </section>
+    </main>
   );
 }
