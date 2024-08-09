@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from app.models import Licitacao, Orgao, LicitacaoQuantidade, LicitacaoValoresMensal
-from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeSerializer, LicitacoesValoresMensaisSerializer, LicitacoesValoresAnuaisSerializer
+from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeMensalSerializer, LicitacoesQuantidadeAnualSerializer,LicitacoesValoresMensaisSerializer, LicitacoesValoresAnuaisSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
@@ -9,6 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from django.db.models import Sum, F, FloatField
 from django.db.models.functions import Cast
+from rest_framework import status
 
 @swagger_auto_schema(
     method='get',
@@ -54,11 +55,11 @@ def listar_orgaos(request):
 @swagger_auto_schema(
     method='get',
     operation_description=(
-        "Listar todas as licitações com filtros dinâmicos e paginação. "
-        "Filtros disponíveis: tipo (Tipo de licitação), data (Data da licitação no formato dd-mm-aaaa), "
-        "search (Termo de busca no campo 'objeto'). "
-        "Ordenação: adicione o parâmetro 'ordenar_por' com valor 'valor' para ordenar por valor total, "
-        "ou deixe em branco para ordenar por data (padrão)."
+        "Listar todas as licitações com filtros dinâmicos e paginação. \n"
+        "Filtros disponíveis: tipo (Tipo de licitação), data (Data da licitação no formato dd-mm-aaaa),\n "
+        "search (Termo de busca no campo 'objeto'). \n"
+        "Ordenação: adicione o parâmetro 'ordenar_por' com valor 'valor' para ordenar por valor total, \n"
+        "ou deixe em branco para ordenar por data (padrão).\n"
     ),
     manual_parameters=[
         openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação, pode ser 'aviso' ou 'extrato'", type=openapi.TYPE_STRING),
@@ -134,18 +135,46 @@ def licitacao_por_id(request, id):
     responses={
         200: openapi.Response(
             description="Retorna a quantidade de licitações por ano e mês",
-            schema=LicitacoesQuantidadeSerializer(many=True)
+            schema=LicitacoesQuantidadeMensalSerializer(many=True)
         )
     }
 )
 @api_view(['GET'])
-def listar_licitacoes_quantidade(request):
+def listar_licitacoes_quantidade_mensal(request):
     # Busca todos os registros da tabela LicitacaoQuantidade
     licitacao_quantidade = LicitacaoQuantidade.objects.values('ano', 'mes').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano', 'mes')
 
     # Cria o serializer e retorna a resposta
-    serializer = LicitacoesQuantidadeSerializer(licitacao_quantidade, many=True)
+    serializer = LicitacoesQuantidadeMensalSerializer(licitacao_quantidade, many=True)
     return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade de licitações organizadas por ano.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade de licitações por ano",
+            schema=LicitacoesQuantidadeAnualSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_quantidade_anual(request):
+    # Agrupa as licitações por ano e soma as quantidades
+    licitacao_quantidade_anual = LicitacaoQuantidade.objects.values('ano').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano')
+
+    # Para evitar o erro, precisamos passar uma lista de objetos ao serializer
+    # Para cada dicionário retornado por values(), criamos uma instância do modelo
+    licitacao_quantidade_anual_objs = [
+        LicitacaoQuantidade(ano=item['ano'], total_licitacoes=item['total_licitacoes']) 
+        for item in licitacao_quantidade_anual
+    ]
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesQuantidadeAnualSerializer(licitacao_quantidade_anual_objs, many=True)
+    return Response(serializer.data)
+
+
 
 @swagger_auto_schema(
     method='get',
@@ -187,3 +216,21 @@ def listar_licitacoes_valores_anuais(request):
     # Cria o serializer e retorna a resposta
     serializer = LicitacoesValoresAnuaisSerializer(dados, many=True)
     return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Retorna a licitação com o maior valor somado.",
+    responses={200: openapi.Response('Licitação com maior valor', LicitacaoSerializer())}
+)
+@api_view(['GET'])
+def licitacao_maior_valor(request):
+    # Anotar cada licitação com a soma de seus valores
+    licitacao_com_maior_valor = Licitacao.objects.annotate(
+        total_valor=Sum(Cast(F('valores'), FloatField()))
+    ).order_by('-total_valor').first()
+
+    if licitacao_com_maior_valor:
+        serializer = LicitacaoSerializer(licitacao_com_maior_valor)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
