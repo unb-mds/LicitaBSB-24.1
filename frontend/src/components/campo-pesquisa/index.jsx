@@ -17,10 +17,10 @@ export default function CampoPesquisa({
           type="text"
           placeholder="Busque por uma licitação"
           className={styles.inputStyle}
-          value={filterParams.input}
+          value={filterParams.search}
           onChange={(e) => setFilterParams({
             ...filterParams,
-            input: e.target.value,
+            search: e.target.value,
           })}
         />
       </div>

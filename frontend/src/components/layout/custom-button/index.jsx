@@ -5,7 +5,7 @@ export default function CustomButton({ onPress, title }) {
   return (
     <button
       className={styles.customButton}
-      onPress={onPress}
+      onClick={onPress}
     >
       {title}
     </button>

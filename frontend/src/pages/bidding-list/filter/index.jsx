@@ -19,8 +19,6 @@ function reducer(state, action) {
   throw Error('Unknown action.');
 }
 
-
-
 export default function Filter({
   filterParams,
   setFilterParams,
@@ -40,7 +38,6 @@ export default function Filter({
       ...filterParams,
       data: `${formatNumber(value.$D)}-${formatNumber(value.$M +1)}-${value.$y}`
     })
-    console.log(value)
   }
 
   const marks = [
@@ -107,6 +104,7 @@ export default function Filter({
           </li>
         </ul>
       </div>
+      {/*
       <div>
         <h3 className={styles.sectionTitle}>Status</h3>
         <ul className={styles.filterOptionsContainer}>
@@ -117,7 +115,7 @@ export default function Filter({
               onPress={() => {
                 setFilterParams({
                   ...filterParams,
-                  tipo: 'aberto'
+                  status: 'aberto'
                 })
               }}
               id='aberto'
@@ -130,7 +128,7 @@ export default function Filter({
               onPress={() => {
                 setFilterParams({
                   ...filterParams,
-                  tipo: 'fechado'
+                  status: 'fechado'
                 })
               }}
               id='fechado'
@@ -158,6 +156,10 @@ export default function Filter({
           />
         </div>
       </div>
+
+
+
+      */}
       <div>
         <h3 className={styles.sectionTitle}>Período</h3>
         <div className={styles.calendariosWrapper}>

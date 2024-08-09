@@ -1,51 +1,63 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
-import { getLicitacoes, getLicitacoesFilter, pagLicitacoes } from '../../services/licitacoes.service';
+import { getLicitacoes } from '../../services/licitacoes.service';
 import styles from './style.module.css';
 import CampoPesquisa from '../../components/campo-pesquisa';
 import Filter from './filter';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Pagination } from '@mui/material';
 
-
 export default function BiddingList() {
-
   const navigate = useNavigate();
 
   const [filterParams, setFilterParams] = useState({
     page: 1,
     tipo: '',
-    data: '',
-  })
+    status: '',
+    search: '',
+    value: '',
+  });
 
-  const [searchParams] = useSearchParams();
-  const filterTipo = searchParams.get('tipo');
-  const filterInput = searchParams.get('input');
-  const filterValue = searchParams.get('value');
 
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
   const [lengthBids, setLengthBids] = useState(10);
 
-  async function loadData() {
-    const data = await getLicitacoes(filterParams);
-    setLengthBids(Math.round(data.count/10));
+  async function loadData(filter) {
+    const data = await getLicitacoes(filter);
+    setLengthBids(Math.round(data.count / 10));
     setListaLicitacoes(data.results);
   }
 
-  const handlePageChange = (_, value) => {
-    setFilterParams({...filterParams, page: value});
+  const handlePageChange = useCallback((_, value) => {
+    setFilterParams(prevParams => ({ ...prevParams, page: value }));
+  }, []);
+
+  const buildFilterQuery = (params) => {
+    return Object.keys(params)
+      .filter(key => params[key])
+      .map(key => `${key}=${params[key]}`)
+      .join('&');
   };
 
+  function handleSearch(){
+    const querySearch = `/licitacoes?${buildFilterQuery(filterParams)}`;
+    navigate(querySearch);
+    navigate(0);
+  };
+
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    loadData();
-    console.log(filterParams)
-  }, [filterParams])
-
-  const handleSearch = () => {
-    const querySearch = `/licitacoes?${filterParams.tipo && `tipo=${filterParams.tipo}`}&${filterParams.input && `input=${filterParams.input}`}&${filterParams.value && `value=${filterParams.value}`}`;
-    navigate(querySearch);
-  }
+    const filterTipo = searchParams.get('tipo');
+    const filterInput = searchParams.get('search');
+    const filterValue = searchParams.get('value');
+    loadData({
+      page: 1,
+      tipo: filterTipo ? filterTipo : '',
+      search: filterInput ? filterInput : '',
+      value: filterValue ? filterValue : '',
+    });
+  }, [])
 
   return (
     <section className={styles.mainSection}>
@@ -70,5 +82,5 @@ export default function BiddingList() {
         </div>
       </div>
     </section>
-  )
+  );
 }
