@@ -48,55 +48,50 @@ export default function AboutBot() {
           <img className={style.imagem1} src={imagemBot} />
         </span>
 
-        <span className={style.paragraph2Context}>
-          <div>
-            <h2 className={style.cardAboutSubtitle}>Como Foi Feito</h2>
-            <h3 className={style.cardAboutSubtitle3}>
-              Para configurar o bot, utilizamos duas bibliotecas principais:
-            </h3>
-            <p className={style.cardAboutTextP}>
-              <br />
-              <b>Tweepy:</b> Uma biblioteca Python para acessar a API do
-              Twitter. Ela facilita a interação com a plataforma, permitindo que
-              o bot poste tweets, siga contas, entre outras funcionalidades. A
-              documentação da Tweepy pode ser acessada{' '}
-              <a href="https://docs.tweepy.org/en/stable/" target="_blank">
-                aqui
-              </a>
-              .
-              <br />
-              <b>Pillow:</b> Uma biblioteca Python para processamento de
-              imagens. Utilizamos o Pillow para adicionar imagens aos tweets,
-              tornando as postagens mais atrativas e informativas. A
-              documentação do Pillow pode ser acessada{' '}
-              <a
-                href="https://pillow.readthedocs.io/en/stable/"
-                target="_blank"
-              >
-                aqui
-              </a>
-              .
-            </p>
-            <h3 className={style.cardAboutSubtitle3}>Etapas da Configuração</h3>
-            <p className={style.cardAboutTextP}>
-              <b>Autenticação:</b> Configuramos as credenciais de acesso à API
-              do Twitter utilizando a Tweepy.
-              <br />
-              <b>Criação de Conteúdo:</b> Desenvolvemos scripts para gerar
-              automaticamente o conteúdo dos tweets, incluindo texto e imagens.
-              <br />
-              <b>Postagem Automática:</b> Implementamos a lógica para postar
-              automaticamente os tweets em horários pré-definidos ou em resposta
-              a eventos específicos.
-              <br />
-              <b>Manutenção e Monitoramento:</b> Configuramos mecanismos para
-              monitorar o funcionamento do bot e fazer ajustes conforme
-              necessário.
-            </p>
-          </div>
+        <span>
+          <h2 className={style.cardAboutSubtitle}>Como Foi Feito</h2>
+          <h3 className={style.cardAboutSubtitle3}>
+            Para configurar o bot, utilizamos duas bibliotecas principais:
+          </h3>
+          <p className={style.cardAboutTextP}>
+            <br />
+            <b>Tweepy:</b> Uma biblioteca Python para acessar a API do Twitter.
+            Ela facilita a interação com a plataforma, permitindo que o bot
+            poste tweets, siga contas, entre outras funcionalidades. A
+            documentação da Tweepy pode ser acessada{' '}
+            <a href="https://docs.tweepy.org/en/stable/" target="_blank">
+              aqui
+            </a>
+            .
+            <br />
+            <b>Pillow:</b> Uma biblioteca Python para processamento de imagens.
+            Utilizamos o Pillow para adicionar imagens aos tweets, tornando as
+            postagens mais atrativas e informativas. A documentação do Pillow
+            pode ser acessada{' '}
+            <a href="https://pillow.readthedocs.io/en/stable/" target="_blank">
+              aqui
+            </a>
+            .
+          </p>
+          <h3 className={style.cardAboutSubtitle3}>Etapas da Configuração</h3>
+          <p className={style.cardAboutTextP}>
+            <b>Autenticação:</b> Configuramos as credenciais de acesso à API do
+            Twitter utilizando a Tweepy.
+            <br />
+            <b>Criação de Conteúdo:</b> Desenvolvemos scripts para gerar
+            automaticamente o conteúdo dos tweets, incluindo texto e imagens.
+            <br />
+            <b>Postagem Automática:</b> Implementamos a lógica para postar
+            automaticamente os tweets em horários pré-definidos ou em resposta a
+            eventos específicos.
+            <br />
+            <b>Manutenção e Monitoramento:</b> Configuramos mecanismos para
+            monitorar o funcionamento do bot e fazer ajustes conforme
+            necessário.
+          </p>
         </span>
 
-        <div>
+        <span>
           <h2 className={style.cardAboutSubtitle}>Qual o Objetivo</h2>
           <p className={style.cardAboutTextP}>
             O principal objetivo deste bot é proporcionar aos usuários uma
@@ -116,12 +111,11 @@ export default function AboutBot() {
             permitindo que os usuários recebam as informações mais recentes sem
             precisar procurar manualmente.
           </p>
-          <p className={style.cardAboutTextP}>
-            Com este bot, acreditamos que os usuários terão uma ferramenta útil
-            e eficiente para se manterem informados sobre as atividades
-            governamentais relacionadas a licitações.
-          </p>
-        </div>
+          <br />
+          Com este bot, acreditamos que os usuários terão uma ferramenta útil e
+          eficiente para se manterem informados sobre as atividades
+          governamentais relacionadas a licitações.
+        </span>
       </div>
     </main>
   );
