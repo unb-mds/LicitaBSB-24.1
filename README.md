@@ -1,12 +1,16 @@
 ## Sumário
 
+- [Sumário](#sumário)
 - [Sobre o Projeto](#sobre-o-projeto)
 - [Como Executar o Projeto](#como-executar-o-projeto)
   - [Pré-requisitos](#pré-requisitos)
   - [Backend](#backend)
     - [Execução](#execução)
-    - [Endpoints](https://licitabsbserer-a1c309841042.herokuapp.com/swagger/)
+    - [Endpoints](#endpoints)
     - [Bot de Licitações no X](#bot-de-licitações-no-x)
+      - [Funcionalidades](#funcionalidades)
+      - [Configuração](#configuração)
+      - [Uso](#uso)
   - [Frontend](#frontend)
   - [Observações](#observações)
 - [Documentação](#documentação)
@@ -16,7 +20,7 @@
 
 **Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
-Acesse o nosso portal [aqui](https://fastidious-daffodil-724e94.netlify.app/) para explorar as licitações de forma simples e rápida.
+Acesse o nosso portal [aqui](https://bit.ly/licitabsb) para explorar as licitações de forma simples e rápida.
 
 Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais. 
 
@@ -71,7 +75,7 @@ A API REST estará disponível em `http://127.0.0.1:8000/`.
 
 #### Endpoints
 
-Os endpoints da API REST se encontram no link https://licitabsbserer-a1c309841042.herokuapp.com/swagger/ ou no caso de você está executando o programa em sua máquina ele se encontrará em http://localhost:8000/swagger/ 
+Os endpoints da API REST se encontram no link https://bit.ly/licitabsb_api ou no caso de você está executando o programa em sua máquina ele se encontrará em http://localhost:8000/swagger/ 
 
 #### Bot de Licitações no X
 
@@ -117,7 +121,7 @@ Este bot publica automaticamente as licitações do Diário Oficial do Distrito 
 1. Execute o script principal:
 
     ```bash
-    python backend/twitter_bot/bot.py
+    python backend/twitter_bot/auto.py
     ```
 
 2. O bot publicará as licitações no Twitter. Se não houver licitações no dia, o bot publicará uma mensagem informando.
