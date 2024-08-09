@@ -5,7 +5,7 @@
   - [Pré-requisitos](#pré-requisitos)
   - [Backend](#backend)
     - [Execução](#execução)
-    - [Endpoints](#endpoints)
+    - [Endpoints](https://licitabsbserer-a1c309841042.herokuapp.com/swagger/)
     - [Bot de Licitações no X](#bot-de-licitações-no-x)
   - [Frontend](#frontend)
   - [Observações](#observações)
@@ -16,7 +16,9 @@
 
 **Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
-Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais.
+Acesse o nosso portal [aqui](https://fastidious-daffodil-724e94.netlify.app/) para explorar as licitações de forma simples e rápida.
+
+Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais. 
 
 Acesse o nosso bot no [X (antigo Twitter)](https://x.com/LicitaBSB) para acompanhar licitações do DOU diariamente.
 
@@ -69,23 +71,7 @@ A API REST estará disponível em `http://127.0.0.1:8000/`.
 
 #### Endpoints
 
-- **Listar Órgãos**
-  - **Método:** `GET`
-  - **URL:** `app/orgaos`
-  - **Descrição:** Retorna uma lista de todos os órgãos.
-  
-- **Listar Licitações**
-  - **Método:** `GET`
-  - **URL:** `/app/licitacoes`
-  - **Descrição:** Retorna uma lista de licitações com suporte para paginação e filtros.
-  - **Parâmetros de Query (opcionais):**
-    - `tipo`: Filtra as licitações pelo tipo (`aviso` ou `extrato`).
-    - `data`: Filtra as licitações pela data (formato `dd-mm-aaaa`).
-    
-- **Licitação por ID**
-  - **Método:** `GET`
-  - **URL:** `app/licitacoes/<int:id>`
-  - **Descrição:** Retorna os detalhes de uma licitação específica pelo ID.
+Os endpoints da API REST se encontram no link https://licitabsbserer-a1c309841042.herokuapp.com/swagger/ ou no caso de você está executando o programa em sua máquina ele se encontrará em http://localhost:8000/swagger/ 
 
 #### Bot de Licitações no X
 
