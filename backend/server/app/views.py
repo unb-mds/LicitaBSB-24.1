@@ -9,6 +9,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from django.db.models import Sum, F, FloatField
 from django.db.models.functions import Cast
+from rest_framework import status
 
 @swagger_auto_schema(
     method='get',
@@ -215,3 +216,21 @@ def listar_licitacoes_valores_anuais(request):
     # Cria o serializer e retorna a resposta
     serializer = LicitacoesValoresAnuaisSerializer(dados, many=True)
     return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Retorna a licitação com o maior valor somado.",
+    responses={200: openapi.Response('Licitação com maior valor', LicitacaoSerializer())}
+)
+@api_view(['GET'])
+def licitacao_maior_valor(request):
+    # Anotar cada licitação com a soma de seus valores
+    licitacao_com_maior_valor = Licitacao.objects.annotate(
+        total_valor=Sum(Cast(F('valores'), FloatField()))
+    ).order_by('-total_valor').first()
+
+    if licitacao_com_maior_valor:
+        serializer = LicitacaoSerializer(licitacao_com_maior_valor)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
