@@ -52,6 +52,7 @@ def listar_orgaos(request):
     return paginator.get_paginated_response(serializer.data)
 
 
+
 @swagger_auto_schema(
     method='get',
     operation_description=(
@@ -60,7 +61,7 @@ def listar_orgaos(request):
         "- tipo: Tipo de licitação, pode ser 'aviso' ou 'extrato'.\n"
         "- data: Data da licitação no formato dd-mm-aaaa.\n"
         "- search: Termo de busca no campo 'objeto'.\n"
-        "- orgao: Termos de busca parcial no nome do órgão, separados por vírgula. Suporta espaços entre termos.\n"
+        "- orgao: Termos de busca parcial no nome do órgão, separados por vírgula. Suporta múltiplos órgãos.\n"
         "Ordenação: adicione o parâmetro 'ordenar_por' com valor 'valor' para ordenar por valor total, \n"
         "ou deixe em branco para ordenar por data (padrão).\n"
     ),
@@ -68,7 +69,7 @@ def listar_orgaos(request):
         openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação, pode ser 'aviso' ou 'extrato'", type=openapi.TYPE_STRING),
         openapi.Parameter('data', openapi.IN_QUERY, description="Data da licitação (dd-mm-aaaa)", type=openapi.TYPE_STRING),
         openapi.Parameter('search', openapi.IN_QUERY, description="Termo de busca no campo 'objeto'", type=openapi.TYPE_STRING),
-        openapi.Parameter('orgao', openapi.IN_QUERY, description="Termos de busca parcial no nome do órgão, separados por vírgula. Suporta espaços entre termos.", type=openapi.TYPE_STRING),
+        openapi.Parameter('orgao', openapi.IN_QUERY, description="Termos de busca parcial no nome do órgão, separados por vírgula. Suporta múltiplos órgãos.", type=openapi.TYPE_STRING),
         openapi.Parameter('ordenar_por', openapi.IN_QUERY, description="Ordenação dos resultados. Use 'valor' para ordenar por valor total, ou deixe em branco para ordenar por data.", type=openapi.TYPE_STRING)
     ],
     responses={200: openapi.Response('Lista de licitações', LicitacaoSerializer(many=True))}
@@ -111,7 +112,6 @@ def listar_licitacoes(request):
     result_page = paginator.paginate_queryset(licitacoes, request)
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
-
 @swagger_auto_schema(
     method='get',
     operation_description="Obter detalhes de uma licitação por ID",
