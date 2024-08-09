@@ -1,55 +1,65 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import CardLicitacoes from '../../components/card-licitacoes';
-import {
-  getLicitacoes,
-  getLicitacoesFilter,
-  pagLicitacoes,
-} from '../../services/licitacoes.service';
+import { getLicitacoes } from '../../services/licitacoes.service';
 import styles from './style.module.css';
 import CampoPesquisa from '../../components/campo-pesquisa';
 import Filter from './filter';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Pagination } from '@mui/material';
 
 export default function BiddingList() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const filterTipo = searchParams.get('tipo') ? searchParams.get('tipo') : '';
+  const filterInput = searchParams.get('search')
+    ? searchParams.get('search')
+    : '';
+  const filterValue = searchParams.get('value')
+    ? searchParams.get('value')
+    : '';
 
   const [filterParams, setFilterParams] = useState({
-    tipo: '',
-    input: '',
-    value: 0,
+    page: 1,
+    tipo: filterTipo,
+    status: '',
+    search: filterInput,
+    value: filterValue,
   });
 
-  const [searchParams] = useSearchParams();
-  const filterTipo = searchParams.get('tipo');
-  const filterInput = searchParams.get('input');
-  const filterValue = searchParams.get('value');
-
-  const licitacoes =
-    filterTipo || filterInput || filterValue
-      ? getLicitacoesFilter(filterTipo, filterInput, filterValue)
-      : getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
-  const [lengthBids, setLengthBids] = useState(10);
+  const [resultCount, serResultCount] = useState(0);
 
-  const loadMoreBids = () => {
-    licitacoes.length - lengthBids < 10
-      ? setLengthBids(
-          (prevLength) => (prevLength += licitacoes.length - lengthBids),
-        )
-      : setLengthBids((prevLength) => (prevLength += 10));
+  async function loadData(filter) {
+    const data = await getLicitacoes(filter);
+    serResultCount(data.count);
+    setListaLicitacoes(data.results);
+  }
+
+  const handlePageChange = (_, value) => {
+    setFilterParams((prevParams) => ({ ...prevParams, page: value }));
+    loadData(filterParams);
   };
+
+  const buildFilterQuery = (params) => {
+    return Object.keys(params)
+      .filter((key) => params[key])
+      .map((key) => `${key}=${params[key]}`)
+      .join('&');
+  };
+
+  function handleSearch() {
+    const querySearch = `/licitacoes?${buildFilterQuery(filterParams)}`;
+    navigate(querySearch);
+    navigate(0);
+  }
 
   useEffect(() => {
-    setListaLicitacoes(pagLicitacoes(licitacoes, lengthBids, 0));
+    loadData(filterParams);
   }, []);
 
-  const handleSearch = () => {
-    const querySearch = `/licitacoes?${filterParams.tipo && `tipo=${filterParams.tipo}`}&${filterParams.input && `input=${filterParams.input}`}&${filterParams.value && `value=${filterParams.value}`}`;
-    navigate(querySearch);
-  };
-
   return (
-    <section className={styles.mainSection}>
+    <main className={styles.mainSection}>
       <CampoPesquisa
         filterParams={filterParams}
         setFilterParams={setFilterParams}
@@ -60,25 +70,16 @@ export default function BiddingList() {
           filterParams={filterParams}
           setFilterParams={setFilterParams}
           handleSearch={handleSearch}
+          resultCount={resultCount}
+          filterInput={filterInput}
         />
         <div className={styles.cardsWrapper}>
           {listaLicitacoes.map((item, idx) => {
             return <CardLicitacoes key={`${idx} ${item.id}`} data={item} />;
           })}
-
-          {lengthBids >= licitacoes.length ? (
-            <></>
-          ) : (
-            <button
-              className={styles.botaoCarregarMais}
-              type="button"
-              onClick={loadMoreBids}
-            >
-              Carregar Mais
-            </button>
-          )}
+          <Pagination count={resultCount} onChange={handlePageChange} />
         </div>
       </div>
-    </section>
+    </main>
   );
 }

@@ -27,10 +27,22 @@ class LicitacaoSerializer(serializers.ModelSerializer):
         valores = Valores.objects.filter(idlicitacao=obj).values_list('valor', flat=True)  # Obtém todos os valores associados
         return list(valores) if valores else None  # Retorna uma lista simples de valores ou None se não houver valores
 
-class LicitacoesQuantidadeSerializer(serializers.ModelSerializer):
+class LicitacoesQuantidadeMensalSerializer(serializers.ModelSerializer):
     class Meta:
         model = LicitacaoQuantidade
         fields = ['ano', 'mes', 'total_licitacoes']
+
+class LicitacoesQuantidadeAnualSerializer(serializers.ModelSerializer):
+    total_licitacoes = serializers.SerializerMethodField()
+
+    class Meta:
+        model = LicitacaoQuantidade
+        fields = ['ano', 'total_licitacoes']
+
+    def get_total_licitacoes(self, obj):
+        # Agrupa e soma as licitações por ano
+        total_licitacoes_por_ano = LicitacaoQuantidade.objects.filter(ano=obj.ano).aggregate(total=Sum('total_licitacoes'))
+        return total_licitacoes_por_ano['total']
 
 class LicitacoesValoresMensaisSerializer(serializers.ModelSerializer):
     class Meta:

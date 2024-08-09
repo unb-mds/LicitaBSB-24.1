@@ -1,40 +1,19 @@
 import { transformDate } from '../utils/transform-date.utils';
+import { api } from '../config/api';
 
-const data_licitacoes = [];
-
-export function getLicitacoes() {
-  let licit = data_licitacoes;
-
-  licit.sort((a, b) => {
-    const dateA = Date.parse(transformDate(a['data_abertura']));
-    const dateB = Date.parse(transformDate(b['data_abertura']));
-    if (dateA > dateB) {
-      return -1;
-    }
-    if (dateA < dateB) {
-      return 1;
-    }
-
-    return 0;
-  });
-
-  return [];
-}
-
-export function getLicitacaoById(parametros) {
-  const dados = parametros.split('-');
-  let licit;
-  if (dados[1] == 'aviso') {
-    licit = data_licitacoes.find((data) => {
-      return data.id === Number(dados[0]);
+export async function getLicitacoes(filters) {
+  try {
+    const { data } = await api.get('/licitacoes', {
+      params: {
+        ...filters
+      }
     });
-  } else {
-    licit = data_licitacoes.find((data) => {
-      return data.id === Number(dados[0]);
-    });
+    console.log(data)
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
   }
-
-  return [];
 }
 
 function searchBidding(biddings, input) {

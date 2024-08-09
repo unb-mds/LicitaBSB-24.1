@@ -3,133 +3,121 @@ hide:
   - navigation
   - toc
 ---
-## Como executar o projeto
+## Como Executar o Projeto
 
-### Tutorial: Como Executar o Scrapy
+### Pré-requisitos
 
-#### Scraper de Licitações do Diário Oficial da União (DOU)
+- [NodeJS v20 ou superior](https://nodejs.org/en/download)
+- [Python 3.12.3](https://www.python.org/downloads/)
 
-Este projeto contém scripts para extrair informações sobre avisos de licitação do Diário Oficial da União (DOU), especificamente focando em licitações relacionadas a Brasília. O script principal (`main.py`) permite executar o scraping em diferentes modos: para um intervalo de datas específico, a partir de uma data inicial até a data atual, ou desde 02/01/2013 até a data atual.
+Clone o repositório do projeto:
 
-## Estrutura do Projeto
-
-- `main.py`: Script principal para execução via terminal.
-- `functions.py`: Contém todas as funções auxiliares utilizadas pelo script principal.
-- `data.json`: Arquivo JSON onde os dados extraídos são armazenados.
-
-## Requisitos
-
-- Python 3.6 ou superior
-- Bibliotecas Python: `requests`, `beautifulsoup4`, `urllib3`
-
-Você pode instalar as bibliotecas necessárias utilizando:
-```sh
-pip install requests beautifulsoup4 urllib3
-```
-
-## Uso
-
-### Executando o Script
-
-Você pode executar o script `main.py` de três maneiras diferentes:
-
-1. **Processar desde 02/01/2013 até a data atual:**
-    ```sh
-    python3 main.py
-    ```
-
-2. **Processar desde uma data inicial até a data atual:**
-    ```sh
-    python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial>
-    ```
-
-    Exemplo:
-    ```sh
-    python3 main.py 01/01/2020
-    ```
-
-3. **Processar um intervalo específico de datas:**
-    ```sh
-    python3 main.py <dia-inicial>/<mes-inicial>/<ano-inicial> <dia-final>/<mes-final>/<ano-final>
-    ```
-
-    Exemplo:
-    ```sh
-    python3 main.py 01/01/2020 31/12/2020
-    ```
-
-### Formato de Data
-
-As datas devem ser fornecidas no formato `dd/mm/aaaa`.
-
-### Restrições de Data
-
-- A data inicial não pode ser anterior a 02/01/2013.
-- A data final não pode ser posterior à data atual.
-
-### Arquivo JSON de Saída
-
-Os dados extraídos são armazenados no arquivo `data.json` no diretório atual. O script adiciona novos dados ao arquivo existente, se houver.
-
-## Funcionalidades
-
-1. **Criar Sessão com Retries:**
-   - Configura uma sessão HTTP com tentativas automáticas de reenvio em caso de falhas.
-
-2. **Capturar Link do Jornal Diário:**
-   - Gera o link para a edição do DOU de uma data específica.
-
-3. **Extrair URLs de Títulos:**
-   - Obtém as URLs de todas as publicações do DOU para uma data específica.
-
-4. **Extrair Avisos de Licitação:**
-   - Filtra as URLs para encontrar apenas avisos de licitação.
-
-5. **Filtrar Avisos de Brasília:**
-   - Verifica se os avisos de licitação são referentes a Brasília.
-
-6. **Extrair Informações dos Avisos:**
-   - Extrai detalhes dos avisos de licitação, como tipo, número, órgão responsável, objeto, assinante, data de publicação, etc.
-
-7. **Criar JSON com Avisos:**
-   - Cria um arquivo JSON com todas as informações extraídas dos avisos de licitação referentes a Brasília.
-
-## Exemplo de Execução
-
-```sh
-python3 main.py 01/01/2020 31/12/2020
-```
-
-Isso processará todos os avisos de licitação do DOU para o intervalo de 01/01/2020 a 31/12/2020 e armazenará as informações em `data.json`.
-
-## Instruções de Teste
-Para executar os testes, utilize o comando:
 ```bash
-python3 -m pytest teste_functions.py
-```
-Isso irá executar todos os testes definidos no arquivo `teste_functions.py` e fornecer um relatório detalhado dos resultados.
-
-#### Considerações Finais
-Esses testes visam aumentar a cobertura de testes e garantir que as funções no módulo `functions.py` funcionem corretamente sob diferentes condições. Por favor, revise os testes adicionados e informe caso haja alguma sugestão ou modificação necessária.
-
-Obrigado!
-
-### Tutorial: Como executar o Front-End
-
-**1. Instalando dependências**
-
-Certifique-se de ter a [versão mais recente do NodeJS](https://nodejs.org/en/download) instalada.
-
-Navegue até o diretório `web` e execute o seguinte comando:
-```
-npm install
+git clone https://github.com/unb-mds/LicitaBSB-24.1.git
 ```
 
-**2. Executando o React**
+### Backend
 
-Para rodar o projeto, dentro do diretório /web, execute o comando:
-```
-npm run dev
-```
+#### Execução
 
-O site estará disponível por padrão na porta 5432 em [http://localhost:5432/](http://localhost:5432/) ou [http://127.0.0.1:5432/](http://127.0.0.1:5432/)
+1. Navegue até o diretório `backend/` e crie um ambiente virtual:
+
+    **Linux**
+    ```bash
+    python -m venv venv
+    source venv/bin/activate
+    ```
+
+    **Windows**
+    ```bash
+    python -m venv venv
+    venv\Scripts\activate
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Para rodar o projeto, navegue até o diretório `backend/server` e execute:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+A API REST estará disponível em `http://127.0.0.1:8000/`.
+
+#### Endpoints
+
+Os endpoints da API REST se encontram no link https://bit.ly/licitabsb_api ou no caso de você está executando o programa em sua máquina ele se encontrará em http://localhost:8000/swagger/ 
+
+#### Bot de Licitações no X
+
+Este bot publica automaticamente as licitações do Diário Oficial do Distrito Federal (DODF) e do Diário Oficial da União (DOU) referentes a Brasília na conta [@LicitaBSB](https://x.com/LicitaBSB).
+
+##### Funcionalidades
+
+- Autenticação automática na API do Twitter.
+- Integração com o sistema de coleta de dados.
+- Formatação de dados para postagens legíveis.
+- Publicação automática das licitações.
+- Testes com dados simulados.
+
+##### Configuração
+
+1. Clone o repositório:
+
+    ```bash
+    git clone https://github.com/unb-mds/LicitaBSB-24.1.git
+    cd LicitaBSB-24.1
+    ```
+
+2. Instale as dependências:
+
+    ```bash
+    pip install -r backend/requirements.txt
+    ```
+
+3. Configure as variáveis de ambiente criando um arquivo `.env` na raiz do projeto com as chaves da API do Twitter:
+
+    ```env
+    TWITTER_API_KEY=seu_api_key
+    TWITTER_API_KEY_SECRET=seu_api_key_secret
+    TWITTER_ACCESS_TOKEN=seu_access_token
+    TWITTER_ACCESS_TOKEN_SECRET=seu_access_token_secret
+    TWITTER_BEARER_TOKEN=seu_bearer_token
+    ```
+
+4. Atualize o sistema de coleta de dados para garantir que a database esteja atualizada.
+
+##### Uso
+
+1. Execute o script principal:
+
+    ```bash
+    python backend/twitter_bot/auto.py
+    ```
+
+2. O bot publicará as licitações no Twitter. Se não houver licitações no dia, o bot publicará uma mensagem informando.
+
+### Frontend
+
+1. Navegue até o diretório `web` e instale as dependências:
+
+    ```bash
+    npm install
+    ```
+
+2. Para rodar o projeto, execute:
+
+    ```bash
+    npm run dev
+    ```
+
+O site estará disponível em `http://localhost:5432/`.
+
+### Observações
+
+- A atualização do banco de dados é feita automaticamente por Cronjob.
+- Para testar os componentes do backend, acesse o repositório e clique no componente desejado.

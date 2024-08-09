@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './style.module.css';
 import { useParams } from 'react-router-dom';
-import { getLicitacaoById } from '../../services/licitacoes.service';
 import { formatBiddingObject } from '../../utils/format-bidding-object';
 
 import facebook from '../../../assets/facebook.svg';
@@ -13,7 +12,7 @@ import valor from '../../../assets/valor.svg';
 
 export default function BiddingPage() {
   const parametros = useParams();
-  const licitacao = getLicitacaoById(parametros.id);
+  const licitacao = {};
   const dados = formatBiddingObject(licitacao);
 
   return (
@@ -25,13 +24,13 @@ export default function BiddingPage() {
           <span className={styles.subtitle}>{dados.nomeOrgao}</span>
         </div>
         <div className={styles.shareContainer}>
-          <a data-testid="role-link-id" href="">
+          <a href="">
             <img src={twitter} />
           </a>
-          <a data-testid="role-link-id" href="">
+          <a href="">
             <img src={facebook} />
           </a>
-          <a data-testid="role-link-id" href="">
+          <a href="">
             <img src={google} />
           </a>
         </div>
@@ -39,7 +38,7 @@ export default function BiddingPage() {
       <div className={styles.biddingInfoContainer}>
         <div className={styles.biddingInfoElement}>
           <img src={calendario} />
-          <p data-testid="data-test-id">{dados.data_abertura}</p>
+          <p>{dados.data_abertura}</p>
         </div>
         {dados.valor_Licitacao && (
           <div className={styles.biddingInfoElement}>
@@ -51,9 +50,7 @@ export default function BiddingPage() {
 
       <div className={styles.horizontalLine}></div>
 
-      <p data-testid="objeto-test-id" className={styles.objetoText}>
-        {dados.objeto}
-      </p>
+      <p className={styles.objetoText}>{dados.objeto}</p>
       <div className={styles.BiddingLink}>
         {dados.link && (
           <p>
