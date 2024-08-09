@@ -3,14 +3,11 @@ import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
-import { useSearchBidding } from '../../hooks/useSearchBidding';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState(''); //Estado com o input de texto
-
-  const { setWords } = useSearchBidding();
 
   function handdleChange(e) {
     setInput(e.target.value);
@@ -22,7 +19,6 @@ const Header = () => {
       .normalize('NFD')
       .replace(/[\u0300-\u036f]/g, '')
       .replace(/\//g, '-');
-    setWords(nomeDaRota);
     navigate(`/resultadobusca/${nomeDaRota}`);
   }
 
@@ -33,7 +29,7 @@ const Header = () => {
       </div>
       <div className={styles.subHeaderWrapper}>
         <div className={styles.subHeader}>
-          <a href="/">
+          <a href="/" className={styles.logo}>
             <img src={logo} alt="Logo do Projeto 'licita bsb'" />
           </a>
           <ul className={styles.headerLinksWrapper}>

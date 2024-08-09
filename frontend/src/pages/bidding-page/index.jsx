@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import styles from './style.module.css';
 import { useParams } from 'react-router-dom';
-import { getLicitacaoById } from '../../services/licitacoes.service';
 import { formatBiddingObject } from '../../utils/format-bidding-object';
 
 import facebook from '../../../assets/facebook.svg';
@@ -13,7 +12,7 @@ import valor from '../../../assets/valor.svg';
 
 export default function BiddingPage() {
   const parametros = useParams();
-  const licitacao = getLicitacaoById(parametros.id);
+  const licitacao = {};
   const dados = formatBiddingObject(licitacao);
 
   return (

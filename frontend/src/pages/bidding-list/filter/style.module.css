@@ -70,6 +70,22 @@
   width: 100px;
 }
 
+.orgaosInputContainer {
+  display: flex;
+  width: 100%;
+  background-color: var(--branco);
+  padding: 8px 12px;
+  margin-top: 1em;
+}
+
+.orgaosInput {
+  flex: 1;
+  outline: none;
+  border: none;
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 16px;
+}
+
 @media (max-width: 1300px) {
   .filterSection {
     display: none;

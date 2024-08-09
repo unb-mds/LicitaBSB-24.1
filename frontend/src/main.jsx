@@ -10,7 +10,6 @@ import BiddingList from './pages/bidding-list';
 import BiddingPage from './pages/bidding-page';
 import Header from './components/header';
 import Footer from './components/footer';
-import { BiddingProvider } from './context/BiddingContext';
 import BiddingSearchList from './pages/bidding-search-list';
 import { Error } from './pages/error';
 import Newsletter from './components/newsletter';
@@ -20,7 +19,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 function AppRoutes() {
   return (
     <BrowserRouter>
-      <BiddingProvider>
         <Header />
         <Routes>
           <Route path="/" element={<Landing />} />
@@ -33,15 +31,12 @@ function AppRoutes() {
           <Route path="/resultadobusca/:word" element={<BiddingSearchList />} />
         </Routes>
         <Footer />
-      </BiddingProvider>
     </BrowserRouter>
   );
 }
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <LocalizationProvider dateAdapter={AdapterDayjs}>
     <AppRoutes />
-    </LocalizationProvider>
-  </React.StrictMode>,
+  </LocalizationProvider>,
 );
