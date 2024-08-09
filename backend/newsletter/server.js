@@ -8,25 +8,21 @@ const app = express();
 app.use(cors());
 const port = 5000;
 app.use(express.json());
-
-
 app.use(bodyParser.json());
 
 const mailchimpUrl = process.env.URL_CHIMP;
-const mailchimpApiKey = process.env.API;
 
 app.post('/subscribe', async (req, res) => {
   const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).send({ detail: 'Email is required.' });
+  }
 
   try {
     await axios.post(mailchimpUrl, {
       email_address: email,
       status: 'subscribed',
-    }, {
-      auth: {
-        username: 'anystring',
-        password: mailchimpApiKey,
-      },
     });
 
     res.send('Subscription successful!');

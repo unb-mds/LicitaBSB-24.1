@@ -13,7 +13,7 @@ import Footer from './components/footer';
 import { BiddingProvider } from './context/BiddingContext';
 import BiddingSearchList from './pages/bidding-search-list';
 import { Error } from './pages/error';
-import Newsletter from './components/newsletter';
+import Newsletter from './components/newsletter/Index';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
