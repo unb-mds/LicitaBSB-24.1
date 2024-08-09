@@ -23,26 +23,27 @@ export default function AboutBot() {
             <p className={style.cardAboutTextP}>
               Os bots são utilizados para uma variedade de propósitos,
               incluindo:
+              <br />
+              <br />
+              <b>Marketing:</b> Promover produtos ou serviços.
+              <br />
+              <b>Suporte ao Cliente:</b> Fornecer assistência inicial e
+              responder a perguntas comuns.
+              <br />
+              <b>Entretenimento:</b> Criar e compartilhar conteúdo divertido.
+              <br />
+              <b>Manipulação de Informações:</b> Espalhar desinformação ou
+              manipular conversas online.
+              <br />
+              <b>Divulgação de Notícias:</b> Compartilhar automaticamente
+              atualizações de notícias ou informações relevantes.
             </p>
             <ul>
-              <li>
-                <b>Marketing:</b> Promover produtos ou serviços.
-              </li>
-              <li>
-                <b>Suporte ao Cliente:</b> Fornecer assistência inicial e
-                responder a perguntas comuns.
-              </li>
-              <li>
-                <b>Entretenimento:</b> Criar e compartilhar conteúdo divertido.
-              </li>
-              <li>
-                <b>Manipulação de Informações:</b> Espalhar desinformação ou
-                manipular conversas online.
-              </li>
-              <li>
-                <b>Divulgação de Notícias:</b> Compartilhar automaticamente
-                atualizações de notícias ou informações relevantes.
-              </li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
             </ul>
           </div>
           <img className={style.imagem1} src={imagemBot} />

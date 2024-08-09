@@ -23,10 +23,6 @@
     margin: 1rem;
 }
 
-.imagem2{
-    width: 15rem;
-}
-
 .listContext{
     list-style-type:disc;
 }
@@ -81,4 +77,71 @@
 .cardAboutImg{
     margin-top: 16px;
     width: 50%;
+}
+
+@media(max-width: 1200px){
+    .cardAboutTitle {
+        font-size: 30px;
+        margin-left: 0;
+        font-weight: normal;
+        text-align: center;
+    }
+    
+    .cardAboutSubtitle {
+        margin-left: 0;
+        font-size: 24px;
+        margin: 1rem;
+        font-weight: normal;
+        text-align: start;
+    }
+    
+    .cardAboutSubtitle3{
+        font-size: 16px;
+        margin-left: 0;
+        font-weight: normal;
+        text-align: start;
+    }
+    
+    .cardAboutTextP {
+        margin: .3rem;
+        margin-left: 0;
+        font-size: 15px;
+        text-align: justify;
+    }
+    .imagem1{
+        width: 20rem;
+        margin: 1rem;
+    }
+}
+
+@media(max-width: 800px){
+    body{
+        background-color: #F9F9F9;
+    }
+    .mainContext{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding: 0;
+        background-color: #F9F9F9;
+    }
+    .cardAboutContext {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding-top: 0px;
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        border: 0;
+        margin: 0;
+        box-shadow: 0 0 transparent;
+        background-color: #F9F9F9;
+        
+    }
 }
