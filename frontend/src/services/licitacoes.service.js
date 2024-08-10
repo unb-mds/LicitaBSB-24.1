@@ -1,4 +1,3 @@
-import { transformDate } from '../utils/transform-date.utils';
 import { api } from '../config/api';
 
 export async function getLicitacoes(filters) {
@@ -7,8 +6,7 @@ export async function getLicitacoes(filters) {
       params: {
         ...filters
       }
-    });
-    console.log(data)
+    })
     return data;
   } catch (error) {
     console.log(error);

@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
-import {
-  getLicitacoes,
-  pagLicitacoes,
-} from '../../../services/licitacoes.service';
+import { getLicitacoes } from '../../../services/licitacoes.service';
 import CardLicitacoes from '../../../components/card-licitacoes';
 
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 export default function UltimasLicitacoes() {
-  const licitacoes = getLicitacoes();
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
 
+  const loadData = async () => {
+    const data = await getLicitacoes();
+    setListaLicitacoes(data.results.slice(0, 3));
+  }
+
   useEffect(() => {
-    setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0));
+    loadData();
   }, []);
 
   return (
@@ -28,7 +29,6 @@ export default function UltimasLicitacoes() {
         </div>
         <div className={styles.licitacoesWrapper}>
           {listaLicitacoes.map((item) => {
-            // console.log(item)
             return <CardLicitacoes key={item.id} data={item} />;
           })}
         </div>
