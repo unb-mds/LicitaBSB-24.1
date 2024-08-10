@@ -1,6 +1,6 @@
 import React from 'react';
 import UltimasLicitacoes from './ultimas-licitacoes';
-import SubscribeForm from '../../components/newsletter';
+import Newsletter from '../../components/newsletter/Index.jsx';
 
 export default function Landing() {
   return (
@@ -8,7 +8,7 @@ export default function Landing() {
       <main>
         <div>
           <UltimasLicitacoes />
-          <SubscribeForm />
+          <Newsletter />
         </div>
       </main>
     </>
