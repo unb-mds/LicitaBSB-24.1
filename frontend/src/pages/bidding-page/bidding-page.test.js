@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import BiddingPage from '.';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
-describe('Deve renderizar as seguintes informações da licitação: ', () => {
+describe('Deve renderizar as seguintes informações: ', () => {
   test('tipo da licitação e órgão.', () => {
     const mockId = '10101010';
     render(
