@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import style from '../newsletter/style.module.css'
+import style from '../newsletter/style.module.css';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
@@ -9,10 +9,17 @@ const SubscribeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const payload = {
+      email_address: email, // Ajuste o campo conforme necessário
+      status: 'subscribed'
+    };
+
     try {
-      const response = await axios.post('https://us22.api.mailchimp.com/3.0/lists/96c79ddec6/members/', { email });
-      // Adicionar API e URL do site quando estiver pronto.
-      // Ainda está me modo produção.
+      const response = await axios.post('https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe', payload, {
+        headers: {
+          'Content-Type': 'application/json' // Adiciona o cabeçalho Content-Type
+        }
+      });
       setMessage(response.data);
     } catch (error) {
       setMessage('Subscription failed.');
@@ -23,9 +30,7 @@ const SubscribeForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={style.newsletter}>
-        <h1>Se inscreva para receber atualizações sobre futuras
-          licitações!
-        </h1>
+        <h1>Se inscreva para receber atualizações sobre futuras licitações!</h1>
         <label>Email:</label>
         <input
           type="email"
@@ -33,7 +38,7 @@ const SubscribeForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-      <button type="submit">Subscribe</button>
+        <button type="submit">Subscribe</button>
       </div>
       {message && <p>{message}</p>}
     </form>
