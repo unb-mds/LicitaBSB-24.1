@@ -35,8 +35,8 @@ export default function CardLicitacoes({ data }) {
         </div>
       </div>
       <div>
-        <Link to={`/licitacoes/${data.id}-${data.tipo}`}>
-          <p className={styles.cardButton}>Ver Mais</p>
+        <Link to={`/licitacoes/${data.id}-${data.tipo}`} className={styles.cardButton}>
+          <p>Ver Mais</p>
         </Link>
       </div>
     </div>

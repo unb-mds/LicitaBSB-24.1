@@ -58,10 +58,13 @@
 }
 
 .cardButton {
-  color: var(--texto);
+  text-decoration: none;
+}
+
+.cardButton p {
   background-color: var(--branco);
   padding: 4px 72px;
-  text-decoration: none;
+  color: var(--texto);
 }
 
 .cardStatus{
