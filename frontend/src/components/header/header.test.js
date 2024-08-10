@@ -3,16 +3,13 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Header from '.';
 import { MemoryRouter } from 'react-router-dom';
-import { BiddingProvider } from '../../context/BiddingContext';
 import userEvent from '@testing-library/user-event';
 
 describe('Deve renderizar os links das rotas: ', () => {
   test('Licitações', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Licitações');
@@ -21,9 +18,7 @@ describe('Deve renderizar os links das rotas: ', () => {
   test('Sobre as Licitações', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Sobre as Licitações');
@@ -32,9 +27,7 @@ describe('Deve renderizar os links das rotas: ', () => {
   test('Sobre o Projeto', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Sobre o Projeto');
@@ -43,9 +36,7 @@ describe('Deve renderizar os links das rotas: ', () => {
   test('Sobre Nós', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Sobre Nós');
@@ -54,9 +45,7 @@ describe('Deve renderizar os links das rotas: ', () => {
   test('Dashboard', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Dashboard');
@@ -67,9 +56,7 @@ describe('Deve renderizar os links das rotas: ', () => {
 test('Deve renderizar a lista de links presentes no componente', () => {
   render(
     <MemoryRouter>
-      <BiddingProvider>
-        <Header />
-      </BiddingProvider>
+      <Header />
     </MemoryRouter>,
   );
   const listaDeLinks = screen.getAllByRole('listitem');
@@ -79,9 +66,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
 test('Deve renderizar o snapshot da lista de links do componente', () => {
   render(
     <MemoryRouter>
-      <BiddingProvider>
-        <Header />
-      </BiddingProvider>
+      <Header />
     </MemoryRouter>,
   );
   const listaDeLinks = screen.getAllByRole('listitem');
@@ -92,9 +77,7 @@ describe('Deve renderizar um campo de input', () => {
   test('no documento', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const campoTexto = screen.getByPlaceholderText('Pesquise aqui');
@@ -104,9 +87,7 @@ describe('Deve renderizar um campo de input', () => {
   test('de type: text', () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const campoTexto = screen.getByPlaceholderText('Pesquise aqui');
@@ -116,9 +97,7 @@ describe('Deve renderizar um campo de input', () => {
   test(' de type: text que pode ser preenchido', async () => {
     render(
       <MemoryRouter>
-        <BiddingProvider>
-          <Header />
-        </BiddingProvider>
+        <Header />
       </MemoryRouter>,
     );
     const campoTexto = screen.getByPlaceholderText('Pesquise aqui');
