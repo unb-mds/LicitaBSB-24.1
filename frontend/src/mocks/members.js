@@ -10,7 +10,7 @@ const membros = [
     id: '2',
     nome: 'Thales',
     descricao:
-      'Olá, sou Thales Euflauzino, estudante de Engenharia de Software. Desde criança, minha paixão pela computação me levou a desmontar e montar eletrônicos, além de me envolver com jogos online. Decidi pela Engenharia de Software para me especializar em backend e me interesso bastante por frontend também. Demonstro habilidades em Java e Python, e tenho conhecimento básico em C. Tenho uma paixão por resolver desafios técnicos e aplicar meus conhecimentos de programação para criar soluções robustas e inovadoras. Além disso, gosto de compartilhar conhecimento e estou sempre em busca constante de aprendizado.',
+      'Olá, sou Thales Euflauzino, estudante de Engenharia de Software na Universidade de Brasília. Tenho uma grande paixão por tecnologia e estou me especializando em desenvolvimento backend, com foco em Machine Learning e Inteligência Artificial. Possuo habilidades em Python, Java e C, e sou dedicado a resolver desafios técnicos, aplicando meus conhecimentos de programação para desenvolver soluções robustas e inovadoras.',
     github: 'https://github.com/thaleseuflauzino',
   },
   {
