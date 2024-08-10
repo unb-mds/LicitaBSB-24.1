@@ -5,10 +5,10 @@ export default function AboutBiddingDispatch() {
   return (
     <main className={style.mainContext}>
       <div className={style.cardAboutContext}>
-        <h1>
+        <h1 className={style.cardAboutTitle}>
           Dispensa de Licitação: Entendendo os Procedimentos e as Situações
         </h1>
-        <p>
+        <p className={style.cardAboutTextP}>
           A licitação é um processo administrativo formal que visa garantir a
           isonomia e a melhor proposta para a administração pública na
           contratação de bens e serviços. No entanto, há situações específicas
@@ -16,50 +16,64 @@ export default function AboutBiddingDispatch() {
           licitatório pode ser dispensada. Esses casos são conhecidos como
           "dispensa de licitação".
         </p>
-        <h2>Fundamentos Legais</h2>
-        <p>
+        <h2 className={style.cardAboutSubtitle}>Fundamentos Legais</h2>
+        <p className={style.cardAboutTextP}>
           A dispensa de licitação está prevista na Lei nº 8.666/1993, também
           conhecida como Lei de Licitações e Contratos, e na Lei nº 14.133/2021,
           a Nova Lei de Licitações e Contratos Administrativos. Ambas
           estabelecem critérios e condições para que a administração pública
           possa contratar diretamente sem a necessidade de licitação.
         </p>
-        <img src={dispensaImagem} />
-        <h2>Principais Hipóteses de Dispensa de Licitação</h2>
-        <h3>1. Baixo Valor:</h3>
-        <p>
+        <img className={style.cardAboutImg} src={dispensaImagem} />
+        <h2 className={style.cardAboutSubtitle}>
+          Principais Hipóteses de Dispensa de Licitação
+        </h2>
+        <h3 className={style.cardAboutSubtitle3}>1. Baixo Valor:</h3>
+        <p className={style.cardAboutTextP}>
           Contratação de obras e serviços de engenharia com valor até R$
           100.000,00.
           <br />
           Contratação de outros serviços e compras com valor até R$ 50.000,00.
         </p>
-        <h3>2. Situação de Emergência ou Calamidade Pública:</h3>
-        <p>
+        <h3 className={style.cardAboutSubtitle3}>
+          2. Situação de Emergência ou Calamidade Pública:
+        </h3>
+        <p className={style.cardAboutTextP}>
           Quando há necessidade de resposta imediata para evitar prejuízo ou
           risco à segurança de pessoas, obras, serviços, equipamentos e outros
           bens, públicos ou particulares.
         </p>
-        <h3>3. Intervenção no Domínio Econômico:</h3>
-        <p>
+        <h3 className={style.cardAboutSubtitle3}>
+          3. Intervenção no Domínio Econômico:
+        </h3>
+        <p className={style.cardAboutTextP}>
           Contratação de empresas para aquisição de bens ou serviços necessários
           à reabilitação de empresa pública, inclusive na hipótese de
           desestatização.
         </p>
-        <h3>4. Aquisição ou Locação de Imóvel:</h3>
-        <p>
+        <h3 className={style.cardAboutSubtitle3}>
+          4. Aquisição ou Locação de Imóvel:
+        </h3>
+        <p className={style.cardAboutTextP}>
           Quando se tratar de imóvel destinado ao atendimento das finalidades
           precípuas da administração.
         </p>
-        <h3>5. Contratação de Instituições de Ensino ou de Pesquisa:</h3>
-        <p>
+        <h3 className={style.cardAboutSubtitle3}>
+          5. Contratação de Instituições de Ensino ou de Pesquisa:
+        </h3>
+        <p className={style.cardAboutTextP}>
           Para serviços técnicos especializados de natureza singular, com
           profissionais ou empresas de notória especialização.
         </p>
-        <h3>6. Restauro de Obras de Arte e Bens Históricos:</h3>
+        <h3 className={style.cardAboutSubtitle3}>
+          6. Restauro de Obras de Arte e Bens Históricos:
+        </h3>
         Serviços de restauração de obras de arte e bens de valor histórico cujo
         valor de mercado seja impossível de ser estabelecido.
-        <h2>Procedimentos e Formalidades</h2>
-        <p>
+        <h2 className={style.cardAboutSubtitle}>
+          Procedimentos e Formalidades
+        </h2>
+        <p className={style.cardAboutTextP}>
           Mesmo nos casos de dispensa de licitação, a administração pública deve
           observar certos procedimentos para garantir a transparência e a
           justificativa da contratação:
@@ -76,8 +90,8 @@ export default function AboutBiddingDispatch() {
           pesquisa de preços no mercado para assegurar que os valores
           contratados são compatíveis com os praticados.
         </p>
-        <h2>Considerações Finais</h2>
-        <p>
+        <h2 className={style.cardAboutSubtitle}>Considerações Finais</h2>
+        <p className={style.cardAboutTextP}>
           A dispensa de licitação é um instrumento importante para a
           administração pública, permitindo maior flexibilidade e eficiência em
           determinadas situações. No entanto, seu uso deve ser criterioso e bem
