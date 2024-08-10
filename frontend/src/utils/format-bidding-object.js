@@ -1,4 +1,4 @@
-export function formatBiddingObject(licitacao){
+export function formatBiddingObject(licitacao) {
   const dados = {
     tipo: licitacao.tipo,
     numero_licitacao: licitacao.numero_licitacao,
@@ -11,8 +11,8 @@ export function formatBiddingObject(licitacao){
     edicao: licitacao.edicao,
     secao_pagina: licitacao.secao_pagina,
     link: licitacao.link,
-    valor_Licitacao: licitacao.Valor_Licitacao
+    valor_Licitacao: licitacao.Valor_Licitacao,
   };
 
-  return dados
+  return dados;
 }

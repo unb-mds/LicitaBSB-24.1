@@ -24,13 +24,13 @@ export default function BiddingPage() {
           <span className={styles.subtitle}>{dados.nomeOrgao}</span>
         </div>
         <div className={styles.shareContainer}>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={twitter} />
           </a>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={facebook} />
           </a>
-          <a href="">
+          <a data-testid="role-link-id" href="">
             <img src={google} />
           </a>
         </div>
@@ -50,7 +50,9 @@ export default function BiddingPage() {
 
       <div className={styles.horizontalLine}></div>
 
-      <p className={styles.objetoText}>{dados.objeto}</p>
+      <p data-testid="objeto-test-id" className={styles.objetoText}>
+        {dados.objeto}
+      </p>
       <div className={styles.BiddingLink}>
         {dados.link && (
           <p>

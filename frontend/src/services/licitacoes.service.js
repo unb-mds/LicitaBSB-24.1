@@ -17,40 +17,38 @@ export async function getLicitacoes(filters) {
 }
 
 function searchBidding(biddings, input) {
-  return listaFiltrada = biddings.filter((licitacao) => {
+  return (listaFiltrada = biddings.filter((licitacao) => {
     const titulo =
       verifyBiddingType(licitacao) === 'aviso'
         ? licitacao['Nome_UG']
         : licitacao['nomeOrgao'];
     return [];
-  });
+  }));
 }
 
 export function getLicitacaoByString(parametros) {
-  const dados = parametros.search
-  return searchBidding(getLicitacoes(), dados)
+  const dados = parametros.search;
+  return searchBidding(getLicitacoes(), dados);
 }
 
 export function pagLicitacoes(array, size, pos) {
-  const aux = array.length > size
-    ? array.slice(size * pos, size * (pos + 1))
-    : array;
+  const aux =
+    array.length > size ? array.slice(size * pos, size * (pos + 1)) : array;
   return [];
 }
 
-export function getLicitacoesFilter(tipo, input, valor){
-
+export function getLicitacoesFilter(tipo, input, valor) {
   const biddingValor = parseInt(valor);
 
   let licitacoes = getLicitacoes();
 
-  if(tipo){
+  if (tipo) {
     licitacoes = licitacoes.filter((licit) => {
       return licit.tipo.toLowerCase().includes(tipo);
-    })
+    });
   }
 
-  if(input){
+  if (input) {
     licitacoes = licitacoes.filter((licitacao) => {
       const tipo = 'Nome_UG' in licitacao ? 'aviso' : 'extrato';
       const titulo =
@@ -66,17 +64,23 @@ export function getLicitacoesFilter(tipo, input, valor){
     });
   }
 
-  if(valor){
+  if (valor) {
     licitacoes = licitacoes.filter((licitacao) => {
-      if(typeof licitacao.valores_licitacao == "string")
-          return parseFloat(licitacao.valores_licitacao.replace(",", ".")) > biddingValor;
-      return parseFloat(licitacao.valores_licitacao?.[0].replace(",", ".")) > biddingValor;
+      if (typeof licitacao.valores_licitacao == 'string')
+        return (
+          parseFloat(licitacao.valores_licitacao.replace(',', '.')) >
+          biddingValor
+        );
+      return (
+        parseFloat(licitacao.valores_licitacao?.[0].replace(',', '.')) >
+        biddingValor
+      );
     });
   }
 
   licitacoes.sort((a, b) => {
-    const dateA = Date.parse(transformDate(a["data_abertura"]))
-    const dateB = Date.parse(transformDate(b["data_abertura"]))
+    const dateA = Date.parse(transformDate(a['data_abertura']));
+    const dateB = Date.parse(transformDate(b['data_abertura']));
     if (dateA > dateB) {
       return -1;
     }
@@ -85,7 +89,7 @@ export function getLicitacoesFilter(tipo, input, valor){
     }
 
     return 0;
-  })
+  });
 
   return [];
 }

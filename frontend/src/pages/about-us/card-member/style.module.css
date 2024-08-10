@@ -1,25 +1,29 @@
-.cardAboutUsContext {
+li{
     display: flex;
     align-items: center;
+    flex-direction: row;
     gap: 16px;
 }
-
-.cardAboutUsPhotoContext {
+.cardAboutUsPhotoContextEstilizadaPar{
+    order: 1 
+}
+.cardAboutUsPhotoContextEstilizadaImpar{
+    order: -1;
+}
+.name{
+        font-size: 28px;
+        font-weight: 600;
+}
+.desc{
+    font-size: 20px;
+    text-align: justify;      
+}
+.cardAboutUsPhotoContextEstilizada{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
-.cardAboutUsNome {
-    font-size: 28px;
-}
-
-.cardAboutUsDes {
-    font-size: 16px;
-    text-align: justify;
-}
-
-.cardAboutUsPhoto {
+.cardAboutUsPhotoEstilizado{
     margin-bottom: 16px;
     width: 200px;
     height: 200px;
@@ -27,10 +31,22 @@
     filter: drop-shadow(-5px 6px 6px gray);
 }
 
-._aboutUsP_1jydu_21 {
-    text-align: justify;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+@media (max-width: 1500px) {
+    .desc{
+      font-size: 16px;
+      text-align: justify;
+    }
+    .cardAboutUsPhotoEstilizado {
+        width: 220px;
+        height: 220px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    li{
+        flex-direction: column-reverse;
+    }
+    .cardAboutUsPhotoContextEstilizadaImpar{
+        order: 1;
+    }
   }
