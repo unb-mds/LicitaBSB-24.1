@@ -12,8 +12,12 @@ export default function BiddingList() {
   const [searchParams] = useSearchParams();
 
   const filterTipo = searchParams.get('tipo') ? searchParams.get('tipo') : '';
-  const filterInput = searchParams.get('search') ? searchParams.get('search') : '';
-  const filterValue = searchParams.get('value') ? searchParams.get('value') : '';
+  const filterInput = searchParams.get('search')
+    ? searchParams.get('search')
+    : '';
+  const filterValue = searchParams.get('value')
+    ? searchParams.get('value')
+    : '';
 
   const [filterParams, setFilterParams] = useState({
     page: 1,
@@ -33,27 +37,26 @@ export default function BiddingList() {
   }
 
   const handlePageChange = (_, value) => {
-    setFilterParams(prevParams => ({ ...prevParams, page: value }));
+    setFilterParams((prevParams) => ({ ...prevParams, page: value }));
     loadData(filterParams);
   };
 
   const buildFilterQuery = (params) => {
     return Object.keys(params)
-      .filter(key => params[key])
-      .map(key => `${key}=${params[key]}`)
+      .filter((key) => params[key])
+      .map((key) => `${key}=${params[key]}`)
       .join('&');
   };
 
-  function handleSearch(){
+  function handleSearch() {
     const querySearch = `/licitacoes?${buildFilterQuery(filterParams)}`;
     navigate(querySearch);
     navigate(0);
-  };
-
+  }
 
   useEffect(() => {
     loadData(filterParams);
-  }, [])
+  }, []);
 
   return (
     <main className={styles.mainSection}>
@@ -72,9 +75,7 @@ export default function BiddingList() {
         />
         <div className={styles.cardsWrapper}>
           {listaLicitacoes.map((item, idx) => {
-            return (
-              <CardLicitacoes key={`${idx} ${item.id}`} data={item}/>
-            );
+            return <CardLicitacoes key={`${idx} ${item.id}`} data={item} />;
           })}
           <Pagination count={resultCount} onChange={handlePageChange} />
         </div>

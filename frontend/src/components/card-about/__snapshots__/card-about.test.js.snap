@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar o snapshot da lista de informações presentes no artigo 1`] = `
+Array [
+  Array [
+    <h2
+      class="cardAboutText"
+    >
+      Título teste
+    </h2>,
+    <h2
+      class="cardAboutText"
+    >
+      Subtítulo teste
+    </h2>,
+  ],
+  Array [
+    <p
+      class="cardAboutTextP"
+    >
+      conteudoTeste1
+    </p>,
+    <p
+      class="cardAboutTextP"
+    >
+      conteudoTeste2
+    </p>,
+    <p
+      class="cardAboutTextP"
+    >
+      Para saber mais, acesso este
+       
+      <a
+        href="linkTeste"
+        target="_blank"
+      >
+        link
+      </a>
+      .
+    </p>,
+  ],
+]
+`;

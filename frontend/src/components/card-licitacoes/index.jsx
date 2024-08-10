@@ -12,7 +12,9 @@ export default function CardLicitacoes({ data }) {
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
-            <p className={styles.cardStatusText}>Status: {setStatusBidding(data)}</p>
+            <p className={styles.cardStatusText}>
+              Status: {setStatusBidding(data)}
+            </p>
           </div>
           <p className={styles.cardStatusText}>Modalidade: {data.tipo}</p>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styles from './style.module.css';
 
 export default function CustomButton({ onPress, title, light = false }) {
@@ -9,5 +9,5 @@ export default function CustomButton({ onPress, title, light = false }) {
     >
       {title}
     </button>
-  )
+  );
 }

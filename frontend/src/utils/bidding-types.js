@@ -1,4 +1,1 @@
-export const biddingTypes = [
-  'extrato',
-  'aviso'
-]
+export const biddingTypes = ['extrato', 'aviso'];

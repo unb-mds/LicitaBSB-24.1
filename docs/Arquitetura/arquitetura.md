@@ -121,3 +121,4 @@ O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, 
 | 2024-07-11 | 1.3    | Explicação da raspagem de dados             | Marcelo Adrian  |
 | 2024-07-14 | 2.0    | Informações sobre o Frontend                | Marcelo Adrian  |
 | 2024-07-14 | 2.1    | Reestruturação de acordo com novas features | Marcelo Adrian  |
+

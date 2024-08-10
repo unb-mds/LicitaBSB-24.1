@@ -11,6 +11,7 @@ const Header = () => {
 
   function handdleChange(e) {
     setInput(e.target.value);
+    // const listaDeLinks = screen.getAllByRole('listitem');
   }
 
   function buscarLicitacao() {
@@ -32,7 +33,10 @@ const Header = () => {
           <a href="/" className={styles.logo}>
             <img src={logo} alt="Logo do Projeto 'licita bsb'" />
           </a>
-          <ul className={styles.headerLinksWrapper}>
+          <ul
+            data-testid="listaResponsiva"
+            className={styles.headerLinksWrapper}
+          >
             <li className={styles.headerListItem}>
               <a href="/licitacoes" className={styles.headerLink}>
                 Licitações

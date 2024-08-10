@@ -22,7 +22,7 @@ const Footer = () => {
             </li>
             <li>
               <Link to={'/sobrelicitacao'}>
-                <p>Sobre as Licitacoes</p>
+                <p>Sobre as Licitações</p>
               </Link>
             </li>
             <li>

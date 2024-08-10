@@ -9,21 +9,20 @@ const SubscribeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const payload = {
-      email_address: email, // Ajuste o campo conforme necessário
-      status: 'subscribed'
-    };
-
     try {
-      const response = await axios.post('https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe', payload, {
-        headers: {
-          'Content-Type': 'application/json' // Adiciona o cabeçalho Content-Type
-        }
-      });
+      const response = await axios.post(
+        'https://us22.api.mailchimp.com/3.0/lists/96c79ddec6/members/',
+        { email },
+      );
+      // Adicionar API e URL do site quando estiver pronto.
+      // Ainda está me modo produção.
       setMessage(response.data);
     } catch (error) {
       setMessage('Subscription failed.');
-      console.error('Error:', error.response ? error.response.data : error.message);
+      console.error(
+        'Error:',
+        error.response ? error.response.data : error.message,
+      );
     }
   };
 

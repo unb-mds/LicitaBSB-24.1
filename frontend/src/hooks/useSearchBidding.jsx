@@ -1,6 +1,4 @@
-
 export const useSearchBidding = () => {
-
   function getBiddingSearch(licitacoes, input) {
     const inputFormat = input
       .toLowerCase()
