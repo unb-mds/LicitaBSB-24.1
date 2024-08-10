@@ -79,3 +79,7 @@
     }
   }
 }
+
+.mailLink {
+  color: var(--textoBranco);
+}

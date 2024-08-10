@@ -21,11 +21,6 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to={'/sobrelicitacao'}>
-                <p>Sobre as Licitações</p>
-              </Link>
-            </li>
-            <li>
               <Link to={'/sobrenos'}>
                 <p>Sobre a Equipe</p>
               </Link>
@@ -35,18 +30,15 @@ const Footer = () => {
                 <p>Dashboard</p>
               </Link>
             </li>
-            <li> 
-            <div className="horizontal-container">
-            <a href='https://x.com/licitabsb'>
-              <p>Nos siga nas outras redes </p> 
-              <p> <img src={logoTwitter} width={25}/> </p>
-            </a>
-            <a href='mailto:unb.licitabsb@gmail.com'>
-              <p>Fale Conosco</p>
-              <img src={logoTeste} width={25}/>
-            </a>
-          </div>
-        </li>
+            <li>
+              <p>Fale Conosco: <a className={styles.mailLink} href='mailto:unb.licitabsb@gmail.com'>unb.licitabsb@gmail.com</a></p>
+            </li>
+            <li>
+              <a target='blank' href='https://x.com/licitabsb'>
+                <p>Nos siga nas outras redes</p>
+                <img src={logoTwitter} width={25} />
+              </a>
+            </li>
           </ul>
         </div>
         <img src={logoUnb} />
