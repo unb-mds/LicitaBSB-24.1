@@ -4,7 +4,7 @@ exports[`Deve renderizar o snapshot da lista de links presentes no componente 1`
 Array [
   <li>
     <a
-      to="/licitacoes"
+      href="/licitacoes"
     >
       <p>
         Licitações
@@ -13,7 +13,7 @@ Array [
   </li>,
   <li>
     <a
-      to="/sobrelicitacao"
+      href="/sobrelicitacao"
     >
       <p>
         Sobre as Licitações
@@ -22,7 +22,7 @@ Array [
   </li>,
   <li>
     <a
-      to="/sobrenos"
+      href="/sobrenos"
     >
       <p>
         Sobre a Equipe
@@ -31,7 +31,7 @@ Array [
   </li>,
   <li>
     <a
-      to="/dashboard"
+      href="/dashboard"
     >
       <p>
         Dashboard
