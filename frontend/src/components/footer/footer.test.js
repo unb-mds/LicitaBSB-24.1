@@ -40,7 +40,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
     <Footer />
   </BrowserRouter>);
   const listaDeLinks = screen.getAllByRole('listitem');
-  expect(listaDeLinks).toHaveLength(4);
+  expect(listaDeLinks).toHaveLength(5);
 });
 
 test('Deve renderizar o snapshot da lista de links presentes no componente', () => {
