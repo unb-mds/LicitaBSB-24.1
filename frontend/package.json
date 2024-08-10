@@ -30,6 +30,7 @@
     "axios": "^1.7.3",
     "chart.js": "^4.4.3",
     "dayjs": "^1.11.12",
+    "dotenv": "^16.4.5",
     "install": "^0.13.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",

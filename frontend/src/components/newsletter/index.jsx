@@ -10,9 +10,10 @@ const SubscribeForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:5000/subscribe', {
-        email,
-      });
+      const response = await axios.post(
+        'https://us22.api.mailchimp.com/3.0/lists/96c79ddec6/members/',
+        { email },
+      );
       // Adicionar API e URL do site quando estiver pronto.
       // Ainda está me modo produção.
       setMessage(response.data);
