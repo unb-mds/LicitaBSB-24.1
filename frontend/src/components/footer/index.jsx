@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import logoLicitaBSB from '../../../assets/logo.png';
 import logoUnb from '../../../assets/logoUnb.png';
+import logoTwitter from '../../../assets/twitter.svg';
+import logoTeste from '../../../assets/google.svg';
 import styles from './style.module.css';
 
 const Footer = () => {
@@ -33,6 +35,18 @@ const Footer = () => {
                 <p>Dashboard</p>
               </Link>
             </li>
+            <li> 
+            <div className="horizontal-container">
+            <a href='https://x.com/licitabsb'>
+              <p>Nos siga nas outras redes </p> 
+              <p> <img src={logoTwitter} width={25}/> </p>
+            </a>
+            <a href='mailto:unb.licitabsb@gmail.com'>
+              <p>Fale Conosco</p>
+              <img src={logoTeste} width={25}/>
+            </a>
+          </div>
+        </li>
           </ul>
         </div>
         <img src={logoUnb} />
