@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
-import { Box, Slider } from '@mui/material';
+import { Box, capitalize, Slider } from '@mui/material';
 import { getOrgaos } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
@@ -93,7 +93,7 @@ export default function Filter({
             <li key={type} className={styles.listItemStyle}>
               <CustomInputRadio
                 name="licit-tipo"
-                label={type.charAt(0).toUpperCase() + type.slice(1)}
+                label={capitalize(type)}
                 onPress={() => {
                   setFilterParams({
                     ...filterParams,

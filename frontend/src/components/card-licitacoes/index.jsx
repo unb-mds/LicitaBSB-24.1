@@ -3,6 +3,7 @@ import { setStatusBidding } from '../../utils/status-bidding';
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
 import { Link } from 'react-router-dom';
+import { capitalize } from '@mui/material';
 
 export default function CardLicitacoes({ data }) {
   return (
@@ -13,10 +14,10 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
             <p className={styles.cardStatusText}>
-              Status: {setStatusBidding(data).toUpperCase()}
+              Status: {capitalize(setStatusBidding(data))}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {data.tipo.toUpperCase()}</p>
+          <p className={styles.cardStatusText}>Modalidade: {capitalize(data.tipo)}</p>
         </div>
 
         <div className={styles.licitacoesInfo}>
