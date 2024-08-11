@@ -1,7 +1,20 @@
 import style from './style.module.css';
-import dispensaImagem from '../../../assets/articles/imagem-dispensa.png';
+import { useEffect, useState } from 'react';
 
-export default function AboutBiddingDispatch({ onClick }) {
+export default function AboutBiddingDispatch() {
+  const [image, setImage] = useState('');
+  useEffect(() => {
+    import('../../../assets/articles/imagem-dispensa.png')
+      .then((image) => {
+        setImage(image.default);
+      })
+      .catch((err) => {
+        console.log(
+          'Erro ao carregar imagem (../../../assets/articles/imagem-dispensa.png)',
+        );
+      });
+  }, []);
+
   return (
     <main className={style.mainContext}>
       <div data-testid="main-context" className={style.cardAboutContext}>
@@ -24,7 +37,7 @@ export default function AboutBiddingDispatch({ onClick }) {
           estabelecem critérios e condições para que a administração pública
           possa contratar diretamente sem a necessidade de licitação.
         </p>
-        <img className={style.cardAboutImg} src={dispensaImagem} />
+        <img className={style.cardAboutImg} src={image} />
         <h2 className={style.cardAboutSubtitle}>
           Principais Hipóteses de Dispensa de Licitação
         </h2>
@@ -107,7 +120,6 @@ export default function AboutBiddingDispatch({ onClick }) {
             data-testid="link-test-id-1"
             href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=8666&ano=1993&ato=beaEzYU5ENFpWTd78"
             target="__blank"
-            onClick={onClick}
           >
             Lei nº 8.666 de 21 de junho de 1993
           </a>{' '}
@@ -116,7 +128,6 @@ export default function AboutBiddingDispatch({ onClick }) {
             data-testid="link-test-id-2"
             href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=14133&ano=2021&ato=8d4MTTE5UMZpWTf64"
             target="__blank"
-            onClick={onClick}
           >
             Lei nº 14.133 de 01 de abril de 2021
           </a>

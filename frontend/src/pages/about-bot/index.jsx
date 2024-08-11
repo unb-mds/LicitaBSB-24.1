@@ -1,7 +1,20 @@
+import { useState, useEffect } from 'react';
 import style from './style.module.css';
-import imagemBot from '../../../assets/articles/imagem-bot.png';
 
 export default function AboutBot() {
+  const [image, setImage] = useState('');
+  useEffect(() => {
+    import('../../../assets/articles/imagem-bot.png')
+      .then((image) => {
+        setImage(image.default);
+      })
+      .catch((err) => {
+        console.log(
+          'Erro ao carregar imagem (../../../assets/articles/imagem-bot.png)',
+        );
+      });
+  }, []);
+
   return (
     <main className={style.mainContext}>
       <div className={style.cardAboutContext}>
@@ -38,7 +51,7 @@ export default function AboutBot() {
               atualizações de notícias ou informações relevantes.
             </p>
           </div>
-          <img className={style.imagem1} src={imagemBot} />
+          <img className={style.imagem1} src={image} />
         </span>
 
         <span>
