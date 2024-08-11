@@ -12,10 +12,6 @@
       - [Configuração](#configuração)
       - [Uso](#uso)
     - [Testes](#testes)
-    - [Testes Automatizados com Django](#testes-automatizados-com-django)
-    - [Configuração Inicial](#configuração-inicial)
-    - [Estrutura dos Testes](#estrutura-dos-testes)
-    - [Executando os Testes](#executando-os-testes)
   - [Frontend](#frontend)
   - [Observações](#observações)
 - [Documentação](#documentação)
@@ -133,11 +129,11 @@ Este bot publica automaticamente as licitações do Diário Oficial do Distrito 
 
 #### Testes
 
-#### Testes Automatizados com Django
+1. Testes Automatizados com Django
 
 O Django oferece um framework robusto para criação e execução de testes automatizados. Abaixo estão as instruções de como rodar os testes.
 
-#### Configuração Inicial
+2. Configuração Inicial
 
 Certifique-se de que os pacotes de teste estão instalados. Se estiver utilizando um ambiente virtual, ative-o antes de instalar as dependências:
 
@@ -147,13 +143,15 @@ venv\Scripts\activate     # No Windows
 pip install -r requirements.txt
 ```
 
-#### Estrutura dos Testes
+3. Estrutura dos Testes
+   
 Por convenção, os testes em Django são colocados em um arquivo tests.py dentro de cada aplicação, ou em uma pasta tests/ contendo múltiplos arquivos de teste.
 
-#### Executando os Testes
+4. Executando os Testes
+   
 Para rodar os testes, navegue até `backend/server` e utilize o comando:
 
-```
+```bash
 python manage.py test
 ```
 
