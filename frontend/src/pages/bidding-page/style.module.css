@@ -124,9 +124,32 @@
 
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
     .headingContainer {
         flex-direction: column;
         align-items: center;
+    }
+
+    .mainContainer {
+        flex-direction: column;
+        margin: 55px 180px;
+    }
+
+    .outrasLicitacoesContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 24px;
+    }
+
+    .outrasLicitacoesContainer > h3 {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainContainer {
+        margin: 26px 32px;
     }
 }
