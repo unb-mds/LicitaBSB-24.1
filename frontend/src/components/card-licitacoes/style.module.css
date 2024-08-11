@@ -59,6 +59,7 @@
 
 .cardButton {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .cardButton p {
