@@ -69,7 +69,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "licitabsb.netlify.app",
+    "https://licitabsb.netlify.app",
     "https://fastidious-daffodil-724e94.netlify.app",
 ]
 
