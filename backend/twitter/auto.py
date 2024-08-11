@@ -30,7 +30,7 @@ def encurtar_url(url):
         print(f"Exceção ao encurtar URL: {e}")
         return url
 
-site = "https://bit.ly/licitabsb" # Link para o site
+site = "https://bit.ly/LicitaBSB" # Link para o site
 
 def editar_mensagem(mensagem):
     result = parse_tweet(mensagem).asdict()
