@@ -1,5 +1,4 @@
-import { render, renderHook, screen } from '@testing-library/react';
-import { useState, useEffect } from 'react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AboutBiddingDispatch from '.';
 
@@ -14,7 +13,9 @@ describe('Na página Sobre Dispensas de Licitações, deve ser renderizado ', ()
         const lista = await screen.getAllByRole('paragraph')
         expect(lista).toHaveLength(10)
     })
-    test('a imagem presente no artigo', () => {
-
+    test('o snapshot com o conteúdo do artigo', () => {
+        render(<AboutBiddingDispatch />)
+        const lista = screen.getByTestId('main-context-text')
+        expect(lista).toMatchSnapshot()
     })
 })

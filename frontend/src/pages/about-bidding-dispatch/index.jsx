@@ -6,7 +6,7 @@ export default function AboutBiddingDispatch() {
 
   return (
     <main className={style.mainContext}>
-      <div data-testid="main-context" className={style.cardAboutContext}>
+      <div data-testid="main-context-text" className={style.cardAboutContext}>
         <h1 className={style.cardAboutTitle}>
           Dispensa de Licitação: Entendendo os Procedimentos e as Situações
         </h1>

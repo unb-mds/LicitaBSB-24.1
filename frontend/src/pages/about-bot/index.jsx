@@ -7,7 +7,7 @@ export default function AboutBot() {
 
   return (
     <main className={style.mainContext}>
-      <div className={style.cardAboutContext}>
+      <div data-testid="main-container-text" className={style.cardAboutContext}>
         <span className={style.paragraph1Context}>
           <div>
             <h1 className={style.cardAboutTitle}>
