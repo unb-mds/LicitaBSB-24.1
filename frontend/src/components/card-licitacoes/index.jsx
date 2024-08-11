@@ -14,10 +14,10 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
             <p className={styles.cardStatusText}>
-              Status: {capitalize(setStatusBidding(data))}
+              Status: {capitalize(setStatusBidding(data) ? setStatusBidding(data): '')}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {capitalize(data.tipo)}</p>
+          <p className={styles.cardStatusText}>Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}</p>
         </div>
 
         <div className={styles.licitacoesInfo}>
