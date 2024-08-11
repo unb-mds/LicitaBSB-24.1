@@ -241,7 +241,7 @@ def licitacao_maior_valor(request):
 
 ALLOWED_ORIGINS = [
     'https://fastidious-daffodil-724e94.netlify.app',
-    'licitabsb.netlify.app/'
+    'licitabsb.netlify.app'
 ]
 
 @swagger_auto_schema(
