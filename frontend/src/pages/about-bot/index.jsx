@@ -1,6 +1,5 @@
 import style from './style.module.css';
 import imagemBot from '../../../assets/articles/imagem-bot.png';
-import pythonIcon from '../../../assets/articles/python-icon.png';
 
 export default function AboutBot() {
   return (
@@ -38,13 +37,6 @@ export default function AboutBot() {
               <b>Divulgação de Notícias:</b> Compartilhar automaticamente
               atualizações de notícias ou informações relevantes.
             </p>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
           </div>
           <img className={style.imagem1} src={imagemBot} />
         </span>

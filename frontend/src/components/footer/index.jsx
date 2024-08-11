@@ -31,10 +31,23 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <p>Fale Conosco: <a className={styles.mailLink} href='mailto:unb.licitabsb@gmail.com'>unb.licitabsb@gmail.com</a></p>
+              <p>
+                Fale Conosco:{' '}
+                <a
+                  data-testid="link-fale-conosco"
+                  className={styles.mailLink}
+                  href="mailto:unb.licitabsb@gmail.com"
+                >
+                  unb.licitabsb@gmail.com
+                </a>
+              </p>
             </li>
             <li>
-              <a target='blank' href='https://x.com/licitabsb'>
+              <a
+                data-testid="link-redes-sociais"
+                target="blank"
+                href="https://x.com/licitabsb"
+              >
                 <p>Nos siga nas outras redes</p>
                 <img src={logoTwitter} width={25} />
               </a>

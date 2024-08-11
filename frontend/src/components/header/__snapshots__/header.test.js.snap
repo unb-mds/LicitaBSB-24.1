@@ -27,6 +27,26 @@ Array [
   >
     <a
       class="headerLink"
+      href="/sobredispensadelicitacao"
+    >
+      Sobre Dispensas
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrebot"
+    >
+      Sobre o Bot
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
       href=""
     >
       Sobre o Projeto
@@ -70,6 +90,26 @@ Array [
       href="/SobreLicitacao"
     >
       Sobre as Licitações
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobredispensadelicitacao"
+    >
+      Sobre Dispensas
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrebot"
+    >
+      Sobre o Bot
     </a>
   </li>,
   <li

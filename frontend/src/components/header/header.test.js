@@ -60,7 +60,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
     </MemoryRouter>,
   );
   const listaDeLinks = screen.getAllByRole('listitem');
-  expect(listaDeLinks).toHaveLength(10);
+  expect(listaDeLinks).toHaveLength(14);
 });
 
 test('Deve renderizar o snapshot da lista de links do componente', () => {
