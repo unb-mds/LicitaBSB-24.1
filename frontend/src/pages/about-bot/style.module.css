@@ -1,31 +1,6 @@
-.mainContext{
-    margin-top: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cardAboutContext {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    width: 75%;
-    padding-top: 32px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-bottom: 32px;
-    box-shadow: 0 0 5px rgb(177, 175, 175);
-}
-
 .imagem1{
     width: 25rem;
     margin: 1rem;
-}
-
-.listContext{
-    list-style-type:disc;
 }
 
 .paragraph1Context{
@@ -45,6 +20,28 @@
     justify-content: center;
     align-items: center;
 }
+.mainContext{
+    margin-top: 3rem;
+    margin-left: 22.5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+}
+
+.cardAboutContext {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 100%;
+    padding-top: 32px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 32px;
+    box-shadow: 0 0 5px rgb(177, 175, 175);
+}
 
 .cardAboutTitle {
     font-size: 40px;
@@ -57,11 +54,13 @@
     margin-left: 0;
     font-size: 32px;
     margin: 1rem;
+    width: 100%;
     font-weight: normal;
     text-align: start;
 }
 
 .cardAboutSubtitle3{
+    width: 100%;
     font-size: 20px;
     margin-left: 0;
     font-weight: normal;
@@ -69,18 +68,27 @@
 }
 
 .cardAboutTextP {
+    width: 100%;
     margin: .5rem;
     margin-left: 0;
     font-size: 15px;
     text-align: justify;
 }
 
-.cardAboutImg{
-    margin-top: 16px;
-    width: 50%;
-}
-
 @media(max-width: 1200px){
+    .mainContext{
+        margin-top: 3rem;
+        margin-left: 12.5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 75%;
+    }
+    .cardAboutImg{
+        margin-top: 16px;
+        width: 20rem;
+    }
+
     .cardAboutTitle {
         font-size: 30px;
         margin-left: 0;
@@ -123,9 +131,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 16px;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        width: 90%;
+        margin: 0;
+        margin-left: 5%;
+        margin-top: 1.5rem;
         padding: 0;
         background-color: #F9F9F9;
     }

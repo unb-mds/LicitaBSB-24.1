@@ -1,8 +1,10 @@
 .mainContext{
     margin-top: 3rem;
+    margin-left: 22.5%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 55%;
 }
 
 .cardAboutContext {
@@ -11,7 +13,7 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    width: 90%;
+    width: 100%;
     padding-top: 32px;
     padding-left: 40px;
     padding-right: 40px;
@@ -57,6 +59,14 @@
 }
 
 @media(max-width: 1200px){
+    .mainContext{
+        margin-top: 3rem;
+        margin-left: 12.5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 75%;
+    }
     .cardAboutImg{
         margin-top: 16px;
         width: 20rem;
@@ -104,9 +114,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 16px;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        width: 90%;
+        margin: 0;
+        margin-left: 5%;
+        margin-top: 1.5rem;
         padding: 0;
         background-color: #F9F9F9;
     }
