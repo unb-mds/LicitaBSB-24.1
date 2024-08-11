@@ -1,6 +1,7 @@
 import membros from '../../mocks/members';
 import CardMember from './card-member';
 import styles from './style.module.css';
+import fotoemgrupo from '../../../assets/download.jpg'; // Importa a imagem corretamente
 
 export default function AboutUs() {
   return (
@@ -18,7 +19,7 @@ export default function AboutUs() {
       <img
         className={styles.aboutUsImg}
         data-testid="photo-testid"
-        src="../../assets/download.jpg"
+        src={fotoemgrupo} 
         alt="Foto de toda a equipe"
       />
 
