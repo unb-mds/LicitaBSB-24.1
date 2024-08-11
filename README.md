@@ -20,7 +20,7 @@
 
 **Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
-Acesse o nosso portal [aqui](https://bit.ly/licitabsb) para explorar as licitações de forma simples e rápida.
+Acesse o nosso portal [aqui](https://licitabsb.netlify.app) para explorar as licitações de forma simples e rápida.
 
 Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais. 
 
