@@ -239,6 +239,9 @@ def licitacao_maior_valor(request):
     else:
         return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
 
+ALLOWED_ORIGINS = [
+    'https://fastidious-daffodil-724e94.netlify.app'
+]
 
 @swagger_auto_schema(
     method='post',
@@ -250,7 +253,13 @@ def licitacao_maior_valor(request):
 )
 @api_view(['POST'])
 def subscribe_email(request):
-    email = request.data.get('email_address')  # Ajustado para 'email_address'
+    origin = request.headers.get('Origin')
+    
+    # Verifica se a requisição veio de um dos domínios permitidos
+    if origin not in ALLOWED_ORIGINS:
+        return Response({"detail": "Unauthorized origin."}, status=status.HTTP_403_FORBIDDEN)
+
+    email = request.data.get('email_address')
     
     if not email:
         return Response({"detail": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
