@@ -9,13 +9,19 @@ const SubscribeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!email) {
+      setMessage('Email is required.');
+      return;
+    }
+
     try {
       const response = await axios.post(
-        'https://us22.api.mailchimp.com/3.0/lists/96c79ddec6/members/',
-        { email },
+        'https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe',
+        {
+          email_address: email,
+          status: 'subscribed',
+        },
       );
-      // Adicionar API e URL do site quando estiver pronto.
-      // Ainda está me modo produção.
       setMessage(response.data);
     } catch (error) {
       setMessage('Subscription failed.');

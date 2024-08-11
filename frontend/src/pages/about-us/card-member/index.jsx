@@ -1,7 +1,10 @@
 import styles from './style.module.css';
 import { FaGithub } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import useGetImage from '../../../hooks/useGetImage';
 
 export default function CardMember({ nome, descricao, github, id }) {
+  const imageMember = useGetImage(`../../../../assets/members/${id}.jpg`);
   const controler = id % 2 === 1;
 
   return (
@@ -19,14 +22,18 @@ export default function CardMember({ nome, descricao, github, id }) {
             : styles.cardAboutUsPhotoContextEstilizadaImpar
         }
       >
-        <img
-          className={styles.cardAboutUsPhotoEstilizado}
-          src={`../../../../assets/members/${id}.jpg`}
-          alt="Foto do membro"
-        />
-        <a data-testid="campoLink" href={github} target="_blank">
-          <FaGithub /> Github
-        </a>
+        {imageMember && (
+          <img
+            className={styles.cardAboutUsPhotoEstilizado}
+            src={imageMember}
+            alt="Foto do membro"
+          />
+        )}
+        <div className={styles.githubLinkContainer}>
+          <a data-testid="campoLink" href={github} target="_blank">
+            <FaGithub /> Github
+          </a>
+        </div>
       </div>
     </li>
   );

@@ -5,10 +5,12 @@ li{
     gap: 16px;
 }
 .cardAboutUsPhotoContextEstilizadaPar{
-    order: 1 
+    order: 1;
+    text-align: center;
 }
 .cardAboutUsPhotoContextEstilizadaImpar{
     order: -1;
+    text-align: center;
 }
 .name{
         font-size: 28px;
@@ -29,6 +31,8 @@ li{
     height: 200px;
     border-radius: 50%;
     filter: drop-shadow(-5px 6px 6px gray);
+    display: block; 
+    margin: 0 auto;
 }
 
 @media (max-width: 1500px) {
@@ -50,3 +54,12 @@ li{
         order: 1;
     }
   }
+.githubLinkContainer {
+  margin-top: 10px; /* Espaço entre a imagem e o link */
+}
+
+.githubLinkContainer a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1em;
+}

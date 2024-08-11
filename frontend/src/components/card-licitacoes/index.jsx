@@ -13,17 +13,17 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
             <p className={styles.cardStatusText}>
-              Status: {setStatusBidding(data)}
+              Status: {setStatusBidding(data).toUpperCase()}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {data.tipo}</p>
+          <p className={styles.cardStatusText}>Modalidade: {data.tipo.toUpperCase()}</p>
         </div>
 
         <div className={styles.licitacoesInfo}>
           <p>Data de publicação: {data.data}</p>
           {data.valores && (
             <p className={styles.statusContainer}>
-              Valor da licitação: R$ {formatCurrency(data.valores[0])}
+              Valor da licitação: {formatCurrency(data.valores[0])}
             </p>
           )}
         </div>

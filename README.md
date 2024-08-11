@@ -137,6 +137,7 @@ Este bot publica automaticamente as licitações do Diário Oficial do Distrito 
 2. Para rodar o projeto, execute:
 
     ```bash
+    npm run build
     npm run dev
     ```
 

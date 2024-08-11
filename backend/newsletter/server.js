@@ -25,10 +25,10 @@ app.post('/subscribe', async (req, res) => {
       status: 'subscribed',
     });
 
-    res.send('Subscription successful!');
+    res.send('Inscrição realizada com sucesso!');
   } catch (error) {
     console.error('Error subscribing:', error);
-    res.status(500).send('Subscription failed.');
+    res.status(500).send('Houve um erro, tente novamente!');
   }
 });
 
