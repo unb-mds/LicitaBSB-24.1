@@ -14,6 +14,7 @@ import { Error } from './pages/error';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AboutBot from './pages/about-bot';
+import AboutBiddingDispatch from './pages/about-bidding-dispatch';
 
 function AppRoutes() {
   return (
@@ -23,6 +24,10 @@ function AppRoutes() {
         <Route path="/" element={<Landing />} />
         <Route path="*" element={<Error />} />
         <Route path="/sobrelicitacao" element={<AboutBidding />} />
+        <Route
+          path="/sobredispensadelicitacao"
+          element={<AboutBiddingDispatch />}
+        />
         <Route path="/sobrebot" element={<AboutBot />} />
         <Route path="/sobrenos" element={<AboutUs />} />
         <Route path="/dashboard" element={<Dashboard />} />

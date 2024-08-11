@@ -12,13 +12,6 @@ describe('Deve renderizar os links para as rotas: ', () => {
     const linkRoute = screen.getByText('Licitações');
     expect(linkRoute).toBeInTheDocument();
   });
-  test('SobreLicitacao', () => {
-    render(<BrowserRouter>
-      <Footer />
-    </BrowserRouter>);
-    const linkRoute = screen.getByText('Sobre as Licitações');
-    expect(linkRoute).toBeInTheDocument();
-  });
   test('sobrenos', () => {
     render(<BrowserRouter>
       <Footer />
@@ -31,6 +24,20 @@ describe('Deve renderizar os links para as rotas: ', () => {
       <Footer />
     </BrowserRouter>);
     const linkRoute = screen.getByText('Dashboard');
+    expect(linkRoute).toBeInTheDocument();
+  });
+  test('Fale conosco', () => {
+    render(<BrowserRouter>
+      <Footer />
+    </BrowserRouter>);
+    const linkRoute = screen.getByTestId('link-fale-conosco');
+    expect(linkRoute).toBeInTheDocument();
+  });
+  test('Redes sociais', () => {
+    render(<BrowserRouter>
+      <Footer />
+    </BrowserRouter>);
+    const linkRoute = screen.getByTestId('link-redes-sociais');
     expect(linkRoute).toBeInTheDocument();
   });
 });

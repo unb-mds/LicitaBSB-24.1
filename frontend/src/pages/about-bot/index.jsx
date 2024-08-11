@@ -1,11 +1,13 @@
 import style from './style.module.css';
-import imagemBot from '../../../assets/articles/imagem-bot.png';
-import pythonIcon from '../../../assets/articles/python-icon.png';
+import useGetImage from '../../hooks/useGetImage';
+// import immage from '../../../assets/articles/imagem-bot.png'
 
 export default function AboutBot() {
+  const image = useGetImage('../../../assets/articles/imagem-bot.png');
+
   return (
     <main className={style.mainContext}>
-      <div className={style.cardAboutContext}>
+      <div data-testid="main-container-text" className={style.cardAboutContext}>
         <span className={style.paragraph1Context}>
           <div>
             <h1 className={style.cardAboutTitle}>
@@ -38,15 +40,8 @@ export default function AboutBot() {
               <b>Divulgação de Notícias:</b> Compartilhar automaticamente
               atualizações de notícias ou informações relevantes.
             </p>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
           </div>
-          <img className={style.imagem1} src={imagemBot} />
+          <img className={style.imagem1} src={image} />
         </span>
 
         <span>

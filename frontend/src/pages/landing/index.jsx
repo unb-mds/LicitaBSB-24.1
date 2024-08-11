@@ -1,14 +1,16 @@
 import React from 'react';
 import UltimasLicitacoes from './ultimas-licitacoes';
-import SubscribeForm from '../../components/newsletter/index.jsx';
+import Newsletter from '../../components/newsletter/index.jsx';
 
 export default function Landing() {
   return (
-    <main>
-      <div>
-        <UltimasLicitacoes />
-        <SubscribeForm />
-      </div>
-    </main>
+    <>
+      <main>
+        <div>
+          <UltimasLicitacoes />
+          <Newsletter />
+        </div>
+      </main>
+    </>
   );
 }

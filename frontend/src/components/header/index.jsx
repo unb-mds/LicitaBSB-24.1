@@ -3,15 +3,14 @@ import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
-  const [input, setInput] = useState(''); //Estado com o input de texto
+  const [input, setInput] = useState('');
 
   function handdleChange(e) {
     setInput(e.target.value);
-    // const listaDeLinks = screen.getAllByRole('listitem');
   }
 
   function buscarLicitacao() {
@@ -45,6 +44,16 @@ const Header = () => {
             <li className={styles.headerListItem}>
               <a href="/SobreLicitacao" className={styles.headerLink}>
                 Sobre as Licitações
+              </a>
+            </li>
+            <li className={styles.headerListItem}>
+              <a href="/sobredispensadelicitacao" className={styles.headerLink}>
+                Sobre Dispensas
+              </a>
+            </li>
+            <li className={styles.headerListItem}>
+              <a href="/sobrebot" className={styles.headerLink}>
+                Sobre o Bot
               </a>
             </li>
             <li className={styles.headerListItem}>
@@ -90,6 +99,16 @@ const Header = () => {
           <li className={styles.headerListItem}>
             <a href="/SobreLicitacao" className={styles.headerLink}>
               Sobre as Licitações
+            </a>
+          </li>
+          <li className={styles.headerListItem}>
+            <a href="/sobredispensadelicitacao" className={styles.headerLink}>
+              Sobre Dispensas
+            </a>
+          </li>
+          <li className={styles.headerListItem}>
+            <a href="/sobrebot" className={styles.headerLink}>
+              Sobre o Bot
             </a>
           </li>
           <li className={styles.headerListItem}>

@@ -13,15 +13,6 @@ Array [
   </li>,
   <li>
     <a
-      href="/sobrelicitacao"
-    >
-      <p>
-        Sobre as Licitações
-      </p>
-    </a>
-  </li>,
-  <li>
-    <a
       href="/sobrenos"
     >
       <p>
@@ -39,36 +30,32 @@ Array [
     </a>
   </li>,
   <li>
-    <div
-      class="horizontal-container"
-    >
+    <p>
+      Fale Conosco:
+       
       <a
-        href="https://x.com/licitabsb"
-      >
-        <p>
-          Nos siga nas outras redes 
-        </p>
-        <p>
-           
-          <img
-            src="twitter.svg"
-            width="25"
-          />
-           
-        </p>
-      </a>
-      <a
+        class="mailLink"
+        data-testid="link-fale-conosco"
         href="mailto:unb.licitabsb@gmail.com"
       >
-        <p>
-          Fale Conosco
-        </p>
-        <img
-          src="google.svg"
-          width="25"
-        />
+        unb.licitabsb@gmail.com
       </a>
-    </div>
+    </p>
+  </li>,
+  <li>
+    <a
+      data-testid="link-redes-sociais"
+      href="https://x.com/licitabsb"
+      target="blank"
+    >
+      <p>
+        Nos siga nas outras redes
+      </p>
+      <img
+        src="twitter.svg"
+        width="25"
+      />
+    </a>
   </li>,
 ]
 `;
