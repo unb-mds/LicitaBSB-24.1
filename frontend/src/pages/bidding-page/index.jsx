@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import styles from './style.module.css';
 import { useParams } from 'react-router-dom';
@@ -14,6 +14,14 @@ export default function BiddingPage() {
   const parametros = useParams();
   const licitacao = {};
   const dados = formatBiddingObject(licitacao);
+
+  const loadData = async () => {
+
+  }
+
+  useEffect(() => {
+    console.log(parametros)
+  }, [])
 
   return (
     <div className={styles.biddingContainer}>
