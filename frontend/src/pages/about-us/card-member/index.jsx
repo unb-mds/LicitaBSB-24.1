@@ -1,11 +1,20 @@
 import styles from './style.module.css';
 import { FaGithub } from 'react-icons/fa';
 import { useEffect, useState } from 'react';
-import useGetImage from '../../../hooks/useGetImage';
 
 export default function CardMember({ nome, descricao, github, id }) {
-  const imageMember = useGetImage(`../../../../assets/members/${id}.jpg`);
+  const [memberImage, setMemberImage] = useState('');
   const controler = id % 2 === 1;
+
+  useEffect(() => {
+    import(`../../../../assets/members/${id}.jpg`)
+      .then((image) => {
+        setMemberImage(image.default);
+      })
+      .catch((err) => {
+        console.error(`Erro ao carregar a imagem do membro ${id}:`, err);
+      });
+  }, [id]);
 
   return (
     <li>
@@ -22,18 +31,16 @@ export default function CardMember({ nome, descricao, github, id }) {
             : styles.cardAboutUsPhotoContextEstilizadaImpar
         }
       >
-        {imageMember && (
+        {memberImage && (
           <img
             className={styles.cardAboutUsPhotoEstilizado}
-            src={imageMember}
+            src={memberImage}
             alt="Foto do membro"
           />
         )}
-        <div className={styles.githubLinkContainer}>
-          <a data-testid="campoLink" href={github} target="_blank">
-            <FaGithub /> Github
-          </a>
-        </div>
+        <a data-testid="campoLink" href={github} target="_blank">
+          <FaGithub /> Github
+        </a>
       </div>
     </li>
   );
