@@ -1,19 +1,8 @@
 import style from './style.module.css';
-import { useEffect, useState } from 'react';
+import useGetImage from '../../hooks/useGetImage';
 
 export default function AboutBiddingDispatch() {
-  const [image, setImage] = useState('');
-  useEffect(() => {
-    import('../../../assets/articles/imagem-dispensa.png')
-      .then((image) => {
-        setImage(image.default);
-      })
-      .catch((err) => {
-        console.log(
-          'Erro ao carregar imagem (../../../assets/articles/imagem-dispensa.png)',
-        );
-      });
-  }, []);
+  const image = useGetImage('../../../assets/articles/imagem-dispensa.png');
 
   return (
     <main className={style.mainContext}>

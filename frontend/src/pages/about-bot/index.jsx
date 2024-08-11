@@ -1,19 +1,9 @@
-import { useState, useEffect } from 'react';
 import style from './style.module.css';
+import useGetImage from '../../hooks/useGetImage';
+// import immage from '../../../assets/articles/imagem-bot.png'
 
 export default function AboutBot() {
-  const [image, setImage] = useState('');
-  useEffect(() => {
-    import('../../../assets/articles/imagem-bot.png')
-      .then((image) => {
-        setImage(image.default);
-      })
-      .catch((err) => {
-        console.log(
-          'Erro ao carregar imagem (../../../assets/articles/imagem-bot.png)',
-        );
-      });
-  }, []);
+  const image = useGetImage('../../../assets/articles/imagem-bot.png');
 
   return (
     <main className={style.mainContext}>

@@ -17,7 +17,7 @@ exports[`Na página 'Sobre licitações', deve ser renderizado  o snapshot com o
   </p>
   <img
     class="cardAboutImg"
-    src="imagem-licitacao.png"
+    src=""
   />
   <h2
     class="cardAboutSubtitle"
