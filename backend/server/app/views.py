@@ -240,7 +240,8 @@ def licitacao_maior_valor(request):
         return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
 
 ALLOWED_ORIGINS = [
-    'https://fastidious-daffodil-724e94.netlify.app'
+    'https://fastidious-daffodil-724e94.netlify.app',
+    'licitabsb.netlify.app/'
 ]
 
 @swagger_auto_schema(
