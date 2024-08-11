@@ -1,9 +1,10 @@
 import React from 'react';
 import style from './style.module.css';
-import useGetImage from '../../hooks/useGetImage';
+// import useGetImage from '../../hooks/useGetImage';
+import image from '../../../assets/articles/imagem-licitacao.png';
 
 export default function AboutBidding() {
-  const imagem = useGetImage('../../../assets/articles/imagem-licitacao.png');
+  // const imagem = useGetImage('../../../assets/articles/imagem-licitacao.png');
 
   return (
     <main className={style.mainContext}>
@@ -19,7 +20,7 @@ export default function AboutBidding() {
           contratações públicas, assegurando que a proposta mais vantajosa seja
           escolhida.
         </p>
-        <img className={style.cardAboutImg} src={imagem} />
+        <img className={style.cardAboutImg} src={image} />
         <h2 className={style.cardAboutSubtitle}>Termos Importantes</h2>
         <p className={style.cardAboutTextP}>
           <b>Edital</b>: Documento que estabelece as regras e condições para a
