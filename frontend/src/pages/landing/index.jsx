@@ -4,13 +4,11 @@ import SubscribeForm from '../../components/newsletter/Index.jsx';
 
 export default function Landing() {
   return (
-    <>
-      <main>
-        <div>
-          <UltimasLicitacoes />
-          <SubscribeForm />
-        </div>
-      </main>
-    </>
+    <main>
+      <div>
+        <UltimasLicitacoes />
+        <SubscribeForm />
+      </div>
+    </main>
   );
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { setStatusBidding } from '../../utils/status-bidding';
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { capitalize } from '@mui/material';
 
 export default function CardLicitacoes({ data }) {

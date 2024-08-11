@@ -39,6 +39,18 @@ main {
   height: 100%;
 }
 
+@media (max-width: 1300px) {
+  main {
+    margin: 26px 20%;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    margin: 26px 32px;
+  }
+}
+
 @media (max-width: 720px){
   body {
     background-color: var(--branco);
