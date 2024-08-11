@@ -22,7 +22,8 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 32px
+    gap: 32px;
+    width: 100%;
 }
 
 
