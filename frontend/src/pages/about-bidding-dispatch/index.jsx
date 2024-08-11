@@ -1,8 +1,9 @@
 import style from './style.module.css';
-import useGetImage from '../../hooks/useGetImage';
+// import useGetImage from '../../hooks/useGetImage';
+import image from '../../../assets/articles/imagem-dispensa.png';
 
 export default function AboutBiddingDispatch() {
-  const image = useGetImage('../../../assets/articles/imagem-dispensa.png');
+  // const image = useGetImage('');
 
   return (
     <main className={style.mainContext}>

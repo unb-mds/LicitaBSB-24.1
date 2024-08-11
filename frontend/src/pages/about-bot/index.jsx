@@ -1,9 +1,9 @@
 import style from './style.module.css';
-import useGetImage from '../../hooks/useGetImage';
-// import immage from '../../../assets/articles/imagem-bot.png'
+// import useGetImage from '../../hooks/useGetImage';
+import image from '../../../assets/articles/imagem-bot.png';
 
 export default function AboutBot() {
-  const image = useGetImage('../../../assets/articles/imagem-bot.png');
+  // const image = useGetImage('');
 
   return (
     <main className={style.mainContext}>
