@@ -20,9 +20,9 @@ const SubscribeForm = () => {
           'Content-Type': 'application/json' // Adiciona o cabeçalho Content-Type
         }
       });
-      setMessage(response.data);
+      setMessage('Inscrição realizada com sucesso!');
     } catch (error) {
-      setMessage('Subscription failed.');
+      setMessage('Houve um erro, tente novamente!');
       console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
