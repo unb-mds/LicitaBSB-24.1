@@ -13,10 +13,10 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
             <p className={styles.cardStatusText}>
-              Status: {setStatusBidding(data)}
+              Status: {setStatusBidding(data).toUpperCase()}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {data.tipo}</p>
+          <p className={styles.cardStatusText}>Modalidade: {data.tipo.toUpperCase()}</p>
         </div>
 
         <div className={styles.licitacoesInfo}>
