@@ -1,13 +1,36 @@
+.mainContainer {
+    display: flex;
+    margin: 52px 144px;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.outrasLicitacoesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    gap: 24px;
+}
+
+.outrasLicitacoesContainer > h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.cardsLicitacoesWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .biddingContainer{
     display: flex;
     flex: 1;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    width: 80%;
     padding: 32px;
     background-color: var(--branco);
-    margin: 52px auto;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -15,6 +38,7 @@
     font-size: 24px;
     margin-bottom: 16px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 .headingContainer {
@@ -22,7 +46,8 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 32px
+    gap: 32px;
+    width: 100%;
 }
 
 
@@ -79,6 +104,11 @@
     gap: 16px;
 }
 
+.link {
+    color: var(--link);
+    font-size: 18px;
+}
+
 @media (max-width: 720px) {
     .biddingContainer {
         width: 100%;
@@ -94,9 +124,32 @@
 
 }
 
-@media (max-width: 1300px) {
+@media (max-width: 1400px) {
     .headingContainer {
         flex-direction: column;
         align-items: center;
+    }
+
+    .mainContainer {
+        flex-direction: column;
+        margin: 55px 180px;
+    }
+
+    .outrasLicitacoesContainer {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 24px;
+    }
+
+    .outrasLicitacoesContainer > h3 {
+        font-size: 22px;
+        font-weight: bold;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainContainer {
+        margin: 26px 32px;
     }
 }

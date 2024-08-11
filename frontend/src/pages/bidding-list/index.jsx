@@ -28,11 +28,11 @@ export default function BiddingList() {
   });
 
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
-  const [resultCount, serResultCount] = useState(0);
+  const [resultCount, setResultCount] = useState(0);
 
   async function loadData(filter) {
     const data = await getLicitacoes(filter);
-    serResultCount(data.count);
+    setResultCount(data.count);
     setListaLicitacoes(data.results);
   }
 
@@ -77,7 +77,7 @@ export default function BiddingList() {
           {listaLicitacoes.map((item, idx) => {
             return <CardLicitacoes key={`${idx} ${item.id}`} data={item} />;
           })}
-          <Pagination count={resultCount} onChange={handlePageChange} />
+          <Pagination count={Math.ceil(resultCount / 10)} onChange={handlePageChange} />
         </div>
       </div>
     </main>

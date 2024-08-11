@@ -2,9 +2,16 @@ import React from 'react';
 import { setStatusBidding } from '../../utils/status-bidding';
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { capitalize } from '@mui/material';
 
 export default function CardLicitacoes({ data }) {
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/licitacoes/${data.id}`);
+    navigate(0);
+  }
+
   return (
     <div className={styles.cardWrapper}>
       <h5 className={styles.cardTitle}>{data.nome_orgao}</h5>
@@ -13,10 +20,10 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
             <p className={styles.cardStatusText}>
-              Status: {setStatusBidding(data).toUpperCase()}
+              Status: {capitalize(setStatusBidding(data) ? setStatusBidding(data): '')}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {data.tipo.toUpperCase()}</p>
+          <p className={styles.cardStatusText}>Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}</p>
         </div>
 
         <div className={styles.licitacoesInfo}>
@@ -35,9 +42,9 @@ export default function CardLicitacoes({ data }) {
         </div>
       </div>
       <div>
-        <Link to={`/licitacoes/${data.id}-${data.tipo}`} className={styles.cardButton}>
+        <a onClick={handleNavigate} className={styles.cardButton}>
           <p>Ver Mais</p>
-        </Link>
+        </a>
       </div>
     </div>
   );

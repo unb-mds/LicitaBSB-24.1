@@ -13,3 +13,15 @@ export async function getLicitacoes(filters) {
     return [];
   }
 }
+
+export async function getLicitacaoById(id) {
+  try {
+    const { data } = await api.get(`/licitacoes/${id}`);
+    console.log(data)
+    return data;
+
+  } catch (error) {
+    console.log(error);
+    return {};
+  }
+}
