@@ -83,7 +83,7 @@ export default function Filter({
       <div>
         {filterInput && <h3 className={styles.subtitle}>"{filterInput}"</h3>}
         <span className={styles.description}>
-          {resultCount * 10} resultados obtidos
+          {resultCount} resultados obtidos
         </span>
       </div>
       <div>
