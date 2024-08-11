@@ -23,7 +23,7 @@ export default function CardLicitacoes({ data }) {
           <p>Data de publicação: {data.data}</p>
           {data.valores && (
             <p className={styles.statusContainer}>
-              Valor da licitação: R$ {formatCurrency(data.valores[0])}
+              Valor da licitação: {formatCurrency(data.valores[0])}
             </p>
           )}
         </div>
