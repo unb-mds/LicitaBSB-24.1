@@ -9,26 +9,21 @@ const SubscribeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email) {
-      setMessage('Email is required.');
-      return;
-    }
+    const payload = {
+      email_address: email, // Ajuste o campo conforme necessário
+      status: 'subscribed'
+    };
 
     try {
-      const response = await axios.post(
-        'https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe',
-        {
-          email_address: email,
-          status: 'subscribed',
-        },
-      );
-      setMessage(response.data);
+      const response = await axios.post('https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe', payload, {
+        headers: {
+          'Content-Type': 'application/json' // Adiciona o cabeçalho Content-Type
+        }
+      });
+      setMessage('Inscrição realizada com sucesso!');
     } catch (error) {
-      setMessage('Subscription failed.');
-      console.error(
-        'Error:',
-        error.response ? error.response.data : error.message,
-      );
+      setMessage('Houve um erro, tente novamente!');
+      console.error('Error:', error.response ? error.response.data : error.message);
     }
   };
 

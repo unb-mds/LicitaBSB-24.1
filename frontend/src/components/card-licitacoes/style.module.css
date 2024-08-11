@@ -59,6 +59,7 @@
 
 .cardButton {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .cardButton p {
@@ -77,7 +78,6 @@
 }
 .cardStatusText{
   font-weight: bold;
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -88,7 +88,7 @@
   -webkit-box-orient: vertical;
 }
 
-@media (max-width: 1500px){
+@media (max-width: 1600px){
   .cardWrapper{
     padding: 1rem;
   }
