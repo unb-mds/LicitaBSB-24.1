@@ -5,7 +5,7 @@ import style from './style.module.css';
 export default function AboutBidding() {
   return (
     <main className={style.mainContext}>
-      <div className={style.cardAboutContext}>
+      <div data-testid="main-container-text" className={style.cardAboutContext}>
         <h1 className={style.cardAboutTitle}>
           Licitações: Conceito e Termos Relevantes
         </h1>
