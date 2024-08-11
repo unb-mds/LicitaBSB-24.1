@@ -1,10 +1,10 @@
 import style from './style.module.css';
 import dispensaImagem from '../../../assets/articles/imagem-dispensa.png';
 
-export default function AboutBiddingDispatch() {
+export default function AboutBiddingDispatch({ onClick }) {
   return (
     <main className={style.mainContext}>
-      <div className={style.cardAboutContext}>
+      <div data-testid="main-context" className={style.cardAboutContext}>
         <h1 className={style.cardAboutTitle}>
           Dispensa de Licitação: Entendendo os Procedimentos e as Situações
         </h1>
@@ -103,11 +103,21 @@ export default function AboutBiddingDispatch() {
         </p>
         <p>
           As referências para escrita deste material foram retiradas da{' '}
-          <a href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=8666&ano=1993&ato=beaEzYU5ENFpWTd78">
+          <a
+            data-testid="link-test-id-1"
+            href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=8666&ano=1993&ato=beaEzYU5ENFpWTd78"
+            target="__blank"
+            onClick={onClick}
+          >
             Lei nº 8.666 de 21 de junho de 1993
           </a>{' '}
           e da{' '}
-          <a href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=14133&ano=2021&ato=8d4MTTE5UMZpWTf64">
+          <a
+            data-testid="link-test-id-2"
+            href="https://legislacao.presidencia.gov.br/atos/?tipo=LEI&numero=14133&ano=2021&ato=8d4MTTE5UMZpWTf64"
+            target="__blank"
+            onClick={onClick}
+          >
             Lei nº 14.133 de 01 de abril de 2021
           </a>
           .
