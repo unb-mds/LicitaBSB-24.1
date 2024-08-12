@@ -40,35 +40,35 @@ export default function Dashboard() {
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-mensal'),
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-mensais'),
         ]);
-  
+
         if (!quantidadeAnualResponse.ok || !valoresAnualResponse.ok || !quantidadeMensalResponse.ok || !valoresMensalResponse.ok) {
           throw new Error('Erro na requisição');
         }
-  
+
         const quantidadeAnualData = await quantidadeAnualResponse.json();
         const valoresAnualData = await valoresAnualResponse.json();
         const quantidadeMensalData = await quantidadeMensalResponse.json();
         const valoresMensalData = await valoresMensalResponse.json();
-  
+
         const quantidadeAnualAgrupada = {};
         const valoresAnualAgrupados = {};
         const quantidadeMensalAgrupada = {};
         const valoresMensalAgrupados = {};
-  
+
         quantidadeAnualData.forEach(({ ano, total_licitacoes }) => {
           const quantidadeNumerica = parseFloat(total_licitacoes);
           if (!isNaN(quantidadeNumerica)) {
             quantidadeAnualAgrupada[ano] = (quantidadeAnualAgrupada[ano] || 0) + quantidadeNumerica;
           }
         });
-  
+
         valoresAnualData.forEach(({ ano, valor_total }) => {
           const valorNumerico = parseFloat(valor_total);
           if (!isNaN(valorNumerico)) {
             valoresAnualAgrupados[ano] = valorNumerico;
           }
         });
-  
+
         quantidadeMensalData.forEach(({ ano, mes, total_licitacoes }) => {
           const key = `${ano}-${mes}`;
           const quantidadeNumerica = parseFloat(total_licitacoes);
@@ -76,7 +76,7 @@ export default function Dashboard() {
             quantidadeMensalAgrupada[key] = (quantidadeMensalAgrupada[key] || 0) + quantidadeNumerica;
           }
         });
-  
+
         valoresMensalData.forEach(({ ano, mes, valor_total }) => {
           const key = `${ano}-${mes}`;
           const valorNumerico = parseFloat(valor_total);
@@ -84,38 +84,50 @@ export default function Dashboard() {
             valoresMensalAgrupados[key] = valorNumerico;
           }
         });
-  
+
         setQuantidadePorAno(quantidadeAnualAgrupada);
         setValoresPorAno(valoresAnualAgrupados);
         setQuantidadePorMes(quantidadeMensalAgrupada);
         setValoresPorMes(valoresMensalAgrupados);
-  
+
         // Cálculo do total anual
         const totalQuantidadeAnual = Object.values(quantidadeAnualAgrupada).reduce((acc, curr) => acc + curr, 0);
         const totalValorAnual = Object.values(valoresAnualAgrupados).reduce((acc, curr) => acc + curr, 0);
-  
+
         setTotalQuantidadeAnual(totalQuantidadeAnual);
         setTotalValorAnual(totalValorAnual);
-  
+
       } catch (error) {
         console.error('Erro ao buscar os dados: ', error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
+
 
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
   const quantidadesAnuais = anos.map(ano => quantidadePorAno[ano] || 0);
 
   const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
-  const quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
-  const valoresMensaisSelecionado = meses.map((_, index) => valoresPorMes[`${anoSelecionado}-${index + 1}`] || 0);
+  
+  let quantidadesMensais, valoresMensaisSelecionado;
 
-  const totalQuantidadeMensal = meses.map((_, index) => quantidadesMensais[index] || 0);
-  const totalValoresMensal = meses.map((_, index) => valoresMensaisSelecionado[index] || 0);
+  if (anoSelecionado === 'Total') {
+    quantidadesMensais = meses.map((_, index) => 
+      anos.reduce((acc, ano) => acc + (quantidadePorMes[`${ano}-${index + 1}`] || 0), 0)
+    );
+    valoresMensaisSelecionado = meses.map((_, index) => 
+      anos.reduce((acc, ano) => acc + (valoresPorMes[`${ano}-${index + 1}`] || 0), 0)
+    );
+  } else {
+    quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
+    valoresMensaisSelecionado = meses.map((_, index) => valoresPorMes[`${anoSelecionado}-${index + 1}`] || 0);
+  }
+
+  const totalQuantidadeMensal = quantidadesMensais.reduce((acc, curr) => acc + curr, 0);
+  const totalValoresMensal = valoresMensaisSelecionado.reduce((acc, curr) => acc + curr, 0);
 
   const chartDataAnual = {
     labels: anos,
@@ -166,20 +178,10 @@ export default function Dashboard() {
     datasets: [
       {
         label: 'Quantidade Total por Mês',
-        data: totalQuantidadeMensal,
+        data: quantidadesMensais,
         backgroundColor: [
-        '#FFB3B3',
-'#B3E5FC',
-'#FFF59D',
-'#C8E6C9',
-'#D1C4E9',
-'#FFAB91',
-'#FFE0B2',
-'#B3E5FC',
-'#E1BEE7',
-'#FFAB91',
-'#D1C4E9',
-'#C5E1A5'
+          '#FFB3B3', '#B3E5FC', '#FFF59D', '#C8E6C9', '#D1C4E9', '#FFAB91',
+          '#FFE0B2', '#B3E5FC', '#E1BEE7', '#FFAB91', '#D1C4E9', '#C5E1A5'
         ],
         borderColor: 'rgba(0,0,0,0.1)',
         borderWidth: 1,
@@ -199,37 +201,25 @@ export default function Dashboard() {
       legend: {
         display: true,
         position: 'bottom',
-        labels: {
-          font: {
-            size: 18,
-          },
-        },
       },
     },
     scales: {
       y1: {
+        beginAtZero: true,
         type: 'linear',
         position: 'left',
         title: {
           display: true,
           text: 'Quantidade de Licitações',
-          font: {
-            size: 18,
-          },
         },
       },
       y2: {
+        beginAtZero: true,
         type: 'linear',
         position: 'right',
         title: {
           display: true,
-          text: 'Valor Total (R$)',
-          font: {
-            size: 18,
-          },
-        },
-        grid: {
-          drawOnChartArea: false,
+          text: 'Valor Total das Licitações (R$)',
         },
       },
     },
@@ -239,7 +229,7 @@ export default function Dashboard() {
     plugins: {
       title: {
         display: true,
-        text: 'Licitações por Mês',
+        text: `Licitações por Mês - ${anoSelecionado === 'Total' ? 'Todos os Anos' : `Ano ${anoSelecionado}`}`,
         font: {
           size: 30,
         },
@@ -247,58 +237,25 @@ export default function Dashboard() {
       legend: {
         display: true,
         position: 'bottom',
-        labels: {
-          font: {
-            size: 18,
-          },
-        },
       },
     },
     scales: {
       y3: {
+        beginAtZero: true,
         type: 'linear',
         position: 'left',
         title: {
           display: true,
           text: 'Quantidade de Licitações',
-          font: {
-            size: 18,
-          },
         },
       },
       y4: {
+        beginAtZero: true,
         type: 'linear',
         position: 'right',
         title: {
           display: true,
-          text: 'Valor Total (R$)',
-          font: {
-            size: 18,
-          },
-        },
-        grid: {
-          drawOnChartArea: false,
-        },
-      },
-    },
-  };
-
-  const optionsPizza = {
-    plugins: {
-      title: {
-        display: true,
-        text: 'Total Mensal de Licitações',
-        font: {
-          size: 30,
-        },
-      },
-      legend: {
-        display: true,
-        position: 'bottom',
-        labels: {
-          font: {
-            size: 18,
-          },
+          text: 'Valor Total das Licitações (R$)',
         },
       },
     },
@@ -306,33 +263,30 @@ export default function Dashboard() {
 
   return (
     <div className={style.dashboard}>
-      <div className={style.chartgraph01}>
-      <p><strong>Quantidade Total de Licitações:</strong> {totalQuantidadeAnual}</p>
-      <p><strong>Valor Total das Licitações (R$):</strong> {totalValorAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
-        <Bar data={chartDataAnual} options={optionsAnual} />
-      </div>
-      <div className={style.monthsCharts}>
-      <div className={style.chart}>
-        <Bar data={chartDataMensal} options={optionsMensal} />
-        <div className={style.selector}>
-        <label htmlFor="ano">Escolha o Ano:</label>
+      <div className={style.header}>
+        <h1>Dashboard de Licitações</h1>
         <select
-          id="ano"
           value={anoSelecionado}
-          onChange={(e) => setAnoSelecionado(e.target.value)}
+          onChange={e => setAnoSelecionado(e.target.value)}
+          className={style.select}
         >
-          {anos.map((ano) => (
+          <option value="Total">Total</option>
+          {anos.map(ano => (
             <option key={ano} value={ano}>
               {ano}
             </option>
           ))}
         </select>
       </div>
+      <div className={style.total}>
+        <p>Total de Licitações: {anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</p>
+        <p>Valor Total: R$ {anoSelecionado === 'Total' ? totalValoresMensal.toFixed(2) : valoresPorAno[anoSelecionado]?.toFixed(2)}</p>
       </div>
-      <div className={style.chart}>
-        <Pie data={chartDataPizza} options={optionsPizza} />
+      <div className={style.chartContainer}>
+        <Bar data={chartDataAnual} options={optionsAnual} className={style.chart} />
+        <Bar data={chartDataMensal} options={optionsMensal} className={style.chart} />
+        <Pie data={chartDataPizza} className={style.chart} />
       </div>
-    </div>
     </div>
   );
 }
