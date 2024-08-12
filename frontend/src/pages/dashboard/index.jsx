@@ -21,46 +21,73 @@ ChartJS.register(
 );
 
 export default function Dashboard() {
-  const [licitacoesPorAno, setLicitacoesPorAno] = useState({});
+  const [quantidadePorAno, setQuantidadePorAno] = useState({});
+  const [valoresPorAno, setValoresPorAno] = useState({});
 
   useEffect(() => {
-    const fetchLicitacoes = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-anual');
-        if (!response.ok) {
-          throw new Error('Erro na requisição: ' + response.statusText);
+        const [quantidadeResponse, valoresResponse] = await Promise.all([
+          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-anual'),
+          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-anuais'),
+        ]);
+
+        if (!quantidadeResponse.ok || !valoresResponse.ok) {
+          throw new Error('Erro na requisição');
         }
-        const data = await response.json();
-        const licitacoesAgrupadas = data.reduce((acc, licitacao) => {
-          const { ano, total_licitacoes } = licitacao;
-          const valorNumerico = parseFloat(total_licitacoes);
-          if (!isNaN(valorNumerico)) {
-            acc[ano] = (acc[ano] || 0) + valorNumerico; // Acumula valores do mesmo ano
+
+        const quantidadeData = await quantidadeResponse.json();
+        const valoresData = await valoresResponse.json();
+
+        const quantidadeAgrupada = {};
+        const valoresAgrupados = {};
+
+        quantidadeData.forEach(({ ano, total_licitacoes }) => {
+          const quantidadeNumerica = parseFloat(total_licitacoes);
+          if (!isNaN(quantidadeNumerica)) {
+            quantidadeAgrupada[ano] = (quantidadeAgrupada[ano] || 0) + quantidadeNumerica;
           }
-          return acc;
-        }, {});
-        setLicitacoesPorAno(licitacoesAgrupadas);
+        });
+
+        valoresData.forEach(({ ano, valor_total }) => {
+          const valorNumerico = parseFloat(valor_total);
+          if (!isNaN(valorNumerico)) {
+            valoresAgrupados[ano] = valorNumerico;
+          }
+        });
+
+        setQuantidadePorAno(quantidadeAgrupada);
+        setValoresPorAno(valoresAgrupados);
       } catch (error) {
         console.error('Erro ao buscar os dados: ', error);
       }
     };
-  
-    fetchLicitacoes();
+
+    fetchData();
   }, []);
-  
-  const anos = Object.keys(licitacoesPorAno);
-  const valores = Object.values(licitacoesPorAno);
+
+  const anos = Object.keys(valoresPorAno);
+  const valores = Object.values(valoresPorAno);
+  const quantidades = anos.map(ano => quantidadePorAno[ano] || 0);
 
   const chartData = {
     labels: anos,
     datasets: [
       {
-        label: 'Valor Total das Licitações por Ano',
-        data: valores,
+        label: 'Quantidade de Licitações por Ano',
+        data: quantidades,
         backgroundColor: 'blue',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         yAxisID: 'y1',
+      },
+      {
+        label: 'Valor Total das Licitações por Ano (R$)',
+        data: valores,
+        backgroundColor: 'red',
+        borderColor: 'rgba(0,0,0,1)',
+        borderWidth: 1,
+        yAxisID: 'y2',
       },
     ],
   };
@@ -90,10 +117,24 @@ export default function Dashboard() {
         position: 'left',
         title: {
           display: true,
+          text: 'Quantidade de Licitações',
+          font: {
+            size: 20,
+          },
+        },
+      },
+      y2: {
+        type: 'linear',
+        position: 'right',
+        title: {
+          display: true,
           text: 'Valor Total (R$)',
           font: {
             size: 20,
           },
+        },
+        grid: {
+          drawOnChartArea: false, // Evita a sobreposição das linhas de grade
         },
       },
     },
@@ -105,16 +146,7 @@ export default function Dashboard() {
         <Bar data={chartData} options={options} className={style.dashboard} />
       </div>
       <div className={style.dashboardDataWrapper}>
-        <div className={style.dashboardData}>
-          <h1 style={{ textAlign: 'center', fontSize: '1.5em' }}>
-            Valor Total das Licitações por Ano
-          </h1>
-          {anos.map((ano, index) => (
-            <p key={ano}>
-              Em {ano}, o valor total das licitações foi de {valores[index].toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}.
-            </p>
-          ))}
-        </div>
+        {/* Opcional: Adicione informações adicionais se necessário */}
       </div>
     </div>
   );
