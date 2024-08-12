@@ -1,10 +1,15 @@
 import { api } from "../config/api";
 
 export const getOrgaos = async (filters) => {
-  const { data } = await api.get("/orgaos", {
-    params: {
-      ...filters
-    }
-  })
-  return data;
+  try {
+    const { data } = await api.get("/orgaos", {
+      params: {
+        ...filters
+      }
+    })
+    return data;
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
 }

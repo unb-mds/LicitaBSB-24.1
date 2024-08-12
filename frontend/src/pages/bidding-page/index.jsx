@@ -8,7 +8,10 @@ import google from '../../../assets/google.svg';
 import twitter from '../../../assets/twitter.svg';
 import calendario from '../../../assets/calendario.svg';
 import valor from '../../../assets/valor.svg';
-import { getLicitacaoById, getLicitacoes } from '../../services/licitacoes.service';
+import {
+  getLicitacaoById,
+  getLicitacoes,
+} from '../../services/licitacoes.service';
 import CardLicitacoes from '../../components/card-licitacoes';
 
 export default function BiddingPage() {
@@ -20,12 +23,12 @@ export default function BiddingPage() {
     const data = await getLicitacaoById(parametros.id);
     setLicitData(data);
     const maisLicit = await getLicitacoes();
-    setMaisLicitacoes(maisLicit.results.slice(0, 3))
-  }
+    setMaisLicitacoes(maisLicit.results.slice(0, 3));
+  };
 
   useEffect(() => {
     loadData();
-  }, [])
+  }, []);
 
   return (
     <main className={styles.mainContainer}>
@@ -79,11 +82,9 @@ export default function BiddingPage() {
       <section className={styles.outrasLicitacoesContainer}>
         <h3>Licitações mais recentes:</h3>
         <div className={styles.cardsLicitacoesWrapper}>
-          {
-            maisLicitacoes.map((data) => {
-              return <CardLicitacoes data={data}/>
-            })
-          }
+          {maisLicitacoes.map((data) => {
+            return <CardLicitacoes key={data.id} data={data} />;
+          })}
         </div>
         <Link to={'/licitacoes'} className={styles.link}>
           Ver mais licitações...
