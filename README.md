@@ -11,6 +11,7 @@
       - [Funcionalidades](#funcionalidades)
       - [Configuração](#configuração)
       - [Uso](#uso)
+    - [Testes](#testes)
   - [Frontend](#frontend)
   - [Observações](#observações)
 - [Documentação](#documentação)
@@ -20,7 +21,7 @@
 
 **Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
-Acesse o nosso portal [aqui](https://bit.ly/licitabsb) para explorar as licitações de forma simples e rápida.
+Acesse o nosso portal [aqui](https://licitabsb.netlify.app) para explorar as licitações de forma simples e rápida.
 
 Para aumentar a visibilidade dessas informações, o projeto também inclui um bot na rede social X (antigo Twitter) que compartilha as licitações mais recentes, mantendo a população informada sobre as decisões governamentais. 
 
@@ -125,6 +126,34 @@ Este bot publica automaticamente as licitações do Diário Oficial do Distrito 
     ```
 
 2. O bot publicará as licitações no Twitter. Se não houver licitações no dia, o bot publicará uma mensagem informando.
+
+#### Testes
+
+1. Testes Automatizados com Django
+
+O Django oferece um framework robusto para criação e execução de testes automatizados. Abaixo estão as instruções de como rodar os testes.
+
+2. Configuração Inicial
+
+Certifique-se de que os pacotes de teste estão instalados. Se estiver utilizando um ambiente virtual, ative-o antes de instalar as dependências:
+
+```bash
+source venv/bin/activate  # No Linux/MacOS
+venv\Scripts\activate     # No Windows
+pip install -r requirements.txt
+```
+
+3. Estrutura dos Testes
+   
+Por convenção, os testes em Django são colocados em um arquivo tests.py dentro de cada aplicação, ou em uma pasta tests/ contendo múltiplos arquivos de teste.
+
+4. Executando os Testes
+   
+Para rodar os testes, navegue até `backend/server` e utilize o comando:
+
+```bash
+python manage.py test
+```
 
 ### Frontend
 
