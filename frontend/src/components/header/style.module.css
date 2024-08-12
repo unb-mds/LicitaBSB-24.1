@@ -87,7 +87,7 @@
   outline: none;
 }
 
-@media (max-width: 1480px) {
+@media (max-width: 720px) {
   .subHeader {
     justify-content: center;
   }
@@ -101,7 +101,7 @@
   }
 }
 
-@media (min-width: 1480px) {
+@media (min-width: 720px) and (max-width: 1480px){
   .subHeaderWrapper {
     justify-content: center;
   }
@@ -121,4 +121,3 @@
     align-items: center;
   }
 }
-
