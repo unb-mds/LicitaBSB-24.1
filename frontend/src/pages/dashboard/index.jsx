@@ -32,72 +32,51 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [quantidadeAnualResponse, valoresAnualResponse, quantidadeMensalResponse, valoresMensalResponse] = await Promise.all([
+        const [quantidadeAnualResponse, valoresAnualResponse] = await Promise.all([
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-anual'),
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-anuais'),
-          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-mensal'),
-          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-mensais'),
         ]);
-
-        if (!quantidadeAnualResponse.ok || !valoresAnualResponse.ok || !quantidadeMensalResponse.ok || !valoresMensalResponse.ok) {
+  
+        if (!quantidadeAnualResponse.ok || !valoresAnualResponse.ok) {
           throw new Error('Erro na requisição');
         }
-
+  
         const quantidadeAnualData = await quantidadeAnualResponse.json();
         const valoresAnualData = await valoresAnualResponse.json();
-        const quantidadeMensalData = await quantidadeMensalResponse.json();
-        const valoresMensalData = await valoresMensalResponse.json();
-
+  
         const quantidadeAnualAgrupada = {};
         const valoresAnualAgrupados = {};
-        const quantidadeMensalAgrupada = {};
-        const valoresMensalAgrupados = {};
-
+  
         quantidadeAnualData.forEach(({ ano, total_licitacoes }) => {
           const quantidadeNumerica = parseFloat(total_licitacoes);
           if (!isNaN(quantidadeNumerica)) {
             quantidadeAnualAgrupada[ano] = (quantidadeAnualAgrupada[ano] || 0) + quantidadeNumerica;
           }
         });
-
+  
         valoresAnualData.forEach(({ ano, valor_total }) => {
           const valorNumerico = parseFloat(valor_total);
           if (!isNaN(valorNumerico)) {
             valoresAnualAgrupados[ano] = valorNumerico;
           }
         });
-
-        quantidadeMensalData.forEach(({ ano, mes, total_licitacoes }) => {
-          const key = `${ano}-${mes}`;
-          const quantidadeNumerica = parseFloat(total_licitacoes);
-          if (!isNaN(quantidadeNumerica)) {
-            quantidadeMensalAgrupada[key] = (quantidadeMensalAgrupada[key] || 0) + quantidadeNumerica;
-          }
-        });
-
-        valoresMensalData.forEach(({ ano, mes, valor_total }) => {
-          const key = `${ano}-${mes}`;
-          const valorNumerico = parseFloat(valor_total);
-          if (!isNaN(valorNumerico)) {
-            valoresMensalAgrupados[key] = valorNumerico;
-          }
-        });
-
+  
         setQuantidadePorAno(quantidadeAnualAgrupada);
         setValoresPorAno(valoresAnualAgrupados);
-        setQuantidadePorMes(quantidadeMensalAgrupada);
-        setValoresPorMes(valoresMensalAgrupados);
       } catch (error) {
         console.error('Erro ao buscar os dados: ', error);
       }
     };
-
+  
     fetchData();
   }, []);
+
 
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
   const quantidadesAnuais = anos.map(ano => quantidadePorAno[ano] || 0);
+  const totalQuantidadeAnual = quantidadesAnuais.reduce((acc, curr) => acc + curr, 0);
+
 
   const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   const quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
@@ -105,6 +84,8 @@ export default function Dashboard() {
 
   const totalQuantidadeMensal = meses.map((_, index) => quantidadesMensais[index] || 0);
   const totalValoresMensal = meses.map((_, index) => valoresMensaisSelecionado[index] || 0);
+
+  
 
   const chartDataAnual = {
     labels: anos,
@@ -157,18 +138,18 @@ export default function Dashboard() {
         label: 'Quantidade Total por Mês',
         data: totalQuantidadeMensal,
         backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
+        '#FFB3B3',
+'#B3E5FC',
+'#FFF59D',
+'#C8E6C9',
+'#D1C4E9',
+'#FFAB91',
+'#FFE0B2',
+'#B3E5FC',
+'#E1BEE7',
+'#FFAB91',
+'#D1C4E9',
+'#C5E1A5'
         ],
         borderColor: 'rgba(0,0,0,0.1)',
         borderWidth: 1,
@@ -295,11 +276,17 @@ export default function Dashboard() {
 
   return (
     <div className={style.dashboard}>
+      <div className={style.chartContainer}>
+      <h2>Total Anual</h2>
+      <div>Total Quantidade Anual: {totalQuantidadeAnual}</div>
+      {/* Adicione aqui o gráfico ou outras informações, se necessário */}
+      </div>
       <div className={style.chart}>
         <Bar data={chartDataAnual} options={optionsAnual} />
       </div>
       <div className={style.monthsCharts}>
       <div className={style.chart}>
+        <Bar data={chartDataMensal} options={optionsMensal} />
         <div className={style.selector}>
         <label htmlFor="ano">Escolha o Ano:</label>
         <select
@@ -314,7 +301,6 @@ export default function Dashboard() {
           ))}
         </select>
       </div>
-        <Bar data={chartDataMensal} options={optionsMensal} />
       </div>
       <div className={style.chart}>
         <Pie data={chartDataPizza} options={optionsPizza} />
