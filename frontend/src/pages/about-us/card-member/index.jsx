@@ -38,10 +38,12 @@ export default function CardMember({ nome, descricao, github, id }) {
             alt="Foto do membro"
           />
         )}
+        <div className={styles.githubLinkContainer}>
         <a data-testid="campoLink" href={github} target="_blank">
           <FaGithub /> Github
         </a>
       </div>
+    </div>
     </li>
   );
 }
