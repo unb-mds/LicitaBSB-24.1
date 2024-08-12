@@ -28,24 +28,32 @@ export default function Dashboard() {
   const [quantidadePorMes, setQuantidadePorMes] = useState({});
   const [valoresPorMes, setValoresPorMes] = useState({});
   const [anoSelecionado, setAnoSelecionado] = useState('2024');
+  const [totalQuantidadeAnual, setTotalQuantidadeAnual] = useState(0);
+  const [totalValorAnual, setTotalValorAnual] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [quantidadeAnualResponse, valoresAnualResponse] = await Promise.all([
+        const [quantidadeAnualResponse, valoresAnualResponse, quantidadeMensalResponse, valoresMensalResponse] = await Promise.all([
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-anual'),
           fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-anuais'),
+          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-mensal'),
+          fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/valores-mensais'),
         ]);
   
-        if (!quantidadeAnualResponse.ok || !valoresAnualResponse.ok) {
+        if (!quantidadeAnualResponse.ok || !valoresAnualResponse.ok || !quantidadeMensalResponse.ok || !valoresMensalResponse.ok) {
           throw new Error('Erro na requisição');
         }
   
         const quantidadeAnualData = await quantidadeAnualResponse.json();
         const valoresAnualData = await valoresAnualResponse.json();
+        const quantidadeMensalData = await quantidadeMensalResponse.json();
+        const valoresMensalData = await valoresMensalResponse.json();
   
         const quantidadeAnualAgrupada = {};
         const valoresAnualAgrupados = {};
+        const quantidadeMensalAgrupada = {};
+        const valoresMensalAgrupados = {};
   
         quantidadeAnualData.forEach(({ ano, total_licitacoes }) => {
           const quantidadeNumerica = parseFloat(total_licitacoes);
@@ -61,8 +69,34 @@ export default function Dashboard() {
           }
         });
   
+        quantidadeMensalData.forEach(({ ano, mes, total_licitacoes }) => {
+          const key = `${ano}-${mes}`;
+          const quantidadeNumerica = parseFloat(total_licitacoes);
+          if (!isNaN(quantidadeNumerica)) {
+            quantidadeMensalAgrupada[key] = (quantidadeMensalAgrupada[key] || 0) + quantidadeNumerica;
+          }
+        });
+  
+        valoresMensalData.forEach(({ ano, mes, valor_total }) => {
+          const key = `${ano}-${mes}`;
+          const valorNumerico = parseFloat(valor_total);
+          if (!isNaN(valorNumerico)) {
+            valoresMensalAgrupados[key] = valorNumerico;
+          }
+        });
+  
         setQuantidadePorAno(quantidadeAnualAgrupada);
         setValoresPorAno(valoresAnualAgrupados);
+        setQuantidadePorMes(quantidadeMensalAgrupada);
+        setValoresPorMes(valoresMensalAgrupados);
+  
+        // Cálculo do total anual
+        const totalQuantidadeAnual = Object.values(quantidadeAnualAgrupada).reduce((acc, curr) => acc + curr, 0);
+        const totalValorAnual = Object.values(valoresAnualAgrupados).reduce((acc, curr) => acc + curr, 0);
+  
+        setTotalQuantidadeAnual(totalQuantidadeAnual);
+        setTotalValorAnual(totalValorAnual);
+  
       } catch (error) {
         console.error('Erro ao buscar os dados: ', error);
       }
@@ -70,13 +104,11 @@ export default function Dashboard() {
   
     fetchData();
   }, []);
-
+  
 
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
   const quantidadesAnuais = anos.map(ano => quantidadePorAno[ano] || 0);
-  const totalQuantidadeAnual = Object.values(quantidadePorAno).reduce((acc, curr) => acc + curr, 0);
-
 
   const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   const quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
@@ -84,8 +116,6 @@ export default function Dashboard() {
 
   const totalQuantidadeMensal = meses.map((_, index) => quantidadesMensais[index] || 0);
   const totalValoresMensal = meses.map((_, index) => valoresMensaisSelecionado[index] || 0);
-
-  
 
   const chartDataAnual = {
     labels: anos,
@@ -276,12 +306,9 @@ export default function Dashboard() {
 
   return (
     <div className={style.dashboard}>
-      <div className={style.chartContainer}>
-      <h2>Total Anual</h2>
-      <div>Total Quantidade Anual de Todos os Anos: {totalQuantidadeAnual}</div>
-      {/* Adicione aqui o gráfico ou outras informações, se necessário */}
-      </div>
-      <div className={style.chart}>
+      <div className={style.chartgraph01}>
+      <p><strong>Quantidade Total de Licitações:</strong> {totalQuantidadeAnual}</p>
+      <p><strong>Valor Total das Licitações (R$):</strong> {totalValorAnual.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
         <Bar data={chartDataAnual} options={optionsAnual} />
       </div>
       <div className={style.monthsCharts}>
