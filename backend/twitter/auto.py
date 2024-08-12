@@ -209,9 +209,19 @@ for licitacao in licitacoes_data:
 # Fechar a conexão com o banco de dados
 connection.close()
 
+data_atual = datetime.now().strftime('%d/%m/%Y')
+
+mensagens_alternativas = [
+    f'Nenhuma nova licitação disponível nas últimas 24 horas (até {data_atual}).\n\nFique ligado: {site}',
+    f'Estamos de olho! Até {data_atual}, não houve novas licitações.\n\nAcesse: {site}',
+    f'Sem novidades nas últimas 24 horas (até {data_atual}).\n\nConfira mais detalhes em nosso site: {site}',
+]
+
 verificador_de_licitacao = False
 if not licitacoes:
-    mensagens = [f'Nas últimas 24 horas não houve nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
+    # mensagens = [f'Nas últimas 24 horas não houve nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
+    mensagens = [mensagens_alternativas[datetime.now().day % len(mensagens_alternativas)]] 
+    # nao pode postar mensagem duplicada com a biblioteca, entao pega uma mensagem alternativa a cada dia, se nao tiver licitacao
     verificador_de_licitacao = True
 else:
     mensagens = []
