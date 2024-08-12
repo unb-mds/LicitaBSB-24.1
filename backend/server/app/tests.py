@@ -79,7 +79,7 @@ class Tests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         valores = [licitacao['valores'][0] for licitacao in response.data['results'] if licitacao['valores']]
         self.assertEqual(valores, sorted(valores))
-        
+
  # TESTE DO ENDPOINT LICITACAO_POR_ID
     def test_licitacao_por_id_valido(self):
         licitacao = Licitacao.objects.first()
@@ -97,3 +97,32 @@ class Tests(APITestCase):
         
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(response.data, {'detail': 'Licitacao não encontrada'})
+        
+    # TESTE DO ENDPOINT LICITACAO_MAIOR_VALOR   
+    def test_licitacao_maior_valor(self):
+        # Fazer uma requisição GET para o endpoint
+        response = self.client.get(reverse('licitacao_maior_valor'))
+        
+        # Verificar se o status da resposta é 200 OK
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        # Verificar se a licitação retornada é a com maior valor somado
+        licitacao_com_maior_valor = Licitacao.objects.annotate(
+            total_valor=Sum(Cast(F('valores'), FloatField()))
+        ).order_by('-total_valor').first()
+        
+        serializer = LicitacaoSerializer(licitacao_com_maior_valor)
+        self.assertEqual(response.data, serializer.data)
+
+    def test_licitacao_maior_valor_sem_licitacoes(self):
+        # Remover todas as licitações
+        Licitacao.objects.all().delete()
+        
+        # Fazer uma requisição GET para o endpoint
+        response = self.client.get(reverse('licitacao_maior_valor'))
+        
+        # Verificar se o status da resposta é 404 NOT FOUND
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        
+        # Verificar se a mensagem de erro está correta
+        self.assertEqual(response.data, {'detail': 'Nenhuma licitação encontrada.'})
