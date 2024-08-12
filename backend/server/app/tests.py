@@ -29,7 +29,11 @@ class Tests(APITestCase):
         LicitacaoQuantidade.objects.create(ano=2023, mes=2, total_licitacoes=10)
         LicitacaoQuantidade.objects.create(ano=2023, mes=3, total_licitacoes=15)
         LicitacaoQuantidade.objects.create(ano=2024, mes=1, total_licitacoes=0)
-
+        # para os endpoints de valores mensais e anuais
+        LicitacaoValoresMensal.objects.create(ano=2023, mes=1, valor_total=5000)
+        LicitacaoValoresMensal.objects.create(ano=2023, mes=2, valor_total=10000)
+        LicitacaoValoresMensal.objects.create(ano=2023, mes=3, valor_total=15000)
+        LicitacaoValoresMensal.objects.create(ano=2024, mes=1, valor_total=0)
 
     # TESTE DO ENDPOINT NOME_ORGAOS_POR_ID
     def test_nome_orgaos_por_id_valido(self):
@@ -143,6 +147,23 @@ class Tests(APITestCase):
     def test_listar_licitacoes_quantidade_anual_vazio(self):
         LicitacaoQuantidade.objects.all().delete()
         response = self.client.get(reverse('listar_licitacoes_quantidade_anual'))  
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, [])
+
+    # TESTE DO ENDPOINT LICITACOES_VALORES_MENSAIS
+    def test_licitacoes_valores_mensais(self):
+        response = self.client.get(reverse('licitacoes-valores-mensais'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, [
+            {'ano': 2023, 'mes': 1, 'valor_total': 5000},
+            {'ano': 2023, 'mes': 2, 'valor_total': 10000},
+            {'ano': 2023, 'mes': 3, 'valor_total': 15000},
+            {'ano': 2024, 'mes': 1, 'valor_total': 0}
+        ])
+
+    def test_licitacoes_valores_mensais_vazio(self):
+        LicitacaoValoresMensal.objects.all().delete()
+        response = self.client.get(reverse('licitacoes-valores-mensais'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, [])
 
