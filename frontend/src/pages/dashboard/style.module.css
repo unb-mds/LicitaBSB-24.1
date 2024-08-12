@@ -1,112 +1,103 @@
-.aboutUsContext{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 32px;
+.holderButton {
+    display: flex !important;
+    gap: 5px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 5px !important;
 }
-
-.aboutUsP {
-    text-align: justify;
-    font-size: 20px;
-    text-align: center;
-}
-
-.aboutUsTitle {
-    font-size: 32px;
-}
-
-.aboutUsImg {
-    width: 80%;
-}
-
-.holderButton{
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
-}
-
-.dashButton{
+.dashButton {
     background-color: transparent;
-    padding: 10px;
+    padding: 5px; /* Reduzido para metade */
     border-radius: 5px;
 }
 
-.dashButton:hover{
+.dashButton:hover {
     cursor: pointer;
 }
 
-.dashboardWrapper{
+.dashboardWrapper {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 100%;
+    height: 50vh; /* Reduzido para metade */
+    width: 50vw; /* Reduzido para metade */
     align-items: center;
     justify-content: center;
     text-align: center;
     border-right: 1px solid black;
-
 }
 
-.dashboardDataWrapper{
+.dashboardDataWrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 300px;
+    width: 150px; /* Reduzido para metade */
 }
 
-.dashboardData{
+.dashboardData {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 300px;
+    width: 150px; /* Reduzido para metade */
 }
-.dashboardData h1{
-    font-size: 22px;
+
+.dashboardData h1 {
+    font-size: 11px; /* Reduzido para metade */
     font-weight: bold;
 }
 
-.dashboardData p{
-    font-size: 18px;
+.dashboardData p {
+    font-size: 9px; /* Reduzido para metade */
 }
 
-
-.dashboard{
+.dashboard {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    width: 10px;
+    width: 100%; /* Ajustado para caber na metade do contêiner pai */
 }
 
-.dashboardContainer{
+.dashboardContainer {
     display: flex;
-    max-width: 100vw;
-    height: 100vh;
+    max-width: 50vw; /* Reduzido para metade */
+    height: 50vh; /* Reduzido para metade */
 }
 
-.dashboardText{
+.dashboardText {
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     border-top: 1px solid black;
-    font-size: 21px;
-    font-weight: 450;
-    height: 100%;
-    padding: 10px;
+    font-size: 10px; /* Reduzido para metade */
+    font-weight: 400; /* Ajustado para ser proporcional */
+    height: 50%; /* Reduzido para metade */
+    padding: 5px; /* Reduzido para metade */
 }
 
-.selector{
+.selector {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    font-size: 20px;
+    padding: 5px;
+    font-size: 10px; 
+    width: 100px;
+}
+
+.chart {
+    width: 70%;
+}
+
+.graphics {
+    display: flex;
+    flex-direction: column;
+}
+
+.monthsCharts {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
 }

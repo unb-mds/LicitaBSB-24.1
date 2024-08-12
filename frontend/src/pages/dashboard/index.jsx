@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Bar, Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,6 +8,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 } from 'chart.js';
 import style from '../dashboard/style.module.css';
 
@@ -18,6 +19,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
+  ArcElement,
 );
 
 export default function Dashboard() {
@@ -25,7 +27,7 @@ export default function Dashboard() {
   const [valoresPorAno, setValoresPorAno] = useState({});
   const [quantidadePorMes, setQuantidadePorMes] = useState({});
   const [valoresPorMes, setValoresPorMes] = useState({});
-  const [anoSelecionado, setAnoSelecionado] = useState('2024'); // Definido para o ano atual ou ano desejado
+  const [anoSelecionado, setAnoSelecionado] = useState('2024');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -101,13 +103,16 @@ export default function Dashboard() {
   const quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
   const valoresMensaisSelecionado = meses.map((_, index) => valoresPorMes[`${anoSelecionado}-${index + 1}`] || 0);
 
+  const totalQuantidadeMensal = meses.map((_, index) => quantidadesMensais[index] || 0);
+  const totalValoresMensal = meses.map((_, index) => valoresMensaisSelecionado[index] || 0);
+
   const chartDataAnual = {
     labels: anos,
     datasets: [
       {
         label: 'Quantidade de Licitações por Ano',
         data: quantidadesAnuais,
-        backgroundColor: 'blue',
+        backgroundColor: 'cyan',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         yAxisID: 'y1',
@@ -115,7 +120,7 @@ export default function Dashboard() {
       {
         label: 'Valor Total das Licitações por Ano (R$)',
         data: valoresAnuais,
-        backgroundColor: 'red',
+        backgroundColor: '#FF3131',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         yAxisID: 'y2',
@@ -129,7 +134,7 @@ export default function Dashboard() {
       {
         label: 'Quantidade de Licitações por Mês',
         data: quantidadesMensais,
-        backgroundColor: 'green',
+        backgroundColor: '#4FFFB0',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         yAxisID: 'y3',
@@ -137,10 +142,36 @@ export default function Dashboard() {
       {
         label: 'Valor Total das Licitações por Mês (R$)',
         data: valoresMensaisSelecionado,
-        backgroundColor: 'orange',
+        backgroundColor: '#FA5F55',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
         yAxisID: 'y4',
+      },
+    ],
+  };
+
+  const chartDataPizza = {
+    labels: meses,
+    datasets: [
+      {
+        label: 'Quantidade Total por Mês',
+        data: totalQuantidadeMensal,
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+        ],
+        borderColor: 'rgba(0,0,0,0.1)',
+        borderWidth: 1,
       },
     ],
   };
@@ -172,7 +203,7 @@ export default function Dashboard() {
           display: true,
           text: 'Quantidade de Licitações',
           font: {
-            size: 20,
+            size: 18,
           },
         },
       },
@@ -183,7 +214,7 @@ export default function Dashboard() {
           display: true,
           text: 'Valor Total (R$)',
           font: {
-            size: 20,
+            size: 18,
           },
         },
         grid: {
@@ -220,7 +251,7 @@ export default function Dashboard() {
           display: true,
           text: 'Quantidade de Licitações',
           font: {
-            size: 20,
+            size: 18,
           },
         },
       },
@@ -231,7 +262,7 @@ export default function Dashboard() {
           display: true,
           text: 'Valor Total (R$)',
           font: {
-            size: 20,
+            size: 18,
           },
         },
         grid: {
@@ -241,23 +272,54 @@ export default function Dashboard() {
     },
   };
 
+  const optionsPizza = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Total Mensal de Licitações',
+        font: {
+          size: 30,
+        },
+      },
+      legend: {
+        display: true,
+        position: 'bottom',
+        labels: {
+          font: {
+            size: 18,
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <div className={style.dashboardContainer}>
-      <div className={style.dashboardWrapper}>
-        <Bar data={chartDataAnual} options={optionsAnual} className={style.dashboard} />
+    <div className={style.dashboard}>
+      <div className={style.chart}>
+        <Bar data={chartDataAnual} options={optionsAnual} />
       </div>
-      <div className={style.dashboardWrapper}>
+      <div className={style.monthsCharts}>
+      <div className={style.chart}>
+        <div className={style.selector}>
+        <label htmlFor="ano">Escolha o Ano:</label>
         <select
+          id="ano"
           value={anoSelecionado}
           onChange={(e) => setAnoSelecionado(e.target.value)}
-          className={style.selectYear}
         >
-          {anos.map(ano => (
-            <option key={ano} value={ano}>{ano}</option>
+          {anos.map((ano) => (
+            <option key={ano} value={ano}>
+              {ano}
+            </option>
           ))}
         </select>
-        <Bar data={chartDataMensal} options={optionsMensal} className={style.dashboard} />
       </div>
+        <Bar data={chartDataMensal} options={optionsMensal} />
+      </div>
+      <div className={style.chart}>
+        <Pie data={chartDataPizza} options={optionsPizza} />
+      </div>
+    </div>
     </div>
   );
 }
