@@ -167,6 +167,21 @@ class Tests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, [])
 
+    # TESTE DO ENDPOINT LICITACOES_VALORES_ANUAIS
+    def test_licitacoes_valores_anuais(self):
+        response = self.client.get(reverse('valores-anuais-list'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, [
+            {'ano': 2023, 'valor_total': 30000},
+            {'ano': 2024, 'valor_total': 0}
+        ])
+
+    def test_licitacoes_valores_anuais_vazio(self):
+        LicitacaoValoresMensal.objects.all().delete()
+        response = self.client.get(reverse('valores-anuais-list'))  
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, [])
+        
     # TESTE DO ENDPOINT LICITACAO_MAIOR_VALOR   
     def test_licitacao_maior_valor(self):
         # Fazer uma requisição GET para o endpoint
