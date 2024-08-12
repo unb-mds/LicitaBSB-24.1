@@ -79,3 +79,21 @@ class Tests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         valores = [licitacao['valores'][0] for licitacao in response.data['results'] if licitacao['valores']]
         self.assertEqual(valores, sorted(valores))
+        
+ # TESTE DO ENDPOINT LICITACAO_POR_ID
+    def test_licitacao_por_id_valido(self):
+        licitacao = Licitacao.objects.first()
+        url = reverse('licitacao_por_id', args=[licitacao.id])
+        response = self.client.get(url)
+        
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        
+        serializer = LicitacaoSerializer(licitacao)
+        self.assertEqual(response.data, serializer.data)
+
+    def test_licitacao_por_id_invalido(self):
+        url = reverse('licitacao_por_id', args=[999])
+        response = self.client.get(url)
+        
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        self.assertEqual(response.data, {'detail': 'Licitacao não encontrada'})
