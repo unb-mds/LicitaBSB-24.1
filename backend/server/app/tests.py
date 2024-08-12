@@ -117,6 +117,20 @@ class Tests(APITestCase):
             ]
             # Verificar o conteúdo da resposta
             self.assertEqual(response.data, expected_data)
+            
+    # TESTE DO ENDPOINT LISTAR_LICITACOES_QUANTIDADE_ANUAL
+    def test_listar_licitacoes_quantidade_anual(self):
+            # Fazer uma requisição GET para o endpoint
+            response = self.client.get(reverse('listar_licitacoes_quantidade_anual'))
+            # Verificar se o status da resposta é 200 OK
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            # Dados esperados
+            expected_data = [
+                {'ano': 2023, 'total_licitacoes': 30},
+                {'ano': 2024, 'total_licitacoes': 0}
+            ]
+            # Verificar o conteúdo da resposta
+            self.assertEqual(response.data, expected_data)
 
     # TESTE DO ENDPOINT LICITACAO_MAIOR_VALOR   
     def test_licitacao_maior_valor(self):
