@@ -1,8 +1,8 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from app.models import Licitacao, Orgao
-from app.serializers import LicitacaoSerializer
+from app.models import Licitacao, Orgao, LicitacaoQuantidade
+from app.serializers import LicitacaoSerializer, LicitacoesQuantidadeMensalSerializer
 from django.db.models import Sum, F
 from django.db.models.functions import Cast
 from django.db.models import FloatField
@@ -24,6 +24,10 @@ class Tests(APITestCase):
                 idorgao=self.orgao,
                 valores=[1000 * (i+1)]
             )
+        LicitacaoQuantidade.objects.create(ano=2023, mes=1, total_licitacoes=5)
+        LicitacaoQuantidade.objects.create(ano=2023, mes=2, total_licitacoes=10)
+        LicitacaoQuantidade.objects.create(ano=2023, mes=3, total_licitacoes=15)
+        LicitacaoQuantidade.objects.create(ano=2024, mes=1, total_licitacoes=0)
 
     # TESTE DO ENDPOINT NOME_ORGAOS_POR_ID
     def test_nome_orgaos_por_id_valido(self):
@@ -98,6 +102,22 @@ class Tests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
         self.assertEqual(response.data, {'detail': 'Licitacao não encontrada'})
         
+    # TESTE DO ENDPOINT LISTAR_LICITACOES_QUANTIDADE_MENSAL
+    def test_listar_licitacoes_quantidade_mensal(self):
+            # Fazer uma requisição GET para o endpoint
+            response = self.client.get(reverse('listar_licitacoes_quantidade_mensal'))
+            # Verificar se o status da resposta é 200 OK
+            self.assertEqual(response.status_code, status.HTTP_200_OK)
+            # Dados esperados
+            expected_data = [
+                {'ano': 2023, 'mes': 1, 'total_licitacoes': 5},
+                {'ano': 2023, 'mes': 2, 'total_licitacoes': 10},
+                {'ano': 2023, 'mes': 3, 'total_licitacoes': 15},
+                {'ano': 2024, 'mes': 1, 'total_licitacoes': 0},
+            ]
+            # Verificar o conteúdo da resposta
+            self.assertEqual(response.data, expected_data)
+
     # TESTE DO ENDPOINT LICITACAO_MAIOR_VALOR   
     def test_licitacao_maior_valor(self):
         # Fazer uma requisição GET para o endpoint
