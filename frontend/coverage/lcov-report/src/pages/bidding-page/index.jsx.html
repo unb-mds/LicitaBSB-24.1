@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -158,7 +158,12 @@
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
 <a name='L95'></a><a href='#L95'>95</a>
-<a name='L96'></a><a href='#L96'>96</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,22 +180,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -269,28 +279,30 @@ import {
 } from '../../services/licitacoes.service';
 import CardLicitacoes from '../../components/card-licitacoes';
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >BiddingPage(</span>) {
-  const parametros = <span class="cstat-no" title="statement not covered" >useParams();</span>
-  const [licitData, setLicitData] = <span class="cstat-no" title="statement not covered" >useState({});</span>
-  const [maisLicitacoes, setMaisLicitacoes] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
+export default function BiddingPage() {
+  const parametros = useParams();
+  const [licitData, setLicitData] = useState({});
+  const [maisLicitacoes, setMaisLicitacoes] = useState([]);
 &nbsp;
-  const loadData = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
-    const data = <span class="cstat-no" title="statement not covered" >await getLicitacaoById(parametros.id);</span>
+  const loadData = async () =&gt; {
+    const data = await getLicitacaoById(parametros.id);
 <span class="cstat-no" title="statement not covered" >    setLicitData(data);</span>
     const maisLicit = <span class="cstat-no" title="statement not covered" >await getLicitacoes();</span>
 <span class="cstat-no" title="statement not covered" >    setMaisLicitacoes(maisLicit.results.slice(0, 3));</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    loadData();</span>
+  useEffect(() =&gt; {
+    loadData();
   }, []);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;main className={styles.mainContainer}&gt;
       &lt;div className={styles.biddingContainer}&gt;
         &lt;div className={styles.headingContainer}&gt;
           &lt;div className={styles.titleContainer}&gt;
-            &lt;h3 className={styles.title}&gt;{licitData.titulo}&lt;/h3&gt;
+            &lt;h3 data-testid="titulo-testid" className={styles.title}&gt;
+              {licitData.titulo}
+            &lt;/h3&gt;
             &lt;span className={styles.subtitle}&gt;{licitData.nome_orgao}&lt;/span&gt;
           &lt;/div&gt;
           &lt;div className={styles.shareContainer}&gt;
@@ -308,10 +320,10 @@ export default function <span class="fstat-no" title="function not covered" >Bid
         &lt;div className={styles.biddingInfoContainer}&gt;
           &lt;div className={styles.biddingInfoElement}&gt;
             &lt;img src={calendario} /&gt;
-            &lt;p&gt;{licitData.data}&lt;/p&gt;
+            &lt;p data-testid="data-testid"&gt;{licitData.data}&lt;/p&gt;
           &lt;/div&gt;
           {licitData.valores &amp;&amp; (
-            &lt;div className={styles.biddingInfoElement}&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;div className={styles.biddingInfoElement}&gt;</span>
               &lt;img src={valor} /&gt;
               &lt;p&gt;{licitData.valores[0]}&lt;/p&gt;
             &lt;/div&gt;
@@ -325,7 +337,7 @@ export default function <span class="fstat-no" title="function not covered" >Bid
         &lt;/p&gt;
         &lt;div className={styles.BiddingLink}&gt;
           {licitData.link &amp;&amp; (
-            &lt;p&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >            &lt;p&gt;</span>
               Acessar licitação em:{' '}
               &lt;a href={`${licitData.link}`} target="blank"&gt;
                 {licitData.link}
@@ -336,7 +348,10 @@ export default function <span class="fstat-no" title="function not covered" >Bid
       &lt;/div&gt;
       &lt;section className={styles.outrasLicitacoesContainer}&gt;
         &lt;h3&gt;Licitações mais recentes:&lt;/h3&gt;
-        &lt;div className={styles.cardsLicitacoesWrapper}&gt;
+        &lt;div
+          data-testid="outras-licitacoes-testid"
+          className={styles.cardsLicitacoesWrapper}
+        &gt;
           {maisLicitacoes.map(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {
 <span class="cstat-no" title="statement not covered" >            return &lt;CardLicitacoes key={data.id} data={data} /&gt;;</span>
           })}
@@ -355,7 +370,7 @@ export default function <span class="fstat-no" title="function not covered" >Bid
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-12T12:53:52.075Z
+                at 2024-08-12T22:46:05.922Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

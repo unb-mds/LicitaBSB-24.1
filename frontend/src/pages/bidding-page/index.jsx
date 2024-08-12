@@ -35,7 +35,9 @@ export default function BiddingPage() {
       <div className={styles.biddingContainer}>
         <div className={styles.headingContainer}>
           <div className={styles.titleContainer}>
-            <h3 className={styles.title}>{licitData.titulo}</h3>
+            <h3 data-testid="titulo-testid" className={styles.title}>
+              {licitData.titulo}
+            </h3>
             <span className={styles.subtitle}>{licitData.nome_orgao}</span>
           </div>
           <div className={styles.shareContainer}>
@@ -53,7 +55,7 @@ export default function BiddingPage() {
         <div className={styles.biddingInfoContainer}>
           <div className={styles.biddingInfoElement}>
             <img src={calendario} />
-            <p>{licitData.data}</p>
+            <p data-testid="data-testid">{licitData.data}</p>
           </div>
           {licitData.valores && (
             <div className={styles.biddingInfoElement}>
@@ -81,7 +83,10 @@ export default function BiddingPage() {
       </div>
       <section className={styles.outrasLicitacoesContainer}>
         <h3>Licitações mais recentes:</h3>
-        <div className={styles.cardsLicitacoesWrapper}>
+        <div
+          data-testid="outras-licitacoes-testid"
+          className={styles.cardsLicitacoesWrapper}
+        >
           {maisLicitacoes.map((data) => {
             return <CardLicitacoes key={data.id} data={data} />;
           })}

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -114,7 +114,13 @@
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
 <a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a>
+<a name='L55'></a><a href='#L55'>55</a>
+<a name='L56'></a><a href='#L56'>56</a>
+<a name='L57'></a><a href='#L57'>57</a>
+<a name='L58'></a><a href='#L58'>58</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,13 +128,19 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,31 +184,33 @@ import formatCurrency from '../../utils/format-currency';
 import { useNavigate } from 'react-router-dom';
 import { capitalize } from '@mui/material';
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >CardLicitacoes(</span>{ data }) {
-  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
-  const handleNavigate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    navigate(`/licitacoes/${data.id}`);</span>
-<span class="cstat-no" title="statement not covered" >    navigate(0);</span>
-  }
+export default function CardLicitacoes({ data }) {
+  const navigate = useNavigate();
+  const handleNavigate = () =&gt; {
+    navigate(`/licitacoes/${data.id}`);
+    navigate(0);
+  };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;div className={styles.cardWrapper}&gt;
       &lt;h5 className={styles.cardTitle}&gt;{data.nome_orgao}&lt;/h5&gt;
 &nbsp;
       &lt;div&gt;
         &lt;div className={styles.cardStatus}&gt;
           &lt;div className={styles.statusContainer}&gt;
-            &lt;p className={styles.cardStatusText}&gt;
-              Status: {capitalize(setStatusBidding(data) ? setStatusBidding(data): '')}
+            &lt;p data-testid="status-testid" className={styles.cardStatusText}&gt;
+              Status: {setStatusBidding(data)}
             &lt;/p&gt;
           &lt;/div&gt;
-          &lt;p className={styles.cardStatusText}&gt;Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}&lt;/p&gt;
+          &lt;p data-testid="modalidade-testid" className={styles.cardStatusText}&gt;
+            Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}
+          &lt;/p&gt;
         &lt;/div&gt;
 &nbsp;
         &lt;div className={styles.licitacoesInfo}&gt;
-          &lt;p&gt;Data de publicação: {data.data}&lt;/p&gt;
+          &lt;p data-testid="data-testid"&gt;Data de publicação: {data.data}&lt;/p&gt;
           {data.valores &amp;&amp; (
-            &lt;p className={styles.statusContainer}&gt;
+            &lt;p data-testid="valor-testid" className={styles.statusContainer}&gt;
               Valor da licitação: {formatCurrency(data.valores[0])}
             &lt;/p&gt;
           )}
@@ -209,7 +223,11 @@ export default function <span class="fstat-no" title="function not covered" >Car
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div&gt;
-        &lt;a onClick={handleNavigate} className={styles.cardButton}&gt;
+        &lt;a
+          data-testid="link-testid"
+          onClick={handleNavigate}
+          className={styles.cardButton}
+        &gt;
           &lt;p&gt;Ver Mais&lt;/p&gt;
         &lt;/a&gt;
       &lt;/div&gt;
@@ -223,7 +241,7 @@ export default function <span class="fstat-no" title="function not covered" >Car
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-12T12:53:52.075Z
+                at 2024-08-12T22:46:05.922Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
