@@ -6,7 +6,9 @@ from app.serializers import LicitacaoSerializer, LicitacoesQuantidadeMensalSeria
 from django.db.models import Sum, F
 from django.db.models.functions import Cast
 from django.db.models import FloatField
+from unittest.mock import patch
 from datetime import datetime
+from django.test import TestCase
 
 class Tests(APITestCase):
 
@@ -181,7 +183,7 @@ class Tests(APITestCase):
         response = self.client.get(reverse('valores-anuais-list'))  
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data, [])
-        
+
     # TESTE DO ENDPOINT LICITACAO_MAIOR_VALOR   
     def test_licitacao_maior_valor(self):
         # Fazer uma requisição GET para o endpoint
@@ -210,3 +212,48 @@ class Tests(APITestCase):
         
         # Verificar se a mensagem de erro está correta
         self.assertEqual(response.data, {'detail': 'Nenhuma licitação encontrada.'})
+
+    # TESTE DO ENDPOINT SUBSCRIBE_EMAIL
+    @patch('app.views.requests.post')
+    def test_subscribe_email_success(self, mock_post):
+        mock_post.return_value.status_code = 200
+
+        url = reverse('subscribe_email')
+        data = {'email_address': 'test@example.com'}
+        headers = {'HTTP_ORIGIN': 'https://fastidious-daffodil-724e94.netlify.app'}
+
+        response = self.client.post(url, data, **headers)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, "Subscription successful!")
+
+    @patch('app.views.requests.post')
+    def test_subscribe_email_no_email(self, mock_post):
+        # Simula uma resposta 400 para o mock
+        mock_post.return_value.status_code = 400
+
+        # Define a URL para o teste
+        url = reverse('subscribe_email')
+        data = {}  # Envia dados vazios para simular a falta de um email
+        headers = {'HTTP_ORIGIN': 'https://fastidious-daffodil-724e94.netlify.app'}
+
+        # Faz uma requisição POST
+        response = self.client.post(url, data, **headers)
+
+        # Verifica se o status da resposta é 400 (Bad Request)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+        
+        # Verifica se a mensagem de erro está correta
+        self.assertEqual(response.data['detail'], "Email is required.")
+
+    @patch('app.views.requests.post')
+    def test_subscribe_email_unauthorized_origin(self, mock_post):
+        mock_post.return_value.status_code = 403
+
+        url = reverse('subscribe_email')
+        data = {'email_address': 'test@example.com'}
+        headers = {'HTTP_ORIGIN': 'https://unauthorized-origin.com'}
+
+        response = self.client.post(url, data, **headers)
+
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertEqual(response.data['detail'], "Unauthorized origin.")
