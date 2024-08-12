@@ -279,13 +279,17 @@ export default function Dashboard() {
         </select>
       </div>
       <div className={style.total}>
-        <p>Total de Licitações: {anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</p>
-        <p>Valor Total: R$ {anoSelecionado === 'Total' ? totalValoresMensal.toFixed(2) : valoresPorAno[anoSelecionado]?.toFixed(2)}</p>
+        <p> <strong>Total de Licitações: {anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</strong></p>
+        <p><strong>Valor Total: R$ {anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
       </div>
       <div className={style.chartContainer}>
+        <div className={style.chart01}>
         <Bar data={chartDataAnual} options={optionsAnual} className={style.chart} />
+        </div>
+        <div className={style.chart02}>
         <Bar data={chartDataMensal} options={optionsMensal} className={style.chart} />
         <Pie data={chartDataPizza} className={style.chart} />
+        </div>
       </div>
     </div>
   );
