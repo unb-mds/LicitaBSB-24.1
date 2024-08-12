@@ -4,8 +4,6 @@ import { act, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { MemoryRouter } from 'react-router-dom';
 import CardLicitacoes from '.';
-import formatCurrency from '../../utils/format-currency';
-import { setStatusBidding } from '../../utils/status-bidding';
 
 // Mocka o useNavigate
 jest.mock('react-router-dom', () => ({

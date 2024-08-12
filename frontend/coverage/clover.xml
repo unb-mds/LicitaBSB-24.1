@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723502765993" clover="3.2.0">
-  <project timestamp="1723502765993" name="All files">
-    <metrics statements="199" coveredstatements="69" conditionals="42" coveredconditionals="14" methods="79" coveredmethods="25" elements="320" coveredelements="108" complexity="0" loc="199" ncloc="199" packages="26" files="34" classes="34"/>
+<coverage generated="1723505221051" clover="3.2.0">
+  <project timestamp="1723505221051" name="All files">
+    <metrics statements="199" coveredstatements="71" conditionals="42" coveredconditionals="14" methods="79" coveredmethods="27" elements="320" coveredelements="112" complexity="0" loc="199" ncloc="199" packages="26" files="34" classes="34"/>
     <package name="src">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="main.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\main.jsx">
@@ -11,11 +11,11 @@
       </file>
     </package>
     <package name="src.components.campo-pesquisa">
-      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="index.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\components\campo-pesquisa\index.jsx">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="21" count="41" type="stmt"/>
       </file>
     </package>
     <package name="src.components.card-licitacoes">
@@ -48,15 +48,15 @@
         <line num="17" count="0" type="stmt"/>
         <line num="22" count="0" type="stmt"/>
         <line num="25" count="19" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="85" count="9" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="84" count="9" type="stmt"/>
       </file>
     </package>
     <package name="src.components.layout.custom-button">
       <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
       <file name="index.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\components\layout\custom-button\index.jsx">
         <metrics statements="1" coveredstatements="1" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
-        <line num="5" count="28" type="stmt"/>
+        <line num="5" count="31" type="stmt"/>
       </file>
     </package>
     <package name="src.components.layout.custom-input-checkbox">
