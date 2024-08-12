@@ -27,19 +27,18 @@ export default function Dashboard() {
     const fetchLicitacoes = async () => {
       try {
         const response = await fetch('https://licitabsbserer-a1c309841042.herokuapp.com/app/dash/quantidade-anual');
-        console.log('Response:', response); // Verificando a resposta
         if (!response.ok) {
           throw new Error('Erro na requisição: ' + response.statusText);
         }
         const data = await response.json();
-        console.log('Data received:', data); // Verificando os dados recebidos
         const licitacoesAgrupadas = data.reduce((acc, licitacao) => {
-          const { ano, valor_total } = licitacao;
-          console.log(`Processing year: ${ano}, value: ${valor_total}`); // Verificando cada valor
-          acc[ano] = parseFloat(valor_total); // Converte para número
+          const { ano, total_licitacoes } = licitacao;
+          const valorNumerico = parseFloat(total_licitacoes);
+          if (!isNaN(valorNumerico)) {
+            acc[ano] = (acc[ano] || 0) + valorNumerico; // Acumula valores do mesmo ano
+          }
           return acc;
         }, {});
-        console.log('Licitacoes Agrupadas:', licitacoesAgrupadas); // Verificando o objeto final
         setLicitacoesPorAno(licitacoesAgrupadas);
       } catch (error) {
         console.error('Erro ao buscar os dados: ', error);
