@@ -28,6 +28,7 @@
 
 .logo {
   padding: 4px 0;
+  margin-left: -10px;
 }
 
 .logo, .logo img {
@@ -60,11 +61,11 @@
 .campoPesquisa {
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 200px;
   background-color: var(--azulEscuro);
   height: 29px;
   gap: 10px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 3px;
 }
 
@@ -80,6 +81,7 @@
   color: var(--brancoTexto);
   font-size: 16px;
   font-family: 'IBM Plex Sans', sans-serif;
+  width: 100%;
 }
 
 .textInput:focus{
@@ -101,7 +103,7 @@
   }
 }
 
-@media (min-width: 720px) and (max-width: 1480px){
+@media (min-width: 720px) and (max-width: 1700px){
   .subHeaderWrapper {
     justify-content: center;
   }
