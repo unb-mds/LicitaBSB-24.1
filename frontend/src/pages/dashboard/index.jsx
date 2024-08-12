@@ -75,7 +75,7 @@ export default function Dashboard() {
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
   const quantidadesAnuais = anos.map(ano => quantidadePorAno[ano] || 0);
-  const totalQuantidadeAnual = quantidadesAnuais.reduce((acc, curr) => acc + curr, 0);
+  const totalQuantidadeAnual = Object.values(quantidadePorAno).reduce((acc, curr) => acc + curr, 0);
 
 
   const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
@@ -278,7 +278,7 @@ export default function Dashboard() {
     <div className={style.dashboard}>
       <div className={style.chartContainer}>
       <h2>Total Anual</h2>
-      <div>Total Quantidade Anual: {totalQuantidadeAnual}</div>
+      <div>Total Quantidade Anual de Todos os Anos: {totalQuantidadeAnual}</div>
       {/* Adicione aqui o gráfico ou outras informações, se necessário */}
       </div>
       <div className={style.chart}>
