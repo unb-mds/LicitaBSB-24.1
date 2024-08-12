@@ -1,9 +1,14 @@
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
-from app.models import Orgao, Licitacao
+from app.models import Licitacao, Orgao
+from app.serializers import LicitacaoSerializer
+from django.db.models import Sum, F
+from django.db.models.functions import Cast
+from django.db.models import FloatField
 from datetime import datetime
-class LicitacaoTests(APITestCase):
+
+class Tests(APITestCase):
 
     def setUp(self):
         for i in range(15):
@@ -20,7 +25,8 @@ class LicitacaoTests(APITestCase):
                 valores=[1000 * (i+1)]
             )
 
-    def test_nome_orgaos_por_id(self):
+    # TESTE DO ENDPOINT NOME_ORGAOS_POR_ID
+    def test_nome_orgaos_por_id_valido(self):
         # Faz uma requisição GET para a URL nome_orgaos_por_id com o ID do orgao criado
         response = self.client.get(reverse('nome_orgaos_por_id', args=[self.orgao.id]))
         # Verifica se o status da resposta é 200 OK
@@ -28,6 +34,15 @@ class LicitacaoTests(APITestCase):
         # Verifica se os dados retornados são os esperados
         self.assertEqual(response.data, {'id': self.orgao.id, 'nome': self.orgao.nome})
 
+    def test_nome_orgaos_por_id_invalido(self):
+        # Faz uma requisição GET para a URL nome_orgaos_por_id com um ID inexistente
+        response = self.client.get(reverse('nome_orgaos_por_id', args=[999]))
+        # Verifica se o status da resposta é 404 Not Found
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
+        # Verifica se a mensagem de erro está correta
+        self.assertEqual(response.data, {'detail': 'Órgão com ID 999 não encontrado.'})
+
+    # TESTE DO ENDPOINT LISTAR_ORGAOS
     def test_listar_orgaos_paginacao(self):
         # Faz uma requisição GET para a URL lista_orgaos
         response = self.client.get(reverse('lista_orgaos'))
@@ -44,6 +59,7 @@ class LicitacaoTests(APITestCase):
         # Verifica se pelo menos um dos resultados contém 'Teste 1' no nome
         self.assertTrue(any('Teste 1' in orgao['nome'] for orgao in response.data['results']))
 
+    # TESTE DO ENDPOINT LISTAR_LICITACOES
     def test_listar_licitacoes_paginacao(self):
         response = self.client.get(reverse('listar_licitacoes'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
