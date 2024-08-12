@@ -25,28 +25,28 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/5</span>
             </div>
         
             
@@ -107,11 +107,25 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L45'></a><a href='#L45'>45</a>
+<a name='L46'></a><a href='#L46'>46</a>
+<a name='L47'></a><a href='#L47'>47</a>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a>
+<a name='L50'></a><a href='#L50'>50</a>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -155,9 +169,16 @@
 import { setStatusBidding } from '../../utils/status-bidding';
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { capitalize } from '@mui/material';
 &nbsp;
 export default function <span class="fstat-no" title="function not covered" >CardLicitacoes(</span>{ data }) {
+  const navigate = <span class="cstat-no" title="statement not covered" >useNavigate();</span>
+  const handleNavigate = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    navigate(`/licitacoes/${data.id}`);</span>
+<span class="cstat-no" title="statement not covered" >    navigate(0);</span>
+  }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >  return (</span>
     &lt;div className={styles.cardWrapper}&gt;
       &lt;h5 className={styles.cardTitle}&gt;{data.nome_orgao}&lt;/h5&gt;
@@ -166,17 +187,17 @@ export default function <span class="fstat-no" title="function not covered" >Car
         &lt;div className={styles.cardStatus}&gt;
           &lt;div className={styles.statusContainer}&gt;
             &lt;p className={styles.cardStatusText}&gt;
-              Status: {setStatusBidding(data)}
+              Status: {capitalize(setStatusBidding(data) ? setStatusBidding(data): '')}
             &lt;/p&gt;
           &lt;/div&gt;
-          &lt;p className={styles.cardStatusText}&gt;Modalidade: {data.tipo}&lt;/p&gt;
+          &lt;p className={styles.cardStatusText}&gt;Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}&lt;/p&gt;
         &lt;/div&gt;
 &nbsp;
         &lt;div className={styles.licitacoesInfo}&gt;
           &lt;p&gt;Data de publicação: {data.data}&lt;/p&gt;
           {data.valores &amp;&amp; (
             &lt;p className={styles.statusContainer}&gt;
-              Valor da licitação: R$ {formatCurrency(data.valores[0])}
+              Valor da licitação: {formatCurrency(data.valores[0])}
             &lt;/p&gt;
           )}
         &lt;/div&gt;
@@ -188,9 +209,9 @@ export default function <span class="fstat-no" title="function not covered" >Car
         &lt;/div&gt;
       &lt;/div&gt;
       &lt;div&gt;
-        &lt;Link to={`/licitacoes/${data.id}-${data.tipo}`}&gt;
-          &lt;p className={styles.cardButton}&gt;Ver Mais&lt;/p&gt;
-        &lt;/Link&gt;
+        &lt;a onClick={handleNavigate} className={styles.cardButton}&gt;
+          &lt;p&gt;Ver Mais&lt;/p&gt;
+        &lt;/a&gt;
       &lt;/div&gt;
     &lt;/div&gt;
   );
@@ -202,7 +223,7 @@ export default function <span class="fstat-no" title="function not covered" >Car
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-10T14:37:28.043Z
+                at 2024-08-12T12:53:52.075Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
