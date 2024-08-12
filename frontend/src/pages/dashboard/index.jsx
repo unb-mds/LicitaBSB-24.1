@@ -25,6 +25,7 @@ export default function Dashboard() {
   const [valoresPorAno, setValoresPorAno] = useState({});
   const [quantidadePorMes, setQuantidadePorMes] = useState({});
   const [valoresPorMes, setValoresPorMes] = useState({});
+  const [anoSelecionado, setAnoSelecionado] = useState('2024'); // Definido para o ano atual ou ano desejado
 
   useEffect(() => {
     const fetchData = async () => {
@@ -96,9 +97,9 @@ export default function Dashboard() {
   const valoresAnuais = Object.values(valoresPorAno);
   const quantidadesAnuais = anos.map(ano => quantidadePorAno[ano] || 0);
 
-  const meses = Object.keys(valoresPorMes);
-  const valoresMensais = Object.values(valoresPorMes);
-  const quantidadesMensais = meses.map(mes => quantidadePorMes[mes] || 0);
+  const meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const quantidadesMensais = meses.map((_, index) => quantidadePorMes[`${anoSelecionado}-${index + 1}`] || 0);
+  const valoresMensaisSelecionado = meses.map((_, index) => valoresPorMes[`${anoSelecionado}-${index + 1}`] || 0);
 
   const chartDataAnual = {
     labels: anos,
@@ -135,7 +136,7 @@ export default function Dashboard() {
       },
       {
         label: 'Valor Total das Licitações por Mês (R$)',
-        data: valoresMensais,
+        data: valoresMensaisSelecionado,
         backgroundColor: 'orange',
         borderColor: 'rgba(0,0,0,1)',
         borderWidth: 1,
@@ -246,6 +247,15 @@ export default function Dashboard() {
         <Bar data={chartDataAnual} options={optionsAnual} className={style.dashboard} />
       </div>
       <div className={style.dashboardWrapper}>
+        <select
+          value={anoSelecionado}
+          onChange={(e) => setAnoSelecionado(e.target.value)}
+          className={style.selectYear}
+        >
+          {anos.map(ano => (
+            <option key={ano} value={ano}>{ano}</option>
+          ))}
+        </select>
         <Bar data={chartDataMensal} options={optionsMensal} className={style.dashboard} />
       </div>
     </div>
