@@ -63,9 +63,11 @@ const Header = () => {
           </ul>
           <div>
             <div className={styles.responsiveCampoPesquisa}>
-              <img
-                src={search}
-              />
+              <a href="/licitacoes" style={{display: 'flex', alignItems: 'center'}}>
+                <img
+                  src={search}
+                />
+              </a>
               <img
                 src={menuBurger}
                 onClick={() => setShowSidebar((prev) => !prev)}

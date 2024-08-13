@@ -34,3 +34,13 @@
   text-decoration: none;
   font-family: 'IBM Plex Sans', sans-serif;
 }
+
+@media (min-width: 720px) {
+  .sidebarContainer{
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+}
