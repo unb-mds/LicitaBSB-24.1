@@ -90,6 +90,10 @@
   outline: none;
 }
 
+.responsiveCampoPesquisa {
+  display: none;
+}
+
 /* Estilos Responsivos */
 @media (max-width: 720px) {
   body, html {
@@ -97,7 +101,7 @@
   }
 
   .subHeader {
-    justify-content: center;
+    justify-content: space-between;
     padding: 0 16px; /* Ajuste para evitar overflow */
   }
 
@@ -107,6 +111,11 @@
 
   .campoPesquisa {
     display: none;
+  }
+
+  .responsiveCampoPesquisa {
+    display: flex;
+    gap: 16px;
   }
 }
 

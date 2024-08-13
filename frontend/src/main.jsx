@@ -20,6 +20,7 @@ import Root from './root';
 import './styles/global.css';
 import ArticleRoot from './article-root';
 import Articles from './pages/articles';
+import Dashboard from './pages/dashboard';
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "licitacoes/:id",
         element: <BiddingPage />
+      },
+      {
+        path: "graficos",
+        element: <Dashboard />
       }
     ]
   }

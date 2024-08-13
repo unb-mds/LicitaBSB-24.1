@@ -59,6 +59,9 @@
     }
     li a {
       text-decoration: none;
+      font-size: 18px;
+      color: #e9e4df;
+      font-weight: 600;
     }
   }
   @media (max-width: 740px) {

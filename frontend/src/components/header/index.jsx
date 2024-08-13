@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
+import menuBurger from '../../../assets/burger.svg';
 import styles from './style.module.css';
 import { useNavigate } from 'react-router-dom';
+import SidebarResponsive from '../sidebar-responsive';
 
 const Header = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function handdleChange(e) {
     setInput(e.target.value);
@@ -24,6 +27,7 @@ const Header = () => {
 
   return (
     <div className={styles.headerWrapper}>
+      <SidebarResponsive showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
       <div className={styles.headerUnb}>
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
@@ -52,12 +56,23 @@ const Header = () => {
               </a>
             </li>
             <li className={styles.headerListItem}>
-              <a href="/dashboard" className={styles.headerLink}>
-                Dashboard
+              <a href="/graficos" className={styles.headerLink}>
+                Gráficos
               </a>
             </li>
           </ul>
           <div>
+            <div className={styles.responsiveCampoPesquisa}>
+              <a href="/licitacoes" style={{display: 'flex', alignItems: 'center'}}>
+                <img
+                  src={search}
+                />
+              </a>
+              <img
+                src={menuBurger}
+                onClick={() => setShowSidebar((prev) => !prev)}
+              />
+            </div>
             <div className={styles.campoPesquisa}>
               <button
                 className={styles.botaoPesquisa}
@@ -82,23 +97,8 @@ const Header = () => {
             </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/SobreLicitacao" className={styles.headerLink}>
-              Sobre as Licitações
-            </a>
-          </li>
-          <li className={styles.headerListItem}>
-            <a href="/sobredispensadelicitacao" className={styles.headerLink}>
-              Sobre Dispensas
-            </a>
-          </li>
-          <li className={styles.headerListItem}>
-            <a href="/sobrebot" className={styles.headerLink}>
-              Sobre o Bot
-            </a>
-          </li>
-          <li className={styles.headerListItem}>
-            <a href="" className={styles.headerLink}>
-              Sobre o Projeto
+            <a href="/artigos" className={styles.headerLink}>
+              Conheça o Projeto
             </a>
           </li>
           <li className={styles.headerListItem}>
@@ -107,8 +107,8 @@ const Header = () => {
             </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/dashboard" className={styles.headerLink}>
-              Dashboard
+            <a href="/graficos" className={styles.headerLink}>
+              Gráficos
             </a>
           </li>
         </ul>
