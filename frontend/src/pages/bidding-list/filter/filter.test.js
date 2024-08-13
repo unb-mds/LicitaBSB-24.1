@@ -13,6 +13,8 @@ jest.mock('react-router-dom', () => ({
     useNavigate: jest.fn(),
 }));
 
+// jest.mock('../../../services/orgaos.service');
+
 // Mock das props necessárias
 const filterParams = { tipo: '', data: '' };
 const setFilterParams = jest.fn();
