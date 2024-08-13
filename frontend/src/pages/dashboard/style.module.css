@@ -35,7 +35,7 @@ body{
     display: flex;
     max-width: 100%;
     height: 100%;
-    gap: 10px;
+    gap: 5px;
 }
 
 .chart01 {
@@ -49,14 +49,14 @@ body{
     text-align: center;
     border-right: 1px solid black;
     padding: 10px; /* Adicionado padding para espaço ao redor do gráfico */
+    padding-top: 1px;
     box-sizing: border-box; /* Inclui o padding no cálculo da largura */
-    gap: 10px;
 }
 
 
 .chart01 .chart{
-    width: 850px !important;
-    height: 425px !important;
+    width: 165%;
+    height: 50% !important;
 }
 
 .chart02 {
