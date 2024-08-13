@@ -13,22 +13,12 @@ import {
   getLicitacoes,
 } from '../../services/licitacoes.service';
 import CardLicitacoes from '../../components/card-licitacoes';
+import useLoadData from '../../hooks/useLoadData';
 
 export default function BiddingPage() {
   const parametros = useParams();
-  const [licitData, setLicitData] = useState({});
-  const [maisLicitacoes, setMaisLicitacoes] = useState([]);
 
-  const loadData = async () => {
-    const data = await getLicitacaoById(parametros.id);
-    setLicitData(data);
-    const maisLicit = await getLicitacoes();
-    setMaisLicitacoes(maisLicit.results.slice(0, 3));
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  const { licitData, maisLicitacoes } = useLoadData(parametros.id);
 
   return (
     <main className={styles.mainContainer}>

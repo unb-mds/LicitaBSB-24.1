@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1723555505978" clover="3.2.0">
-  <project timestamp="1723555505979" name="All files">
-    <metrics statements="249" coveredstatements="88" conditionals="78" coveredconditionals="16" methods="94" coveredmethods="37" elements="421" coveredelements="141" complexity="0" loc="249" ncloc="249" packages="26" files="34" classes="34"/>
+<coverage generated="1723561111943" clover="3.2.0">
+  <project timestamp="1723561111943" name="All files">
+    <metrics statements="252" coveredstatements="95" conditionals="81" coveredconditionals="21" methods="95" coveredmethods="39" elements="428" coveredelements="155" complexity="0" loc="252" ncloc="252" packages="26" files="35" classes="35"/>
     <package name="src">
       <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="main.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\main.jsx">
@@ -22,11 +22,11 @@
       <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="index.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\components\card-licitacoes\index.jsx">
         <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
-        <line num="9" count="7" type="stmt"/>
-        <line num="10" count="7" type="stmt"/>
+        <line num="9" count="19" type="stmt"/>
+        <line num="10" count="19" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="15" count="7" type="stmt"/>
+        <line num="15" count="19" type="stmt"/>
       </file>
     </package>
     <package name="src.components.footer">
@@ -102,11 +102,11 @@
       <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="api.js" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\config\api.js">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="3" count="5" type="stmt"/>
+        <line num="3" count="7" type="stmt"/>
       </file>
     </package>
     <package name="src.hooks">
-      <metrics statements="14" coveredstatements="6" conditionals="6" coveredconditionals="0" methods="7" coveredmethods="4"/>
+      <metrics statements="25" coveredstatements="17" conditionals="9" coveredconditionals="3" methods="10" coveredmethods="7"/>
       <file name="useGetImage.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\hooks\useGetImage.jsx">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="4" count="40" type="stmt"/>
@@ -115,6 +115,20 @@
         <line num="9" count="36" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="16" count="40" type="stmt"/>
+      </file>
+      <file name="useLoadData.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\hooks\useLoadData.jsx">
+        <metrics statements="11" coveredstatements="11" conditionals="3" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="24" count="4" type="stmt"/>
       </file>
       <file name="useSearchBidding.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\hooks\useSearchBidding.jsx">
         <metrics statements="8" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="3" coveredmethods="0"/>
@@ -248,21 +262,13 @@
       </file>
     </package>
     <package name="src.pages.bidding-page">
-      <metrics statements="12" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="3"/>
+      <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <file name="index.jsx" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\pages\bidding-page\index.jsx">
-        <metrics statements="12" coveredstatements="8" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="3"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="19" count="5" type="stmt"/>
-        <line num="20" count="5" type="stmt"/>
-        <line num="22" count="5" type="stmt"/>
-        <line num="23" count="5" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
-        <line num="29" count="5" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
-        <line num="33" count="5" type="stmt"/>
-        <line num="91" count="0" type="stmt"/>
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="23" count="6" type="stmt"/>
+        <line num="81" count="12" type="stmt"/>
       </file>
     </package>
     <package name="src.pages.dashboard">
@@ -390,8 +396,8 @@
         <line num="10" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="18" count="7" type="stmt"/>
-        <line num="19" count="7" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
@@ -426,9 +432,9 @@
       </file>
       <file name="status-bidding.js" path="C:\Users\Pichau\projetos\js_projects\mds2\outra-copia\LicitaBSB-24.1\frontend\src\utils\status-bidding.js">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <line num="2" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="2" count="21" type="cond" truecount="2" falsecount="0"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="4" count="8" type="stmt"/>
+        <line num="4" count="20" type="stmt"/>
       </file>
     </package>
   </project>
