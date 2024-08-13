@@ -8,6 +8,7 @@
     - [Execução](#execução)
     - [Endpoints](#endpoints)
     - [Bot de Licitações no X](#bot-de-licitações-no-x)
+        - [Testes do bot](#testes-do-bot)
       - [Funcionalidades](#funcionalidades)
       - [Configuração](#configuração)
       - [Uso](#uso)
@@ -82,6 +83,27 @@ Os endpoints da API REST se encontram no link https://bit.ly/licitabsb_api ou no
 
 Este bot publica automaticamente as licitações do Diário Oficial do Distrito Federal (DODF) e do Diário Oficial da União (DOU) referentes a Brasília na conta [@LicitaBSB](https://x.com/LicitaBSB).
 
+###### Testes do bot
+
+Para testar o bot, utilizamos a biblioteca `unittest` do Python (ela é nativa, portanto, não é necessário nenhum pip). Siga o passo a passo abaixo para executar os testes:
+
+1. **Navegue até o diretório raiz do projeto:**
+   ```bash
+   cd LicitaBSB-24.1
+   ```
+
+2. **Execute o script de teste:**
+   ```bash
+   python -m unittest /backend/twitter/test.py
+   ```
+
+   Isso irá executar todos os testes presentes no diretório `tests` que começam com o prefixo `test_`.
+
+3. **Verifique os resultados dos testes:**
+   Após a execução dos testes, você verá os resultados no terminal. Os testes irão verificar se as funcionalidades do bot estão funcionando corretamente e se os dados estão sendo formatados e publicados adequadamente.
+
+Certifique-se de que todas as asserções nos testes passaram sem erros. Caso algum teste falhe, verifique o motivo do erro e faça as correções necessárias no código.
+
 ##### Funcionalidades
 
 - Autenticação automática na API do Twitter.
@@ -89,6 +111,7 @@ Este bot publica automaticamente as licitações do Diário Oficial do Distrito 
 - Formatação de dados para postagens legíveis.
 - Publicação automática das licitações.
 - Testes com dados simulados.
+
 
 ##### Configuração
 
