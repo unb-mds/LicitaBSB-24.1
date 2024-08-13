@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
+import menuBurger from '../../../assets/burger.svg';
 import styles from './style.module.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -58,6 +59,14 @@ const Header = () => {
             </li>
           </ul>
           <div>
+            <div className={styles.responsiveCampoPesquisa}>
+              <img
+                src={search}
+              />
+              <img
+                src={menuBurger}
+              />
+            </div>
             <div className={styles.campoPesquisa}>
               <button
                 className={styles.botaoPesquisa}
