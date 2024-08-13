@@ -13,7 +13,7 @@ import BiddingPage from './pages/bidding-page';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AboutBot from './pages/about-bot';
-import AboutLisita from './pages/about-lisitaBSB';
+import AboutLicitaBSB from './pages/about-licitaBSB';
 import AboutBiddingDispatch from './pages/about-bidding-dispatch';
 import Root from './root';
 
@@ -50,6 +50,10 @@ const router = createBrowserRouter([
             path: "sobrebot",
             element: <AboutBot />
           },
+          {
+            path: "sobrelicitabsb",
+            element: <AboutLicitaBSB />
+          }
         ]
       },
       {
