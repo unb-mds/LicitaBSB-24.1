@@ -247,6 +247,21 @@ ALLOWED_ORIGINS = [
 @swagger_auto_schema(
     method='post',
     operation_description="Subscribe an email to a Mailchimp list.",
+    request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'email_address': openapi.Schema(type=openapi.TYPE_STRING),
+            'status': openapi.Schema(type=openapi.TYPE_STRING),
+            'merge_fields': openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'FNAME': openapi.Schema(type=openapi.TYPE_STRING),
+                    'LNAME': openapi.Schema(type=openapi.TYPE_STRING)
+                }
+            )
+        },
+        required=['email_address', 'status']
+    ),
     responses={
         200: "Subscription successful!",
         500: "Subscription failed."
@@ -261,9 +276,13 @@ def subscribe_email(request):
         return Response({"detail": "Unauthorized origin."}, status=status.HTTP_403_FORBIDDEN)
 
     email = request.data.get('email_address')
+    status = request.data.get('status')
+    merge_fields = request.data.get('merge_fields')
     
     if not email:
         return Response({"detail": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
+    if not status:
+        return Response({"detail": "Status is required."}, status=status.HTTP_400_BAD_REQUEST)
 
     mailchimp_url = settings.DJANGO_URL_CHIMP
     mailchimp_api_key = settings.DJANGO_API
@@ -273,7 +292,8 @@ def subscribe_email(request):
             mailchimp_url,
             json={
                 'email_address': email,
-                'status': 'subscribed',
+                'status': status,
+                'merge_fields': merge_fields
             },
             auth=HTTPBasicAuth('anystring', mailchimp_api_key)  # 'anystring' pode ser qualquer valor
         )
