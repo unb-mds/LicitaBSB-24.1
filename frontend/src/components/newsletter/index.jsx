@@ -11,7 +11,7 @@ const SubscribeForm = () => {
 
     const payload = {
       email_address: email, // Ajuste o campo conforme necessário
-      status: 'subscribed'
+      status: 'subscribed',
     };
 
     try {
