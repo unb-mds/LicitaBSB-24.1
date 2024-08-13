@@ -11,9 +11,25 @@
   display: flex;
   height: 100%;
   width: 50%;
-  background-color: white;
+  background-color: var(--azulMedio);
   z-index: 500;
   position: absolute;
   top: 0;
   right: 0;
+  padding: 32px;
+}
+
+.sidebar ul {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.sidebar ul li a {
+  color: var(--brancoTexto);
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  font-family: 'IBM Plex Sans', sans-serif;
 }
