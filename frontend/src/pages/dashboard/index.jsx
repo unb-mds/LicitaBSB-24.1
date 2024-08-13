@@ -218,7 +218,7 @@ export default function Dashboard() {
       },
       legend: {
         display: true,
-        position: 'right', // Posiciona a legenda à direita
+        position: 'top', // Posiciona a legenda à direita
         labels: {
           font: {
             size: 18,
@@ -345,8 +345,8 @@ export default function Dashboard() {
           ))}
         </select>
       <div className={style.total}>
-        <p> <strong>Total de Licitações: <span>{anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</span></strong></p>
-        <p><strong>Valor Total: R$ <span>{anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></strong></p>
+        <p>Total de Licitações: <span>{anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</span></p>
+        <p>Valor Total: R$ <span>{anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></p>
       </div>
       </div>
         <Pie data={chartDataPizza} options= {optionsPizza} className={style.chartPizza} />
