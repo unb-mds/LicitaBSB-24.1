@@ -43,6 +43,7 @@ const getSubscribers = async () => {
 };
 
 const sendMail = async (emailAddress) => {
+  console.log(`Sending email to: ${emailAddress}`);
   const mailOptions = {
     from: {
       name: "LicitaBSB",
@@ -66,7 +67,9 @@ Equipe Licita BSB`,
 
   try {
     await transporter.sendMail(mailOptions);
+    console.log(`Email successfully sent to: ${emailAddress}`);
   } catch (error) {
+    console.error(`Failed to send email to: ${emailAddress}`, error);
   }
 };
 
