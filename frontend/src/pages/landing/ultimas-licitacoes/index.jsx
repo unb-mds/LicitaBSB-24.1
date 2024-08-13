@@ -12,7 +12,7 @@ export default function UltimasLicitacoes() {
   const loadData = async () => {
     const data = await getLicitacoes();
     setListaLicitacoes(data.results.slice(0, 3));
-  }
+  };
 
   useEffect(() => {
     loadData();
@@ -23,15 +23,23 @@ export default function UltimasLicitacoes() {
       <div className={styles.wrapper}>
         <div className={styles.licitacoesHeader}>
           <h2>Últimas Licitações</h2>
-          <Link to="/licitacoes" className={styles.linkLicitacoes}>
+          <Link
+            data-testid="link-testid"
+            to="/licitacoes"
+            className={styles.linkLicitacoes}
+          >
             Ver todas as licitações
           </Link>
         </div>
-        <div className={styles.licitacoesWrapper}>
+        <ul className={styles.licitacoesWrapper}>
           {listaLicitacoes.map((item) => {
-            return <CardLicitacoes key={item.id} data={item} />;
+            return (
+              <li data-testid="listitem-testid">
+                <CardLicitacoes key={item.id} data={item} />
+              </li>
+            );
           })}
-        </div>
+        </ul>
       </div>
     </>
   );

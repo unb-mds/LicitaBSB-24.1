@@ -45,7 +45,7 @@ describe("O Card da licitação deve", () => {
         const valor = screen.getByTestId('valor-testid')
         expect(valor).toBeInTheDocument()
     })
-    test('deve navegar para a página de detalhes ao clicar no botão "Ver Mais"', async () => {
+    test('navegar para a página de detalhes ao clicar no botão "Ver Mais"', async () => {
         const navigate = require('react-router-dom').useNavigate;
         const mockNavigate = jest.fn();
         navigate.mockImplementation(() => mockNavigate);
