@@ -105,6 +105,22 @@ export default function Dashboard() {
     fetchData();
   }, []);
 
+  const getFontSize17 = () => {
+    if (window.innerWidth > 1300) {
+      return 17; // Tamanho normal da fonte
+    } else {
+      return 10; // Reduzir tamanho da fonte em telas menores
+    }
+  };
+
+  const getFontSize30 = () => {
+    if (window.innerWidth > 1300) {
+      return 30; // Tamanho normal da fonte
+    } else {
+      return 15; // Reduzir tamanho da fonte em telas menores
+    }
+  };
+
 
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
@@ -213,7 +229,7 @@ export default function Dashboard() {
         display: true,
         text: 'Quantidade Total por Mês',
         font: {
-          size: 30,
+          size: getFontSize30(),
         },
       },
       legend: {
@@ -221,7 +237,7 @@ export default function Dashboard() {
         position: 'top', // Posiciona a legenda à direita
         labels: {
           font: {
-            size: 18,
+            size: getFontSize17(),
           },
         },
       },
@@ -241,7 +257,7 @@ export default function Dashboard() {
         display: true,
         text: 'Licitações por Ano',
         font: {
-          size: 30,
+          size: getFontSize30(),
         },
       },
       legend: {
@@ -258,7 +274,7 @@ export default function Dashboard() {
           display: true,
           text: 'Quantidade de Licitações',
           font: {
-            size: 17, // Aumente o tamanho da fonte
+            size: getFontSize17(), // Aumente o tamanho da fonte
           },
         },
       },
@@ -270,7 +286,7 @@ export default function Dashboard() {
           display: true,
           text: 'Valor Total das Licitações (R$)',
           font: {
-            size: 17, // Aumente o tamanho da fonte
+            size: getFontSize17(), // Aumente o tamanho da fonte
           },
         },
       },
@@ -283,7 +299,7 @@ export default function Dashboard() {
         display: true,
         text: `Licitações por Mês - ${anoSelecionado === 'Total' ? 'Todos os Anos' : `Ano ${anoSelecionado}`}`,
         font: {
-          size: 30,
+          size: getFontSize30(),
         },
       },
       legend: {
@@ -300,7 +316,7 @@ export default function Dashboard() {
           display: true,
           text: 'Quantidade de Licitações',
           font: {
-            size: 17, // Tamanho da fonte definido para 17
+            size: getFontSize17(), // Tamanho da fonte definido para 17
           },
         },
       },
@@ -312,7 +328,7 @@ export default function Dashboard() {
           display: true,
           text: 'Valor Total das Licitações (R$)',
           font: {
-            size: 17, // Tamanho da fonte definido para 17
+            size: getFontSize17(), // Tamanho da fonte definido para 17
           },
         },
       },

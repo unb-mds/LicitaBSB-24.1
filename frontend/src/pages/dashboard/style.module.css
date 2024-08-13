@@ -90,3 +90,42 @@ body{
     align-items: center;
     flex-direction: column;
 }
+
+@media(max-width: 1300px ){
+
+    .chart02{
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding-left: 0px;
+        padding: 0;
+    }
+
+    .chart01{
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .dashboardContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chartContainer{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .chart01 .chart{
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+}
