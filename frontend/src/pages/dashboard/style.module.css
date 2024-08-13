@@ -48,7 +48,7 @@ body{
     flex-direction: column;
     text-align: center;
     border-right: 1px solid black;
-    padding: 10px; /* Adicionado padding para espaço ao redor do gráfico */
+    padding: 5px; /* Adicionado padding para espaço ao redor do gráfico */
     padding-top: 1px;
     box-sizing: border-box; /* Inclui o padding no cálculo da largura */
 }
@@ -66,7 +66,6 @@ body{
     align-items: center;
     text-align: center;
     flex-direction: column;
-    padding: 10;
     gap: 100px;
     box-sizing: border-box; /* Inclui o padding no cálculo da largura */
 }
