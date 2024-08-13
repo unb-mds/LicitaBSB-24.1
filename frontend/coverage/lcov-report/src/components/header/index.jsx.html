@@ -179,7 +179,26 @@
 <a name='L114'></a><a href='#L114'>114</a>
 <a name='L115'></a><a href='#L115'>115</a>
 <a name='L116'></a><a href='#L116'>116</a>
-<a name='L117'></a><a href='#L117'>117</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L117'></a><a href='#L117'>117</a>
+<a name='L118'></a><a href='#L118'>118</a>
+<a name='L119'></a><a href='#L119'>119</a>
+<a name='L120'></a><a href='#L120'>120</a>
+<a name='L121'></a><a href='#L121'>121</a>
+<a name='L122'></a><a href='#L122'>122</a>
+<a name='L123'></a><a href='#L123'>123</a>
+<a name='L124'></a><a href='#L124'>124</a>
+<a name='L125'></a><a href='#L125'>125</a>
+<a name='L126'></a><a href='#L126'>126</a>
+<a name='L127'></a><a href='#L127'>127</a>
+<a name='L128'></a><a href='#L128'>128</a>
+<a name='L129'></a><a href='#L129'>129</a>
+<a name='L130'></a><a href='#L130'>130</a>
+<a name='L131'></a><a href='#L131'>131</a>
+<a name='L132'></a><a href='#L132'>132</a>
+<a name='L133'></a><a href='#L133'>133</a>
+<a name='L134'></a><a href='#L134'>134</a>
+<a name='L135'></a><a href='#L135'>135</a>
+<a name='L136'></a><a href='#L136'>136</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -195,7 +214,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -248,12 +266,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -300,15 +338,14 @@ import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import styles from './style.module.css';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 &nbsp;
 const Header = () =&gt; {
   const navigate = useNavigate();
-  const [input, setInput] = useState(''); //Estado com o input de texto
+  const [input, setInput] = useState('');
 &nbsp;
   function handdleChange(e) {
     setInput(e.target.value);
-    // const listaDeLinks = screen.getAllByRole('listitem');
   }
 &nbsp;
   function <span class="fstat-no" title="function not covered" >buscarLicitacao(</span>) {
@@ -345,7 +382,17 @@ const Header = () =&gt; {
               &lt;/a&gt;
             &lt;/li&gt;
             &lt;li className={styles.headerListItem}&gt;
-              &lt;a href="" className={styles.headerLink}&gt;
+              &lt;a href="/sobredispensadelicitacao" className={styles.headerLink}&gt;
+                Sobre Dispensas
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li className={styles.headerListItem}&gt;
+              &lt;a href="/sobrebot" className={styles.headerLink}&gt;
+                Sobre o Bot
+              &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li className={styles.headerListItem}&gt;
+              &lt;a href="/sobrelisitaBSB" className={styles.headerLink}&gt;
                 Sobre o Projeto
               &lt;/a&gt;
             &lt;/li&gt;
@@ -390,6 +437,16 @@ const Header = () =&gt; {
             &lt;/a&gt;
           &lt;/li&gt;
           &lt;li className={styles.headerListItem}&gt;
+            &lt;a href="/sobredispensadelicitacao" className={styles.headerLink}&gt;
+              Sobre Dispensas
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li className={styles.headerListItem}&gt;
+            &lt;a href="/sobrebot" className={styles.headerLink}&gt;
+              Sobre o Bot
+            &lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li className={styles.headerListItem}&gt;
             &lt;a href="" className={styles.headerLink}&gt;
               Sobre o Projeto
             &lt;/a&gt;
@@ -418,7 +475,7 @@ export default Header;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-10T14:37:28.043Z
+                at 2024-08-13T19:34:45.443Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -1,3 +1,4 @@
+/* Estilo Global */
 .headerWrapper {
   display: flex;
   flex-direction: column;
@@ -89,9 +90,15 @@
   outline: none;
 }
 
+/* Estilos Responsivos */
 @media (max-width: 720px) {
+  body, html {
+    overflow-x: hidden;
+  }
+
   .subHeader {
     justify-content: center;
+    padding: 0 16px; /* Ajuste para evitar overflow */
   }
 
   .headerLinksWrapper {

@@ -17,7 +17,6 @@ export async function getLicitacoes(filters) {
 export async function getLicitacaoById(id) {
   try {
     const { data } = await api.get(`/licitacoes/${id}`);
-    console.log(data)
     return data;
 
   } catch (error) {

@@ -58,7 +58,7 @@ exports[`Na página Sobre o Bot, deve ser renderizado  o snapshot com o conteúd
     </div>
     <img
       class="imagem1"
-      src=""
+      src="imagem-bot.png"
     />
   </span>
   <span>

@@ -59,7 +59,7 @@ export default function BiddingList() {
   }, []);
 
   return (
-    <main className={styles.mainSection}>
+    <main data-testid="main-context-testid" className={styles.mainSection}>
       <CampoPesquisa
         filterParams={filterParams}
         setFilterParams={setFilterParams}
@@ -77,7 +77,10 @@ export default function BiddingList() {
           {listaLicitacoes.map((item, idx) => {
             return <CardLicitacoes key={`${idx} ${item.id}`} data={item} />;
           })}
-          <Pagination count={Math.ceil(resultCount / 10)} onChange={handlePageChange} />
+          <Pagination
+            count={Math.ceil(resultCount / 10)}
+            onChange={handlePageChange}
+          />
         </div>
       </div>
     </main>

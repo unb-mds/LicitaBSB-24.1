@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './style.module.css';
 import { biddingTypes } from '../../../utils/bidding-types';
-import { Box, capitalize, Slider } from '@mui/material';
+import { Box, capitalize } from '@mui/material';
 import { getOrgaos } from '../../../services/orgaos.service';
 import CustomButton from '../../../components/layout/custom-button';
 import CustomInputRadio from '../../../components/layout/custom-input-radio';
@@ -82,7 +82,7 @@ export default function Filter({
       <h2 className={styles.title}>Resultados obtidos:</h2>
       <div>
         {filterInput && <h3 className={styles.subtitle}>"{filterInput}"</h3>}
-        <span className={styles.description}>
+        <span data-testid="resultados-test-id" className={styles.description}>
           {resultCount} resultados obtidos
         </span>
       </div>
@@ -92,6 +92,7 @@ export default function Filter({
           {biddingTypes.map((type) => (
             <li key={type} className={styles.listItemStyle}>
               <CustomInputRadio
+                data-testid="tipo-licitacao-test-id"
                 name="licit-tipo"
                 label={capitalize(type)}
                 onPress={() => {
@@ -235,6 +236,7 @@ export default function Filter({
         </div>
       </div>
       <CustomButton
+        data-testid="botao-limparFiltros-testId"
         onPress={handleLimparFiltros}
         title="limpar filtros"
         light

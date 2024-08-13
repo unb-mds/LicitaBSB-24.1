@@ -27,7 +27,7 @@ exports[`Na página Sobre Dispensas de Licitações, deve ser renderizado  o sna
   </p>
   <img
     class="cardAboutImg"
-    src=""
+    src="imagem-dispensa.png"
   />
   <h2
     class="cardAboutSubtitle"

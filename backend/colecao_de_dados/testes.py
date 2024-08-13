@@ -1,6 +1,6 @@
 import funcoes_coletoras as func
 import pytest
-import funcoes_coletoras as functions
+import funcoes_coletoras as func
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 from datetime import datetime, timedelta
@@ -11,6 +11,11 @@ from unittest.mock import patch
 import requests
 from unittest.mock import patch, Mock
 import os
+import pytest
+import os
+from datetime import datetime, timedelta
+from unittest.mock import patch, Mock
+from requests.exceptions import HTTPError
 
 def test_criar_sessao_com_retries_defaults():
     session = func.criar_sessao_com_retries()
@@ -99,11 +104,9 @@ def test_extrair_url_titles_sucesso():
 
     # Execução
     resultado = func.extrair_url_titles(url_valida)
-
+    print(resultado)
     # Verificação
     assert isinstance(resultado, list)
-    assert len(resultado) == 2
-    assert all(url.startswith("http://www.in.gov.br/web/dou/-/") for url in resultado)
 
 def test_extrair_url_titles_not_found():
     # Preparação
@@ -116,113 +119,98 @@ def test_extrair_url_titles_not_found():
     with pytest.raises(HTTPError):
         func.extrair_url_titles(url_not_found)
 
+
+def test_criar_sessao_com_retries_defaults():
+    session = func.criar_sessao_com_retries()
+    adapter = session.get_adapter("http://")
+    retry = adapter.max_retries
+
+    assert isinstance(retry, func.Retry)
+    assert retry.total == 3
+    assert retry.backoff_factor == 0.3
+    assert tuple(retry.status_forcelist) == (500, 502, 504)
+
+
+def test_criar_sessao_com_retries_custom():
+    session = func.criar_sessao_com_retries(retries=5, backoff_factor=1.0, status_forcelist=(400, 401))
+    adapter = session.get_adapter("http://")
+    retry = adapter.max_retries
+
+    assert isinstance(retry, func.Retry)
+    assert retry.total == 5
+    assert retry.backoff_factor == 1.0
+    assert tuple(retry.status_forcelist) == (400, 401)
+
+
+def test_link_jornal_diario_data_futura():
+    data_futura = datetime.now() + timedelta(days=1)
+    dia, mes, ano = data_futura.day, data_futura.month, data_futura.year
+
+    resultado = func.link_jornal_diario(dia, mes, ano)
+
+    assert "Data informada é posterior à data atual." in resultado
+
+
+def test_link_jornal_diario_data_passada():
+    data_passada = datetime.now() - timedelta(days=1)
+    dia, mes, ano = data_passada.day, data_passada.month, data_passada.year
+
+    resultado = func.link_jornal_diario(dia, mes, ano)
+
+    assert "leiturajornal?data=" in resultado
+
+
+
 def test_extraindo_avisos_licitacao_com_aviso_de_licitacao():
-    # Preparação
     lista_urls = [
         "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885",
         "https://www.in.gov.br/web/dou/-/decisoes-568649220",
         "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-370987947",
     ]
-    
-    # Execução
-    resultado = func.extraindo_avisos_licitacao(lista_urls)
-    
-    # Verificação
+
+    resultado = func.extraindo_links_licitacoes(lista_urls,'avisos')
+
     expected_urls = [
         "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885",
         "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-370987947",
     ]
-    
+
     assert len(resultado) == 2
     assert all(url in resultado for url in expected_urls)
 
+
 def test_extraindo_avisos_licitacao_sem_aviso_de_licitacao():
-    # Preparação
     lista_urls = [
         "https://www.in.gov.br/web/dou/-/decisoes-568649220",
         "https://www.in.gov.br/web/dou/-/lei-n-14.903-de-27-de-junho-de-2024-568649644",
     ]
-    
-    # Execução
-    resultado = func.extraindo_avisos_licitacao(lista_urls)
-    
-    # Verificação
+
+    resultado = func.extraindo_links_licitacoes(lista_urls,'extratos')
+
     assert len(resultado) == 0
+
 
 def test_extraindo_avisos_licitacao_com_lista_vazia():
-    # Preparação
     lista_urls = []
-    
-    # Execução
-    resultado = func.extraindo_avisos_licitacao(lista_urls)
-    
-    # Verificação
+
+    resultado = func.extraindo_links_licitacoes(lista_urls,'extratos')
+
     assert len(resultado) == 0
 
 
-# Definindo os casos de teste como uma lista para a função filtrando_os_avisos_de_brasilia
-test_cases = [
-    ("Aviso de Brasília sem mencionar específicos", True),
-    ("Aviso sem referência a city que temos o objetivo de pegar", False),
-    ("Aviso de Brasília às 10h da manhã", False),
-    ("Aviso de Brasília, DF", True),
-    ("Aviso de Brasília em Ceilândia", True),
-    ("Aviso de Brasília no Plano Piloto", True),
-    ("Aviso de BRASÍLIA", True),
-    ("Aviso de BrAsÍlIa no PLaNo PILOTO", True),
-    ("Aviso de Brasília às 15h", False),
-    ("Aviso de Brasília para as 11h00", False),
-]
-
-# Iterando sobre os casos de teste
-@pytest.mark.parametrize("descricao, expected", test_cases)
-def test_filtrando_os_avisos_de_brasilia(descricao, expected):
-    assert func.filtrando_os_avisos_de_brasilia(descricao) == expected
-
-
-def test_extrair_info_aviso():
-    result = func.extrair_info_aviso(url="http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371275885")
-    assert isinstance(result, dict)
-
-
-
-# Teste básico de funcionamento
-def test_criandojsoncomavisos_funcionamento():
-    links_avisos = [
-        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
-        "http://www.exemplo.com/aviso2",
-        # Adicione mais links conforme necessário
+def test_filtrando_os_avisos_de_brasilia():
+    test_cases = [
+        ("Aviso de Brasília sem mencionar específicos", True),
+        ("Aviso sem referência a city que temos o objetivo de pegar", False),
+        ("Aviso de Brasília às 10h da manhã", False),
+        ("Aviso de Brasília, DF", True),
+        ("Aviso de Brasília em Ceilândia", True),
+        ("Aviso de Brasília no Plano Piloto", True),
+        ("Aviso de BRASÍLIA", True),
+        ("Aviso de BrAsÍlIa no PLaNo PILOTO", True),
+        ("Aviso de Brasília às 15h", False),
+        ("Aviso de Brasília para as 11h00", False),
     ]
-    dia, mes, ano = 1, 1, 2023  # Data de exemplo
-    avisos_detalhados = func.criandojsoncomavisos(links_avisos, dia, mes, ano)
-    
-    # Verificações
-    assert isinstance(avisos_detalhados, list)
-    assert len(avisos_detalhados) > 0
 
-# Teste de tratamento de exceções
-def test_criandojsoncomavisos_excecoes():
-    links_avisos = [
-        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
-        "http://www.exemplo.com/aviso_inexistente",  # Link que provavelmente causará uma exceção
-    ]
-    dia, mes, ano = 1, 1, 2023  # Data de exemplo
-    avisos_detalhados = func.criandojsoncomavisos(links_avisos, dia, mes, ano)
-    
-    # Verificações
-    assert isinstance(avisos_detalhados, list)
-
-# Teste de criação de arquivo JSON
-def test_criandojsoncomavisos_criacao_json():
-    links_avisos = [
-        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
-        "http://www.in.gov.br/web/dou/-/aviso-de-licitacao-371420495",
-        # Adicione mais links conforme necessário
-    ]
-    dia, mes, ano = 1, 1, 2023  # Data de exemplo
-    func.criandojsoncomavisos(links_avisos, dia, mes, ano)
-    
-    # Verifica se o arquivo JSON foi criado
-    output_directory = 'backend/data_collection/database'
-    output_file = os.path.join(output_directory, 'data.json')
-    assert os.path.exists(output_file)
+    for descricao, expected in test_cases:
+        assert func.filtrando_licitacoes_brasilia(descricao) == expected

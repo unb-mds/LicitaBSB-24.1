@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/components/newsletter/Index.jsx</title>
+    <title>Code coverage report for src/components/newsletter/index.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/newsletter</a> Index.jsx</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">src/components/newsletter</a> index.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>0/13</span>
             </div>
         
             
@@ -110,7 +110,8 @@
 <a name='L45'></a><a href='#L45'>45</a>
 <a name='L46'></a><a href='#L46'>46</a>
 <a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L48'></a><a href='#L48'>48</a>
+<a name='L49'></a><a href='#L49'>49</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -122,19 +123,20 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -168,20 +170,21 @@ const SubscribeForm = <span class="cstat-no" title="statement not covered" ><spa
   const handleSubmit = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (e) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    e.preventDefault();</span>
 &nbsp;
+    const payload = <span class="cstat-no" title="statement not covered" >{</span>
+      email_address: email, // Ajuste o campo conforme necessário
+      status: 'subscribed'
+    };
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const response = <span class="cstat-no" title="statement not covered" >await axios.post(</span>
-        'https://us22.api.mailchimp.com/3.0/lists/96c79ddec6/members/',
-        { email },
-      );
-      // Adicionar API e URL do site quando estiver pronto.
-      // Ainda está me modo produção.
-<span class="cstat-no" title="statement not covered" >      setMessage(response.data);</span>
+      const response = <span class="cstat-no" title="statement not covered" >await axios.post('https://licitabsbserer-a1c309841042.herokuapp.com/app/subscribe', payload, {</span>
+        headers: {
+          'Content-Type': 'application/json' // Adiciona o cabeçalho Content-Type
+        }
+      });
+<span class="cstat-no" title="statement not covered" >      setMessage('Inscrição realizada com sucesso!');</span>
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      setMessage('Subscription failed.');</span>
-<span class="cstat-no" title="statement not covered" >      console.error(</span>
-        'Error:',
-        error.response ? error.response.data : error.message,
-      );
+<span class="cstat-no" title="statement not covered" >      setMessage('Houve um erro, tente novamente!');</span>
+<span class="cstat-no" title="statement not covered" >      console.error('Error:', error.response ? error.response.data : error.message);</span>
     }
   };
 &nbsp;
@@ -211,7 +214,7 @@ export default SubscribeForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-10T14:37:28.043Z
+                at 2024-08-13T19:34:45.443Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
