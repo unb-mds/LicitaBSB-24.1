@@ -19,7 +19,7 @@
 
 ## Sobre o Projeto
 
-**Licita BSB** é um projeto que visa a divulgação das dispensas de licitação realizadas em Brasília. Através do nosso portal, as dispensas de licitação publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
+**Licita BSB** é um projeto que visa a divulgação das licitações realizadas em Brasília. Através do nosso portal, as licitações publicadas nos diários oficiais são disponibilizadas de maneira acessível ao público.
 
 Acesse o nosso portal [aqui](https://licitabsb.netlify.app) para explorar as licitações de forma simples e rápida.
 
@@ -136,11 +136,17 @@ O Django oferece um framework robusto para criação e execução de testes auto
 2. Configuração Inicial
 
 Certifique-se de que os pacotes de teste estão instalados. Se estiver utilizando um ambiente virtual, ative-o antes de instalar as dependências:
-
+> Clone o repositório
+ ```bash
+    git clone https://github.com/unb-mds/LicitaBSB-24.1.git
+    cd LicitaBSB-24.1
+ ```
+> Instale as dependências
 ```bash
-source venv/bin/activate  # No Linux/MacOS
-venv\Scripts\activate     # No Windows
-pip install -r requirements.txt
+python -m venv venv # Criação do ambiente virtual
+source venv/bin/activate  # Ativação no Linux/MacOS
+venv\Scripts\activate     # Ativação no Windows
+pip install -r requirements.txt # Instalação das dependências
 ```
 
 3. Estrutura dos Testes
@@ -157,7 +163,7 @@ python manage.py test
 
 ### Frontend
 
-1. Navegue até o diretório `web` e instale as dependências:
+1. Navegue até o diretório `frontend` e instale as dependências:
 
     ```bash
     npm install
