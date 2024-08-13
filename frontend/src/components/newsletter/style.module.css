@@ -1,31 +1,75 @@
-.newsletter{
+.newsletter {
     display: flex;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    gap: 10px;
-    padding-top: 100px;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 30px; 
+    background-color: #F1ECE8; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; 
 }
 
-.newsletter h1{
-    font-size: 20px;
+.newsletter h1 {
+    font-size: 24px;
     font-weight: bold;
+    margin: 0;
+    color: #333; 
 }
 
-.newsletter button{
-    background-color: transparent;
-    border: 1px solid black;
-    border-radius: 3px;
-    padding: 5px;
-    cursor: pointer;
+.newsletter h2 {
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 1.5;
+    color: #333; 
+    max-width: 60%; 
 }
 
-.newsletter input{
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: 2px solid black;
-    width: 300px;
+.newsletter-form {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 10px; 
+    width: 100%; 
+}
+
+.newsletter input {
+    border: 1px solid #333; 
+    border-radius: 5px;
+    width: 582px; 
+    height: 48px;
     outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.newsletter button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    height: 48px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 16px;
+    width: 203px; 
+}
+.newsletter button:hover {
+    background-color: #555; 
+}
+
+.newsletter-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center; 
+}
+
+.newsletter img {
+    width: auto;
+    height: 309px;
+    object-fit: cover;
+    border-radius: 10px;
 }
