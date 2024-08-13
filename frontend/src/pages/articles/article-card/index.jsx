@@ -11,7 +11,7 @@ export default function ArticleCard({img, title, text, path}) {
         className={styles.articleImage}
       />
       <div className={styles.articleText}>
-        <h4>{title}</h4>
+        <h4 className={styles.articleTitle}>{title}</h4>
         <p>{text}</p>
         <Link to={path}>Continue lendo...</Link>
       </div>
