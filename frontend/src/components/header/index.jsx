@@ -57,7 +57,7 @@ const Header = () => {
               </a>
             </li>
             <li className={styles.headerListItem}>
-              <a href="" className={styles.headerLink}>
+              <a href="/sobrelisitaBSB" className={styles.headerLink}>
                 Sobre o Projeto
               </a>
             </li>
