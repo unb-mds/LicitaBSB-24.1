@@ -10,7 +10,24 @@ export default function SidebarResponsive({showSidebar, setShowSidebar}) {
       <div className={styles.sidebar}>
         <ul>
           <li>
-            <Link>Licitações</Link>
+            <a href="/licitacoes" onClick={() => setShowSidebar((prev) => !prev)}>
+              Licitações
+            </a>
+          </li>
+          <li>
+            <a href="/artigos" onClick={() => setShowSidebar((prev) => !prev)}>
+              Conheça o Projeto
+            </a>
+          </li>
+          <li>
+            <a href="/sobrenos" onClick={() => setShowSidebar((prev) => !prev)}>
+              Sobre Nós
+            </a>
+          </li>
+          <li>
+            <a href="/dashboard" onClick={() => setShowSidebar((prev) => !prev)}>
+              Dashboard
+            </a>
           </li>
         </ul>
       </div>
