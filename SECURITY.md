@@ -2,7 +2,7 @@
 
 ## Relatando uma Vulnerabilidade
 
-Por favor, relate qualquer vulnerabilidade encontrada enviando um e-mail para [vitorhls15@gmail.com](mailto:vitorhls15@gmail.comm). Faremos o possível para responder e resolver quaisquer problemas de segurança o mais rápido possível.
+Por favor, relate qualquer vulnerabilidade encontrada enviando um e-mail para [unb.licitabsb@gmail.com](mailto:unb.licitabsb@gmail.com). Faremos o possível para responder e resolver quaisquer problemas de segurança o mais rápido possível.
 
 ## Processo de Resposta a Vulnerabilidades
 
@@ -26,6 +26,6 @@ Por favor, relate qualquer vulnerabilidade encontrada enviando um e-mail para [v
 
 Agradecemos a sua contribuição para a segurança do Licita BSB. Juntos, podemos garantir um ambiente seguro e confiável para todos os usuários.
 
-**Contato:** Se você tiver alguma dúvida ou preocupação sobre nossa política de segurança, entre em contato conosco pelo e-mail [security@licitabsb.com](mailto:security@licitabsb.com).
+**Contato:** Se você tiver alguma dúvida ou preocupação sobre nossa política de segurança, entre em contato conosco pelo e-mail [unb.licitabsb@gmail.com](mailto:unb.licitabsb@gmail.com).
 
-_Atualizado em abril de 2024_
+_Atualizado em agosto de 2024_
