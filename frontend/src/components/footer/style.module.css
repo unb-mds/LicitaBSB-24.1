@@ -28,6 +28,7 @@
   gap: 2rem;
   padding: 0 64px;
   align-items: center;
+  text-align: center;
   img {
     height: 30px;
     align-self: flex-end;
