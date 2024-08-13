@@ -32,7 +32,9 @@ O projeto LicitaBSB visa coletar licitações do site "Diário Oficial da União
 | SQLite     | 3.46.0          |
 
 ## Back-end
+### Modelagem de banco de dados
 
+![Modelagem banco de dados](Modelagem_BD.png)
 ### Coleta de dados
 
 - Primariamente feita pela biblioteca `BeautifulSoup` e acionado pelo GitHub Actions todos os dias as 01 hora da manhã, todo o script e sua funcionalidade esta presente na pasta `coleção_de_dados`, onde é feita a extração dos dados do diário oficial e análise dos dados.
