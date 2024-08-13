@@ -239,10 +239,6 @@ def licitacao_maior_valor(request):
     else:
         return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
 
-ALLOWED_ORIGINS = [
-    'https://fastidious-daffodil-724e94.netlify.app',
-    'https://licitabsb.netlify.app'
-]
 
 @swagger_auto_schema(
     method='post',
@@ -272,8 +268,8 @@ def subscribe_email(request):
     origin = request.headers.get('Origin')
     
     # Verifica se a requisição veio de um dos domínios permitidos
-    if origin not in ALLOWED_ORIGINS:
-        return Response({"detail": "Unauthorized origin."}, status=status.HTTP_403_FORBIDDEN)
+    # if origin not in ALLOWED_ORIGINS:
+    #     return Response({"detail": "Unauthorized origin."}, status=status.HTTP_403_FORBIDDEN)
 
     email = request.data.get('email_address')
     status = request.data.get('status')
