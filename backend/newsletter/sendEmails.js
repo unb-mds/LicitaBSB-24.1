@@ -60,7 +60,7 @@ Além disso, lembramos que também estamos compartilhando essas atualizações n
 Atenciosamente,
 Equipe Licita BSB`,
     html: `<p>Olá,</p>
-           <p>Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal <strong>Licita BSB</strong>. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.</p>
+           <p>Gostaríamos de informar que as licitações mais recentes em Brasília foram atualizadas em nosso portal <strong>Licita BSB</strong>. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.</p>
            <p>Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: <a href="https://x.com/licitabsb" target="_blank">https://x.com/licitabsb</a>. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.</p>
            <p>Atenciosamente,<br>Equipe Licita BSB</p>`
   };
@@ -69,7 +69,7 @@ Equipe Licita BSB`,
     await transporter.sendMail(mailOptions);
     console.log(`Email successfully sent to: ${emailAddress}`);
   } catch (error) {
-    console.error(`Failed to send email to: ${emailAddress}`, error);
+    console.error(`Failed to send email to: ${emailAddress}. Error: ${error.message}`);
   }
 };
 
@@ -82,10 +82,14 @@ const main = async () => {
   }
 
   for (const subscriber of subscribers) {
-    await sendMail(subscriber);
+    try {
+      await sendMail(subscriber);
+    } catch (error) {
+      console.error(`Error processing email: ${subscriber}. Continuing with the next one.`);
+    }
   }
 
-  console.log('All emails sent.');
+  console.log('All emails attempted.');
 };
 
 main();
