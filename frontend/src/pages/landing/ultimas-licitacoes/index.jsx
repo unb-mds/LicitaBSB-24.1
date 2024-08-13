@@ -2,21 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import { getLicitacoes } from '../../../services/licitacoes.service';
 import CardLicitacoes from '../../../components/card-licitacoes';
+import useLoadData from '../../../hooks/useLoadData';
 
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 
 export default function UltimasLicitacoes() {
-  const [listaLicitacoes, setListaLicitacoes] = useState([]);
-
-  const loadData = async () => {
-    const data = await getLicitacoes();
-    setListaLicitacoes(data.results.slice(0, 3));
-  };
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  const { maisLicitacoes } = useLoadData();
 
   return (
     <>
@@ -32,7 +24,7 @@ export default function UltimasLicitacoes() {
           </Link>
         </div>
         <ul className={styles.licitacoesWrapper}>
-          {listaLicitacoes.map((item) => {
+          {maisLicitacoes.map((item) => {
             return (
               <li data-testid="listitem-testid">
                 <CardLicitacoes key={item.id} data={item} />
