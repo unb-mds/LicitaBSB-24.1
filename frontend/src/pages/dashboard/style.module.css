@@ -65,7 +65,7 @@ body{
 
 .chart01 .chart{
     width: 165%;
-    height: 50% !important;
+    height: 50%;
 }
 
 .chart02 {
@@ -92,6 +92,10 @@ body{
 }
 
 @media(max-width: 1300px ){
+    
+    body{
+        height: 100%;
+    }
 
     .chart02{
         order: 1;
@@ -102,6 +106,7 @@ body{
         width: 100%;
         padding-left: 0px;
         padding: 0;
+        gap: 0;
     }
 
     .chart01{
@@ -111,21 +116,37 @@ body{
         align-items: center;
         text-align: center;
         width: 100%;
+        height: 100%;
+    }
+
+    .dashboard{
+        height: 100%;
     }
 
     .dashboardContainer{
         display: flex;
         flex-direction: column;
+        padding: 0;
+        height: 100%;
     }
 
     .chartContainer{
         display: flex;
         flex-direction: column;
+        padding: 0;
+        height: 100%;
+
     }
 
     .chart01 .chart{
-        max-width: 100%;
-        max-height: 100%;
+        display: flex;
+        width: 415px;
+        height: 700px;
+    }
+
+    .chart02 .chartPizza{
+        width: 500px;
+        height: 500px;
     }
 
 }
