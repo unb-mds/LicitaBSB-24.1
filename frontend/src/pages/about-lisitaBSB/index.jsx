@@ -1,10 +1,7 @@
 import style from './style.module.css';
-// import useGetImage from '../../hooks/useGetImage';
 import image from '../../../assets/articles/logo-lisita.jpg';
 
 export default function AboutLisitasobrelisitaBSB() {
-  // const image = useGetImage('');
-
   return (
     <main className={style.mainContext}>
       <div data-testid="main-container-text" className={style.cardAboutContext}>
