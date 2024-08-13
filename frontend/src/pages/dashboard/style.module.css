@@ -1,113 +1,152 @@
-.aboutUsContext{
+body{
+   height: 90vh;
+   width: 100%;
+}
+
+.dashboard {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 32px;
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 32px;
 }
 
-.aboutUsP {
-    text-align: justify;
-    font-size: 20px;
-    text-align: center;
-}
-
-.aboutUsTitle {
-    font-size: 32px;
-}
-
-.aboutUsImg {
-    width: 80%;
-}
-
-.holderButton{
+.dashboardContainer {
     display: flex;
+    max-width: 50vw; 
+    height: 50vh;
+}
+
+.select {
+    margin: 10px;
+}
+
+.header{
+    margin-top: 5px;
     gap: 10px;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-}
-
-.dashButton{
-    background-color: transparent;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.dashButton:hover{
-    cursor: pointer;
-}
-
-.dashboardWrapper{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
     text-align: center;
-    border-right: 1px solid black;
-
 }
 
-.dashboardDataWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 300px;
+.header{
+    font-size: 15px;
 }
 
-.dashboardData{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 300px;
-}
-.dashboardData h1{
-    font-size: 22px;
-    font-weight: bold;
+.total{
+    gap: 100px;
+    font-weight: 400;
+    font-size: 17px;
 }
 
-.dashboardData p{
-    font-size: 18px;
-}
-
-
-.dashboard{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    flex-direction: column;
-    width: 10px;
-    height: 10%;
-}
-
-.dashboardContainer{
-    display: flex;
-    max-width: 100vw;
-    height: 100vh;
-}
-
-.dashboardText{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid black;
-    font-size: 21px;
-    font-weight: 450;
-    height: 100%;
-    padding: 10px;
-}
-
-.selector{
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
+.total span{
     font-size: 20px;
+    font-weight: 600;
+}
+
+.chartContainer {
+    display: flex;
+    max-width: 100%;
+    height: 100%;
+    gap: 5px;
+}
+
+.chart01 {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 5px; /* Adicionado padding para espaço ao redor do gráfico */
+    padding-top: 1px;
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+}
+
+
+.chart01 .chart{
+    width: 165%;
+    height: 50%;
+}
+
+.chart02 {
+    width: 30%; /* Atualizado para dividir igualmente a largura */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 100px;
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+    padding-right: 50px;
+
+}
+
+.footerEstilizada {
+    background-color: #474747;
+    width: 100%;
+    margin-top: 0 !important;
+    padding: 32px 64px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+@media(max-width: 1300px ){
+    
+    body{
+        height: 100%;
+    }
+
+    .chart02{
+        order: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        padding-left: 0px;
+        padding: 0;
+        gap: 0;
+    }
+
+    .chart01{
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .dashboard{
+        height: 100%;
+    }
+
+    .dashboardContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: 100%;
+    }
+
+    .chartContainer{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        height: 100%;
+
+    }
+
+    .chart01 .chart{
+        display: flex;
+        width: 415px;
+        height: 700px;
+    }
+
+    .chart02 .chartPizza{
+        width: 500px;
+        height: 500px;
+    }
+
 }
