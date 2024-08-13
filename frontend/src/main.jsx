@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
 import Landing from './pages/landing';
 import AboutBidding from './pages/about-bidding';
 import AboutUs from './pages/about-us';
@@ -14,7 +13,6 @@ import AboutLicitaBSB from './pages/about-licitaBSB';
 import AboutBiddingDispatch from './pages/about-bidding-dispatch';
 import Dashboard from './pages/dashboard';
 import Root from './root';
-
 import './styles/global.css';
 import ArticleRoot from './article-root';
 import Articles from './pages/articles';
