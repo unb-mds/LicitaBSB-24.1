@@ -11,7 +11,11 @@ const SubscribeForm = () => {
 
     const payload = {
       email_address: email, // Ajuste o campo conforme necessário
-      status: 'subscribed'
+      status: 'subscribed',
+      merge_fields: {
+      "FNAME": "FNAME",
+      "LNAME": "LNAME"
+  }
     };
 
     try {
