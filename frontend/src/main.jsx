@@ -13,6 +13,7 @@ import Footer from './components/footer';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AboutBot from './pages/about-bot';
+import AboutLisita from './pages/about-lisitaBSB';
 import AboutBiddingDispatch from './pages/about-bidding-dispatch';
 
 function AppRoutes() {
@@ -28,6 +29,7 @@ function AppRoutes() {
         />
         <Route path="/sobrebot" element={<AboutBot />} />
         <Route path="/sobrenos" element={<AboutUs />} />
+        <Route path="/sobrelisitaBSB" element={<AboutLisita />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/licitacoes" element={<BiddingList />} />
         <Route path="/licitacoes/:id" element={<BiddingPage />} />
