@@ -187,19 +187,20 @@ export default function Dashboard() {
         label: 'Quantidade Total por Mês',
         data: quantidadesMensais,
         backgroundColor: [
-          '#FF0000', // Vermelho forte
-          '#0000FF', // Azul forte
-          '#FFFF00', // Amarelo forte
-          '#00FF00', // Verde forte
-          '#FF4500', // Laranja forte
-          '#8A2BE2', // Azul violeta
-          '#FF6347', // Tomate (vermelho forte)
-          '#4682B4', // Azul aço
-          '#FFD700', // Ouro (amarelo forte)
-          '#228B22', // Verde floresta
-          '#DC143C', // Carmesim (vermelho escuro)
-          '#1E90FF'  // Azul-dodger
+          '#FF6666', // Vermelho suave
+          '#6666FF', // Azul suave
+          '#FFFF66', // Amarelo suave
+          '#66FF66', // Verde suave
+          '#FF7F50', // Coral
+          '#9A5BE2', // Azul violeta suave
+          '#FF7F7F', // Tomate suave
+          '#5A9BD4', // Azul aço suave
+          '#FFE066', // Ouro suave
+          '#32CD32', // Verde lima
+          '#E3425A', // Carmesim suave
+          '#5FAEFF'  // Azul-dodger suave
         ],
+        
         borderColor: 'rgba(0,0,0,0.1)',
         borderWidth: 1,
       },
@@ -259,10 +260,6 @@ export default function Dashboard() {
           font: {
             size: 17, // Aumente o tamanho da fonte
           },
-          padding: {
-            top: 10, // Adicione um espaçamento superior
-            bottom: 10, // Adicione um espaçamento inferior
-          },
         },
       },
       y2: {
@@ -274,10 +271,6 @@ export default function Dashboard() {
           text: 'Valor Total das Licitações (R$)',
           font: {
             size: 17, // Aumente o tamanho da fonte
-          },
-          padding: {
-            top: 10, // Adicione um espaçamento superior
-            bottom: 10, // Adicione um espaçamento inferior
           },
         },
       },
@@ -309,10 +302,6 @@ export default function Dashboard() {
           font: {
             size: 17, // Tamanho da fonte definido para 17
           },
-          padding: {
-            top: 10, // Espaçamento superior
-            bottom: 10, // Espaçamento inferior
-          },
         },
       },
       y4: {
@@ -324,10 +313,6 @@ export default function Dashboard() {
           text: 'Valor Total das Licitações (R$)',
           font: {
             size: 17, // Tamanho da fonte definido para 17
-          },
-          padding: {
-            top: 10, // Espaçamento superior
-            bottom: 10, // Espaçamento inferior
           },
         },
       },
@@ -360,8 +345,8 @@ export default function Dashboard() {
           ))}
         </select>
       <div className={style.total}>
-        <p> <strong>Total de Licitações: {anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</strong></p>
-        <p><strong>Valor Total: R$ {anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
+        <p> <strong>Total de Licitações: <span>{anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</span></strong></p>
+        <p><strong>Valor Total: R$ <span>{anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span></strong></p>
       </div>
       </div>
         <Pie data={chartDataPizza} options= {optionsPizza} className={style.chartPizza} />

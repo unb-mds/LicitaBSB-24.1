@@ -14,12 +14,8 @@ body{
     height: 50vh;
 }
 
-.selector {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    font-size: 10px; 
-    width: 100px;
+.select {
+    margin: 10px;
 }
 
 .header{
@@ -30,6 +26,18 @@ body{
     text-align: center;
 }
 
+.header{
+    font-size: 15px;
+}
+
+.total{
+    gap: 100px;
+    font-weight: 200px;
+}
+
+.total span{
+    font-size: 18px;
+}
 
 .chartContainer {
     display: flex;
@@ -47,7 +55,6 @@ body{
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    border-right: 1px solid black;
     padding: 5px; /* Adicionado padding para espaço ao redor do gráfico */
     padding-top: 1px;
     box-sizing: border-box; /* Inclui o padding no cálculo da largura */
@@ -68,4 +75,16 @@ body{
     flex-direction: column;
     gap: 100px;
     box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+    padding-right: 50px;
+
+}
+
+.footerEstilizada {
+    background-color: #474747;
+    width: 100%;
+    margin-top: 0 !important;
+    padding: 32px 64px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
