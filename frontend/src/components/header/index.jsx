@@ -42,23 +42,8 @@ const Header = () => {
               </a>
             </li>
             <li className={styles.headerListItem}>
-              <a href="/SobreLicitacao" className={styles.headerLink}>
-                Sobre as Licitações
-              </a>
-            </li>
-            <li className={styles.headerListItem}>
-              <a href="/sobredispensadelicitacao" className={styles.headerLink}>
-                Sobre Dispensas
-              </a>
-            </li>
-            <li className={styles.headerListItem}>
-              <a href="/sobrebot" className={styles.headerLink}>
-                Sobre o Bot
-              </a>
-            </li>
-            <li className={styles.headerListItem}>
-              <a href="/sobrelisitaBSB" className={styles.headerLink}>
-                Sobre o Projeto
+              <a href="/artigos" className={styles.headerLink}>
+                Conheça o Projeto
               </a>
             </li>
             <li className={styles.headerListItem}>

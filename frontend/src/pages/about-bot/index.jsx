@@ -8,7 +8,7 @@ export default function AboutBot() {
   return (
     <main className={style.mainContext}>
       <div data-testid="main-container-text" className={style.cardAboutContext}>
-        <span className={style.paragraph1Context}>
+        <div className={style.paragraph1Context}>
           <div>
             <h1 className={style.cardAboutTitle}>
               Sobre o Bot: Automatização de Postagens na Rede Social X (antigo
@@ -42,7 +42,7 @@ export default function AboutBot() {
             </p>
           </div>
           <img className={style.imagem1} src={image} />
-        </span>
+        </div>
 
         <span>
           <h2 className={style.cardAboutSubtitle}>Como Foi Feito</h2>
