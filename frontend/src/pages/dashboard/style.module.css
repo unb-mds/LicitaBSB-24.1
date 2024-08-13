@@ -1,82 +1,17 @@
-.holderButton {
-    display: flex !important;
-    gap: 5px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 5px !important;
-}
-.dashButton {
-    background-color: transparent;
-    padding: 5px; /* Reduzido para metade */
-    border-radius: 5px;
-}
-
-.dashButton:hover {
-    cursor: pointer;
-}
-
-.dashboardWrapper {
-    display: flex;
-    flex-direction: column;
-    height: 50vh; /* Reduzido para metade */
-    width: 50vw; /* Reduzido para metade */
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border-right: 1px solid black;
-}
-
-.dashboardDataWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 150px; /* Reduzido para metade */
-}
-
-.dashboardData {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    width: 150px; /* Reduzido para metade */
-}
-
-.dashboardData h1 {
-    font-size: 11px; /* Reduzido para metade */
-    font-weight: bold;
-}
-
-.dashboardData p {
-    font-size: 9px; /* Reduzido para metade */
+body{
+   height: 90vh;
+   width: 100%;
 }
 
 .dashboard {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     flex-direction: column;
-    width: 100%; /* Ajustado para caber na metade do contêiner pai */
-    gap: 30px;
 }
 
 .dashboardContainer {
     display: flex;
-    max-width: 50vw; /* Reduzido para metade */
-    height: 50vh; /* Reduzido para metade */
-}
-
-.dashboardText {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-top: 1px solid black;
-    font-size: 10px; /* Reduzido para metade */
-    font-weight: 400; /* Ajustado para ser proporcional */
-    height: 50%; /* Reduzido para metade */
-    padding: 5px; /* Reduzido para metade */
+    max-width: 50vw; 
+    height: 50vh;
 }
 
 .selector {
@@ -87,35 +22,52 @@
     width: 100px;
 }
 
-.chart {
-    width: 20%;
-    display: flex;
-    height: 100%;
-}
-
-.chartContainer {
-    display: flex;
-    max-width: 100vw;
-    height: 100vh;
-
-}
-
-.chart01{
-    width: 100%;
-    height: 55%;
-    display: flex;
+.header{
+    margin-top: 5px;
+    gap: 1px;
     align-items: center;
     justify-content: center;
     text-align: center;
 }
 
-.chart02{
-    width: 100%;
-    height: 35%;
+
+.chartContainer {
+    display: flex;
+    max-width: 100%;
+    height: 100%;
+    gap: 10px;
+}
+
+.chart01 {
+    position: relative;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    border-right: 1px solid black;
+    padding: 10px; /* Adicionado padding para espaço ao redor do gráfico */
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
+    gap: 10px;
+}
+
+
+.chart01 .chart{
+    width: 1100px !important;
+    height: 420px !important;
+}
+
+.chart02 {
+    width: 30%; /* Atualizado para dividir igualmente a largura */
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    gap: 30px;
+    padding: 10;
+    gap: 100px;
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
 }

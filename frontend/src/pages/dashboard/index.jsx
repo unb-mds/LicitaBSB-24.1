@@ -188,6 +188,34 @@ export default function Dashboard() {
       },
     ],
   };
+  
+  const optionsPizza = {
+    plugins: {
+      title: {
+        display: true,
+        text: 'Quantidade Total por Mês',
+        font: {
+          size: 30,
+        },
+      },
+      legend: {
+        display: true,
+        position: 'right', // Posiciona a legenda à direita
+        labels: {
+          font: {
+            size: 18,
+          },
+        },
+      },
+      tooltip: {
+        callbacks: {
+          label: function(tooltipItem) {
+            return tooltipItem.label + ': ' + tooltipItem.raw;
+          },
+        },
+      },
+    },
+  };
 
   const optionsAnual = {
     plugins: {
@@ -263,8 +291,15 @@ export default function Dashboard() {
 
   return (
     <div className={style.dashboard}>
-      <div className={style.header}>
-        <h1>Dashboard de Licitações</h1>
+      <div className={style.chartContainer}>
+        <div className={style.chart01}>
+          <div>
+          <Bar data={chartDataAnual} options={optionsAnual} className={style.chart} />
+          <Bar data={chartDataMensal} options={optionsMensal} className={style.chart} />
+          </div>
+        </div>
+        <div className={style.chart02}>
+        <div className={style.header}>
         <select
           value={anoSelecionado}
           onChange={e => setAnoSelecionado(e.target.value)}
@@ -277,20 +312,14 @@ export default function Dashboard() {
             </option>
           ))}
         </select>
-      </div>
       <div className={style.total}>
         <p> <strong>Total de Licitações: {anoSelecionado === 'Total' ? totalQuantidadeMensal : quantidadePorAno[anoSelecionado]}</strong></p>
         <p><strong>Valor Total: R$ {anoSelecionado === 'Total' ? totalValoresMensal.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : valoresPorAno[anoSelecionado]?.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</strong></p>
       </div>
-      <div className={style.chartContainer}>
-        <div className={style.chart01}>
-        <Bar data={chartDataAnual} options={optionsAnual} className={style.chart} />
+      </div>
+        <Pie data={chartDataPizza} options= {optionsPizza} className={style.chartPizza} />
         </div>
-        <div className={style.chart02}>
-        <Bar data={chartDataMensal} options={optionsMensal} className={style.chart} />
-        <Pie data={chartDataPizza} className={style.chart} />
         </div>
       </div>
-    </div>
   );
 }
