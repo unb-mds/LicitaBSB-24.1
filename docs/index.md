@@ -8,7 +8,7 @@ hide:
 
 ## Sobre
 
-O [Licita BSB](link) é um projeto em desenvolvimento da matéria **Métodos de Desenvolvimento de Software da Universidade de Brasília**, no qual tem o objetivo de criar um feed online para analisar e destacar as Dispensas de Licitações nos diários oficiais de Brasília visando aumentar a transparência e a fiscalização dos gastos governamentais.
+O [Licita BSB](https://licitabsb.netlify.app/) é um projeto em desenvolvimento da matéria **Métodos de Desenvolvimento de Software da Universidade de Brasília**, no qual tem o objetivo de criar um feed online para analisar e destacar as Dispensas de Licitações nos diários oficiais de Brasília visando aumentar a transparência e a fiscalização dos gastos governamentais.
 
 ## Desenvolvedores
 
