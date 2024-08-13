@@ -4,6 +4,7 @@ import ArticleCard from './article-card';
 import botImg from '../../../assets/articles/imagem-bot.png';
 import licitImg from '../../../assets/articles/imagem-licitacao.png';
 import dispensaImg from '../../../assets/articles/imagem-dispensa.png';
+import projetoImage from '../../../assets/articles/logo-licita.jpg';
 
 import styles from "./style.module.css"
 
@@ -12,6 +13,17 @@ export default function Articles() {
     <main>
       <h3 className={styles.title}>Veja um pouco mais sobre o nosso projeto:</h3>
       <section className={styles.articlesWrapper}>
+        <ArticleCard
+          img={projetoImage}
+          title="Licita BSB: Facilitando o Acesso às Licitações em Brasília"
+          text="No mundo atual, a transparência e o acesso à informação são mais
+          cruciais do que nunca. Nesse contexto, o *Licita BSB* se destaca
+          como uma ferramenta essencial para a gestão e acompanhamento das
+          licitações em Brasília. O projeto visa proporcionar um acesso
+          descomplicado e eficiente às informações sobre processos
+          licitatórios, promovendo maior clareza e participação cidadã."
+          path="sobrelicitabsb"
+        />
         <ArticleCard
           img={botImg}
           title="Sobre o Bot: Automatização de Postagens na Rede Social X (antigo Twitter)"
