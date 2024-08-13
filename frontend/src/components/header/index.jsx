@@ -5,10 +5,12 @@ import search from '../../../assets/Search.svg';
 import menuBurger from '../../../assets/burger.svg';
 import styles from './style.module.css';
 import { useNavigate } from 'react-router-dom';
+import SidebarResponsive from '../sidebar-responsive';
 
 const Header = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
+  const [showSidebar, setShowSidebar] = useState(false);
 
   function handdleChange(e) {
     setInput(e.target.value);
@@ -25,6 +27,7 @@ const Header = () => {
 
   return (
     <div className={styles.headerWrapper}>
+      <SidebarResponsive showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
       <div className={styles.headerUnb}>
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
@@ -65,6 +68,7 @@ const Header = () => {
               />
               <img
                 src={menuBurger}
+                onClick={() => setShowSidebar((prev) => !prev)}
               />
             </div>
             <div className={styles.campoPesquisa}>
