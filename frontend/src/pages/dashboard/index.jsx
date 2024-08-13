@@ -293,13 +293,14 @@ export default function Dashboard() {
     <div className={style.dashboard}>
       <div className={style.chartContainer}>
         <div className={style.chart01}>
-          <div>
+          <div className={style.wrapper}>
           <Bar data={chartDataAnual} options={optionsAnual} className={style.chart} />
           <Bar data={chartDataMensal} options={optionsMensal} className={style.chart} />
           </div>
         </div>
         <div className={style.chart02}>
         <div className={style.header}>
+        <h1>Selecione o Ano</h1>
         <select
           value={anoSelecionado}
           onChange={e => setAnoSelecionado(e.target.value)}

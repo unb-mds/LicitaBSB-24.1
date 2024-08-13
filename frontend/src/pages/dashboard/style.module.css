@@ -24,7 +24,7 @@ body{
 
 .header{
     margin-top: 5px;
-    gap: 1px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -55,8 +55,8 @@ body{
 
 
 .chart01 .chart{
-    width: 1100px !important;
-    height: 420px !important;
+    width: 850px !important;
+    height: 425px !important;
 }
 
 .chart02 {
@@ -64,7 +64,6 @@ body{
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-align: center;
     flex-direction: column;
     padding: 10;
