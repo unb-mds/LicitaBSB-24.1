@@ -149,6 +149,13 @@ export default function Dashboard() {
         yAxisID: 'y2',
       },
     ],
+    options: {
+      legend: {
+        labels: {
+          padding: 100, // Aumente ou diminua este valor para afastar mais ou menos
+        },
+      },
+    },
   };
 
   const chartDataMensal = {
@@ -180,8 +187,18 @@ export default function Dashboard() {
         label: 'Quantidade Total por Mês',
         data: quantidadesMensais,
         backgroundColor: [
-          '#FFB3B3', '#B3E5FC', '#FFF59D', '#C8E6C9', '#D1C4E9', '#FFAB91',
-          '#FFE0B2', '#B3E5FC', '#E1BEE7', '#FFAB91', '#D1C4E9', '#C5E1A5'
+          '#FF0000', // Vermelho forte
+          '#0000FF', // Azul forte
+          '#FFFF00', // Amarelo forte
+          '#00FF00', // Verde forte
+          '#FF4500', // Laranja forte
+          '#8A2BE2', // Azul violeta
+          '#FF6347', // Tomate (vermelho forte)
+          '#4682B4', // Azul aço
+          '#FFD700', // Ouro (amarelo forte)
+          '#228B22', // Verde floresta
+          '#DC143C', // Carmesim (vermelho escuro)
+          '#1E90FF'  // Azul-dodger
         ],
         borderColor: 'rgba(0,0,0,0.1)',
         borderWidth: 1,
@@ -239,6 +256,13 @@ export default function Dashboard() {
         title: {
           display: true,
           text: 'Quantidade de Licitações',
+          font: {
+            size: 17, // Aumente o tamanho da fonte
+          },
+          padding: {
+            top: 10, // Adicione um espaçamento superior
+            bottom: 10, // Adicione um espaçamento inferior
+          },
         },
       },
       y2: {
@@ -248,6 +272,13 @@ export default function Dashboard() {
         title: {
           display: true,
           text: 'Valor Total das Licitações (R$)',
+          font: {
+            size: 17, // Aumente o tamanho da fonte
+          },
+          padding: {
+            top: 10, // Adicione um espaçamento superior
+            bottom: 10, // Adicione um espaçamento inferior
+          },
         },
       },
     },
@@ -275,6 +306,13 @@ export default function Dashboard() {
         title: {
           display: true,
           text: 'Quantidade de Licitações',
+          font: {
+            size: 17, // Tamanho da fonte definido para 17
+          },
+          padding: {
+            top: 10, // Espaçamento superior
+            bottom: 10, // Espaçamento inferior
+          },
         },
       },
       y4: {
@@ -284,10 +322,18 @@ export default function Dashboard() {
         title: {
           display: true,
           text: 'Valor Total das Licitações (R$)',
+          font: {
+            size: 17, // Tamanho da fonte definido para 17
+          },
+          padding: {
+            top: 10, // Espaçamento superior
+            bottom: 10, // Espaçamento inferior
+          },
         },
       },
     },
   };
+  
 
   return (
     <div className={style.dashboard}>
