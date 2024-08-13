@@ -30,3 +30,16 @@
   width: 200px;
   margin: auto 0;
 }
+
+@media (max-width: 720px) {
+  .cardWrapper, .cardWrapper:nth-child(2n) {
+    flex-direction: column-reverse;
+
+    img {
+      align-self: center;
+      width: 100%;
+      max-height: 200px;
+      object-fit: contain;
+    }
+  }
+}
