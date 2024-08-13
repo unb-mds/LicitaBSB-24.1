@@ -110,7 +110,7 @@
         font-weight: normal;
         text-align: center;
     }
-    
+
     .cardAboutSubtitle {
         margin-left: 0;
         font-size: 24px;
@@ -118,14 +118,14 @@
         font-weight: normal;
         text-align: start;
     }
-    
+
     .cardAboutSubtitle3{
         font-size: 16px;
         margin-left: 0;
         font-weight: normal;
         text-align: start;
     }
-    
+
     .cardAboutTextP {
         margin: .3rem;
         margin-left: 0;
@@ -163,6 +163,14 @@
         margin: 0;
         box-shadow: 0 0 transparent;
         background-color: #F9F9F9;
-        
+
+    }
+
+    .imageContext{
+        flex-direction: column;
+    }
+
+    .divImageContext{
+        width: 100%;
     }
 }
