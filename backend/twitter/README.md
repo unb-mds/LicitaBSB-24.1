@@ -38,9 +38,9 @@ Automatizar a publicação de licitações do DODF e do DOU no Twitter [@LicitaB
    ```
 
 2. **Instale as dependências:**
-   As dependências necessárias estão listadas no arquivo `requirements.txt` no diretório `backend`. Para instalar, execute:
+   As dependências necessárias estão listadas no arquivo `requirements.txt` no diretório raiz do projeto. Para instalar, execute:
    ```bash
-   pip install -r backend/requirements.txt
+   pip install -r requirements.txt
    ```
 
 3. **Configure as variáveis de ambiente:**
@@ -54,13 +54,13 @@ Automatizar a publicação de licitações do DODF e do DOU no Twitter [@LicitaB
    ```
 
 4. **Atualize o sistema de coleta de dados:**
-   Garanta que os arquivos `data.json` estejam atualizados com as licitações mais recentes.
+   Garanta que os arquivos no banco de dados estejam atualizados com as licitações mais recentes.
 
 ## Uso
 
 1. **Execute o script principal:**
    ```bash
-   python backend/twitter_bot/bot.py
+   python backend/twitter_bot/auto.py
    ```
 
 2. **O bot irá publicar as licitações no Twitter:**
@@ -76,3 +76,23 @@ Mais detalhes: [URL Encurtada]
 [Descrição da Licitação]
 ```
 
+## Testes do bot
+
+Para testar o bot, utilizamos a biblioteca `unittest` do Python. Siga o passo a passo abaixo para executar os testes:
+
+1. **Navegue até o diretório raiz do projeto:**
+   ```bash
+   cd LicitaBSB-24.1
+   ```
+
+2. **Execute o script de teste:**
+   ```bash
+   python -m unittest /backend/twitter/test.py
+   ```
+
+   Isso irá executar todos os testes presentes no diretório `tests` que começam com o prefixo `test_`.
+
+3. **Verifique os resultados dos testes:**
+   Após a execução dos testes, você verá os resultados no terminal. Os testes irão verificar se as funcionalidades do bot estão funcionando corretamente e se os dados estão sendo formatados e publicados adequadamente.
+
+Certifique-se de que todas as asserções nos testes passaram sem erros. Caso algum teste falhe, verifique o motivo do erro e faça as correções necessárias no código.
