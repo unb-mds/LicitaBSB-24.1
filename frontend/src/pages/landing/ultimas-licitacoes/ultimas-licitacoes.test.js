@@ -26,4 +26,11 @@ describe('UltimasLicitacoes', () => {
         const link = screen.getByRole('list')
         expect(link).toBeInTheDocument()
     });
+    test('o snapshot com a lista de licitações', () => {
+        render(<MemoryRouter>
+            <UltimasLicitacoes />
+        </MemoryRouter>)
+        const link = screen.getByTestId('main-testid')
+        expect(link).toMatchSnapshot()
+    })
 });

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UltimasLicitacoes o snapshot com a lista de licitações 1`] = `
+<div
+  class="wrapper"
+  data-testid="main-testid"
+>
+  <div
+    class="licitacoesHeader"
+  >
+    <h2>
+      Últimas Licitações
+    </h2>
+    <a
+      class="linkLicitacoes"
+      data-testid="link-testid"
+      href="/licitacoes"
+    >
+      Ver todas as licitações
+    </a>
+  </div>
+  <ul
+    class="licitacoesWrapper"
+  />
+</div>
+`;

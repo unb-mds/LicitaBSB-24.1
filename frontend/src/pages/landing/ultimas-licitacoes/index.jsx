@@ -20,7 +20,7 @@ export default function UltimasLicitacoes() {
 
   return (
     <>
-      <div className={styles.wrapper}>
+      <div data-testid="main-testid" className={styles.wrapper}>
         <div className={styles.licitacoesHeader}>
           <h2>Últimas Licitações</h2>
           <Link
