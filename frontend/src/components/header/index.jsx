@@ -56,8 +56,8 @@ const Header = () => {
               </a>
             </li>
             <li className={styles.headerListItem}>
-              <a href="/dashboard" className={styles.headerLink}>
-                Dashboard
+              <a href="/graficos" className={styles.headerLink}>
+                Gráficos
               </a>
             </li>
           </ul>
@@ -107,8 +107,8 @@ const Header = () => {
             </a>
           </li>
           <li className={styles.headerListItem}>
-            <a href="/dashboard" className={styles.headerLink}>
-              Dashboard
+            <a href="/graficos" className={styles.headerLink}>
+              Gráficos
             </a>
           </li>
         </ul>
