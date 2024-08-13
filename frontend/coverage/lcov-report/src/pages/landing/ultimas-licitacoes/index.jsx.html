@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -111,16 +111,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,7 +125,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,38 +141,38 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react';
 &nbsp;
-import {
-  getLicitacoes,
-  pagLicitacoes,
-} from '../../../services/licitacoes.service';
+import { getLicitacoes } from '../../../services/licitacoes.service';
 import CardLicitacoes from '../../../components/card-licitacoes';
+import useLoadData from '../../../hooks/useLoadData';
 &nbsp;
 import styles from './style.module.css';
 import { Link } from 'react-router-dom';
 &nbsp;
-export default function <span class="fstat-no" title="function not covered" >UltimasLicitacoes(</span>) {
-  const licitacoes = <span class="cstat-no" title="statement not covered" >getLicitacoes();</span>
-  const [listaLicitacoes, setListaLicitacoes] = <span class="cstat-no" title="statement not covered" >useState([]);</span>
+export default function UltimasLicitacoes() {
+  const { maisLicitacoes } = useLoadData();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    setListaLicitacoes(pagLicitacoes(licitacoes, 3, 0));</span>
-  }, []);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;&gt;
-      &lt;div className={styles.wrapper}&gt;
+      &lt;div data-testid="main-testid" className={styles.wrapper}&gt;
         &lt;div className={styles.licitacoesHeader}&gt;
           &lt;h2&gt;Últimas Licitações&lt;/h2&gt;
-          &lt;Link to="/licitacoes" className={styles.linkLicitacoes}&gt;
+          &lt;Link
+            data-testid="link-testid"
+            to="/licitacoes"
+            className={styles.linkLicitacoes}
+          &gt;
             Ver todas as licitações
           &lt;/Link&gt;
         &lt;/div&gt;
-        &lt;div className={styles.licitacoesWrapper}&gt;
-          {listaLicitacoes.map(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; {
-            // console.log(item)
-<span class="cstat-no" title="statement not covered" >            return &lt;CardLicitacoes key={item.id} data={item} /&gt;;</span>
+        &lt;ul className={styles.licitacoesWrapper}&gt;
+          {maisLicitacoes.map((item) =&gt; {
+            return (
+              &lt;li data-testid="listitem-testid"&gt;
+                &lt;CardLicitacoes key={item.id} data={item} /&gt;
+              &lt;/li&gt;
+            );
           })}
-        &lt;/div&gt;
+        &lt;/ul&gt;
       &lt;/div&gt;
     &lt;/&gt;
   );
@@ -184,7 +184,7 @@ export default function <span class="fstat-no" title="function not covered" >Ult
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-10T14:37:28.043Z
+                at 2024-08-13T15:54:27.344Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

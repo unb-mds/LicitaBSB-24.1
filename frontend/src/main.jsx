@@ -10,7 +10,6 @@ import BiddingList from './pages/bidding-list';
 import BiddingPage from './pages/bidding-page';
 import Header from './components/header';
 import Footer from './components/footer';
-import { Error } from './pages/error';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import AboutBot from './pages/about-bot';
@@ -22,7 +21,6 @@ function AppRoutes() {
       <Header />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="*" element={<Error />} />
         <Route path="/sobrelicitacao" element={<AboutBidding />} />
         <Route
           path="/sobredispensadelicitacao"

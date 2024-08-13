@@ -1,36 +1,27 @@
-import { screen, render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import AboutUs from '.';
 
-describe("Deve renderizar as seguintes informações presentes na página Sobre Nós: ", () => {
-    test("Título da página", () => {
+describe('A página Sobre Nós deve', () => {
+    test('renderizar todos os títulos da página"', () => {
         render(<AboutUs />)
-        const info = screen.getByText("Sobre nós")
-        expect(info).toBeInTheDocument()
+        const titles = screen.getAllByRole('heading')
+        expect(titles).toHaveLength(9)
     })
-    test("Descrição da equipe", () => {
+    test('renderizar os títulos "Sobre nós" e "Agora, um pouco de cada um" da página"', () => {
         render(<AboutUs />)
-        const info = screen.getByTestId("desc-testid")
-        expect(info).toBeInTheDocument()
+        const titles = screen.getAllByRole('heading')
+        expect(titles[0].innerHTML).toBe('Sobre nós')
+        expect(titles[1].innerHTML).toBe('Agora, um pouco de cada um')
     })
-    test("Foto de toda a equipe", () => {
+    test('renderizar os parágrafos da página da página"', () => {
         render(<AboutUs />)
-        const info = screen.getByTestId("photo-testid")
-        expect(info).toBeInTheDocument()
+        const ps = screen.getAllByRole('paragraph')
+        expect(ps).toHaveLength(8)
     })
-    test("Subtítulo da página", () => {
+    test('renderizar todas as imagens da página"', () => {
         render(<AboutUs />)
-        const info = screen.getByText("Agora, um pouco de cada um")
-        expect(info).toBeInTheDocument()
-    })
-    test("Lista com os cards dos membros do projeto", () => {
-        render(<AboutUs />)
-        const lista = screen.getAllByRole('listitem')
-        expect(lista).toHaveLength(7)
-    })
-    test("Lista o snapshot da lista com os cards dos membros do projeto", () => {
-        render(<AboutUs />)
-        const lista = screen.getAllByRole('listitem')
-        expect(lista).toMatchSnapshot();
+        const imagem = screen.getAllByRole('img')
+        expect(imagem).toHaveLength(8)
     })
 })

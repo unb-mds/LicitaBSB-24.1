@@ -10,7 +10,7 @@ export default function CardLicitacoes({ data }) {
   const handleNavigate = () => {
     navigate(`/licitacoes/${data.id}`);
     navigate(0);
-  }
+  };
 
   return (
     <div className={styles.cardWrapper}>
@@ -19,17 +19,19 @@ export default function CardLicitacoes({ data }) {
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
-            <p className={styles.cardStatusText}>
-              Status: {capitalize(setStatusBidding(data) ? setStatusBidding(data): '')}
+            <p data-testid="status-testid" className={styles.cardStatusText}>
+              Status: {setStatusBidding(data)}
             </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}</p>
+          <p data-testid="modalidade-testid" className={styles.cardStatusText}>
+            Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}
+          </p>
         </div>
 
         <div className={styles.licitacoesInfo}>
-          <p>Data de publicação: {data.data}</p>
+          <p data-testid="data-testid">Data de publicação: {data.data}</p>
           {data.valores && (
-            <p className={styles.statusContainer}>
+            <p data-testid="valor-testid" className={styles.statusContainer}>
               Valor da licitação: {formatCurrency(data.valores[0])}
             </p>
           )}
@@ -42,7 +44,11 @@ export default function CardLicitacoes({ data }) {
         </div>
       </div>
       <div>
-        <a onClick={handleNavigate} className={styles.cardButton}>
+        <a
+          data-testid="link-testid"
+          onClick={handleNavigate}
+          className={styles.cardButton}
+        >
           <p>Ver Mais</p>
         </a>
       </div>

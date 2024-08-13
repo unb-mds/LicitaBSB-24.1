@@ -8,31 +8,26 @@ import google from '../../../assets/google.svg';
 import twitter from '../../../assets/twitter.svg';
 import calendario from '../../../assets/calendario.svg';
 import valor from '../../../assets/valor.svg';
-import { getLicitacaoById, getLicitacoes } from '../../services/licitacoes.service';
+import {
+  getLicitacaoById,
+  getLicitacoes,
+} from '../../services/licitacoes.service';
 import CardLicitacoes from '../../components/card-licitacoes';
+import useLoadData from '../../hooks/useLoadData';
 
 export default function BiddingPage() {
   const parametros = useParams();
-  const [licitData, setLicitData] = useState({});
-  const [maisLicitacoes, setMaisLicitacoes] = useState([]);
 
-  const loadData = async () => {
-    const data = await getLicitacaoById(parametros.id);
-    setLicitData(data);
-    const maisLicit = await getLicitacoes();
-    setMaisLicitacoes(maisLicit.results.slice(0, 3))
-  }
-
-  useEffect(() => {
-    loadData();
-  }, [])
+  const { licitData, maisLicitacoes } = useLoadData(parametros.id);
 
   return (
     <main className={styles.mainContainer}>
       <div className={styles.biddingContainer}>
         <div className={styles.headingContainer}>
           <div className={styles.titleContainer}>
-            <h3 className={styles.title}>{licitData.titulo}</h3>
+            <h3 data-testid="titulo-testid" className={styles.title}>
+              {licitData.titulo}
+            </h3>
             <span className={styles.subtitle}>{licitData.nome_orgao}</span>
           </div>
           <div className={styles.shareContainer}>
@@ -50,7 +45,7 @@ export default function BiddingPage() {
         <div className={styles.biddingInfoContainer}>
           <div className={styles.biddingInfoElement}>
             <img src={calendario} />
-            <p>{licitData.data}</p>
+            <p data-testid="data-testid">{licitData.data}</p>
           </div>
           {licitData.valores && (
             <div className={styles.biddingInfoElement}>
@@ -78,12 +73,13 @@ export default function BiddingPage() {
       </div>
       <section className={styles.outrasLicitacoesContainer}>
         <h3>Licitações mais recentes:</h3>
-        <div className={styles.cardsLicitacoesWrapper}>
-          {
-            maisLicitacoes.map((data) => {
-              return <CardLicitacoes data={data}/>
-            })
-          }
+        <div
+          data-testid="outras-licitacoes-testid"
+          className={styles.cardsLicitacoesWrapper}
+        >
+          {maisLicitacoes.map((data) => {
+            return <CardLicitacoes key={data.id} data={data} />;
+          })}
         </div>
         <Link to={'/licitacoes'} className={styles.link}>
           Ver mais licitações...
