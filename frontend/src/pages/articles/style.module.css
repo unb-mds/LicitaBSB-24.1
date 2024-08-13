@@ -1,0 +1,10 @@
+.title {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.articlesWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

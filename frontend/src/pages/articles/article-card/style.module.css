@@ -1,0 +1,19 @@
+.cardWrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  background-color: var(--branco);
+  padding: 20px 30px;
+  border-radius: 16px;
+}
+
+.articleText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.articleImage {
+  height: 100%;
+  object-fit: contain;
+}
