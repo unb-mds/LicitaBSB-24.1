@@ -32,9 +32,19 @@ O projeto LicitaBSB visa coletar licitações do site "Diário Oficial da União
 | SQLite     | 3.46.0          |
 
 ## Back-end
-### Modelagem de banco de dados
+### Modelagem do banco de dados
 
 ![Modelagem banco de dados](Modelagem_BD.png)
+
+O diagrama acima representa o modelo de dados utilizado no projeto LicitaBSB, organizado em torno da entidade central licitação. Cada licitação é detalhada com informações como título, link, seção da página, edição, data, objeto, tipo, número do processo, número da licitação, ano e assinante (com cargo).
+
+- Outras entidades relacionadas incluem:
+    - Valores: Armazena os valores associados a cada licitação, com uma relação de 1 para N (uma licitação pode ter vários valores).
+    - Órgão: Guarda informações sobre o órgão responsável pela licitação, com uma relação de 1 para N.
+    - Quantidade de Licitações por Mês: Contém dados agregados sobre a quantidade de licitações realizadas em cada mês, categorizadas por ano e mês.
+    - Valores de Licitação Mensal: Armazena o valor total das licitações para cada mês específico.
+    - Esse modelo permite a organização eficiente e expansível das informações, facilitando consultas complexas e agregações de dados sobre as licitações.
+  
 ### Coleta de dados
 
 - Primariamente feita pela biblioteca `BeautifulSoup` e acionado pelo GitHub Actions todos os dias as 01 hora da manhã, todo o script e sua funcionalidade esta presente na pasta `coleção_de_dados`, onde é feita a extração dos dados do diário oficial e análise dos dados.
@@ -52,30 +62,6 @@ O projeto LicitaBSB visa coletar licitações do site "Diário Oficial da União
 - O script `server.js` se trata de um script acionado pelo front-end quando algum usuário envia o email dele através de um campo no nosso site, esse script envia o e-mail informado para a base de dados do Mailchimp.
 
 - Já o script `sendEmail.js` é acionado regulamente toda semana as segunda-feiras as 12 horas, enviando um email de aviso que nosso site foi atualizado com novas licitações.
-
-## Front-end
-
-O front-end foi desenvolvido utilizando a biblioteca React com o framework Vite e está localizado na pasta ‘frontend’ do repositório do projeto. Os principais códigos estão na pasta src, onde o arquivo main.jsx configura as rotas da página e as configurações iniciais do React. As pastas estão organizadas da seguinte forma: utils contém funções reutilizáveis, styles armazena as estilizações globais, services inclui arquivos que se comunicam com a base de dados no backend, pages possui subpastas para cada página do site e components guarda trechos de código reutilizáveis para várias páginas.
-
-O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, **services**, **pages** e **components**.
-
-- **src:**
-  - `main.jsx`: Contém o código inicial e as configurações das rotas da página, além das configurações iniciais do React.
-
-- **utils:**
-  - Contém funções com pequenas funcionalidades utilizadas por todos os componentes do projeto.
-
-- **styles:**
-  - Contém as estilizações globais da página.
-
-- **services:**
-  - Contém os arquivos que se comunicam diretamente com a nossa base de dados presente na pasta `backend`.
-
-- **pages:**
-  - Contém subpastas dedicadas a cada página específica do site.
-
-- **components:**
-  - Contém trechos de código reutilizados por mais de uma página do site, organizando melhor as funcionalidades do site e tornando o código mais limpo e centralizado.
 
 ### Fluxo de Raspagem
 
@@ -110,7 +96,31 @@ O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, 
 
 4. **Armazenamento:**
 
-    - Após a extração de dados e analise, os dados são armazenados no banco de dados SQLite.
+- Após a extração de dados e analise, os dados são armazenados no banco de dados SQLite.
+## Front-end
+
+O front-end foi desenvolvido utilizando a biblioteca React com o framework Vite e está localizado na pasta ‘frontend’ do repositório do projeto. Os principais códigos estão na pasta src, onde o arquivo main.jsx configura as rotas da página e as configurações iniciais do React. As pastas estão organizadas da seguinte forma: utils contém funções reutilizáveis, styles armazena as estilizações globais, services inclui arquivos que se comunicam com a base de dados no backend, pages possui subpastas para cada página do site e components guarda trechos de código reutilizáveis para várias páginas.
+
+O frontend está dividido nas seguintes pastas: **src**, **utils**, **styles**, **services**, **pages** e **components**.
+
+- **src:**
+  - `main.jsx`: Contém o código inicial e as configurações das rotas da página, além das configurações iniciais do React.
+
+- **utils:**
+  - Contém funções com pequenas funcionalidades utilizadas por todos os componentes do projeto.
+
+- **styles:**
+  - Contém as estilizações globais da página.
+
+- **services:**
+  - Contém os arquivos que se comunicam diretamente com a nossa base de dados presente na pasta `backend`.
+
+- **pages:**
+  - Contém subpastas dedicadas a cada página específica do site.
+
+- **components:**
+  - Contém trechos de código reutilizados por mais de uma página do site, organizando melhor as funcionalidades do site e tornando o código mais limpo e centralizado.
+
 
 
 ## Histórico de Versões
