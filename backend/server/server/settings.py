@@ -12,9 +12,17 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+load_dotenv()  # Carrega os segredos da API do Twitter
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+# Configura as variáveis de ambiente
+DJANGO_URL_CHIMP =  os.getenv('DJANGO_URL_CHIMP')
+DJANGO_API =  os.getenv('DJANGO_API')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -26,7 +34,7 @@ SECRET_KEY = 'django-insecure-ygz=9^0q@e1q_yju4*)(cs0_+x3&xcdt7a-#rv_dt4y^!638x#
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'licitabsbserver-6f0bfb6e0572.herokuapp.com',
+    'licitabsbserer-a1c309841042.herokuapp.com',
     'localhost'
     ]
 
@@ -61,7 +69,8 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://66b17066871fef417c49ecee--fastidious-daffodil-724e94.netlify.app",
+    "https://licitabsb.netlify.app",
+    "https://fastidious-daffodil-724e94.netlify.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

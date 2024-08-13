@@ -58,10 +58,14 @@
 }
 
 .cardButton {
-  color: var(--texto);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cardButton p {
   background-color: var(--branco);
   padding: 4px 72px;
-  text-decoration: none;
+  color: var(--texto);
 }
 
 .cardStatus{
@@ -74,7 +78,6 @@
 }
 .cardStatusText{
   font-weight: bold;
-  flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -85,7 +88,7 @@
   -webkit-box-orient: vertical;
 }
 
-@media (max-width: 1500px){
+@media (max-width: 1600px){
   .cardWrapper{
     padding: 1rem;
   }

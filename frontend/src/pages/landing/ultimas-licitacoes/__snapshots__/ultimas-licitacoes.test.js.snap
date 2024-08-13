@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UltimasLicitacoes o snapshot com a lista de licitações 1`] = `
+<div
+  class="wrapper"
+  data-testid="main-testid"
+>
+  <div
+    class="licitacoesHeader"
+  >
+    <h2>
+      Últimas Licitações
+    </h2>
+    <a
+      class="linkLicitacoes"
+      data-testid="link-testid"
+      href="/licitacoes"
+    >
+      Ver todas as licitações
+    </a>
+  </div>
+  <ul
+    class="licitacoesWrapper"
+  >
+    <li
+      data-testid="listitem-testid"
+    >
+      <div
+        class="cardWrapper"
+      >
+        <h5
+          class="cardTitle"
+        >
+          Órgão A
+        </h5>
+        <div>
+          <div
+            class="cardStatus"
+          >
+            <div
+              class="statusContainer"
+            >
+              <p
+                class="cardStatusText"
+                data-testid="status-testid"
+              >
+                Status: 
+                Aberta
+              </p>
+            </div>
+            <p
+              class="cardStatusText"
+              data-testid="modalidade-testid"
+            >
+              Modalidade: 
+              Tipo A
+            </p>
+          </div>
+          <div
+            class="licitacoesInfo"
+          >
+            <p
+              data-testid="data-testid"
+            >
+              Data de publicação: 
+              01/01/2024
+            </p>
+          </div>
+          <div
+            class="cardSection"
+          />
+          <div>
+            <p
+              class="cardDescricao"
+            />
+          </div>
+        </div>
+        <div>
+          <a
+            class="cardButton"
+            data-testid="link-testid"
+          >
+            <p>
+              Ver Mais
+            </p>
+          </a>
+        </div>
+      </div>
+    </li>
+    <li
+      data-testid="listitem-testid"
+    >
+      <div
+        class="cardWrapper"
+      >
+        <h5
+          class="cardTitle"
+        >
+          Órgão B
+        </h5>
+        <div>
+          <div
+            class="cardStatus"
+          >
+            <div
+              class="statusContainer"
+            >
+              <p
+                class="cardStatusText"
+                data-testid="status-testid"
+              >
+                Status: 
+                Aberta
+              </p>
+            </div>
+            <p
+              class="cardStatusText"
+              data-testid="modalidade-testid"
+            >
+              Modalidade: 
+              Tipo B
+            </p>
+          </div>
+          <div
+            class="licitacoesInfo"
+          >
+            <p
+              data-testid="data-testid"
+            >
+              Data de publicação: 
+              02/01/2024
+            </p>
+          </div>
+          <div
+            class="cardSection"
+          />
+          <div>
+            <p
+              class="cardDescricao"
+            />
+          </div>
+        </div>
+        <div>
+          <a
+            class="cardButton"
+            data-testid="link-testid"
+          >
+            <p>
+              Ver Mais
+            </p>
+          </a>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+`;

@@ -1,0 +1,2 @@
+apenas para a resolver o warning do test 
+"C:\Users\thale\OneDrive\Área de Trabalho\unb\trabalho MDS\LicitaBSB-24.1\venv\Lib\site-packages\django\core\handlers\base.py:61: UserWarning: No directory at: C:\Users\thale\OneDrive\Área de Trabalho\unb\trabalho MDS\LicitaBSB-24.1\backend\server\static\"

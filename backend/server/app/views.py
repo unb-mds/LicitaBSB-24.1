@@ -1,13 +1,20 @@
 from rest_framework.decorators import api_view
-from app.models import Licitacao, Orgao
-from app.serializers import LicitacaoSerializer, OrgaoSerializer
+from app.models import Licitacao, Orgao, LicitacaoQuantidade, LicitacaoValoresMensal
+from app.serializers import LicitacaoSerializer, OrgaoSerializer, LicitacoesQuantidadeMensalSerializer, LicitacoesQuantidadeAnualSerializer,LicitacoesValoresMensaisSerializer, LicitacoesValoresAnuaisSerializer
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from rest_framework.pagination import PageNumberPagination
 from datetime import datetime
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-
+from django.db.models import Sum, F, FloatField, Q
+from django.db.models.functions import Cast
+from rest_framework import status
+from dotenv import load_dotenv
+from django.conf import settings
+import requests
+from requests.auth import HTTPBasicAuth
+load_dotenv() 
 
 @swagger_auto_schema(
     method='get',
@@ -50,49 +57,66 @@ def listar_orgaos(request):
     return paginator.get_paginated_response(serializer.data)
 
 
+
 @swagger_auto_schema(
     method='get',
-    operation_description="Listar todas as licitações com filtros dinâmicos e paginação. Filtros disponíveis: tipo (Tipo de licitação), data (Data da licitação no formato dd-mm-aaaa) e search (Termo de busca no campo 'objeto').",
+    operation_description=(
+        "Listar todas as licitações com filtros dinâmicos e paginação. \n"
+        "Filtros disponíveis: \n"
+        "- tipo: Tipo de licitação, pode ser 'aviso' ou 'extrato'.\n"
+        "- data: Data da licitação no formato dd-mm-aaaa.\n"
+        "- search: Termo de busca no campo 'objeto'.\n"
+        "- orgao: Termos de busca parcial no nome do órgão, separados por vírgula. Suporta múltiplos órgãos.\n"
+        "Ordenação: adicione o parâmetro 'ordenar_por' com valor 'valor' para ordenar por valor total, \n"
+        "ou deixe em branco para ordenar por data (padrão).\n"
+    ),
     manual_parameters=[
-        openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação", type=openapi.TYPE_STRING),
+        openapi.Parameter('tipo', openapi.IN_QUERY, description="Tipo de licitação, pode ser 'aviso' ou 'extrato'", type=openapi.TYPE_STRING),
         openapi.Parameter('data', openapi.IN_QUERY, description="Data da licitação (dd-mm-aaaa)", type=openapi.TYPE_STRING),
-        openapi.Parameter('search', openapi.IN_QUERY, description="Termo de busca no campo 'objeto'", type=openapi.TYPE_STRING)
+        openapi.Parameter('search', openapi.IN_QUERY, description="Termo de busca no campo 'objeto'", type=openapi.TYPE_STRING),
+        openapi.Parameter('orgao', openapi.IN_QUERY, description="Termos de busca parcial no nome do órgão, separados por vírgula. Suporta múltiplos órgãos.", type=openapi.TYPE_STRING),
+        openapi.Parameter('ordenar_por', openapi.IN_QUERY, description="Ordenação dos resultados. Use 'valor' para ordenar por valor total, ou deixe em branco para ordenar por data.", type=openapi.TYPE_STRING)
     ],
-    responses={200: LicitacaoSerializer(many=True)}
+    responses={200: openapi.Response('Lista de licitações', LicitacaoSerializer(many=True))}
 )
 @api_view(['GET'])
 def listar_licitacoes(request):
     paginator = PageNumberPagination()
     paginator.page_size = 10
 
-    # Lista de possíveis campos de filtro e seus correspondentes no banco de dados
-    filtro_campos = ['tipo', 'data', 'search']
-    nomes_dos_campos_db = ['tipo', 'data', 'objeto']
-    filtros = {}
+    filtro_campos = ['tipo', 'data', 'search', 'orgao']
+    nomes_dos_campos_db = ['tipo', 'data', 'objeto', 'idorgao__nome']
+    filtros = Q()
 
-    # Itera sobre os campos de filtro e seus nomes correspondentes no banco de dados
     for campo, real_campo in zip(filtro_campos, nomes_dos_campos_db):
         valor = request.GET.get(campo)
         if valor:
             if campo == 'data':
                 valor = valor.replace('-', '/')
             if campo == 'search':
-                # Para o campo 'search', use icontains para busca parcial
-                filtros[f'{real_campo}__icontains'] = valor
+                filtros &= Q(**{f'{real_campo}__icontains': valor})
+            elif campo == 'orgao':
+                # Suporte para múltiplos órgãos separados por vírgula
+                orgaos = [orgao.strip() for orgao in valor.split(',')]  # Remove espaços extras
+                orgaos_q = Q()
+                for orgao in orgaos:
+                    orgaos_q |= Q(**{f'{real_campo}__icontains': orgao})
+                filtros &= orgaos_q
             else:
-                filtros[real_campo] = valor
+                filtros &= Q(**{real_campo: valor})
 
-    licitacoes = Licitacao.objects.filter(**filtros)
+    licitacoes = Licitacao.objects.filter(filtros)
 
-    if licitacoes.exists():
+    if request.GET.get('ordenar_por') == 'valor':
+        licitacoes = licitacoes.annotate(
+            total_valor=Sum(Cast(F('valores'), FloatField()))
+        ).order_by('-total_valor')
+    else:
         licitacoes = sorted(licitacoes, key=lambda x: datetime.strptime(x.data, '%d/%m/%Y'), reverse=True)
 
     result_page = paginator.paginate_queryset(licitacoes, request)
     serializer = LicitacaoSerializer(result_page, many=True)
     return paginator.get_paginated_response(serializer.data)
-
-
-
 @swagger_auto_schema(
     method='get',
     operation_description="Obter detalhes de uma licitação por ID",
@@ -107,3 +131,177 @@ def licitacao_por_id(request, id):
 
     serializer = LicitacaoSerializer(licitacao)
     return Response(serializer.data)
+
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade de licitações organizadas por ano e mês.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade de licitações por ano e mês",
+            schema=LicitacoesQuantidadeMensalSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_quantidade_mensal(request):
+    # Busca todos os registros da tabela LicitacaoQuantidade
+    licitacao_quantidade = LicitacaoQuantidade.objects.values('ano', 'mes').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano', 'mes')
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesQuantidadeMensalSerializer(licitacao_quantidade, many=True)
+    return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade de licitações organizadas por ano.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade de licitações por ano",
+            schema=LicitacoesQuantidadeAnualSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_quantidade_anual(request):
+    # Agrupa as licitações por ano e soma as quantidades
+    licitacao_quantidade_anual = LicitacaoQuantidade.objects.values('ano').annotate(total_licitacoes=Sum('total_licitacoes')).order_by('ano')
+
+    # Para evitar o erro, precisamos passar uma lista de objetos ao serializer
+    # Para cada dicionário retornado por values(), criamos uma instância do modelo
+    licitacao_quantidade_anual_objs = [
+        LicitacaoQuantidade(ano=item['ano'], total_licitacoes=item['total_licitacoes']) 
+        for item in licitacao_quantidade_anual
+    ]
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesQuantidadeAnualSerializer(licitacao_quantidade_anual_objs, many=True)
+    return Response(serializer.data)
+
+
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade total de valores mensais de licitações, organizados por ano e mês.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade total de valores mensais por ano e mês",
+            schema=LicitacoesValoresMensaisSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_valores_mensais(request):
+    # Busca todos os registros da tabela LicitacaoQuantidade
+    valores_mensais =  LicitacaoValoresMensal.objects.values('ano', 'mes').annotate(valor_total=Sum('valor_total')).order_by('ano', 'mes')
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesValoresMensaisSerializer(valores_mensais, many=True)
+    return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Obter a quantidade total de valores anuais de licitações, organizados por ano.",
+    responses={
+        200: openapi.Response(
+            description="Retorna a quantidade total de valores anuais por ano",
+            schema=LicitacoesValoresAnuaisSerializer(many=True)
+        )
+    }
+)
+@api_view(['GET'])
+def listar_licitacoes_valores_anuais(request):
+    # Obtém todos os anos distintos e ordena em ordem crescente
+    anos = LicitacaoValoresMensal.objects.values_list('ano', flat=True).distinct().order_by('ano')
+
+    # Prepara os dados para o serializer
+    dados = [{'ano': ano} for ano in anos]
+
+    # Cria o serializer e retorna a resposta
+    serializer = LicitacoesValoresAnuaisSerializer(dados, many=True)
+    return Response(serializer.data)
+
+@swagger_auto_schema(
+    method='get',
+    operation_description="Retorna a licitação com o maior valor somado.",
+    responses={200: openapi.Response('Licitação com maior valor', LicitacaoSerializer())}
+)
+@api_view(['GET'])
+def licitacao_maior_valor(request):
+    # Anotar cada licitação com a soma de seus valores
+    licitacao_com_maior_valor = Licitacao.objects.annotate(
+        total_valor=Sum(Cast(F('valores'), FloatField()))
+    ).order_by('-total_valor').first()
+
+    if licitacao_com_maior_valor:
+        serializer = LicitacaoSerializer(licitacao_com_maior_valor)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response({'detail': 'Nenhuma licitação encontrada.'}, status=status.HTTP_404_NOT_FOUND)
+
+ALLOWED_ORIGINS = [
+    'https://fastidious-daffodil-724e94.netlify.app',
+    'https://licitabsb.netlify.app'
+]
+
+@swagger_auto_schema(
+    method='post',
+    operation_description="Subscribe an email to a Mailchimp list.",
+    request_body=openapi.Schema(
+        type=openapi.TYPE_OBJECT,
+        properties={
+            'email_address': openapi.Schema(type=openapi.TYPE_STRING),
+            'status': openapi.Schema(type=openapi.TYPE_STRING),
+            'merge_fields': openapi.Schema(
+                type=openapi.TYPE_OBJECT,
+                properties={
+                    'FNAME': openapi.Schema(type=openapi.TYPE_STRING),
+                    'LNAME': openapi.Schema(type=openapi.TYPE_STRING)
+                }
+            )
+        },
+        required=['email_address', 'status']
+    ),
+    responses={
+        200: "Subscription successful!",
+        500: "Subscription failed."
+    }
+)
+@api_view(['POST'])
+def subscribe_email(request):
+    origin = request.headers.get('Origin')
+    
+    # Verifica se a requisição veio de um dos domínios permitidos
+    if origin not in ALLOWED_ORIGINS:
+        return Response({"detail": "Unauthorized origin."}, status=status.HTTP_403_FORBIDDEN)
+
+    email = request.data.get('email_address')
+    status = request.data.get('status')
+    merge_fields = request.data.get('merge_fields')
+    
+    if not email:
+        return Response({"detail": "Email is required."}, status=status.HTTP_400_BAD_REQUEST)
+    if not status:
+        return Response({"detail": "Status is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    mailchimp_url = settings.DJANGO_URL_CHIMP
+    mailchimp_api_key = settings.DJANGO_API
+
+    try:
+        response = requests.post(
+            mailchimp_url,
+            json={
+                'email_address': email,
+                'status': status,
+                'merge_fields': merge_fields
+            },
+            auth=HTTPBasicAuth('anystring', mailchimp_api_key)  # 'anystring' pode ser qualquer valor
+        )
+
+        if response.status_code == 200:
+            return Response("Subscription successful!", status=status.HTTP_200_OK)
+        else:
+            return Response(f"Subscription failed: {response.text}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    except requests.exceptions.RequestException as e:
+        print(f"Error subscribing: {e}")
+        return Response("Subscription failed.", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

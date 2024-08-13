@@ -20,5 +20,11 @@
 }
 
 .aboutUsImg {
+    width: 70%;
+  @media (max-width: 1500px) {
     width: 80%;
+  }
+  @media (max-width: 1000px) {
+    width: 100%;
+  }
 }

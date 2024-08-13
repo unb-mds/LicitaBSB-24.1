@@ -29,14 +29,26 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 main {
-  padding-top: 75px;
-  margin: 0 128px;
+  margin: 0 240px;
+  flex: 1;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   height: 100%;
+}
+
+@media (max-width: 1300px) {
+  main {
+    margin: 26px 20%;
+  }
+}
+
+@media (max-width: 900px) {
+  main {
+    margin: 26px 32px;
+  }
 }
 
 @media (max-width: 720px){

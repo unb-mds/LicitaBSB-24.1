@@ -1,3 +1,4 @@
+/* Estilo Global */
 .headerWrapper {
   display: flex;
   flex-direction: column;
@@ -22,7 +23,17 @@
   justify-content: space-between;
   width: 100%;
   background-color: var(--azulMedio);
-  padding: 8px 128px;
+  padding: 0px 240px;
+  height: 48px;
+}
+
+.logo {
+  padding: 4px 0;
+  margin-left: -10px;
+}
+
+.logo, .logo img {
+  height: 100%;
 }
 
 .headerLinksWrapper {
@@ -40,7 +51,7 @@
   text-decoration: none;
   font-family: 'IBM Plex Sans', sans-serif;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 15px;
   color: var(--brancoTexto);
 }
 
@@ -51,11 +62,11 @@
 .campoPesquisa {
   display: flex;
   align-items: center;
-  width: 240px;
+  width: 200px;
   background-color: var(--azulEscuro);
   height: 29px;
   gap: 10px;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 3px;
 }
 
@@ -71,6 +82,7 @@
   color: var(--brancoTexto);
   font-size: 16px;
   font-family: 'IBM Plex Sans', sans-serif;
+  width: 100%;
 }
 
 .textInput:focus{
@@ -78,9 +90,15 @@
   outline: none;
 }
 
+/* Estilos Responsivos */
 @media (max-width: 720px) {
+  body, html {
+    overflow-x: hidden;
+  }
+
   .subHeader {
     justify-content: center;
+    padding: 0 16px; /* Ajuste para evitar overflow */
   }
 
   .headerLinksWrapper {
@@ -92,7 +110,7 @@
   }
 }
 
-@media (min-width: 720px) and (max-width: 1300px){
+@media (min-width: 720px) and (max-width: 1700px){
   .subHeaderWrapper {
     justify-content: center;
   }

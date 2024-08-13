@@ -12,6 +12,24 @@ import sqlite3
 
 load_dotenv()  # Carrega os segredos da API do Twitter
 
+def carregar_configuracoes_twitter():
+    consumer_key = os.getenv('TWITTER_API_KEY')
+    consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
+    access_token = os.getenv('TWITTER_ACCESS_TOKEN')
+    access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+    bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
+
+    client = tweepy.Client(
+        consumer_key=consumer_key,
+        consumer_secret=consumer_secret,
+        access_token=access_token,
+        access_token_secret=access_token_secret,
+        bearer_token=bearer_token
+    )
+    auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
+    api = tweepy.API(auth)
+    return client, api
+
 def encurtar_url(url):
     try:
         response = requests.post(
@@ -19,9 +37,6 @@ def encurtar_url(url):
             headers={'Content-Type': 'application/json'},
             json={"url": url}
         )
-        print(f"Status Code: {response.status_code}")
-        print(f"Response Text: {response.text}")
-
         if response.status_code in [200, 201] or response.text.startswith('200 / 201'):
             return response.json().get('urlEncurtada', url)
         else:
@@ -29,8 +44,6 @@ def encurtar_url(url):
     except Exception as e:
         print(f"Exceção ao encurtar URL: {e}")
         return url
-
-site = encurtar_url("https://licitabsb-repo.vercel.app")
 
 def editar_mensagem(mensagem):
     result = parse_tweet(mensagem).asdict()
@@ -40,7 +53,7 @@ def editar_mensagem(mensagem):
         mensagem_editada = mensagem[:result['validRangeEnd']]
         mensagem_editada = mensagem_editada.rstrip()  # Remove espaços em branco extras no final
         if len(mensagem_editada) > 3:
-            mensagem_ditada = mensagem_editada[:-3] + "..."
+            mensagem_editada = mensagem_editada[:-3] + "..."
         return mensagem_editada
 
 def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
@@ -73,8 +86,11 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
         desenho.text((x, y + deslocamento), texto, font=fonte, fill=cor)
         desenho.text((x, y), texto, font=fonte, fill=cor)
 
-
     # Título
+    if len(titulo) > 33 and len(titulo) < 38:
+        titulo = titulo[:33] + '\n' + titulo[33:]
+    elif len(titulo) > 38:
+        titulo = titulo[:30] + '\n' + titulo[30:]
     titulo_largura, titulo_altura = desenho.textbbox((0, 0), titulo, font=fonte_titulo)[2:4]
     y_text = (altura_imagem - titulo_altura) / 2 - 300  # Ajuste vertical
     x_text = (largura_imagem - titulo_largura) / 2
@@ -83,18 +99,33 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
     # Data
     data_text = f"Data: {data}"
     largura_data, altura_data = desenho.textbbox((0, 0), data_text, font=fonte_data)[2:4]
-    y_text = 170
+    if len(titulo) > 33:
+        y_text += titulo_altura - 150
+    else:
+        y_text = 170  
     x_text = 420
     desenhar_texto_negrito(desenho, (x_text, y_text), data_text, fonte_data, "black")
 
     # Descrição
-    if len(descricao) > 447:
-        descricao = descricao[:444] + "..."
+    if len(descricao) > 520:
+        descricao = descricao[:517] + "..."
     y_text += titulo_altura + 100  # Espaço entre título e descrição
     palavras = descricao.split(' ')
     linhas = []
     linha = ''
-    
+
+    def dividir_palavras_longas(palavras, max_len=48):
+        novas_palavras = []
+        for palavra in palavras:
+            while len(palavra) > max_len:
+                novas_palavras.append(palavra[:max_len])
+                palavra = palavra[max_len:]
+            novas_palavras.append(palavra)
+        return novas_palavras
+
+    # Dividir palavras longas antes de processar a descrição
+    palavras = dividir_palavras_longas(palavras)
+
     for palavra in palavras:
         largura_linha, altura_linha = desenho.textbbox((0, 0), linha + palavra, font=fonte_descricao)[2:4]
         if largura_linha <= largura_texto:
@@ -107,138 +138,135 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
     altura_texto = sum([desenho.textbbox((0, 0), linha, font=fonte_descricao)[3] for linha in linhas])
     
     for linha in linhas:
-        largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
-        x_text = (largura_imagem - largura_linha) / 2
-        desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
+        palavras_linha = linha.split()
+        if len(palavras_linha) > 1:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            espaco_extra = (largura_texto - largura_linha) / (len(palavras_linha) - 1)
+            x_text = margem_lateral
+            for palavra in palavras_linha:
+                desenho.text((x_text, y_text), palavra, font=fonte_descricao, fill="black")
+                largura_palavra, _ = desenho.textbbox((0, 0), palavra + ' ', font=fonte_descricao)[2:4]  # Inclui o espaço original
+                x_text += largura_palavra + espaco_extra
+        else:
+            largura_linha, altura_linha = desenho.textbbox((0, 0), linha, font=fonte_descricao)[2:4]
+            x_text = (largura_imagem - largura_linha) / 2
+            desenho.text((x_text, y_text), linha, font=fonte_descricao, fill="black")
         y_text += altura_linha
-
+    
     # pega o valor (se disponível)
     if valor is not None:
         valor_text = f"Valor: R$ {valor:.2f}"
+        y_text = 830  
+        x_text = 420
         largura_valor, altura_valor = desenho.textbbox((0, 0), valor_text, font=fonte_valor)[2:4]
-        y_text += altura_linha   # Espaço entre descrição e valor
-        x_text = (largura_imagem - largura_valor) / 2
         desenhar_texto_negrito(desenho, (x_text, y_text), valor_text, fonte_valor, "black")
 
     imagem.save(caminho_imagem)
     print(f"Imagem salva em: {caminho_imagem}")
 
-licitacoes = []
-db_path = 'backend/server/db.sqlite3'
-connection = sqlite3.connect(db_path)
-cursor = connection.cursor()
+def buscar_licitacoes(data_ontem):
+    db_path = 'backend/server/db.sqlite3'
+    connection = sqlite3.connect(db_path)
+    cursor = connection.cursor()
 
-data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y') # pega as licitações de ontem, tem que garantir que esse código só será executado quando o json já estiver atualizado com a data de ontem
-print(f"Buscando licitações para a data: {data_ontem}")
-
-# Consulta para selecionar as licitações
-query_licitacoes = """
-SELECT id, titulo, objeto, data, link, tipo
-FROM app_licitacao
-WHERE data = ?
-"""
-
-# Executar a consulta das licitações
-cursor.execute(query_licitacoes, (data_ontem,))
-licitacoes_data = cursor.fetchall()
-
-# Lista para armazenar as licitações e seus valores
-licitacoes = []
-
-# Iterar sobre as licitações e buscar os valores relacionados
-for licitacao in licitacoes_data:
-    licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
-    
-    # Consulta para selecionar os valores relacionados à licitação
-    query_valores = """
-    SELECT valor
-    FROM app_valores
-    WHERE idlicitacao_id = ?
+    query_licitacoes = """
+    SELECT id, titulo, objeto, data, link, tipo
+    FROM app_licitacao
+    WHERE data = ?
     """
-    
-    # Executar a consulta dos valores
-    cursor.execute(query_valores, (licitacao_id,))
-    valores_data = cursor.fetchall()
-    
-    # Extrair os valores em uma lista
-    valores = [valor[0] for valor in valores_data]
-    
-    # Encurtar o link
-    a = encurtar_url(link)
-    #time.sleep(1)  # Pausa para evitar sobrecarga
-    
-    # Adicionar a licitação com os valores à lista
-    licitacoes.append({
-        'titulo': titulo,
-        'descricao': objeto,
-        'data': data_abertura,
-        'link': a,
-        'valores': sum(valores) if valores else None
-    })
+    cursor.execute(query_licitacoes, (data_ontem,))
+    licitacoes_data = cursor.fetchall()
 
-# Fechar a conexão com o banco de dados
-connection.close()
+    licitacoes = []
+    for licitacao in licitacoes_data:
+        licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
+        
+        query_valores = """
+        SELECT valor
+        FROM app_valores
+        WHERE idlicitacao_id = ?
+        """
+        cursor.execute(query_valores, (licitacao_id,))
+        valores_data = cursor.fetchall()
+        
+        valores = [valor[0] for valor in valores_data]
+        link_encurtado = encurtar_url(link)
+        time.sleep(1)  # Pausa para evitar sobrecarga
+        
+        licitacoes.append({
+            'titulo': titulo,
+            'descricao': objeto,
+            'data': data_abertura,
+            'link': link_encurtado,
+            'valores': sum(valores) if valores else None
+        })
 
-verificador_de_licitacao = False
-if not licitacoes:
-    mensagens = [f'Nas últimas 24 horas não houve nenhum tipo de licitação liberada no Diário Oficial da União\n\nVisite nosso site: {site}']
-    verificador_de_licitacao = True
-else:
-    mensagens = []
-    for licitacao in licitacoes:
-        link_encurtado = encurtar_url(licitacao['link'])
-        tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
-        tweet_message = editar_mensagem(tweet_message)
-        mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
+    connection.close()
+    return licitacoes
 
-consumer_key = os.getenv('TWITTER_API_KEY')
-consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
-access_token = os.getenv('TWITTER_ACCESS_TOKEN')
-access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
-bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
+def criar_mensagens(licitacoes, site):
+    data_atual = datetime.now().strftime('%d/%m/%Y')
+    mensagens_alternativas = [
+        f'Nenhuma nova licitação disponível nas últimas 24 horas (até {data_atual}).\n\nFique ligado: {site}',
+        f'Estamos de olho! Até {data_atual}, não houve novas licitações.\n\nAcesse: {site}',
+        f'Sem novidades nas últimas 24 horas (até {data_atual}).\n\nConfira mais detalhes em nosso site: {site}',
+    ]
 
-client = tweepy.Client(
-    consumer_key=consumer_key,
-    consumer_secret=consumer_secret,
-    access_token=access_token,
-    access_token_secret=access_token_secret,
-    bearer_token=bearer_token
-)
-auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
-api = tweepy.API(auth)
-if len(mensagens) > 50:
-    mensagens = mensagens[:50]
+    if not licitacoes:
+        mensagens = [mensagens_alternativas[datetime.now().day % len(mensagens_alternativas)]]
+        verificador_de_licitacao = True
+    else:
+        mensagens = []
+        for licitacao in licitacoes:
+            link_encurtado = encurtar_url(licitacao['link'])
+            tweet_message = f'{licitacao["titulo"]}\nVisite nosso site: {site}\nMais detalhes: {link_encurtado}'
+            tweet_message = editar_mensagem(tweet_message)
+            mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
+        verificador_de_licitacao = False
 
-watermark_image_path = 'backend/twitter/logolicita.png'
-if verificador_de_licitacao == False:
-    for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
+    return mensagens, verificador_de_licitacao
+
+def postar_tweets(client, api, mensagens, verificador_de_licitacao):
+    if verificador_de_licitacao == False:
+        for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
+            try:
+                caminho_imagem = f"tweet_image_{i}.png"
+                texto_para_imagem(titulo, descricao, data, caminho_imagem, valor)
+
+                # upload na imagem 
+                response = api.media_upload(filename=caminho_imagem)
+                media_id = response.media_id
+
+                # cria o tweet já com a imagem 
+                tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
+                print(tweet)
+
+                # remove a imagem para liberar espaço em disco 
+                os.remove(caminho_imagem)
+                 
+                # posta a cada 20 segundos 
+                time.sleep(7)
+            except Exception as e: 
+                print(f"Erro ao processar a mensagem {i}: {e}" ) 
+                print(f"Erro ao enviar tweet: {e}") 
+                traceback.print_exc() 
+    else: 
         try:
-            caminho_imagem = f"tweet_image_{i}.png"
-            texto_para_imagem(titulo, descricao, data, caminho_imagem, valor if tipo.lower() == 'extrato' else None)
-
-            # upload na imagem 
-            response = api.media_upload(filename=caminho_imagem)
-            media_id = response.media_id
- 
-            # cria o tweet já com a imagem 
-            tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
+            tweet = client.create_tweet(text=mensagens[0])
             print(tweet)
- 
-            # remove a imagem para liberar espaço em disco 
-            os.remove(caminho_imagem)
-            # os.remove(caminho_imagem_com_marca) 
-            # posta a cada 20 segundos 
-            time.sleep(20)
-        except Exception as e: 
-            print(f"Erro ao processar a mensagem {i}: {e}" ) 
-            print(f"Erro ao enviar tweet: {e}") 
-            traceback.print_exc() 
-            time.sleep(5) 
-else: 
-    try:
-        tweet = client.create_tweet(text=mensagens[0])
-        print(tweet)
-    except Exception as e:
-        print(f"Erro ao enviar tweet: {e}")
-        traceback.print_exc()
-        time.sleep(5)
+        except Exception as e:
+            print(f"Erro ao enviar tweet: {e}")
+            traceback.print_exc()
+
+def main():
+    site = "https://bit.ly/LicitaBSB"
+    data_ontem = (datetime.now() - timedelta(days=1)).strftime('%d/%m/%Y')
+    print(f"Buscando licitações para a data: {data_ontem}")
+
+    licitacoes = buscar_licitacoes(data_ontem)
+    mensagens, verificador_de_licitacao = criar_mensagens(licitacoes, site)
+    client, api = carregar_configuracoes_twitter()
+    postar_tweets(client, api, mensagens, verificador_de_licitacao)
+
+if __name__ == '__main__':
+    main()

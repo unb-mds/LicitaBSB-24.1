@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar o snapshot da lista de links presentes no componente 1`] = `
+Array [
+  <li>
+    <a
+      href="/licitacoes"
+    >
+      <p>
+        Licitações
+      </p>
+    </a>
+  </li>,
+  <li>
+    <a
+      href="/sobrenos"
+    >
+      <p>
+        Sobre a Equipe
+      </p>
+    </a>
+  </li>,
+  <li>
+    <a
+      href="/dashboard"
+    >
+      <p>
+        Dashboard
+      </p>
+    </a>
+  </li>,
+  <li>
+    <p>
+      Fale Conosco:
+       
+      <a
+        class="mailLink"
+        data-testid="link-fale-conosco"
+        href="mailto:unb.licitabsb@gmail.com"
+      >
+        unb.licitabsb@gmail.com
+      </a>
+    </p>
+  </li>,
+  <li>
+    <a
+      data-testid="link-redes-sociais"
+      href="https://x.com/licitabsb"
+      target="blank"
+    >
+      <p>
+        Nos siga nas outras redes
+      </p>
+      <img
+        src="twitter.svg"
+        width="25"
+      />
+    </a>
+  </li>,
+]
+`;

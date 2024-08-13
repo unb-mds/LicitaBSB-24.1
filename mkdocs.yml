@@ -5,7 +5,7 @@ extra_css:
   - stylesheets/style.css
 nav: 
   - Home: index.md
-  - Tutorial - Como Inicializar o Ambiente Virtual: StepByStep/execution.md
+  - Como executar o projeto : Executar/execution.md
   - Arquitetura: Arquitetura/arquitetura.md
   - Jornada de produção: storymap/storymap.md
 
@@ -44,6 +44,8 @@ nav:
       - Reunião: Atas/Sprint12.md
     - Sprint 13:
       - Reunião: Atas/Sprint13.md
+    - Sprint 14:
+      - Reunião: Atas/Sprint14.md
       
   - Materiais de Estudos: Estudos/Estudos.md
   - Ferramentas para o projeto: Ferramentas/ferramentas.md
@@ -69,5 +71,7 @@ theme:
       toggle:
         icon: material/weather-sunny
         name: Trocar para modo claro
-  icon:
-    repo: fontawesome/brands/git-alt
+icon:
+  repo: fontawesome/brands/git-alt
+include: 
+  - README.md

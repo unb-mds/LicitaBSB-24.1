@@ -1,0 +1,146 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Deve renderizar o snapshot da lista de links do componente 1`] = `
+Array [
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/licitacoes"
+    >
+      Licitações
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/SobreLicitacao"
+    >
+      Sobre as Licitações
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobredispensadelicitacao"
+    >
+      Sobre Dispensas
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrebot"
+    >
+      Sobre o Bot
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrelisitaBSB"
+    >
+      Sobre o Projeto
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrenos"
+    >
+      Sobre Nós
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/dashboard"
+    >
+      Dashboard
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/licitacoes"
+    >
+      Licitações
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/SobreLicitacao"
+    >
+      Sobre as Licitações
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobredispensadelicitacao"
+    >
+      Sobre Dispensas
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrebot"
+    >
+      Sobre o Bot
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href=""
+    >
+      Sobre o Projeto
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/sobrenos"
+    >
+      Sobre Nós
+    </a>
+  </li>,
+  <li
+    class="headerListItem"
+  >
+    <a
+      class="headerLink"
+      href="/dashboard"
+    >
+      Dashboard
+    </a>
+  </li>,
+]
+`;

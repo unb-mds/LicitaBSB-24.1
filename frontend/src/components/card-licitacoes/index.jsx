@@ -1,47 +1,38 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { setStatusBidding } from '../../utils/status-bidding';
-
 import styles from './style.module.css';
 import formatCurrency from '../../utils/format-currency';
-import { Link } from 'react-router-dom';
-import { BiddingContext } from '../../context/BiddingContext';
+import { useNavigate } from 'react-router-dom';
+import { capitalize } from '@mui/material';
 
 export default function CardLicitacoes({ data }) {
-  const { biddings } = useContext(BiddingContext);
-
-  const statusBidding = setStatusBidding(data);
-
-  const dataLicitacao = data['data_abertura'];
-  const tipoLicitacao = data['tipo'];
-  const objetoLicitacao = data['objeto'];
-
-  if ('nomeOrgao' in data) {
-    var tituloLicitacao = data['nomeOrgao'];
-    var valorLicitacao = data['valores_licitacao'];
-    var categoriaData = 'aviso';
-  } else {
-    var tituloLicitacao = data['Nome_UG'];
-    var valorLicitacao = data['Valor_Licitacao'];
-    var categoriaData = 'extrato';
-  }
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate(`/licitacoes/${data.id}`);
+    navigate(0);
+  };
 
   return (
     <div className={styles.cardWrapper}>
-      <h5 className={styles.cardTitle}>{tituloLicitacao}</h5>
+      <h5 className={styles.cardTitle}>{data.nome_orgao}</h5>
 
       <div>
         <div className={styles.cardStatus}>
           <div className={styles.statusContainer}>
-            <p className={styles.cardStatusText}>Status: {statusBidding}</p>
+            <p data-testid="status-testid" className={styles.cardStatusText}>
+              Status: {setStatusBidding(data)}
+            </p>
           </div>
-          <p className={styles.cardStatusText}>Modalidade: {tipoLicitacao}</p>
+          <p data-testid="modalidade-testid" className={styles.cardStatusText}>
+            Modalidade: {capitalize(data.tipo) ? capitalize(data.tipo) : ''}
+          </p>
         </div>
 
         <div className={styles.licitacoesInfo}>
-          <p>Data de publicação: {dataLicitacao}</p>
-          {valorLicitacao && (
-            <p className={styles.statusContainer}>
-              Valor da licitação: R$ {formatCurrency(valorLicitacao)}
+          <p data-testid="data-testid">Data de publicação: {data.data}</p>
+          {data.valores && (
+            <p data-testid="valor-testid" className={styles.statusContainer}>
+              Valor da licitação: {formatCurrency(data.valores[0])}
             </p>
           )}
         </div>
@@ -49,13 +40,17 @@ export default function CardLicitacoes({ data }) {
         <div className={styles.cardSection}></div>
 
         <div>
-          <p className={styles.cardDescricao}>{objetoLicitacao}</p>
+          <p className={styles.cardDescricao}>{data.objeto}</p>
         </div>
       </div>
       <div>
-        <Link to={`/licitacoes/${data.id}-${categoriaData}`}>
-          <p className={styles.cardButton}>Ver Mais</p>
-        </Link>
+        <a
+          data-testid="link-testid"
+          onClick={handleNavigate}
+          className={styles.cardButton}
+        >
+          <p>Ver Mais</p>
+        </a>
       </div>
     </div>
   );

@@ -56,6 +56,7 @@
     font-size: 16px;
     width: 203px; 
 }
+
 .newsletter button:hover {
     background-color: #555; 
 }
@@ -65,11 +66,12 @@
     display: flex;
     justify-content: flex-end; 
     align-items: center; 
+    padding: 0; 
 }
 
 .newsletter img {
-    width: auto;
-    height: 309px;
+    width: 251px; 
+    height: 209px; 
     object-fit: cover;
     border-radius: 10px;
 }
