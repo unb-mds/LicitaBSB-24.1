@@ -11,12 +11,6 @@
 
 .cardWrapper:nth-child(2n) {
   flex-direction: row-reverse;
-  div {
-    align-items: flex-end;
-    h4, p {
-      text-align: right;
-    }
-  }
 }
 
 .articleTitle {
