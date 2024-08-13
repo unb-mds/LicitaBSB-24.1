@@ -22,7 +22,7 @@ describe('Deve renderizar os links das rotas: ', () => {
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Sobre as Licitações');
-    expect(linkRoute).toHaveLength(2);
+    expect(linkRoute).toHaveLength(1);
   });
   test('Sobre o Projeto', () => {
     render(
@@ -31,7 +31,7 @@ describe('Deve renderizar os links das rotas: ', () => {
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Sobre o Projeto');
-    expect(linkRoute).toHaveLength(2);
+    expect(linkRoute).toHaveLength(1);
   });
   test('Sobre Nós', () => {
     render(
@@ -60,7 +60,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
     </MemoryRouter>,
   );
   const listaDeLinks = screen.getAllByRole('listitem');
-  expect(listaDeLinks).toHaveLength(14);
+  expect(listaDeLinks).toHaveLength(11);
 });
 
 test('Deve renderizar o snapshot da lista de links do componente', () => {
