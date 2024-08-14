@@ -36,9 +36,15 @@ export default function Carousel({ items }) {
       });
   }, [currentIndex]);
 
+  const iamgeBack = {
+    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../../../../assets/carrossel/${items[currentIndex].id}.png)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  };
+
   return (
     <div className={style.carousel}>
-      <div className={style.textContext} style={imagem}>
+      <div className={style.textContext} style={iamgeBack}>
         <h3 className={style.title}>{items[currentIndex].title}</h3>
         <p>{items[currentIndex].paragraph}</p>
         <a href={items[currentIndex].path}>Continue lendo...</a>
