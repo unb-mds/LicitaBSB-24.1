@@ -36,5 +36,8 @@ https://docs.google.com/document/d/16CZn3ik5QdogbZs3FczOiXlNTLz90LVy37GDGiOGxi0/
 ### Ata de reunião - 24/07
 https://docs.google.com/document/d/1TIwG6vBjkifMWb0ErAEZzuMWMgirPXUT8WT2sPXSruk/edit#heading=h.5xnyi0eelrmv
 
+### Ata de reunião - 31/07
+https://docs.google.com/document/d/1Yaf5jnihnI5tDahfKxTVxgOmEtBoSNfQ_Cc86K0gT-c/edit#heading=h.5xnyi0eelrmv
+
 ### Ata de reunião - 07/08
 https://docs.google.com/document/d/1xtVlLO70tSYniEDi4jdYeRayvo3qej6k2u4pUO9aunw/edit#heading=h.5xnyi0eelrmv
