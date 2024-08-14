@@ -25,9 +25,9 @@ export default function Carousel({ items }) {
 
   useEffect(() => {
     import(`../../../../assets/carrossel/${items[currentIndex].id}.png`)
-      .then(() => {
+      .then((image) => {
         const newImg = {
-          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../../../../assets/carrossel/${items[currentIndex].id}.png)`,
+          backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${image.default})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         };
