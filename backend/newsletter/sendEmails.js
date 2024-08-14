@@ -53,7 +53,7 @@ const sendMail = async (emailAddress) => {
     subject: "Atualizações Semanais de Licitações - Licita BSB",
     text: `Olá,
 
-Gostaríamos de informar que as dispensas de licitação mais recentes em Brasília foram atualizadas em nosso portal Licita BSB. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.
+Gostaríamos de informar que as licitações mais recentes em Brasília foram atualizadas em nosso portal Licita BSB. Através do nosso site, você pode acessar essas informações de maneira fácil e compreensível.
 
 Além disso, lembramos que também estamos compartilhando essas atualizações na rede social X (antigo Twitter) através do nosso perfil: https://x.com/licitabsb. Isso nos permite alcançar um público ainda maior e manter a população de Brasília informada sobre as decisões governamentais.
 
