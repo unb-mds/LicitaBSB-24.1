@@ -16,6 +16,7 @@ import AboutBot from './pages/about-bot';
 import AboutLicitaBSB from './pages/about-licitaBSB';
 import AboutBiddingDispatch from './pages/about-bidding-dispatch';
 import Root from './root';
+import Error from './pages/error';
 
 import './styles/global.css';
 import ArticleRoot from './article-root';
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     children: [
+      {
+        path: "*",
+        element: <Error />
+      },
       {
         index: true,
         element: <Landing />

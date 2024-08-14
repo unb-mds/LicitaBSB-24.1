@@ -96,13 +96,9 @@
 
 /* Estilos Responsivos */
 @media (max-width: 720px) {
-  body, html {
-    overflow-x: hidden;
-  }
-
   .subHeader {
     justify-content: space-between;
-    padding: 0 16px; /* Ajuste para evitar overflow */
+    padding: 0 26px;
   }
 
   .headerLinksWrapper {
@@ -120,6 +116,11 @@
 }
 
 @media (min-width: 720px) and (max-width: 1700px){
+  .subHeader {
+    justify-content: space-between;
+    padding: 0 20%;
+  }
+
   .subHeaderWrapper {
     justify-content: center;
   }
