@@ -88,9 +88,9 @@
   -webkit-box-orient: vertical;
 }
 
-@media (max-width: 1600px){
+@media (max-width: 1700px){
   .cardWrapper{
-    padding: 1rem;
+    padding: 1rem 5%;
   }
   .cardWrapper h5{
     font-size: 1.2rem;
