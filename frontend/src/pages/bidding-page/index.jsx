@@ -4,7 +4,6 @@ import styles from './style.module.css';
 import { Link, useParams } from 'react-router-dom';
 
 import facebook from '../../../assets/facebook.svg';
-import google from '../../../assets/google.svg';
 import twitter from '../../../assets/twitter.svg';
 import calendario from '../../../assets/calendario.svg';
 import valor from '../../../assets/valor.svg';
@@ -20,6 +19,9 @@ export default function BiddingPage() {
 
   const { licitData, maisLicitacoes } = useLoadData(parametros.id);
 
+  const urlFacebook = `https://www.facebook.com/sharer/sharer.php?u=https%3A//licitabsb.netlify.app/licitacoes/${parametros.id}`;
+  const urlX = `https://twitter.com/intent/tweet?text=https%3A//licitabsb.netlify.app/licitacoes/${parametros.id}`;
+
   return (
     <main className={styles.mainContainer}>
       <div className={styles.biddingContainer}>
@@ -31,14 +33,11 @@ export default function BiddingPage() {
             <span className={styles.subtitle}>{licitData.nome_orgao}</span>
           </div>
           <div className={styles.shareContainer}>
-            <a data-testid="role-link-id" href="">
+            <a target="_blank" data-testid="role-link-id" href={urlX}>
               <img src={twitter} />
             </a>
-            <a data-testid="role-link-id" href="">
+            <a target="_blank" data-testid="role-link-id" href={urlFacebook}>
               <img src={facebook} />
-            </a>
-            <a data-testid="role-link-id" href="">
-              <img src={google} />
             </a>
           </div>
         </div>

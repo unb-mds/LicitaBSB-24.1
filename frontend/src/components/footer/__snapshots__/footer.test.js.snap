@@ -6,27 +6,28 @@ Array [
     <a
       href="/licitacoes"
     >
-      <p>
-        Licitações
-      </p>
+      Licitações
+    </a>
+  </li>,
+  <li>
+    <a
+      href="/artigos"
+    >
+      Conheça o Projeto
     </a>
   </li>,
   <li>
     <a
       href="/sobrenos"
     >
-      <p>
-        Sobre a Equipe
-      </p>
+      Sobre Nós
     </a>
   </li>,
   <li>
     <a
       href="/dashboard"
     >
-      <p>
-        Dashboard
-      </p>
+      Dashboard
     </a>
   </li>,
   <li>
