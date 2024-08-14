@@ -37,9 +37,9 @@ Array [
   >
     <a
       class="headerLink"
-      href="/dashboard"
+      href="/graficos"
     >
-      Dashboard
+      Gráficos
     </a>
   </li>,
   <li
@@ -57,39 +57,9 @@ Array [
   >
     <a
       class="headerLink"
-      href="/SobreLicitacao"
+      href="/artigos"
     >
-      Sobre as Licitações
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href="/sobredispensadelicitacao"
-    >
-      Sobre Dispensas
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href="/sobrebot"
-    >
-      Sobre o Bot
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href=""
-    >
-      Sobre o Projeto
+      Conheça o Projeto
     </a>
   </li>,
   <li
@@ -107,9 +77,9 @@ Array [
   >
     <a
       class="headerLink"
-      href="/dashboard"
+      href="/graficos"
     >
-      Dashboard
+      Gráficos
     </a>
   </li>,
 ]

@@ -33,10 +33,10 @@ export default function BiddingPage() {
             <span className={styles.subtitle}>{licitData.nome_orgao}</span>
           </div>
           <div className={styles.shareContainer}>
-            <a data-testid="role-link-id" href={urlX}>
+            <a target="_blank" data-testid="role-link-id" href={urlX}>
               <img src={twitter} />
             </a>
-            <a data-testid="role-link-id" href={urlFacebook}>
+            <a target="_blank" data-testid="role-link-id" href={urlFacebook}>
               <img src={facebook} />
             </a>
           </div>

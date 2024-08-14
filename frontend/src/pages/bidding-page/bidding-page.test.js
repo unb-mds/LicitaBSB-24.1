@@ -65,7 +65,7 @@ describe('BiddingPage Component', () => {
         );
 
         const socialLinks = screen.getAllByTestId('role-link-id');
-        expect(socialLinks).toHaveLength(3); // Twitter, Facebook, Google
+        expect(socialLinks).toHaveLength(2); // Twitter, Facebook
     });
 
     test('deve renderizar o link "Ver mais licitações..." corretamente', () => {
