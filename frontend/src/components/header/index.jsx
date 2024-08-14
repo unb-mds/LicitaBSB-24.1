@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import menuBurger from '../../../assets/burger.svg';
 import styles from './style.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SidebarResponsive from '../sidebar-responsive';
+import { getLicitacoes } from '../../services/licitacoes.service';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -16,18 +17,18 @@ const Header = () => {
     setInput(e.target.value);
   }
 
-  function buscarLicitacao() {
-    const nomeDaRota = input
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\//g, '-');
-    navigate(`/resultadobusca/${nomeDaRota}`);
+  function handleSearch() {
+    const querySearch = `/licitacoes?search=${input}`;
+    navigate(querySearch);
+    navigate(0);
   }
 
   return (
     <div className={styles.headerWrapper}>
-      <SidebarResponsive showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
+      <SidebarResponsive
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+      />
       <div className={styles.headerUnb}>
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
@@ -63,10 +64,11 @@ const Header = () => {
           </ul>
           <div>
             <div className={styles.responsiveCampoPesquisa}>
-              <a href="/licitacoes" style={{display: 'flex', alignItems: 'center'}}>
-                <img
-                  src={search}
-                />
+              <a
+                href="/licitacoes"
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
+                <img src={search} />
               </a>
               <img
                 src={menuBurger}
@@ -76,7 +78,7 @@ const Header = () => {
             <div className={styles.campoPesquisa}>
               <button
                 className={styles.botaoPesquisa}
-                onClick={() => buscarLicitacao()}
+                onClick={() => handleSearch()}
               >
                 <img src={search} alt="" />
               </button>
