@@ -58,11 +58,11 @@ const SubscribeForm = () => {
             required
           />
           <button type="submit">Enviar</button>
+          {message && <p>{message}</p>}
         </div>
       </div>
 
       <img className={style.newsletterImageDesk} src={amicoImage} />
-      {message && <p>{message}</p>}
     </form>
   );
 };
