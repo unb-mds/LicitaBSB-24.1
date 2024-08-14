@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import style from '../newsletter/style.module.css';
+import style from '../newsletter/style.module.css'
+import amicoImage from './amico.png';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ const SubscribeForm = () => {
 
     const payload = {
       email_address: email, // Ajuste o campo conforme necessário
-      status: 'subscribed'
+      status: 'subscribed',
     };
 
     try {
@@ -30,15 +31,25 @@ const SubscribeForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={style.newsletter}>
-        <h1>Se inscreva para receber atualizações sobre futuras licitações!</h1>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <button type="submit">Subscribe</button>
+      <div>
+      <div className={style['newsletter-text']}>
+            <h1>Receba as mais recentes licitações diretamente no seu e-mail</h1>
+            <h2>Se você deseja receber no seu melhor email as licitações mais recentes do Distrito Federal, cadastre seu email no LicitaBSB abaixo:</h2>
+        </div>
+        <div className={style['newsletter-form']}>
+            <input
+                placeholder="Digite seu email aqui."
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <button type="submit">Enviar</button>
+        </div>
+        </div>
+        <div className={style['newsletter-image']}>
+            <img src={amicoImage}/>
+        </div>
       </div>
       {message && <p>{message}</p>}
     </form>

@@ -18,6 +18,9 @@ export default function BiddingList() {
   const filterValue = searchParams.get('value')
     ? searchParams.get('value')
     : '';
+  const filterOrgaos = searchParams.get('orgao')
+    ? searchParams.get('orgao')
+    : '';
 
   const [filterParams, setFilterParams] = useState({
     page: 1,
@@ -25,6 +28,7 @@ export default function BiddingList() {
     status: '',
     search: filterInput,
     value: filterValue,
+    orgao: filterOrgaos,
   });
 
   const [listaLicitacoes, setListaLicitacoes] = useState([]);
@@ -38,7 +42,7 @@ export default function BiddingList() {
 
   const handlePageChange = (_, value) => {
     setFilterParams((prevParams) => ({ ...prevParams, page: value }));
-    loadData(filterParams);
+    handleSearch();
   };
 
   const buildFilterQuery = (params) => {

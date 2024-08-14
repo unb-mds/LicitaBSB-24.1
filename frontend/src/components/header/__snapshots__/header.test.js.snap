@@ -17,39 +17,9 @@ Array [
   >
     <a
       class="headerLink"
-      href="/SobreLicitacao"
+      href="/artigos"
     >
-      Sobre as Licitações
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href="/sobredispensadelicitacao"
-    >
-      Sobre Dispensas
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href="/sobrebot"
-    >
-      Sobre o Bot
-    </a>
-  </li>,
-  <li
-    class="headerListItem"
-  >
-    <a
-      class="headerLink"
-      href="/sobrelisitaBSB"
-    >
-      Sobre o Projeto
+      Conheça o Projeto
     </a>
   </li>,
   <li

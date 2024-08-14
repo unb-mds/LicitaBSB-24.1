@@ -3,26 +3,23 @@ hide:
   - toc
 ---
 
-## Ata de Reunião - 07/08 
+## Ata de Reunião - 24/07 
 
 ## Discussões:
-### Retrospective Sprint 13:
+### Retrospective:
 
-* Maria Helena refatorou todo o front para fazer request da API do backend, e Víctor fez todos os endpoints solicitados.
-* Víctor hosteou a API do backend e do front, o front também foi hospedado mas está dando erro
-* Maria Helena fez a imagem nova do bot do twitter e o Thales a implementou essa imagem no bot do twitter
-* Adrian refatorou o documento de arquitetura.
-* Marllon continuou fazendo testes do frontend, Carla comentou que os testes de integração são os mais importante
-* Otávio escreveu um artigo sobre dispensa de licitação para o frontend e conversou com Maria Helena e Marllon 
+* Nathan implementou toda a questão do email no código do Licita BSB. Adrian ainda está implementando o deploy automático dos e-mails usando workflows.
+* Víctor refatorou o código de raspagem com sucesso
+* Maria Helena finalizou as atividades da semana passada, realizou as responsividade das páginas de licitações e fez os filtros (está otimizando o código do frontend para melhor pesquisa nos filtros)
+* Marllon ficou responsável por fazer as buscas de licitação por palavras chaves onde o PR já está disponível no github. Marllon também implementou alguns testes no frontend seguindo o padrão TDD
 
 
 ### Assuntos discutidos na reunião:
-* Terão que ser desenvolvidos diversos testes de requisição no backend, os mesmos deverão ser realizados utilizando o pytest para receber as requisições e verificar se elas estão de acordo com os requests solicitados. Aqui se encontram os endpoints que devem ser testados:  https://licitabsbserer-a1c309841042.herokuapp.com/swagger/. Também foi criado o arquivo que deve ser trabalhado e codado os teste: https://github.com/unb-mds/LicitaBSB-24.1/blob/main/backend/testes.py. Responsáveis: Adrian e Thales. Quem buscar por ajuda: Víctor. Arquivo de referencia de como os testes funcionam mais ou menos: https://github.com/unb-mds/LicitaBSB-24.1/blob/main/backend/colecao_de_dados/testes.py .
-* Víctor e Nathan vão fazer alguns endpoints, e diversos outros endpoints para elaboração do dash
-* Maria Helena vai terminar as requisições de filtro, e conferir a responsividade das outras telas. 
-* Marllon vai continuar fazendo teste e ajudar a terminar alguns assets do front
-* Otavio irá fazer landing page e melhorar o forms do email, e fazer a parte do scroll.
-* Nathan vai fazer algumas melhorias nos dashboards.
+* Maria Helena irá fazer uma lista de requests para serem pré feitos no backend para melhor execução dos filtros no frontend, uma das sugestões é criar uma de órgãos. Sugestão de atualização semanal no workflow. Equipe do backend responsável: Adrian, Víctor.
+* Estudar a implementação da nossa aplicação React dentro de um host(ex.:versel),, e verificar como implementar o update da database de dentro do github nesse host (provavelmente utilizando docker mas estudar a possibilidade de fazer isso sem utilizar docker). Equipe responsável: Thales, Nathan
+* Frontend precisa finalizar somente a landing page, filtros e testes. Continuam seguindo o modelo dos quadros kanban
+* Necessário tirar foto em grupo dos manos.
+
 
 
 ### Membros Presentes:
@@ -30,11 +27,12 @@ hide:
 - Víctor Hugo Lima Schmidt;
 - Nathan Benigno
 - Marllon Fausto
-- Thales Euflauzino
-- Marcelo Adrian
+- Adrian
+
 
 
 ## Tempo de Reunião:
-Hora de início: 20:13h.
-Hora de término: 20:46h.
-Duração: 33 minutos
+Hora de início: 21:10h.
+Hora de término: 21:47h
+Duração: 37 minutos
+

@@ -121,6 +121,14 @@ export default function Dashboard() {
     }
   };
 
+  const getText = () => {
+
+    if(window.innerWidth > 1300){
+      return 'Valor Total das Licitações (R$)'
+    }else{
+      return ""
+    }
+  }
 
   const anos = Object.keys(valoresPorAno);
   const valoresAnuais = Object.values(valoresPorAno);
@@ -168,7 +176,8 @@ export default function Dashboard() {
     options: {
       legend: {
         labels: {
-          padding: 100, // Aumente ou diminua este valor para afastar mais ou menos
+          padding_right: 150, 
+          margin_right: 100// Aumente ou diminua este valor para afastar mais ou menos
         },
       },
     },
@@ -284,9 +293,12 @@ export default function Dashboard() {
         position: 'right',
         title: {
           display: true,
-          text: 'Valor Total das Licitações (R$)',
+          text: getText(),
           font: {
             size: getFontSize17(), // Aumente o tamanho da fonte
+          },
+          grid: {
+            drawOnChartArea: false, // Evita que o grid de y2 seja desenhado na área do gráfico
           },
         },
       },
@@ -326,9 +338,15 @@ export default function Dashboard() {
         position: 'right',
         title: {
           display: true,
-          text: 'Valor Total das Licitações (R$)',
+          text: getText(),
           font: {
             size: getFontSize17(), // Tamanho da fonte definido para 17
+          },
+          afterFit: function(scale) {
+            scale.width += 100; // Aumente este valor para criar mais espaço à direita
+          },
+          grid: {
+            drawOnChartArea: false, // Evita que o grid de y4 seja desenhado na área do gráfico
           },
         },
       },
