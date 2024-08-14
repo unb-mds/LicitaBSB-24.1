@@ -5,7 +5,11 @@ import style from './style.module.css';
 export default function Carousel({ items }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [imagem, setImage] = useState({});
+  const [imagem, setImage] = useState({
+    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../../../../assets/carrossel/${items[currentIndex].id}.png)`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+  });
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) =>
@@ -22,29 +26,21 @@ export default function Carousel({ items }) {
   useEffect(() => {
     import(`../../../../assets/carrossel/${items[currentIndex].id}.png`)
       .then(() => {
-        setImage({
+        const newImg = {
           backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../../../../assets/carrossel/${items[currentIndex].id}.png)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-        });
+        };
+        setImage(newImg);
       })
       .catch((err) => {
-        console.error(
-          `Erro ao carregar a imagem do membro ${items[currentIndex].id}}:`,
-          err,
-        );
+        console.error(`Erro ao carregar a imagem do membro ${id}:`, err);
       });
   }, [currentIndex]);
 
-  const iamgeBack = {
-    backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(../../../../assets/carrossel/${items[currentIndex].id}.png)`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-  };
-
   return (
     <div className={style.carousel}>
-      <div className={style.textContext} style={iamgeBack}>
+      <div className={style.textContext} style={imagem}>
         <h3 className={style.title}>{items[currentIndex].title}</h3>
         <p>{items[currentIndex].paragraph}</p>
         <a href={items[currentIndex].path}>Continue lendo...</a>
