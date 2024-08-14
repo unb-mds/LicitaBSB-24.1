@@ -16,19 +16,24 @@ const Footer = () => {
           </Link>
           <ul>
             <li>
-              <Link to={'/licitacoes'}>
-                <p>Licitações</p>
-              </Link>
+              <a href="/licitacoes" onClick={() => setShowSidebar((prev) => !prev)}>
+                Licitações
+              </a>
             </li>
             <li>
-              <Link to={'/sobrenos'}>
-                <p>Sobre a Equipe</p>
-              </Link>
+              <a href="/artigos" onClick={() => setShowSidebar((prev) => !prev)}>
+                Conheça o Projeto
+              </a>
             </li>
             <li>
-              <Link to={'/dashboard'}>
-                <p>Dashboard</p>
-              </Link>
+              <a href="/sobrenos" onClick={() => setShowSidebar((prev) => !prev)}>
+                Sobre Nós
+              </a>
+            </li>
+            <li>
+              <a href="/dashboard" onClick={() => setShowSidebar((prev) => !prev)}>
+                Dashboard
+              </a>
             </li>
             <li>
               <p>
