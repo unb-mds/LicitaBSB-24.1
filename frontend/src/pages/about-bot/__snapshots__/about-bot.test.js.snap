@@ -5,7 +5,7 @@ exports[`Na página Sobre o Bot, deve ser renderizado  o snapshot com o conteúd
   class="cardAboutContext"
   data-testid="main-container-text"
 >
-  <span
+  <div
     class="paragraph1Context"
   >
     <div>
@@ -60,7 +60,7 @@ exports[`Na página Sobre o Bot, deve ser renderizado  o snapshot com o conteúd
       class="imagem1"
       src="imagem-bot.png"
     />
-  </span>
+  </div>
   <span>
     <h2
       class="cardAboutSubtitle"

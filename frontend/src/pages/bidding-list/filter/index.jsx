@@ -9,6 +9,7 @@ import CustomInputCheckbox from '../../../components/layout/custom-input-checkbo
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import seach from '../../../../assets/SearchDark.svg';
 import { useNavigate } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Filter({
   filterParams,
@@ -33,19 +34,13 @@ export default function Filter({
     });
   };
 
-  const marks = [
-    {
-      value: 0,
-      label: 'R$ 0',
-    },
-    {
-      value: 1000000,
-      label: 'R$ 1.000.000,00',
-    },
-  ];
-
+  const [searchParams] = useSearchParams();
+  const filterOrgaos = searchParams.get('orgao')
+    ? searchParams.get('orgao')
+    : '';
   const [orgaosPage, setOrgaosPage] = useState(1);
   const [orgaosName, setOrgaosName] = useState('');
+  const [selectedOrgaos, setSelectedOrgaos] = useState(filterOrgaos.split(','));
   const [orgaosDados, setOrgaosDados] = useState([]);
 
   const mostrarMais = () => {
@@ -60,6 +55,18 @@ export default function Filter({
     setOrgaosDados(orgaos.results);
   };
 
+  const getOrgaosInCheckBox = (nomeOrgao) => {
+    if (selectedOrgaos.includes(nomeOrgao)) {
+      setSelectedOrgaos(() => {
+        return selectedOrgaos.filter(
+          (selectedName) => selectedName !== nomeOrgao,
+        );
+      });
+    } else {
+      setSelectedOrgaos([...selectedOrgaos, nomeOrgao]);
+    }
+  };
+
   const loadOrgaos = async () => {
     const orgaos = await getOrgaos({
       search: orgaosName,
@@ -67,6 +74,13 @@ export default function Filter({
     });
     setOrgaosDados((curr) => [...curr, ...orgaos.results]);
   };
+
+  useEffect(() => {
+    setFilterParams({
+      ...filterParams,
+      orgao: selectedOrgaos.join(','),
+    });
+  }, [selectedOrgaos]);
 
   useEffect(() => {
     loadOrgaos();
@@ -124,82 +138,31 @@ export default function Filter({
           <img src={seach} />
         </div>
         <ul className={styles.filterOptionsContainer}>
-          {orgaosDados.map((orgao) => (
-            <li
-              key={`${orgao.nome}${orgao.id}`}
-              className={styles.listItemStyle}
-            >
-              <CustomInputCheckbox
-                name={orgao.nome}
-                label={orgao.nome}
-                onPress={() => {}}
-                id={orgao.nome}
-              />
-            </li>
-          ))}
+          {orgaosDados.map((item) => {
+            const valor = filterOrgaos.split(',').includes(item.nome);
+
+            return (
+              <li
+                key={`${item.nome}${item.id}`}
+                className={styles.listItemStyle}
+              >
+                <CustomInputCheckbox
+                  checked={valor}
+                  name={item.nome}
+                  label={item.nome}
+                  onPress={() => {
+                    getOrgaosInCheckBox(item.nome);
+                  }}
+                  id={item.nome}
+                />
+              </li>
+            );
+          })}
           <li className={styles.mostrarMaisOrgaos}>
             <a onClick={mostrarMais}>Mostrar mais...</a>
           </li>
         </ul>
       </div>
-      {/*
-      <div>
-        <h3 className={styles.sectionTitle}>Status</h3>
-        <ul className={styles.filterOptionsContainer}>
-          <li className={styles.listItemStyle}>
-            <CustomInputRadio
-              name="status"
-              label="Aberto"
-              onPress={() => {
-                setFilterParams({
-                  ...filterParams,
-
-                  status: 'aberto'
-                })
-              }}
-              id="aberto"
-            />
-          </li>
-          <li className={styles.listItemStyle}>
-            <CustomInputRadio
-              name="status"
-              label="Fechado"
-              onPress={() => {
-                setFilterParams({
-                  ...filterParams,
-
-                  status: 'fechado'
-                })
-              }}
-              id="fechado"
-            />
-          </li>
-        </ul>
-      </div>
-      <div>
-        <h3 className={styles.sectionTitle}>Preço</h3>
-        <div className={styles.inputRangeWrapper}>
-          <Slider
-            size="small"
-            aria-label="Small"
-            valueLabelDisplay="auto"
-            value={filterParams.value}
-            onChange={(e) => {
-              setFilterParams({
-                ...filterParams,
-                value: e.target.value,
-              });
-            }}
-            max={1000000}
-            step={10}
-            marks={marks}
-          />
-        </div>
-      </div>
-
-
-
-      */}
       <div>
         <h3 className={styles.sectionTitle}>Período</h3>
         <div className={styles.calendariosWrapper}>
