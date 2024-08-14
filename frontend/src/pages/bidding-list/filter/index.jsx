@@ -76,7 +76,6 @@ export default function Filter({
   };
 
   useEffect(() => {
-    console.log(filterParams.orgao.split(','));
     setFilterParams({
       ...filterParams,
       orgao: selectedOrgaos.join(','),
@@ -140,8 +139,6 @@ export default function Filter({
         </div>
         <ul className={styles.filterOptionsContainer}>
           {orgaosDados.map((item) => {
-            console.log();
-
             const valor = filterOrgaos.split(',').includes(item.nome);
 
             return (
