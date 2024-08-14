@@ -26,8 +26,8 @@ export default function UltimasLicitacoes() {
         <ul className={styles.licitacoesWrapper}>
           {maisLicitacoes.map((item) => {
             return (
-              <li data-testid="listitem-testid">
-                <CardLicitacoes key={item.id} data={item} />
+              <li key={item.id} data-testid="listitem-testid">
+                <CardLicitacoes data={item} />
               </li>
             );
           })}
