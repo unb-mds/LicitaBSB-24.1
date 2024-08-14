@@ -31,8 +31,8 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="/dashboard" onClick={() => setShowSidebar((prev) => !prev)}>
-                Dashboard
+              <a href="/graficos" onClick={() => setShowSidebar((prev) => !prev)}>
+                Gráficos
               </a>
             </li>
             <li>
