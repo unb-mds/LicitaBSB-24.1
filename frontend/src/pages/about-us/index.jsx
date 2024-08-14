@@ -16,12 +16,12 @@ export default function AboutUs() {
         contribuindo para uma gestão pública mais transparente e eficiente.
       </p>
 
-      <img
+      {/* <img
         className={styles.aboutUsImg}
         data-testid="photo-testid"
         src={fotoemgrupo} 
         alt="Foto de toda a equipe"
-      />
+      /> */}
 
       <h2 className={styles.aboutUsTitle}>Agora, um pouco de cada um</h2>
 
