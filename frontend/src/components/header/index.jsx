@@ -13,63 +13,14 @@ const Header = () => {
   const [input, setInput] = useState('');
   const [showSidebar, setShowSidebar] = useState(false);
 
-  const [searchParams] = useSearchParams();
-
-  const filterTipo = searchParams.get('tipo') ? searchParams.get('tipo') : '';
-  const filterInput = searchParams.get('search')
-    ? searchParams.get('search')
-    : '';
-  const filterValue = searchParams.get('value')
-    ? searchParams.get('value')
-    : '';
-  const filterOrgaos = searchParams.get('orgao')
-    ? searchParams.get('orgao')
-    : '';
-
-  const [filterParams, setFilterParams] = useState({
-    page: 1,
-    tipo: filterTipo,
-    status: '',
-    search: filterInput,
-    value: filterValue,
-    orgao: filterOrgaos,
-  });
-
-  const [listaLicitacoes, setListaLicitacoes] = useState([]);
-  const [resultCount, setResultCount] = useState(0);
-
-  async function loadData(filter) {
-    const data = await getLicitacoes(filter);
-    setResultCount(data.count);
-    setListaLicitacoes(data.results);
-  }
-
-  const buildFilterQuery = (params) => {
-    return Object.keys(params)
-      .filter((key) => params[key])
-      .map((key) => `${key}=${params[key]}`)
-      .join('&');
-  };
-
-  function handleSearch() {
-    const querySearch = `/licitacoes?${buildFilterQuery(filterParams)}`;
-    navigate(querySearch);
-    navigate(0);
-  }
-  useEffect(() => {
-    setFilterParams({
-      ...filterParams,
-      search: input,
-    });
-  }, [input]);
-
   function handdleChange(e) {
     setInput(e.target.value);
   }
 
-  function buscarLicitacao() {
-    const nomeDaRota = `/licitacoes?search=${input}`;
-    navigate(nomeDaRota);
+  function handleSearch() {
+    const querySearch = `/licitacoes?search=${input}`;
+    navigate(querySearch);
+    navigate(0);
   }
 
   return (
