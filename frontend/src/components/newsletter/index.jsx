@@ -31,12 +31,10 @@ const SubscribeForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className={style.newsletter}>
+      <div>
       <div className={style['newsletter-text']}>
             <h1>Receba as mais recentes licitações diretamente no seu e-mail</h1>
             <h2>Se você deseja receber no seu melhor email XXXMENTE as licitações mais recentes do Distrito Federal, cadastre seu email no LicitaBSB abaixo:</h2>
-        </div>
-        <div className={style['newsletter-image']}>
-            <img src={amicoImage}/>
         </div>
         <div className={style['newsletter-form']}>
             <input
@@ -48,7 +46,10 @@ const SubscribeForm = () => {
             />
             <button type="submit">Enviar</button>
         </div>
-        
+        </div>
+        <div className={style['newsletter-image']}>
+            <img src={amicoImage}/>
+        </div>
       </div>
       {message && <p>{message}</p>}
     </form>

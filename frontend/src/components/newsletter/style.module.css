@@ -1,5 +1,6 @@
 .newsletter {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
@@ -7,7 +8,7 @@
     background-color: #F1ECE8; 
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; 
+
 }
 
 .newsletter h1 {
@@ -70,8 +71,8 @@
 }
 
 .newsletter img {
-    width: 251px; 
-    height: 209px; 
+    width: 351px; 
+    height: 309px; 
     object-fit: cover;
     border-radius: 10px;
 }
