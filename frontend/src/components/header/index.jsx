@@ -1,33 +1,83 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logo from '../../../assets/logo.png';
 import unb from '../../../assets/unb.png';
 import search from '../../../assets/Search.svg';
 import menuBurger from '../../../assets/burger.svg';
 import styles from './style.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import SidebarResponsive from '../sidebar-responsive';
+import { getLicitacoes } from '../../services/licitacoes.service';
 
 const Header = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState('');
   const [showSidebar, setShowSidebar] = useState(false);
 
+  const [searchParams] = useSearchParams();
+
+  const filterTipo = searchParams.get('tipo') ? searchParams.get('tipo') : '';
+  const filterInput = searchParams.get('search')
+    ? searchParams.get('search')
+    : '';
+  const filterValue = searchParams.get('value')
+    ? searchParams.get('value')
+    : '';
+  const filterOrgaos = searchParams.get('orgao')
+    ? searchParams.get('orgao')
+    : '';
+
+  const [filterParams, setFilterParams] = useState({
+    page: 1,
+    tipo: filterTipo,
+    status: '',
+    search: filterInput,
+    value: filterValue,
+    orgao: filterOrgaos,
+  });
+
+  const [listaLicitacoes, setListaLicitacoes] = useState([]);
+  const [resultCount, setResultCount] = useState(0);
+
+  async function loadData(filter) {
+    const data = await getLicitacoes(filter);
+    setResultCount(data.count);
+    setListaLicitacoes(data.results);
+  }
+
+  const buildFilterQuery = (params) => {
+    return Object.keys(params)
+      .filter((key) => params[key])
+      .map((key) => `${key}=${params[key]}`)
+      .join('&');
+  };
+
+  function handleSearch() {
+    const querySearch = `/licitacoes?${buildFilterQuery(filterParams)}`;
+    navigate(querySearch);
+    navigate(0);
+  }
+  useEffect(() => {
+    setFilterParams({
+      ...filterParams,
+      search: input,
+    });
+  }, [input]);
+
   function handdleChange(e) {
     setInput(e.target.value);
   }
 
   function buscarLicitacao() {
-    const nomeDaRota = input
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\//g, '-');
-    navigate(`/resultadobusca/${nomeDaRota}`);
+    const nomeDaRota = `/licitacoes?search=${input}`;
+    navigate(nomeDaRota);
   }
 
   return (
     <div className={styles.headerWrapper}>
-      <SidebarResponsive showSidebar={showSidebar} setShowSidebar={setShowSidebar}/>
+      <SidebarResponsive
+        showSidebar={showSidebar}
+        setShowSidebar={setShowSidebar}
+      />
       <div className={styles.headerUnb}>
         <img src={unb} alt="Logo da Universidade de brasília" />
       </div>
@@ -63,10 +113,11 @@ const Header = () => {
           </ul>
           <div>
             <div className={styles.responsiveCampoPesquisa}>
-              <a href="/licitacoes" style={{display: 'flex', alignItems: 'center'}}>
-                <img
-                  src={search}
-                />
+              <a
+                href="/licitacoes"
+                style={{ display: 'flex', alignItems: 'center' }}
+              >
+                <img src={search} />
               </a>
               <img
                 src={menuBurger}
@@ -76,7 +127,7 @@ const Header = () => {
             <div className={styles.campoPesquisa}>
               <button
                 className={styles.botaoPesquisa}
-                onClick={() => buscarLicitacao()}
+                onClick={() => handleSearch()}
               >
                 <img src={search} alt="" />
               </button>
