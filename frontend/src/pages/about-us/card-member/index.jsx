@@ -4,17 +4,6 @@ import { useEffect, useState } from 'react';
 import useGetImage from '../../../hooks/useGetImage';
 
 export default function CardMember({ nome, descricao, github, id }) {
-  // const [memberImage, setMemberImage] = useState('');
-
-  // useEffect(() => {
-  //   import(`../../../../assets/members/${id}.jpg`)
-  //   .then((image) => {
-  //     setMemberImage(image.default);
-  //   })
-  //   .catch((err) => {
-  //     console.error(`Erro ao carregar a imagem do membro ${id}:`, err);
-  //   });
-  // }, [id]);
   const memberImage = useGetImage(id);
 
   const controler = id % 2 === 1;

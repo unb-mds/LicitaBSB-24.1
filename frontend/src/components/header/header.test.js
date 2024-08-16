@@ -13,43 +13,25 @@ describe('Deve renderizar os links das rotas: ', () => {
       </MemoryRouter>,
     );
     const linkRoute = screen.getAllByText('Licitações');
-    expect(linkRoute).toHaveLength(2);
+    expect(linkRoute).toHaveLength(3);
   });
-  test('Sobre as Licitações', () => {
+  test('Conheça o Projeto', () => {
     render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>,
     );
-    const linkRoute = screen.getAllByText('Sobre as Licitações');
-    expect(linkRoute).toHaveLength(1);
+    const linkRoute = screen.getAllByText('Conheça o Projeto');
+    expect(linkRoute[0]).toBeInTheDocument();
   });
-  test('Sobre o Projeto', () => {
+  test('Gráficos', () => {
     render(
       <MemoryRouter>
         <Header />
       </MemoryRouter>,
     );
-    const linkRoute = screen.getAllByText('Sobre o Projeto');
-    expect(linkRoute).toHaveLength(1);
-  });
-  test('Sobre Nós', () => {
-    render(
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>,
-    );
-    const linkRoute = screen.getAllByText('Sobre Nós');
-    expect(linkRoute).toHaveLength(2);
-  });
-  test('Dashboard', () => {
-    render(
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>,
-    );
-    const linkRoute = screen.getAllByText('Dashboard');
-    expect(linkRoute).toHaveLength(2);
+    const linkRoute = screen.getAllByText('Gráficos');
+    expect(linkRoute).toHaveLength(3);
   });
 });
 
@@ -60,7 +42,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
     </MemoryRouter>,
   );
   const listaDeLinks = screen.getAllByRole('listitem');
-  expect(listaDeLinks).toHaveLength(11);
+  expect(listaDeLinks).toHaveLength(8);
 });
 
 test('Deve renderizar o snapshot da lista de links do componente', () => {

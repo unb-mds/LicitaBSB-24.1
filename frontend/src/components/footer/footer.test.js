@@ -12,18 +12,18 @@ describe('Deve renderizar os links para as rotas: ', () => {
     const linkRoute = screen.getByText('Licitações');
     expect(linkRoute).toBeInTheDocument();
   });
-  test('sobrenos', () => {
+  test('artigos', () => {
     render(<BrowserRouter>
       <Footer />
     </BrowserRouter>);
-    const linkRoute = screen.getByText('Sobre a Equipe');
+    const linkRoute = screen.getByText('Conheça o Projeto');
     expect(linkRoute).toBeInTheDocument();
   });
-  test('Dashboard', () => {
+  test('Gráficos', () => {
     render(<BrowserRouter>
       <Footer />
     </BrowserRouter>);
-    const linkRoute = screen.getByText('Dashboard');
+    const linkRoute = screen.getByText('Gráficos');
     expect(linkRoute).toBeInTheDocument();
   });
   test('Fale conosco', () => {
@@ -47,7 +47,7 @@ test('Deve renderizar a lista de links presentes no componente', () => {
     <Footer />
   </BrowserRouter>);
   const listaDeLinks = screen.getAllByRole('listitem');
-  expect(listaDeLinks).toHaveLength(5);
+  expect(listaDeLinks).toHaveLength(6);
 });
 
 test('Deve renderizar o snapshot da lista de links presentes no componente', () => {
