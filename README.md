@@ -201,6 +201,48 @@ python manage.py test
 
 O site estará disponível em `http://localhost:5432/`.
 
+#### Testes
+
+1. Testes Automatizados com Jest & Testing Library
+
+Este projeto utiliza [Jest](https://jestjs.io/) e [React Testing Library](https://testing-library.com/) para testes. Os testes cobrem componentes, hooks customizados e funções auxiliares, garantindo que a aplicação funcione conforme esperado.
+
+2. Configuração Inicial
+
+Certifique-se de que os pacotes de teste estão instalados:
+> Clone o repositório
+ ```bash
+    git clone https://github.com/unb-mds/LicitaBSB-24.1.git
+ ```
+> Navegue até a pasta 'frontend'
+```bash
+cd LicitaBSB-24.1/frontend
+```
+> Instale as dependências
+```bash
+npm i
+```
+
+3. Estrutura dos Testes
+   
+Por convenção, os arquivos de testes com Jest & Testing Library são nomeados com o sufixo `.test.js` dentro de cada aplicação, ou em uma pasta tests/ contendo múltiplos arquivos de teste.
+
+4. Executando os Testes
+   
+Para rodar os testes, certifique-se de estar na página "frontend" e utilize o comando:
+
+```bash
+npm run test
+```
+
+5. Cobertura de Código
+   
+Para gerar um relatório de cobertura de código, certifique-se de estar na página "frontend", e utilize o comando:
+
+```bash
+npm run test:coverage
+```
+
 ### Observações
 
 - A atualização do banco de dados é feita automaticamente por Cronjob.
