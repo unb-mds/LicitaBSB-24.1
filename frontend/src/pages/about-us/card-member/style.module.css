@@ -47,6 +47,11 @@ li{
   }
 
   @media (max-width: 800px) {
+    .cardAboutUsPhotoEstilizado {
+      margin-top: 1rem;
+      width: 150px;
+      height: 150px;
+  }
     li{
         flex-direction: column-reverse;
     }
