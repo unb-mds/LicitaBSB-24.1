@@ -1,4 +1,4 @@
-# Análise de Licitações em Brasília
+# LicitaBSB - Análise de Licitações em Brasília
 
 Este script Python realiza a análise de licitações de arquivos CSV específicos, filtrando e salvando os dados relevantes em um arquivo JSON.
 

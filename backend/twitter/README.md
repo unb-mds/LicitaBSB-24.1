@@ -1,4 +1,4 @@
-# Bot de Licitações para Twitter
+# LicitaBSB - Bot de Licitações para Twitter
 
 Este projeto desenvolve um bot para a plataforma X (antigo Twitter) responsável por publicar automaticamente as licitações do Diário Oficial do Distrito Federal (DODF) e do Diário Oficial da União (DOU) referentes a Brasília. O bot integra-se ao sistema existente de coleta de dados, formata e publica as informações de maneira clara e acessível.
 
