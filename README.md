@@ -186,13 +186,17 @@ python manage.py test
 
 ### Frontend
 
-1. Navegue até o diretório `frontend` e instale as dependências:
+ 1. Clone o repositório
+    ```bash
+    git clone https://github.com/unb-mds/LicitaBSB-24.1.git
+    ```
+2. Navegue até o diretório `frontend` e instale as dependências:
 
     ```bash
     npm install
     ```
 
-2. Para rodar o projeto, execute:
+3. Para rodar o projeto, execute:
 
     ```bash
     npm run build
@@ -220,7 +224,7 @@ cd LicitaBSB-24.1/frontend
 ```
 > Instale as dependências
 ```bash
-npm i
+npm install
 ```
 
 3. Estrutura dos Testes
