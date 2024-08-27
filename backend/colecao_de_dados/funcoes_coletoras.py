@@ -7,6 +7,8 @@ import json
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 import sqlite3
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
 
 def parse_date(date_str):
     try:
@@ -25,8 +27,12 @@ def criar_sessao_com_retries(retries=3, backoff_factor=0.3, status_forcelist=(50
         status_forcelist=status_forcelist,
     )
     adapter = HTTPAdapter(max_retries=retry)
+
     session.mount("http://", adapter)
     session.mount("https://", adapter)
+    session.verify = False  # Ignorar erros de certificado SSL
+    # Suprime o aviso de InsecureRequestWarning
+    warnings.simplefilter('ignore', InsecureRequestWarning)
     return session
 
 # Função para capturar o link do banco de dados do DOU

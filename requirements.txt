@@ -1,6 +1,6 @@
 asgiref==3.8.1
 beautifulsoup4==4.12.3
-certifi==2024.6.2
+certifi
 charset-normalizer==3.3.2
 colorama==0.4.6
 Django==5.0.7
