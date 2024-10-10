@@ -13,36 +13,51 @@ import sqlite3
 load_dotenv()  # Carrega os segredos da API do Twitter
 
 def carregar_configuracoes_twitter():
-    consumer_key = os.getenv('TWITTER_API_KEY')
-    consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
-    access_token = os.getenv('TWITTER_ACCESS_TOKEN')
-    access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
-    bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
+    try:
+        consumer_key = os.getenv('TWITTER_API_KEY')
+        consumer_secret = os.getenv('TWITTER_API_KEY_SECRET')
+        access_token = os.getenv('TWITTER_ACCESS_TOKEN')
+        access_token_secret = os.getenv('TWITTER_ACCESS_TOKEN_SECRET')
+        bearer_token = os.getenv('TWITTER_BEARER_TOKEN')
 
-    client = tweepy.Client(
-        consumer_key=consumer_key,
-        consumer_secret=consumer_secret,
-        access_token=access_token,
-        access_token_secret=access_token_secret,
-        bearer_token=bearer_token
-    )
-    auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
-    api = tweepy.API(auth)
-    return client, api
+        client = tweepy.Client(
+            consumer_key=consumer_key,
+            consumer_secret=consumer_secret,
+            access_token=access_token,
+            access_token_secret=access_token_secret,
+            bearer_token=bearer_token
+        )
+        auth = tweepy.OAuth1UserHandler(consumer_key, consumer_secret, access_token, access_token_secret)
+        api = tweepy.API(auth)
+        # print("Configurações do Twitter carregadas com sucesso.")
+        return client, api
+    except Exception as e:
+        print(f"Erro ao carregar configurações do Twitter: {e}")
+        traceback.print_exc()
+        return None, None
 
 def encurtar_url(url):
     try:
+        # print(f"Tentando encurtar a URL: {url}")
         response = requests.post(
             'https://api.encurtador.dev/encurtamentos',
             headers={'Content-Type': 'application/json'},
-            json={"url": url}
+            json={"url": url},
+            timeout=10  # Timeout de 10 segundos
         )
         if response.status_code in [200, 201] or response.text.startswith('200 / 201'):
-            return response.json().get('urlEncurtada', url)
+            encurtada = response.json().get('urlEncurtada', url)
+            # print(f"URL encurtada: {encurtada}")
+            return encurtada
         else:
+            print(f"Falha ao encurtar a URL: {response.status_code} - {response.text}")
             return url
+    except requests.exceptions.Timeout:
+        print(f"Timeout ao tentar encurtar a URL: {url}")
+        return url
     except Exception as e:
         print(f"Exceção ao encurtar URL: {e}")
+        traceback.print_exc()
         return url
 
 def editar_mensagem(mensagem):
@@ -162,7 +177,7 @@ def texto_para_imagem(titulo, descricao, data, caminho_imagem, valor=None):
         desenhar_texto_negrito(desenho, (x_text, y_text), valor_text, fonte_valor, "black")
 
     imagem.save(caminho_imagem)
-    print(f"Imagem salva em: {caminho_imagem}")
+    # print(f"Imagem salva em: {caminho_imagem}")
 
 def buscar_licitacoes(data_ontem):
     db_path = 'backend/server/db.sqlite3'
@@ -176,30 +191,38 @@ def buscar_licitacoes(data_ontem):
     """
     cursor.execute(query_licitacoes, (data_ontem,))
     licitacoes_data = cursor.fetchall()
+    # print(f"Licitacoes encontradas: {licitacoes_data}")
 
     licitacoes = []
-    for licitacao in licitacoes_data:
-        licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
-        
+    licitacao_ids = [licitacao[0] for licitacao in licitacoes_data]
+
+    if licitacao_ids:
         query_valores = """
-        SELECT valor
+        SELECT idlicitacao_id, valor
         FROM app_valores
-        WHERE idlicitacao_id = ?
-        """
-        cursor.execute(query_valores, (licitacao_id,))
+        WHERE idlicitacao_id IN ({})
+        """.format(','.join('?' * len(licitacao_ids)))
+        cursor.execute(query_valores, licitacao_ids)
         valores_data = cursor.fetchall()
-        
-        valores = [valor[0] for valor in valores_data]
-        link_encurtado = encurtar_url(link)
-        time.sleep(1)  # Pausa para evitar sobrecarga
-        
-        licitacoes.append({
-            'titulo': titulo,
-            'descricao': objeto,
-            'data': data_abertura,
-            'link': link_encurtado,
-            'valores': sum(valores) if valores else None
-        })
+        # print(f"Valores encontrados: {valores_data}")
+
+        valores_dict = {}
+        for licitacao_id, valor in valores_data:
+            if licitacao_id not in valores_dict:
+                valores_dict[licitacao_id] = []
+            valores_dict[licitacao_id].append(valor)
+
+        for licitacao in licitacoes_data:
+            licitacao_id, titulo, objeto, data_abertura, link, tipo = licitacao
+            valores = valores_dict.get(licitacao_id, [])
+            link_encurtado = encurtar_url(link)
+            licitacoes.append({
+                'titulo': titulo,
+                'descricao': objeto,
+                'data': data_abertura,
+                'link': link_encurtado,
+                'valores': sum(valores) if valores else None
+            })
 
     connection.close()
     return licitacoes
@@ -224,25 +247,29 @@ def criar_mensagens(licitacoes, site):
             mensagens.append((tweet_message, licitacao["titulo"], licitacao["descricao"], licitacao["data"], licitacao["valores"]))
         verificador_de_licitacao = False
 
+    # print(f"Mensagens criadas: {mensagens}")
     return mensagens, verificador_de_licitacao
 
 def postar_tweets(client, api, mensagens, verificador_de_licitacao):
     if verificador_de_licitacao == False:
         for i, (mensagem, titulo, descricao, data, valor) in enumerate(mensagens):
             try:
+                # print(f"Processando mensagem {i}: {mensagem}")
                 caminho_imagem = f"tweet_image_{i}.png"
                 texto_para_imagem(titulo, descricao, data, caminho_imagem, valor)
 
                 # upload na imagem 
                 response = api.media_upload(filename=caminho_imagem)
                 media_id = response.media_id
+                # print(f"Imagem {caminho_imagem} carregada com media_id: {media_id}")
 
                 # cria o tweet já com a imagem 
                 tweet = client.create_tweet(text=mensagem, media_ids=[media_id])
-                print(tweet)
+                # print(f"Tweet criado: {tweet}")
 
                 # remove a imagem para liberar espaço em disco 
                 os.remove(caminho_imagem)
+                # print(f"Imagem {caminho_imagem} removida")
                  
                 # posta a cada 20 segundos 
                 time.sleep(7)
@@ -252,8 +279,9 @@ def postar_tweets(client, api, mensagens, verificador_de_licitacao):
                 traceback.print_exc() 
     else: 
         try:
+            print(f"Postando mensagem alternativa: {mensagens[0]}")
             tweet = client.create_tweet(text=mensagens[0])
-            print(tweet)
+            # print(f"Tweet criado: {tweet}")
         except Exception as e:
             print(f"Erro ao enviar tweet: {e}")
             traceback.print_exc()
@@ -266,7 +294,10 @@ def main():
     licitacoes = buscar_licitacoes(data_ontem)
     mensagens, verificador_de_licitacao = criar_mensagens(licitacoes, site)
     client, api = carregar_configuracoes_twitter()
-    postar_tweets(client, api, mensagens, verificador_de_licitacao)
+    if client and api:
+        postar_tweets(client, api, mensagens, verificador_de_licitacao)
+    else:
+        print("Erro ao carregar configurações do Twitter. Não foi possível postar os tweets.")
 
 if __name__ == '__main__':
     main()
