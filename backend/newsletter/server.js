@@ -26,7 +26,7 @@ app.post('/subscribe', async (req, res) => {
       status: 'subscribed',
     });
 
-    await sendWelcomeEmail();
+    await sendWelcomeEmail(email);
 
     res.send('Inscrição realizada com sucesso!');
 
