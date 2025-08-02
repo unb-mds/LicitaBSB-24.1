@@ -25,7 +25,7 @@ const SubscribeForm = () => {
           },
         },
       );
-      setMessage('Inscrição realizada com sucesso!');
+    setMessage('Inscrição confirmada! Você receberá os relatórios de licitações toda segunda-feira no seu e-mail.');
     } catch (error) {
       setMessage('Houve um erro, tente novamente!');
       console.error(
