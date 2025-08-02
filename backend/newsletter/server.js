@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const cors = require('cors');
 require('dotenv').config();
+const {sendWelcomeEmail} = require("./sendEmails")
 
 const app = express();
 app.use(cors());
@@ -25,7 +26,10 @@ app.post('/subscribe', async (req, res) => {
       status: 'subscribed',
     });
 
+    await sendWelcomeEmail();
+
     res.send('Inscrição realizada com sucesso!');
+
   } catch (error) {
     console.error('Error subscribing:', error);
     res.status(500).send('Houve um erro, tente novamente!');

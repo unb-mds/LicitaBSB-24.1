@@ -73,6 +73,39 @@ Equipe Licita BSB`,
   }
 };
 
+
+const sendWelcomeEmail = async (emailAddress) => {
+
+const mailOptions = {
+    from: {
+      name: "LicitaBSB",
+      address: email,
+    },
+    to: emailAddress,
+    subject: "Bem-vindo(a) à Newsletter Licita BSB!",
+    text: `Olá,
+
+Seu e-mail foi inscrito com sucesso na nossa newsletter semanal do Licita BSB!
+
+Agora você receberá atualizações sobre as licitações mais recentes em Brasília diretamente na sua caixa de entrada.
+
+Atenciosamente,
+Equipe Licita BSB`,
+    html: `<p>Olá,</p>
+           <p>Seu e-mail foi inscrito com sucesso na nossa <strong>newsletter semanal do Licita BSB</strong>!</p>
+           <p>Agora você receberá atualizações sobre as licitações mais recentes em Brasília diretamente na sua caixa de entrada.</p>
+           <p>Atenciosamente,<br>Equipe Licita BSB</p>`
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log(`Welcome email sent to: ${emailAddress}`);
+  } catch (error) {
+    console.error(`Failed to send welcome email to: ${emailAddress}. Error: ${error.message}`);
+  }
+};
+
+
 const main = async () => {
   console.log('Starting main workflow...');
   const subscribers = await getSubscribers();
